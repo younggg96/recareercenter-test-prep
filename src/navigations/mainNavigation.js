@@ -1,12 +1,20 @@
 import React from "react";
+// redux
+import { useSelector } from "react-redux";
+
+// navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+
+// home screens
 import { HomeScreen } from "../views/homeScreen";
 import { DetailsScreen } from "../views/detailScreen";
-import { useSelector } from "react-redux";
-import signIn from "../views/userAuth/signIn";
-import signUp from "../views/userAuth/signUp";
-import forgetPassword from "../views/userAuth/forgetPassword";
+
+// auth screens
+import SignIn from "../views/userAuth/signIn";
+import SignUp from "../views/userAuth/signUp";
+import ForgetPassword from "../views/userAuth/forgetPassword";
+import Landing from "../views/userAuth/landing";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -18,10 +26,11 @@ const HomeNavigator = () => (
 );
 
 const AuthNavigator = () => (
-  <Navigator headerMode="none">
-    <Screen name="SignIn" component={signIn} />
-    <Screen name="SignUp" component={signUp} />
-    <Screen name='ResetPassword' component={forgetPassword} />
+  <Navigator headerMode="none" initialRouteName="Landing">
+    <Screen name="Landing" component={Landing} />
+    <Screen name="SignIn" component={SignIn} />
+    <Screen name="SignUp" component={SignUp} />
+    <Screen name='ResetPassword' component={ForgetPassword} />
   </Navigator>
 );
 

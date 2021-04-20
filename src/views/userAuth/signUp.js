@@ -9,7 +9,7 @@ import { styles } from "../../styles/userAuth/authStyle";
 import { BackIcon } from "../../components/icons/icons";
 
 
-const signUp = ({ navigation }) => {
+const SignUp = ({ navigation }) => {
   const {
     control,
     handleSubmit,
@@ -172,4 +172,4 @@ const signUp = ({ navigation }) => {
     </>
   );
 };
-export default signUp;
+export default SignUp;

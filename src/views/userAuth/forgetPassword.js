@@ -14,7 +14,7 @@ const BackIcon = (props) => (
   <Icon {...props} name='arrow-back' />
 );
 
-const forgetPassword = ({ navigation }) => {
+const ForgetPassword = ({ navigation }) => {
   const {
     control,
     handleSubmit,
@@ -24,7 +24,7 @@ const forgetPassword = ({ navigation }) => {
 
   const onSubmit = (data) => {
     console.log(data);
-    dispatch();
+    // dispatch();
   };
 
   // back button
@@ -94,4 +94,4 @@ const forgetPassword = ({ navigation }) => {
   );
 };
 
-export default forgetPassword;
+export default ForgetPassword;

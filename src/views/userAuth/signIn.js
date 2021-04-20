@@ -6,11 +6,15 @@ import { SafeAreaView, View } from "react-native";
 
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
+
+// redux
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/userAction";
+
+// icons
 import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
 
-const signIn = ({ navigation }) => {
+const SignIn = ({ navigation }) => {
   const {
     control,
     handleSubmit,
@@ -161,4 +165,4 @@ const signIn = ({ navigation }) => {
   );
 };
 
-export default signIn;
+export default SignIn;
