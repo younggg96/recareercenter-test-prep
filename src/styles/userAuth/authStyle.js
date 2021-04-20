@@ -5,12 +5,19 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    // paddingTop: Constants.statusBarHeight,
-    margin: 32,
+    marginLeft: 32,
+    marginRight: 32,
   },
   paragraph: {
     marginBottom: 48,
     width: 200,
+    fontWeight: "800",
+    textAlign: "left",
+    letterSpacing: -2,
+  },
+  paragraphSignup: {
+    marginBottom: 40,
+    width: 300,
     fontWeight: "800",
     textAlign: "left",
     letterSpacing: -2,
@@ -26,6 +33,10 @@ export const styles = StyleSheet.create({
   },
   button: {
     marginTop: 12,
+    borderRadius: 8,
+  },
+  createAccBtn: {
+    marginTop: 26,
     borderRadius: 8,
   },
   otherTitle: {
@@ -48,4 +59,8 @@ export const styles = StyleSheet.create({
     margin: 8,
     borderRadius: 8,
   },
+  topBar: {
+    backgroundColor: "#F2F2F2",
+    marginTop: Constants.statusBarHeight,
+  }
 });

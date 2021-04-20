@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, CheckBox, Icon, Input, Text, TopNavigationAction } from "@ui-kitten/components";
+import { Button, CheckBox, Icon, Input, Text, TopNavigation, TopNavigationAction } from "@ui-kitten/components";
 import { useForm, Controller } from "react-hook-form";
 import { SafeAreaView } from "react-native";
 
@@ -54,9 +54,9 @@ const signUp = ({ navigation }) => {
 
   return (
     <>
-      <TopNavigation title='Sign up' alignment='left' accessoryLeft={BackAction} style={{height: 100}} />
+      <TopNavigation title='Sign up' alignment='center' accessoryLeft={BackAction} style={styles.topBar} />
       <SafeAreaView style={styles.container}>
-        <Text style={styles.paragraph} category="h1">
+        <Text style={styles.paragraphSignup} category="h1">
           Sign Up and starting learning
         </Text>
         <Controller
@@ -160,7 +160,7 @@ const signUp = ({ navigation }) => {
         >
           I've read and agree with Terms of Service and our Privacy Policy
         </CheckBox>
-        <Text>{`${submitted}`}</Text>
+        {/* <Text>{`${submitted}`}</Text> */}
         {submitted ? (
           !checked ? (
             <Text status="danger" category="c2">
@@ -168,7 +168,7 @@ const signUp = ({ navigation }) => {
             </Text>
           ) : null
         ) : null}
-        <Button style={styles.button} onPress={handleSubmit(onSubmit)}>
+        <Button style={styles.createAccBtn} onPress={handleSubmit(onSubmit)}>
           Create Account
         </Button>
       </SafeAreaView>
