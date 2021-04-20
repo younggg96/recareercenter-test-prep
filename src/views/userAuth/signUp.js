@@ -1,41 +1,178 @@
 import React from "react";
 
-import { Button, CheckBox, Input, Layout, LayoutElement, Text } from "@ui-kitten/components";
+import { Button, CheckBox, Icon, Input, Text, TopNavigationAction } from "@ui-kitten/components";
 import { useForm, Controller } from "react-hook-form";
-import { StyleSheet } from "react-native";
-import Constants from 'expo-constants';
+import { SafeAreaView } from "react-native";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: "#ecf0f1",
-    padding: 8,
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-});
+import { TouchableWithoutFeedback } from "react-native";
+import { styles } from "../../styles/userAuth/authStyle";
 
-const signUp = () => {
-  const { control, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+// icons
+const BackIcon = (props) => (
+  <Icon {...props} name='arrow-back' />
+);
+
+const signUp = ({ navigation }) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const [checked, setChecked] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
+
+  // password input
+  const [secureTextEntry, setSecureTextEntry] = React.useState(true);
+  const toggleSecureEntry = () => {
+    setSecureTextEntry(!secureTextEntry);
+  };
+
+  // login submit
+  const onSubmit = (data) => {
+    setSubmitted(true);
+    if (checked) {
+      console.log(data);
+      setSubmitted(false);
+    }
+  };
+
+  const renderIcon = (props) => (
+    <TouchableWithoutFeedback onPress={toggleSecureEntry}>
+      <Icon {...props} name={secureTextEntry ? "eye-off" : "eye"} />
+    </TouchableWithoutFeedback>
+  );
+
+  // back button
+  const navigateBack = () => {
+    navigation.goBack();
+  };
+
+  const BackAction = () => (
+    <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
+  );
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.paragraph}>Sign Up</Text>
-
-      <Controller
-        name="Fill Me"
-        rules={{ required: true }}
-        control={control}
-        render={(props) => <Input {...props} />}
-      />
-    </View>
+    <>
+      <TopNavigation title='Sign up' alignment='left' accessoryLeft={BackAction} style={{height: 100}} />
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.paragraph} category="h1">
+          Sign Up and starting learning
+        </Text>
+        <Controller
+          name="email"
+          control={control}
+          rules={{
+            required: true,
+            pattern: {
+              value: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
+              message: "Please enter a valid email address",
+            },
+          }}
+          defaultValue=""
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              style={styles.input}
+              label="Email"
+              size="large"
+              caption={
+                errors.email ? (
+                  errors.email.type === "required" ? (
+                    <Text status="danger" category="c2">
+                      Email is required.
+                    </Text>
+                  ) : errors.email.type === "pattern" ? (
+                    <Text status="danger" category="c2">
+                      {errors.email.message}
+                    </Text>
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  ""
+                )
+              }
+              placeholder="Enter your email"
+              onBlur={onBlur}
+              onChangeText={(v) => onChange(v)}
+              value={value}
+            />
+          )}
+        />
+        <Controller
+          name="username"
+          rules={{ required: true, minLength: 4 }}
+          defaultValue=""
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              style={styles.input}
+              label="Username"
+              size="large"
+              caption={
+                errors.username ? (
+                  <Text status="danger" category="c2">
+                    Should contain at least 4 symbols
+                  </Text>
+                ) : (
+                  ""
+                )
+              }
+              placeholder="Enter your Username"
+              onBlur={onBlur}
+              onChangeText={(v) => onChange(v)}
+              value={value}
+            />
+          )}
+        />
+        <Controller
+          name="password"
+          rules={{ required: true, minLength: 8 }}
+          defaultValue=""
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              style={styles.input}
+              label="Password"
+              size="large"
+              caption={
+                errors.password ? (
+                  <Text status="danger" category="c2">
+                    Should contain at least 8 symbols
+                  </Text>
+                ) : (
+                  ""
+                )
+              }
+              placeholder="Enter your Password"
+              accessoryRight={renderIcon}
+              secureTextEntry={secureTextEntry}
+              onBlur={onBlur}
+              onChangeText={(v) => onChange(v)}
+              value={value}
+            />
+          )}
+        />
+        <CheckBox
+          value={checked}
+          checked={checked}
+          onChange={(nextChecked) => setChecked(nextChecked)}
+        >
+          I've read and agree with Terms of Service and our Privacy Policy
+        </CheckBox>
+        <Text>{`${submitted}`}</Text>
+        {submitted ? (
+          !checked ? (
+            <Text status="danger" category="c2">
+              please agree
+            </Text>
+          ) : null
+        ) : null}
+        <Button style={styles.button} onPress={handleSubmit(onSubmit)}>
+          Create Account
+        </Button>
+      </SafeAreaView>
+    </>
   );
 };
-
 export default signUp;

@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingTop: Constants.statusBarHeight,
+    // paddingTop: Constants.statusBarHeight,
     margin: 32,
   },
   paragraph: {
@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F2F2F2",
   },
   otherBtn: {
-    width: "90%",
+    width: "80%",
     margin: 8,
     borderRadius: 8,
   },

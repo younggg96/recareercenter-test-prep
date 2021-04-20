@@ -2,22 +2,32 @@ import React from "react";
 
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
 import { useForm, Controller } from "react-hook-form";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 
 import { TouchableWithoutFeedback } from "react-native";
-import { styles } from "../../styles/userAuth/signInStyle";
+import { styles } from "../../styles/userAuth/authStyle";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/actions/userAction";
 
-const AlertIcon = (props) => <Icon {...props} name="alert-circle-outline" />;
 const GoogleIcon = (props) => <Icon {...props} name="google" />;
 const FaceBookIcon = (props) => <Icon {...props} name="facebook" />;
 
-const signIn = () => {
+const signIn = ({ navigation }) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const dispatch = useDispatch();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    dispatch(login(data.email, data.password));
+  };
+
+  const signUp = () => {
+    navigation.navigate("SignUp");
+  };
 
   // password input
   const [secureTextEntry, setSecureTextEntry] = React.useState(true);
@@ -69,7 +79,6 @@ const signIn = () => {
                 ""
               )
             }
-            // captionIcon={errors.email ? AlertIcon : ''}
             placeholder="Enter your email"
             onBlur={onBlur}
             onChangeText={(v) => onChange(v)}
@@ -96,7 +105,6 @@ const signIn = () => {
                 ""
               )
             }
-            // captionIcon={errors.password ? AlertIcon : ''}
             placeholder="Enter your Password"
             accessoryRight={renderIcon}
             secureTextEntry={secureTextEntry}
@@ -119,7 +127,7 @@ const signIn = () => {
       <Button style={styles.button} onPress={handleSubmit(onSubmit)}>
         Sign In
       </Button>
-      <Button style={styles.button} onPress={handleSubmit(onSubmit)}>
+      <Button style={styles.button} onPress={signUp}>
         Sign Up
       </Button>
 
