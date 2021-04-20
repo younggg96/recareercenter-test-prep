@@ -42,7 +42,7 @@ const signIn = ({ navigation }) => {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.paragraph} category="h1">
         Welcome Back!
       </Text>
@@ -154,7 +154,7 @@ const signIn = ({ navigation }) => {
           </Button>
         </Layout>
       </Layout>
-    </SafeAreaView>
+    </View>
   );
 };
 
