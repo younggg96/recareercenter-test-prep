@@ -8,9 +8,7 @@ import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/userAction";
-
-const GoogleIcon = (props) => <Icon {...props} name="google" />;
-const FaceBookIcon = (props) => <Icon {...props} name="facebook" />;
+import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
 
 const signIn = ({ navigation }) => {
   const {
@@ -27,6 +25,10 @@ const signIn = ({ navigation }) => {
 
   const signUp = () => {
     navigation.navigate("SignUp");
+  };
+
+  const forgetPassword = () => {
+    navigation.navigate("ResetPassword");
   };
 
   // password input
@@ -120,6 +122,7 @@ const signIn = ({ navigation }) => {
           size="small"
           appearance="ghost"
           status="primary"
+          onPress={forgetPassword}
         >
           Forget password?
         </Button>

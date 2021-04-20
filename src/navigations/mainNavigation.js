@@ -6,6 +6,7 @@ import { DetailsScreen } from "../views/detailScreen";
 import { useSelector } from "react-redux";
 import signIn from "../views/userAuth/signIn";
 import signUp from "../views/userAuth/signUp";
+import forgetPassword from "../views/userAuth/forgetPassword";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -20,6 +21,7 @@ const AuthNavigator = () => (
   <Navigator headerMode="none">
     <Screen name="SignIn" component={signIn} />
     <Screen name="SignUp" component={signUp} />
+    <Screen name='ResetPassword' component={forgetPassword} />
   </Navigator>
 );
 

@@ -6,11 +6,8 @@ import { SafeAreaView } from "react-native";
 
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
+import { BackIcon } from "../../components/icons/icons";
 
-// icons
-const BackIcon = (props) => (
-  <Icon {...props} name='arrow-back' />
-);
 
 const signUp = ({ navigation }) => {
   const {

@@ -12,15 +12,19 @@ export const styles = StyleSheet.create({
     marginBottom: 48,
     width: 200,
     fontWeight: "800",
-    textAlign: "left",
     letterSpacing: -2,
   },
   paragraphSignup: {
     marginBottom: 40,
     width: 300,
     fontWeight: "800",
-    textAlign: "left",
     letterSpacing: -2,
+  },
+  paragraphReset: {
+    marginBottom: 30,
+    // letterSpacing: -1,
+    // width: 350,
+    fontWeight: "800",
   },
   forgetBtn: {
     justifyContent: "center",
