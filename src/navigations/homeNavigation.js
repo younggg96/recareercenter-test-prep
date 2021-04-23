@@ -1,45 +1,38 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // icons
-import { ClipboardIcon, HomeIcon, SettingsIcon } from '../components/icons/icons';
-import { HomeScreen } from '../views/home/homeScreen';
+import {
+  ClipboardIcon,
+  DicIcon,
+  HomeIcon,
+  PersonIcon,
+} from "../components/icons/icons";
+import { HomeScreen } from "../views/home/homeScreen";
+import { ProfileScreen } from "../views/home/profileScreen";
+import { ExamsScreen } from "../views/home/examsScreen";
+import { BottomNavigation, BottomNavigationTab } from "@ui-kitten/components";
+import { DictionaryScreen } from "../views/home/dictionaryScreen";
 
 const BottomTab = createBottomTabNavigator();
 
-export const HomeNavigation = () => (
-  // <BottomTab.Navigator tabBar={props => <HomeTabBar {...props} />}>
-  <BottomTab.Navigator>
-    <BottomTab.Screen
-      name="Home"
-      component={HomeScreen}
-      options={{ title: 'Home', tabBarIcon: HomeIcon }}
-    />
-    {/* <BottomTab.Screen
-      name="Home"
-      component={HomeScreen}
-      options={{ title: 'Exams', tabBarIcon: ClipboardIcon }}
-    />
-    <BottomTab.Screen
-      name="Setting"
-      component={HomeScreen}
-      options={{ title: 'Setting', tabBarIcon: SettingsIcon }}
-    /> */}
-  </BottomTab.Navigator>
-);
-
-const TabNavigator = () => (
-  <Navigator tabBar={props => <BottomTabBar {...props} />}>
-    <Screen name='Home' component={HomeScreen} />
-    <Screen name='Orders' component={OrdersScreen} />
-  </Navigator>
-);
-
-export const HomeNavigation = ({ navigation, state }) => (
+const BottomTabBar = ({ navigation, state }) => (
   <BottomNavigation
     selectedIndex={state.index}
-    onSelect={index => navigation.navigate(state.routeNames[index])}>
-    <BottomNavigationTab title='USERS' />
-    <BottomNavigationTab title='ORDERS' />
+    onSelect={(index) => navigation.navigate(state.routeNames[index])}
+  >
+    <BottomNavigationTab title="Home" icon={HomeIcon} />
+    <BottomNavigationTab title="Exams" icon={ClipboardIcon} />
+    <BottomNavigationTab title="Dictionary" icon={DicIcon} />
+    <BottomNavigationTab title="Profile" icon={PersonIcon} />
   </BottomNavigation>
+);
+
+export const HomeNavigation = () => (
+  <BottomTab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
+    <BottomTab.Screen name="Home" component={HomeScreen} />
+    <BottomTab.Screen name="Exams" component={ExamsScreen} />
+    <BottomTab.Screen name="Dictionary" component={DictionaryScreen} />
+    <BottomTab.Screen name="Profile" component={ProfileScreen} />
+  </BottomTab.Navigator>
 );

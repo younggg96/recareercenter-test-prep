@@ -11,3 +11,4 @@ export const HomeIcon = (props) => <Icon {...props} name="home" />;
 export const PersonIcon = (props) => <Icon {...props} name="person" />;
 export const SettingsIcon = (props) => <Icon {...props} name="settings" />;
 export const ClipboardIcon = (props) => <Icon {...props} name="clipboard" />;
+export const DicIcon = (props) => <Icon {...props} name="book-open" />;

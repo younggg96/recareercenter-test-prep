@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 // navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { HomeNavigation } from "./homeNavigation";
-import { AuthNavigation } from "./authNavigation";
+// import { AuthNavigation } from "./authNavigation";
 
 export const AppNavigator = () => {
   const user = useSelector((state) => state.userReducer);
@@ -13,7 +13,9 @@ export const AppNavigator = () => {
 
   return (
     <NavigationContainer>
-      {user.userData.signIn ? <HomeNavigation /> : <AuthNavigation />}
+      {/* {user.userData.signIn ? <HomeNavigation /> : <AuthNavigation />} */}
+      {/* <AuthNavigation /> */}
+      <HomeNavigation />
     </NavigationContainer>
   );
 };
