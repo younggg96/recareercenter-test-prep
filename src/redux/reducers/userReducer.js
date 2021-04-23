@@ -1,6 +1,6 @@
 import { USER_LOGIN, USER_LOGOUT } from "../actions/actionTypes";
 
-const INITIAL_STATE = { userData: {user: '', signIn: false} };
+const INITIAL_STATE = { userData: {user: 'aaaa', signIn: false, examTargetDate: new Date('December 17, 2021')} };
 
 export default (state = INITIAL_STATE, action) => {
   console.log(action);

@@ -7,6 +7,7 @@ import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
 // redux
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userAction';
+import Constants from "expo-constants";
 
 export const HomeScreen = ({ navigation }) => {
   // const themeContext = React.useContext(ThemeContext);
@@ -21,14 +22,14 @@ export const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, paddingTop: Constants.statusBarHeight}}>
       <TopNavigation title='MyApp' alignment='center' />
-      <Divider />
-      <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      {/* <Divider />
+      <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> */}
         {/* <Button onPress={navigateDetails}>OPEN DETAILS</Button> */}
-        <Button onPress={signOut}>sign out</Button>
+        {/* <Button onPress={signOut}>sign out</Button> */} 
         {/* <Button style={{ marginVertical: 4 }} onPress={themeContext.toggleTheme}>Change theme</Button> */}
-      </Layout>
+      {/* </Layout> */}
     </View>
   );
 };
