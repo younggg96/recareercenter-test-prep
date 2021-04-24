@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   root: {
     paddingHorizontal: 36,
     paddingTop: Constants.statusBarHeight + 30,
-    // backgroundColor: "#dddddd",
   },
   headerContainer: {
     paddingTop: 16,
@@ -22,17 +21,15 @@ export const styles = StyleSheet.create({
   },
   settings: {
     borderRadius: 25,
-    shadowOffset: { width: 10, height: 10 },
-    shadowColor: "black",
-    shadowOpacity: 0.5,
   },
   card: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    padding: 12,
   },
   text: {
-    marginLeft: 16,
+    marginLeft: 12,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
@@ -42,13 +39,34 @@ export const styles = StyleSheet.create({
     height: 32,
   },
   contentContainer: {
-    // transform: [{ translateY: -100 }],
     backgroundColor: "#fff",
     borderTopLeftRadius: 60,
     borderTopRightRadius: 60,
-    // marginHorizontal: 36,
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
+  },
+  prograssBar: {
+    marginTop: 24,
+    // padding: 16,
+    paddingHorizontal: 24,
+    width: '95%',
+    height: 120,
+    borderRadius: 100,
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  prograssTitle: {
+    fontWeight: 'bold'
+  },
+  totalStats: {
+    width: '95%',
+    paddingHorizontal: 24,
+    flexDirection: 'column',
+  },
+  total: {
+    marginTop: 14,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
 });
