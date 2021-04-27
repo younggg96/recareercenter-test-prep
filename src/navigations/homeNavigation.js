@@ -19,6 +19,12 @@ import { ProfileScreen } from "../views/home/profileScreen";
 import { ExamsScreen } from "../views/home/examsScreen";
 import { DictionaryScreen } from "../views/home/dictionaryScreen";
 import { SettingsScreen } from "../views/profile/settingsScreen";
+import { StudyPlanScreen } from "../views/profile/studyPlanScreen";
+import { ReviewsScreen } from "../views/profile/reviewsScreen";
+import { AboutUsScreen } from "../views/profile/aboutUsScreen";
+import { NotificationScreen } from "../views/profile/notificationScreen";
+import { ChangePasswordScreen } from "../views/profile/changePasswordScreen";
+import { MembershipScreen } from "../views/profile/membershipScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -26,6 +32,12 @@ const Stack = createStackNavigator();
 const ProfileNavigation = () => (
   <Stack.Navigator headerMode="none" initialRouteName="ProfileScreen">
     <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+    <Stack.Screen name="AboutUsScreen" component={AboutUsScreen} />
+    <Stack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} />
+    <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
+    <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
+    <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
+    <Stack.Screen name="StudyPlanScreen" component={StudyPlanScreen} />
     <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
   </Stack.Navigator>
 );
@@ -43,7 +55,7 @@ const BottomTabBar = ({ navigation, state }) => (
 );
 
 export const HomeNavigation = () => {
-  return(
+  return (
     <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Exams" component={ExamsScreen} />

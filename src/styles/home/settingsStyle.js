@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import Constants from "expo-constants";
+import { shadow } from "../shared/sharedStyle";
 
 export const styles = StyleSheet.create({
   topBar: {
@@ -13,7 +14,6 @@ export const styles = StyleSheet.create({
   settingsContent: {
     flex: 1,
     flexDirection: "column",
-    // justifyContent: "center",
   },
   accountTitle: {
     paddingTop: 16,
@@ -25,6 +25,7 @@ export const styles = StyleSheet.create({
     height: 120,
     justifyContent: 'center',
     paddingHorizontal: 48,
+    ...shadow
   },
   logOutBtn: {
     marginTop: 16,

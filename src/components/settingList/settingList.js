@@ -19,7 +19,12 @@ const styles = StyleSheet.create({
 });
 
 export const SettingList = (props) => {
-  const settings = props.settings
+  const { settings, navigation} = props;
+  
+  const navigatorTo = (link) => {
+    navigation.navigate(link);
+  };
+
   return (
     <Menu style={styles.container}>
       {settings.map((setting, index) => {
@@ -44,6 +49,7 @@ export const SettingList = (props) => {
             disabled={setting.disable}
             accessoryLeft={setting.icon}
             accessoryRight={setting.rightIcon}
+            onPress={() => navigatorTo(setting.link)}
           />
         );
       })}
