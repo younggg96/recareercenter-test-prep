@@ -16,10 +16,12 @@ export const DicIcon = (props) => <Icon {...props} name="book-open" />;
 // Profile
 export const MemberIcon = (props) => <Icon fill="#000" {...props} name="award" />;
 export const ReviewIcon = (props) => <Icon fill="#000" {...props} name="bookmark" />;
-export const ExamDayIcon = (props) => <Icon fill="#000" {...props} name="bell" />;
+export const ExamDayIcon = (props) => <Icon fill="#000" {...props} name="book" />;
 export const ForwardIcon = (props) => <Icon fill="#000" {...props} name="arrow-ios-forward" />;
 export const ShopIcon = (props) => <Icon fill="#000" {...props} name="shopping-bag" />;
 
 // settings
 export const LockIcon = (props) => <Icon fill="#000" {...props} name="lock" />;
 export const AboutUsIcon = (props) => <Icon fill="#000" {...props} name="globe-2" />;
+export const BellIcon = (props) => <Icon fill="#000" {...props} name="bell" />;
+export const ShareIcon = (props) => <Icon fill="#000" {...props} name="share" />;

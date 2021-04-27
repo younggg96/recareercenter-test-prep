@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button, Card, Icon, Text } from "@ui-kitten/components";
 import { styles } from "../../styles/home/profileStyle";
-import { SafeAreaView, StatusBar, View } from "react-native";
+import { View } from "react-native";
 import { useSelector } from "react-redux";
 import { SettingsIcon } from "../../components/icons/icons";
 import { ProgressBar } from "../../components/progressBar/progressBar";

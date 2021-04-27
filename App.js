@@ -21,6 +21,10 @@ import rootReducer from './src/redux/reducers';
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
 
+import { LogBox } from 'react-native';
+
+// Ignore all log notifications:
+LogBox.ignoreAllLogs();
 
 export default function App() {
   const [isLoaded, setIsLoaded] = React.useState(false);

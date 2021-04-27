@@ -12,7 +12,21 @@ export const styles = StyleSheet.create({
   },
   settingsContent: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "column",
     // justifyContent: "center",
   },
+  accountTitle: {
+    paddingTop: 16,
+    paddingHorizontal: 48,
+  },
+  email: {
+    marginTop: 16,
+    backgroundColor: '#fff',
+    height: 120,
+    justifyContent: 'center',
+    paddingHorizontal: 48,
+  },
+  logOutBtn: {
+    marginTop: 16,
+  }
 });
