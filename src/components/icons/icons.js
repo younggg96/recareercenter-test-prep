@@ -14,5 +14,12 @@ export const ClipboardIcon = (props) => <Icon {...props} name="clipboard" />;
 export const DicIcon = (props) => <Icon {...props} name="book-open" />;
 
 // Profile
-// export const DateIcon = (props) => <Icon {...props} name="clock" />;
-// export const QuestionsIcon = (props) => <Icon {...props} name="checkmark-circle-2" />;
+export const MemberIcon = (props) => <Icon fill="#000" {...props} name="award" />;
+export const ReviewIcon = (props) => <Icon fill="#000" {...props} name="bookmark" />;
+export const ExamDayIcon = (props) => <Icon fill="#000" {...props} name="bell" />;
+export const ForwardIcon = (props) => <Icon fill="#000" {...props} name="arrow-ios-forward" />;
+export const ShopIcon = (props) => <Icon fill="#000" {...props} name="shopping-bag" />;
+
+// settings
+export const LockIcon = (props) => <Icon fill="#000" {...props} name="lock" />;
+export const AboutUsIcon = (props) => <Icon fill="#000" {...props} name="globe-2" />;

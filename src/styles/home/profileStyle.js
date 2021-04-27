@@ -2,18 +2,20 @@ import { StyleSheet } from "react-native";
 import Constants from "expo-constants";
 
 export const styles = StyleSheet.create({
-  root: {
-    paddingHorizontal: 36,
-    paddingTop: Constants.statusBarHeight + 30,
-  },
   headerContainer: {
-    paddingTop: 16,
+    paddingHorizontal: 24,
+    paddingTop: Constants.statusBarHeight + 30,
+    paddingBottom: 12,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
+  background: {
+    // backgroundColor: "#E52326"
+  },
   subHeaderContainer: {
-    paddingTop: 22,
+    paddingHorizontal: 24,
+    paddingTop: 12,
     height: 100,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -42,13 +44,9 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderTopLeftRadius: 60,
     borderTopRightRadius: 60,
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
   },
   prograssBar: {
     marginTop: 24,
-    // padding: 16,
     paddingHorizontal: 24,
     width: '95%',
     height: 120,

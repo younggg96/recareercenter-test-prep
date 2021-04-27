@@ -98,7 +98,7 @@ const SignUp = ({ navigation }) => {
         />
         <Controller
           name="username"
-          rules={{ required: true, minLength: 4 }}
+          rules={{ required: true, minLength: 4, maxLength: 8 }}
           defaultValue=""
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
@@ -109,7 +109,7 @@ const SignUp = ({ navigation }) => {
               caption={
                 errors.username ? (
                   <Text status="danger" category="c2">
-                    Should contain at least 4 symbols
+                    Should contain at least 4 symbols, No more than 8 symbols
                   </Text>
                 ) : (
                   ""
