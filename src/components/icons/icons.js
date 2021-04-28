@@ -25,3 +25,7 @@ export const LockIcon = (props) => <Icon fill="#000" {...props} name="lock" />;
 export const AboutUsIcon = (props) => <Icon fill="#000" {...props} name="globe-2" />;
 export const BellIcon = (props) => <Icon fill="#000" {...props} name="bell" />;
 export const ShareIcon = (props) => <Icon fill="#000" {...props} name="share" />;
+
+// study plan
+export const EditIcon = (props) => <Icon {...props} name="edit-outline" />;
+
