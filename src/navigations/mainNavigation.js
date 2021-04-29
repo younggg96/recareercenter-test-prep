@@ -19,7 +19,7 @@ export const AppNavigator = () => {
 
   return (
     <NavigationContainer ref={navigationRef}>
-      {/* {user.userData.signIn ? <HomeNavigation /> : <AuthNavigation />} */}
+      {/* {user.signIn ? <HomeNavigation /> : <AuthNavigation />} */}
        {/* <AuthNavigation /> */}
       <HomeNavigation />
     </NavigationContainer>

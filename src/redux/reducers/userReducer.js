@@ -1,12 +1,19 @@
-import { USER_LOGIN, USER_LOGOUT } from "../actions/actionTypes";
+import {
+  CHANGE_DAILY_PRACTICES,
+  CHANGE_EXAM_DATE,
+  USER_LOGIN,
+  USER_LOGOUT,
+} from "../actions/actionTypes";
 
 const INITIAL_STATE = {
   userData: {
-    user: 'Yang',
-    email: 'yangguanggeng960123@gmail.com',
-    signIn: false,
-    examTargetDate: new Date('December 17, 2021')
-  }
+    userName: "Yang",
+    email: "yangguanggeng960123@gmail.com",
+    examTargetDate: new Date("December 17, 2021"),
+    dailyTarget: 150,
+    finishedQuestions: 60 
+  },
+  signIn: true,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -15,7 +22,17 @@ export default (state = INITIAL_STATE, action) => {
     case USER_LOGIN:
       return { ...state, userData: action.payload };
     case USER_LOGOUT:
-      return { ...state, userData: action.payload };
+      return { ...state, signIn: action.payload };
+    case CHANGE_DAILY_PRACTICES:
+      return {
+        userData: { ...state.userData, dailyTarget: action.payload },
+        signIn: state.signIn,
+      };
+    case CHANGE_EXAM_DATE:
+      return {
+        userData: { ...state.userData, examTargetDate: action.payload },
+        signIn: state.signIn,
+      };
     default:
       return state;
   }

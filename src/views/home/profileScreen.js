@@ -28,7 +28,7 @@ export const ProfileScreen = ({ navigation }) => {
         <View>
           <View style={styles.headerContainer}>
             <View>
-              <Text category="h1">Hi! {userData.user}</Text>
+              <Text category="h1">Hi! {userData.userName}</Text>
             </View>
             <View>
               <Button
@@ -69,7 +69,7 @@ export const ProfileScreen = ({ navigation }) => {
               {" "}
               Today's Practice
             </Text>
-            <ProgressBar finished="50" target="200" />
+            <ProgressBar finished={userData.finishedQuestions} target={userData.dailyTarget} />
           </View>
           <View style={styles.totalStats}>
             <Text category="h6" style={styles.prograssTitle}>
