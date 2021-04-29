@@ -54,7 +54,7 @@ export const ProfileScreen = ({ navigation }) => {
                 </Text>
                 <Text category="s1">
                   You have{" "}
-                  {diffTime(new Date(), userData.examTargetDate)
+                  {diffTime(userData.startDay, userData.examTargetDate)
                     .toString()
                     .substring(0, 10)}{" "}
                   days left
@@ -69,7 +69,10 @@ export const ProfileScreen = ({ navigation }) => {
               {" "}
               Today's Practice
             </Text>
-            <ProgressBar finished={userData.finishedQuestions} target={userData.dailyTarget} />
+            <ProgressBar
+              finished={userData.finishedQuestions}
+              target={userData.dailyTarget}
+            />
           </View>
           <View style={styles.totalStats}>
             <Text category="h6" style={styles.prograssTitle}>
@@ -83,7 +86,12 @@ export const ProfileScreen = ({ navigation }) => {
                 </View>
                 <View style={styles.text}>
                   <Text category="label">Learning Days</Text>
-                  <Text category="s1">6 Days</Text>
+                  <Text category="s1">
+                    {diffTime(userData.startDay, new Date())
+                      .toString()
+                      .substring(0, 10)}{" "}
+                    Days
+                  </Text>
                 </View>
               </View>
               <View style={styles.card}>

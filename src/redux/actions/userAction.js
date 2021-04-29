@@ -1,6 +1,7 @@
 import {
   CHANGE_DAILY_PRACTICES,
   CHANGE_EXAM_DATE,
+  SET_START_DAY,
   USER_LOGIN,
   USER_LOGOUT,
 } from "./actionTypes";
@@ -42,6 +43,13 @@ export function changeDailyPractices(numInput) {
 export function changeExamDate(dateObj) {
   return {
     type: CHANGE_EXAM_DATE,
+    payload: dateObj,
+  };
+}
+
+export function setStartDay(dateObj) {
+  return {
+    type: SET_START_DAY,
     payload: dateObj,
   };
 }

@@ -5,10 +5,9 @@ import { shadow } from "../shared/sharedStyle";
 
 export const styles = StyleSheet.create({
   content: {
-    marginTop: 16,
-    marginHorizontal: 16,
-    paddingVertical: 16,
-    paddingHorizontal: 12,
+    margin: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     borderRadius: 4,
     flexDirection: "column",
     backgroundColor: "#fff",
@@ -21,7 +20,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   titleContent: {
-    paddingVertical: 6,
+    paddingVertical: 4,
     marginBottom: 4
   },
   submitBtn: {
@@ -38,5 +37,8 @@ export const styles = StyleSheet.create({
   },
   modalBtn: {
     marginVertical: 8,
+  },
+  startDay: {
+    marginBottom: 4
   }
 })
