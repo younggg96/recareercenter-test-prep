@@ -4,6 +4,7 @@ import {
   SET_START_DAY,
   USER_LOGIN,
   USER_LOGOUT,
+  CHANGE_PASSWORD,
 } from "./actionTypes";
 
 export function login(email, password) {
@@ -29,6 +30,14 @@ export function logout() {
   const req = { userData: null, signIn: false };
   return {
     type: USER_LOGOUT,
+    payload: req,
+  };
+}
+
+export function changePassword(password) {
+  // const req = firebaseAuth.login(email, password);
+  return {
+    type: CHANGE_PASSWORD,
     payload: req,
   };
 }

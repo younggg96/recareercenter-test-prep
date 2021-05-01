@@ -1,11 +1,13 @@
 import React from "react";
 
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
-import { useForm, Controller } from "react-hook-form";
-import { SafeAreaView, View } from "react-native";
+import { View } from "react-native";
 
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
+
+//form
+import { useForm, Controller } from "react-hook-form";
 
 // redux
 import { useDispatch } from "react-redux";

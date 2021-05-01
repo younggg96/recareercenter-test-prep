@@ -34,6 +34,7 @@ export const StudyPlanScreen = ({ navigation }) => {
   const [praceticeVisible, setPraceticeVisible] = React.useState(false);
   const [errorInput, setErrorInput] = React.useState(false);
   const [errorSetDay, setErrorSetDay] = React.useState(false);
+  
   const reg = /^[1-9]\d*$/;
 
   // exam date
@@ -176,7 +177,7 @@ export const StudyPlanScreen = ({ navigation }) => {
           <Text category="h2" style={styles.startDay}>
             {userData.startDay.toString().substring(0, 10)}
           </Text>
-          <Text category="s1" style={styles.titleContent}>
+          <Text category="s1" style={[styles.titleContent, styles.pickStartTitle]}>
             Pick your start day:{" "}
           </Text>
           <Calendar

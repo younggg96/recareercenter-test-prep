@@ -23,6 +23,10 @@ export const styles = StyleSheet.create({
     paddingVertical: 4,
     marginBottom: 4
   },
+  pickStartTitle: {
+    marginTop: 16,
+    marginBottom: 12
+  },
   submitBtn: {
     marginTop: 16,
   },

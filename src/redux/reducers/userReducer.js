@@ -1,6 +1,7 @@
 import {
   CHANGE_DAILY_PRACTICES,
   CHANGE_EXAM_DATE,
+  CHANGE_PASSWORD,
   SET_START_DAY,
   USER_LOGIN,
   USER_LOGOUT,
@@ -25,6 +26,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, userData: action.payload };
     case USER_LOGOUT:
       return { ...state, signIn: action.payload };
+    case CHANGE_PASSWORD:
+      return state;
     case CHANGE_DAILY_PRACTICES:
       return {
         userData: { ...state.userData, dailyTarget: action.payload },
