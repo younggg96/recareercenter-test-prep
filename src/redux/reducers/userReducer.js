@@ -20,7 +20,6 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action);
   switch (action.type) {
     case USER_LOGIN:
       return { ...state, userData: action.payload };
