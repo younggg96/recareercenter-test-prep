@@ -20,10 +20,10 @@ export const NotificationScreen = ({ navigation }) => {
   const { notification } = useSelector((state) => state.settingReducer);
   console.log(useSelector((state) => state.settingReducer))
   const { status, time } = notification;
-  const [checked, setChecked] = React.useState(status);
+  // const [checked, setChecked] = React.useState(status);
   const onCheckedChange = (isChecked) => {
-    console.log(isChecked)
-    setChecked(isChecked);
+    // console.log(isChecked)
+    // setChecked(isChecked);
     dispatch(checkNotification(isChecked))
   };
 
@@ -48,7 +48,7 @@ export const NotificationScreen = ({ navigation }) => {
       <View style={styles.content}>
         <View style={styles.title}>
           <View>
-            <Text category="h5">
+            <Text category="h6">
               Notification
             </Text>
           </View>
@@ -57,10 +57,10 @@ export const NotificationScreen = ({ navigation }) => {
             </Toggle>
           </View>
         </View>
-        {checked ?
+        {status ?
           <View style={styles.title}>
             <View>
-              <Text category="h5">
+              <Text category="h6">
                 Time: {time.hours < 10 ? "0" + time.hours : time.hours} : {time.mins < 10 ? "0" + time.mins : time.mins}
               </Text>
             </View>

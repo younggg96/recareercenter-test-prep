@@ -163,6 +163,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                   <Datepicker
                     date={examDate}
                     onSelect={(nextDate) => setExamDate(nextDate)}
+                    size="small"
                   />
                   <Button onPress={editDate} style={styles.submitBtn}>
                     Submit
@@ -182,6 +183,7 @@ export const StudyPlanScreen = ({ navigation }) => {
           </Text>
           <Calendar
             date={date}
+            style={{width: "100%"}}
             onSelect={(nextDate) => {
               setDate(nextDate);
             }}

@@ -8,6 +8,7 @@ import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userAction';
 import Constants from "expo-constants";
+import { TopBar } from '../../components/topBar/topBar';
 
 export const HomeScreen = ({ navigation }) => {
   // const themeContext = React.useContext(ThemeContext);
@@ -22,8 +23,8 @@ export const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={{ flex: 1, paddingTop: Constants.statusBarHeight}}>
-      <TopNavigation title='MyApp' alignment='center' />
+    <View style={{ flex: 1 }}>
+      <TopBar title="Study Plan" navigation={navigation} />
       {/* <Divider />
       <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> */}
         {/* <Button onPress={navigateDetails}>OPEN DETAILS</Button> */}
