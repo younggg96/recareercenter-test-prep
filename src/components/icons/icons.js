@@ -12,6 +12,7 @@ export const PersonIcon = (props) => <Icon {...props} name="person" />;
 export const SettingsIcon = (props) => <Icon {...props} name="settings"/>;
 export const ClipboardIcon = (props) => <Icon {...props} name="clipboard" />;
 export const DicIcon = (props) => <Icon {...props} name="book-open" />;
+export const SearchIcon = (props) => <Icon {...props} name="search" />;
 
 // Profile
 export const MemberIcon = (props) => <Icon fill="#000" {...props} name="award" />;

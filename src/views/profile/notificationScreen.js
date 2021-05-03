@@ -48,7 +48,7 @@ export const NotificationScreen = ({ navigation }) => {
       <View style={styles.content}>
         <View style={styles.title}>
           <View>
-            <Text category="h6">
+            <Text category="s1">
               Notification
             </Text>
           </View>
@@ -60,7 +60,7 @@ export const NotificationScreen = ({ navigation }) => {
         {status ?
           <View style={styles.title}>
             <View>
-              <Text category="h6">
+              <Text category="s1">
                 Time: {time.hours < 10 ? "0" + time.hours : time.hours} : {time.mins < 10 ? "0" + time.mins : time.mins}
               </Text>
             </View>
