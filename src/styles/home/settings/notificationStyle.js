@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         margin: 16,
         paddingVertical: 12,
         paddingHorizontal: 16,
-        borderRadius: 4,
+        borderRadius: 16,
         flexDirection: "column",
         backgroundColor: "#fff",
         ...shadow

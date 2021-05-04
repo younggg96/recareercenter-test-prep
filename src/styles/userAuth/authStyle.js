@@ -31,15 +31,15 @@ export const styles = StyleSheet.create({
   input: {
     backgroundColor: "#F5F5F5",
     marginBottom: 18,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   button: {
     marginTop: 12,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   createAccBtn: {
     marginTop: 26,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   otherTitle: {
     marginTop: 24,
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
   otherBtn: {
     width: "80%",
     margin: 8,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   topBar: {
     backgroundColor: "#F2F2F2",

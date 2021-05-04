@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   button: {
     width: '80%',
     marginTop: '80%',
-    borderRadius: 8,
+    borderRadius: 16,
   },
   spinner: {
     marginTop: '80%',

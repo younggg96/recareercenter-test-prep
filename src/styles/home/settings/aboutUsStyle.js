@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     content: {
         margin: 16,
         padding: 16,
-        borderRadius: 4,
+        borderRadius: 16,
         backgroundColor: "#fff",
         ...shadow
     },
