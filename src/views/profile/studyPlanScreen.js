@@ -33,20 +33,22 @@ export const StudyPlanScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const [praceticeVisible, setPraceticeVisible] = React.useState(false);
   const [errorInput, setErrorInput] = React.useState(false);
+  const [errorInputNum, setErrorInputNum] = React.useState(false);
   const [errorSetDay, setErrorSetDay] = React.useState(false);
-  
+
   const reg = /^[1-9]\d*$/;
 
   // exam date
   const editDate = () => {
     setVisible(false);
+    successChangeExamDateAlert()
     dispatch(changeExamDate(examDate));
   };
 
   // daily target edit
   const submitDailyTarget = () => {
     setPraceticeVisible(false);
-    console.log(dailyTarget);
+    successChangeTargetNumAlert();
     dispatch(changeDailyPractices(dailyTarget));
   };
 
@@ -58,10 +60,16 @@ export const StudyPlanScreen = ({ navigation }) => {
     }
     if (num > 300 || num <= 0) {
       setErrorInput(true);
-      setDailyTarget(0);
+      // setDailyTarget(0);
       return;
     }
     setErrorInput(false);
+    if (num < userData.finishedQuestions) {
+      setErrorInputNum(true);
+      // setDailyTarget(0);
+      return;
+    }
+    setErrorInputNum(false);
     setDailyTarget(num);
   };
 
@@ -80,6 +88,20 @@ export const StudyPlanScreen = ({ navigation }) => {
     Alert.alert(
       "Your Start Day Changed",
       `${date.toString().substring(0, 10)}`,
+      [{ text: "OK", style: "default" }]
+    );
+
+  const successChangeTargetNumAlert = () =>
+    Alert.alert(
+      "Your Daily Practice Changed",
+      `${dailyTarget}`,
+      [{ text: "OK", style: "default" }]
+    );
+
+  const successChangeExamDateAlert = () =>
+    Alert.alert(
+      "Your Daily Practice Changed",
+      `${examDate.toString().substring(0, 10)}`,
       [{ text: "OK", style: "default" }]
     );
 
@@ -107,6 +129,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                 backdropStyle={styles.backdrop}
                 onBackdropPress={() => {
                   setErrorInput(false);
+                  setErrorInputNum(false);
                   setPraceticeVisible(false);
                 }}
                 style={styles.modal}
@@ -116,7 +139,21 @@ export const StudyPlanScreen = ({ navigation }) => {
                     Change Daily Practices
                   </Text>
                   <Input
-                    caption={!errorInput ? "Range is 0-300" : "Invlid input"}
+                    caption={
+                      !errorInput
+                        ? !errorInputNum
+                          ? () => <Text category="s2">Range is 0-300</Text>
+                          : () => (
+                              <Text status="danger" category="s2">
+                                Target cannot more than finished
+                              </Text>
+                            )
+                        : () => (
+                            <Text status="danger" category="s2">
+                              Invlid input
+                            </Text>
+                          )
+                    }
                     placeholder={`${userData.dailyTarget}`}
                     keyboardType={"numeric"}
                     onChangeText={onChangeTargetInput}
@@ -124,7 +161,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                   <Button
                     onPress={submitDailyTarget}
                     style={styles.submitBtn}
-                    disabled={errorInput}
+                    disabled={errorInput || errorInputNum}
                   >
                     Submit
                   </Button>
@@ -178,12 +215,15 @@ export const StudyPlanScreen = ({ navigation }) => {
           <Text category="h2" style={styles.startDay}>
             {userData.startDay.toString().substring(0, 10)}
           </Text>
-          <Text category="s1" style={[styles.titleContent, styles.pickStartTitle]}>
+          <Text
+            category="s1"
+            style={[styles.titleContent, styles.pickStartTitle]}
+          >
             Pick your start day:{" "}
           </Text>
           <Calendar
             date={date}
-            style={{width: "100%"}}
+            style={{ width: "100%" }}
             onSelect={(nextDate) => {
               setDate(nextDate);
             }}

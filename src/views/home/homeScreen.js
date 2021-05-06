@@ -1,13 +1,13 @@
 import React from "react";
-import { Image, Linking, View } from "react-native";
 // ui
+import { Image, Linking, View } from "react-native";
 import { Button, Input, Text, TopNavigation } from "@ui-kitten/components";
 import { styles } from "../../components/topBar/topBar";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
 // icon
 import { SearchIcon } from "../../components/icons/icons";
 // redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { homeStyles } from "../../styles/home/homeStyle";
 import { ScrollView } from "react-native-gesture-handler";
 // const
@@ -17,9 +17,15 @@ import { ENTRIES1 } from "../../static/entries";
 
 export const HomeScreen = ({ navigation }) => {
   // const themeContext = React.useContext(ThemeContext);
+
+  const { userData } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
-  const navigateTo = (link) => Linking.openURL(link)
+  const navigateTo = (link) => Linking.openURL(link);
+
+  const navigateToQuiz = () => {
+    navigation.navigate("QuizScreen");
+  }
 
   const renderItem = ({ item, index }, parallaxProps) => {
     return (
@@ -41,8 +47,15 @@ export const HomeScreen = ({ navigation }) => {
             <Text category="s2" style={homeStyles.classSubtitle}>
               {item.subtitle}
             </Text>
-            <Button style={[homeStyles.button, homeStyles.exploreBtn]} onPress={() => navigateTo(item.link)}>
-              {evaProps => <Text category="label" {...evaProps}>Explore</Text>}
+            <Button
+              style={[homeStyles.button, homeStyles.exploreBtn]}
+              onPress={() => navigateTo(item.link)}
+            >
+              {(evaProps) => (
+                <Text category="label" {...evaProps}>
+                  Explore
+                </Text>
+              )}
             </Button>
           </View>
         </View>
@@ -99,20 +112,20 @@ export const HomeScreen = ({ navigation }) => {
             <View style={homeStyles.contentItem}>
               <Text category="s2">To learn</Text>
               <Text category="h4" style={homeStyles.amount}>
-                20
+                {userData.dailyTarget - userData.finishedQuestions}
               </Text>
             </View>
             <View style={homeStyles.contentItem}>
-              <Text category="s2">To Review</Text>
+              <Text category="s2">Finished</Text>
               <Text category="h4" style={homeStyles.amount}>
-                60
+                {userData.finishedQuestions}
               </Text>
             </View>
           </View>
           <Text category="s2" appearance="hint" style={homeStyles.time}>
             Estimated time 10 mins
           </Text>
-          <Button style={homeStyles.button} onPress={navigateTo}>
+          <Button style={homeStyles.button} onPress={navigateToQuiz}>
             Let's Start a Quiz
           </Button>
         </View>

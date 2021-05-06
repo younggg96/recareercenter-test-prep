@@ -25,6 +25,7 @@ import { AboutUsScreen } from "../views/profile/aboutUsScreen";
 import { NotificationScreen } from "../views/profile/notificationScreen";
 import { ChangePasswordScreen } from "../views/profile/changePasswordScreen";
 import { MembershipScreen } from "../views/profile/membershipScreen";
+import { QuizScreen } from "../views/home/homeExam/quizScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -33,12 +34,21 @@ const ProfileNavigation = () => (
   <Stack.Navigator headerMode="none" initialRouteName="ProfileScreen">
     <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
     <Stack.Screen name="AboutUsScreen" component={AboutUsScreen} />
-    <Stack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} />
+    <Stack.Screen
+      name="ChangePasswordScreen"
+      component={ChangePasswordScreen}
+    />
     <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
     <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
     <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
     <Stack.Screen name="StudyPlanScreen" component={StudyPlanScreen} />
     <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+  </Stack.Navigator>
+);
+const HomeScreenNavigation = () => (
+  <Stack.Navigator headerMode="none" initialRouteName="HomeScreen">
+    <Stack.Screen name="HomeScreen" component={HomeScreen} />
+    <Stack.Screen name="QuizScreen" component={QuizScreen} />
   </Stack.Navigator>
 );
 
@@ -57,12 +67,10 @@ const BottomTabBar = ({ navigation, state }) => (
 export const HomeNavigation = () => {
   return (
     <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeScreenNavigation} />
       <Tab.Screen name="Exams" component={ExamsScreen} />
       <Tab.Screen name="Dictionary" component={DictionaryScreen} />
       <Tab.Screen name="Profile" component={ProfileNavigation} />
     </Tab.Navigator>
   );
 };
-
-
