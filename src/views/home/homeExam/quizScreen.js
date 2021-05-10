@@ -27,17 +27,44 @@ const getRandomArrayElements = (arr, count) => {
 const quizData = getRandomArrayElements(data.questionData, 10);
 
 const Reviews = ({ result }) => {
+  const arr = ["A", "B", "C", "D"];
+  console.log(result);
   return (
     <View>
       {result.map((item, index) => {
-        return (<View style={styles.quizCard} key={index}>
-          <Text category="s1" style={styles.reviewTitle}>{`Question: ${quizData[index].Question}`}</Text>
-          <Text category="s2" style={styles.reviewContent}>{`A. ${quizData[index].Answer1}`}</Text>
-          <Text category="s2" style={styles.reviewContent}>{`B. ${quizData[index].Answer2}`}</Text>
-          <Text category="s2" style={styles.reviewContent}>{`C. ${quizData[index].Answer3}`}</Text>
-          <Text category="s2" style={styles.reviewContent}>{`D. ${quizData[index].Answer4}`}</Text>
-          <Text>{`${item.res}`}</Text>
-        </View>);
+        const answer = arr[0];
+        return (
+          <View
+            style={item.res ? styles.correctCard : styles.inCorrectCard}
+            key={index}
+          >
+            <Text category="s1" style={styles.reviewTitle}>{`Question ${
+              index + 1
+            }: ${quizData[index].Question}`}</Text>
+            <Text
+              category="s2"
+              style={styles.reviewContent}
+            >{`A. ${quizData[index].Answer1}`}</Text>
+            <Text
+              category="s2"
+              style={styles.reviewContent}
+            >{`B. ${quizData[index].Answer2}`}</Text>
+            <Text
+              category="s2"
+              style={styles.reviewContent}
+            >{`C. ${quizData[index].Answer3}`}</Text>
+            <Text
+              category="s2"
+              style={styles.reviewContent}
+            >{`D. ${quizData[index].Answer4}`}</Text>
+            <Text category="s1" style={styles.answerReview}>{`Your answer: ${
+              arr[item.pick]
+            }`}</Text>
+            <Text category="s1" style={styles.answerReview}>{`Correct answer: ${
+              arr[parseInt(quizData[index].CorrectAnswer) - 1]
+            }`}</Text>
+          </View>
+        );
       })}
     </View>
   );
@@ -53,13 +80,13 @@ export const QuizScreen = ({ navigation }) => {
   const goNextQuestion = () => {
     if (result.length <= 10) {
       // add score
-      if (selectedIndex === parseInt(question.CorrectAnswer)) {
+      if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
         setScore(score + 10);
       }
 
       // each result
       const itemRes = {
-        res: selectedIndex === parseInt(question.CorrectAnswer),
+        res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
         pick: selectedIndex,
       };
       result.push(itemRes);
@@ -80,12 +107,25 @@ export const QuizScreen = ({ navigation }) => {
               <Text category="s1" style={styles.title}>
                 Your Quiz Score:
               </Text>
-              <Text category="h1" status="danger">
+              <Text category="h1" status="danger" style={{ marginBottom: 8 }}>
                 {`${score}`}{" "}
                 <Text category="h6" appearance="hint">
                   / 100
                 </Text>
               </Text>
+              {score >= 90 ? (
+                <Text category="s1" status="success">
+                  Good Job!!!
+                </Text>
+              ) : score < 90 && score >= 60 ? (
+                <Text category="s1" status="warning">
+                  Not bad, study hard can get a higher score.
+                </Text>
+              ) : (
+                <Text category="s1" status="danger">
+                  Should do more practices!!!
+                </Text>
+              )}
             </View>
             <Reviews result={result} />
           </ScrollView>

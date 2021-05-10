@@ -1,15 +1,11 @@
 import { StyleSheet } from "react-native";
-import { shadow } from "../../shared/sharedStyle";
+import { shadow, cardStyle } from "../../shared/sharedStyle";
 
 export const styles = StyleSheet.create({
   quizCard: {
-    marginHorizontal: 16,
-    marginTop: 8,
-    marginBottom: 16,
-    padding: 16,
-    borderRadius: 16,
-    backgroundColor: "#fff",
+    ...cardStyle,
     ...shadow,
+    backgroundColor: "#fff",
   },
   questionTitle: {
     marginVertical: 16,
@@ -26,5 +22,18 @@ export const styles = StyleSheet.create({
   },
   reviewContent: {
     marginVertical: 2,
-  }
+  },
+  answerReview: {
+    marginTop: 8
+  },
+  correctCard: {
+    ...cardStyle,
+    ...shadow,
+    backgroundColor: "#A2FF8B",
+  },
+  inCorrectCard: {
+    ...cardStyle,
+    ...shadow,
+    backgroundColor: "#FF9B9B",
+  },
 });
