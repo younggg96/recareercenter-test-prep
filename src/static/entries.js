@@ -2,7 +2,7 @@ export const ENTRIES1 = [
     {
         title: 'ONLINE NJ State Required Real Estate Licensing Course Essentials',
         subtitle: 'Super Flexible, Create Your Own Schedule',
-        img: 'https://www.recareercenter.com/wp-content/uploads/2021/03/Real-Estate-Career-Sale-Essentials-gram.jpg',
+        img: 'https://www.recareercenter.com/wp-content/uploads/2021/01/thumbnail_NJNYLicense.jpg',
         link: 'https://www.recareercenter.com/product/75-hour-new-agent-pre-licensing-nj-ny/'
     },
     {

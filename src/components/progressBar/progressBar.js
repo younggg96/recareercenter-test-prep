@@ -3,7 +3,6 @@ import { Text, View, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: "column",
     justifyContent: "center",
     marginTop: 14,
@@ -42,6 +41,7 @@ export const ProgressBar = (props) => {
           }}
         />
       </View>
+
       <Text style={styles.status}>
         <Text style={styles.finished}>{finished}</Text> / {target}
       </Text>
