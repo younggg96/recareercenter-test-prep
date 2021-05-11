@@ -26,6 +26,7 @@ import { NotificationScreen } from "../views/profile/notificationScreen";
 import { ChangePasswordScreen } from "../views/profile/changePasswordScreen";
 import { MembershipScreen } from "../views/profile/membershipScreen";
 import { QuizScreen } from "../views/home/homeExam/quizScreen";
+import { PracticeScreen } from "../views/home/homeExam/practiceScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -49,11 +50,13 @@ const HomeScreenNavigation = () => (
   <Stack.Navigator headerMode="none" initialRouteName="HomeScreen">
     <Stack.Screen name="HomeScreen" component={HomeScreen} />
     <Stack.Screen name="QuizScreen" component={QuizScreen} />
+    <Stack.Screen name="PracticeScreen" component={PracticeScreen} />
   </Stack.Navigator>
 );
 
 const BottomTabBar = ({ navigation, state }) => (
   <BottomNavigation
+    style={{paddingBottom: 16, paddingTop: 8 }}
     selectedIndex={state.index}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
   >

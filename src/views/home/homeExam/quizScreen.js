@@ -28,7 +28,6 @@ const quizData = getRandomArrayElements(data.questionData, 10);
 
 const Reviews = ({ result }) => {
   const arr = ["A", "B", "C", "D"];
-  console.log(result);
   return (
     <View>
       {result.map((item, index) => {

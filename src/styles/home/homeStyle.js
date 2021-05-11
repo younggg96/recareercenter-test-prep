@@ -70,4 +70,36 @@ export const homeStyles = StyleSheet.create({
   sliderContentContainer: {
     paddingVertical: 10, // for custom animation
   },
+  container: {
+    flex: 1,
+    paddingTop: 8,
+  },
+  item: {
+    justifyContent: "space-between",
+    marginHorizontal: 10,
+    height: 100,
+    width: 200,
+    borderRadius: 8,
+  },
+  categoryTitle: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    fontWeight: "700",
+  },
+  itemContent: {
+    backgroundColor: "#E42425",
+    borderBottomStartRadius: 8,
+    borderBottomEndRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 8
+  },
+  itemLockedContent: {
+    backgroundColor: "#666666",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderBottomStartRadius: 8,
+    borderBottomEndRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 8
+  }
 });

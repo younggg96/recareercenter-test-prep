@@ -1,19 +1,33 @@
 import React from "react";
 // ui
-import { Image, Linking, View } from "react-native";
-import { Button, Input, Text, TopNavigation } from "@ui-kitten/components";
+import {
+  Image,
+  Linking,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import {
+  Button,
+  Icon,
+  Input,
+  Layout,
+  Text,
+  TopNavigation,
+} from "@ui-kitten/components";
 import { styles } from "../../components/topBar/topBar";
+import { homeStyles } from "../../styles/home/homeStyle";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
 // icon
 import { SearchIcon } from "../../components/icons/icons";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { homeStyles } from "../../styles/home/homeStyle";
-import { ScrollView } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 // const
 import { itemWidth, sliderWidth, slideHeight } from "../../constants";
 // data
 import { ENTRIES1 } from "../../static/entries";
+import { Categories } from "../../static/questions/category";
 
 export const HomeScreen = ({ navigation }) => {
   // const themeContext = React.useContext(ThemeContext);
@@ -25,7 +39,13 @@ export const HomeScreen = ({ navigation }) => {
 
   const navigateToQuiz = () => {
     navigation.navigate("QuizScreen");
-  }
+  };
+
+  const navigateToPractice = (name) => {
+    navigation.navigate("PracticeScreen", {
+      practice: name,
+    });
+  };
 
   const renderItem = ({ item, index }, parallaxProps) => {
     return (
@@ -39,7 +59,6 @@ export const HomeScreen = ({ navigation }) => {
             parallaxFactor={0.4}
             {...parallaxProps}
           /> */}
-
           <View style={homeStyles.text}>
             <Text category="h6" style={homeStyles.classTitle}>
               {item.title}
@@ -60,6 +79,43 @@ export const HomeScreen = ({ navigation }) => {
           </View>
         </View>
       </View>
+    );
+  };
+
+  const itemCard = ({ item, index }) => {
+    return (
+      <React.Fragment>
+        {item.lockStatus ? (
+          <Layout level="4" style={homeStyles.item}>
+            <Text category="h6" style={homeStyles.categoryTitle}>
+              {item.name}
+            </Text>
+            <View style={homeStyles.itemLockedContent}>
+              <Text category="s1" style={{ color: "#fff" }}>
+                Items: {item.itemNum}
+              </Text>
+              <Icon name="lock" fill="#fff" style={{ width: 16, height: 16 }} />
+            </View>
+          </Layout>
+        ) : (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            key={index}
+            onPress={() => navigateToPractice(item.name)}
+          >
+            <Layout level="2" style={homeStyles.item}>
+              <Text category="h6" style={homeStyles.categoryTitle}>
+                {item.name}
+              </Text>
+              <View style={homeStyles.itemContent}>
+                <Text category="s1" style={{ color: "#fff" }}>
+                  Items: {item.itemNum}
+                </Text>
+              </View>
+            </Layout>
+          </TouchableOpacity>
+        )}
+      </React.Fragment>
     );
   };
 
@@ -104,9 +160,7 @@ export const HomeScreen = ({ navigation }) => {
             <Text category="h3" style={homeStyles.title}>
               Today's Plan
             </Text>
-            <Button appearance="ghost" size="small">
-              Adjust plan
-            </Button>
+            <Button appearance="ghost">Adjust plan</Button>
           </View>
           <View style={homeStyles.plan}>
             <View style={homeStyles.contentItem}>
@@ -128,6 +182,27 @@ export const HomeScreen = ({ navigation }) => {
           <Button style={homeStyles.button} onPress={navigateToQuiz}>
             Let's Start a Quiz
           </Button>
+        </View>
+        <View style={homeStyles.content}>
+          <View style={homeStyles.header}>
+            <View>
+              <Text category="h3" style={homeStyles.title}>
+                Practice Questions
+              </Text>
+              <Text category="s2" style={{ marginBottom: 8 }}>
+                65 Free of 555 Items
+              </Text>
+            </View>
+            <Button appearance="ghost">View All</Button>
+          </View>
+          <View style={homeStyles.container}>
+            <FlatList
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              data={Categories}
+              renderItem={itemCard}
+            />
+          </View>
         </View>
       </ScrollView>
     </View>
