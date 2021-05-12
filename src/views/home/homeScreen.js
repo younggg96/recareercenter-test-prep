@@ -3,18 +3,10 @@ import React from "react";
 import {
   Image,
   Linking,
-  TouchableHighlight,
   TouchableOpacity,
   View,
 } from "react-native";
-import {
-  Button,
-  Icon,
-  Input,
-  Layout,
-  Text,
-  TopNavigation,
-} from "@ui-kitten/components";
+import { Button, Card, Icon, Input, Layout, Modal, Text, TopNavigation } from "@ui-kitten/components";
 import { styles } from "../../components/topBar/topBar";
 import { homeStyles } from "../../styles/home/homeStyle";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
@@ -30,10 +22,10 @@ import { ENTRIES1 } from "../../static/entries";
 import { Categories } from "../../static/questions/category";
 
 export const HomeScreen = ({ navigation }) => {
-  // const themeContext = React.useContext(ThemeContext);
-
   const { userData } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
+
+  const [visible, setVisible] = React.useState(false);
 
   const navigateTo = (link) => Linking.openURL(link);
 
@@ -41,8 +33,9 @@ export const HomeScreen = ({ navigation }) => {
     navigation.navigate("QuizScreen");
   };
 
-  const navigateToPractice = (name) => {
+  const navigateToPractice = (id, name) => {
     navigation.navigate("PracticeScreen", {
+      id: id,
       practice: name,
     });
   };
@@ -82,26 +75,36 @@ export const HomeScreen = ({ navigation }) => {
     );
   };
 
-  const itemCard = ({ item, index }) => {
+  const ItemCard = ({ item }) => {
     return (
       <React.Fragment>
         {item.lockStatus ? (
-          <Layout level="4" style={homeStyles.item}>
-            <Text category="h6" style={homeStyles.categoryTitle}>
-              {item.name}
-            </Text>
-            <View style={homeStyles.itemLockedContent}>
-              <Text category="s1" style={{ color: "#fff" }}>
-                Items: {item.itemNum}
-              </Text>
-              <Icon name="lock" fill="#fff" style={{ width: 16, height: 16 }} />
-            </View>
-          </Layout>
+          <React.Fragment>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => setVisible(true)}
+            >
+              <Layout level="4" style={homeStyles.item}>
+                <Text category="h6" style={homeStyles.categoryTitle}>
+                  {item.name}
+                </Text>
+                <View style={homeStyles.itemLockedContent}>
+                  <Text category="s1" style={{ color: "#fff" }}>
+                    Items: {item.itemNum}
+                  </Text>
+                  <Icon
+                    name="lock"
+                    fill="#fff"
+                    style={{ width: 16, height: 16 }}
+                  />
+                </View>
+              </Layout>
+            </TouchableOpacity>
+          </React.Fragment>
         ) : (
           <TouchableOpacity
             activeOpacity={0.7}
-            key={index}
-            onPress={() => navigateToPractice(item.name)}
+            onPress={() => navigateToPractice(item.id, item.name)}
           >
             <Layout level="2" style={homeStyles.item}>
               <Text category="h6" style={homeStyles.categoryTitle}>
@@ -194,13 +197,29 @@ export const HomeScreen = ({ navigation }) => {
               </Text>
             </View>
             <Button appearance="ghost">View All</Button>
+            <Modal
+              style={homeStyles.modal}
+              visible={visible}
+              backdropStyle={homeStyles.backdrop}
+              onBackdropPress={() => setVisible(false)}>
+              <Card disabled={true} style={homeStyles.modalCard}>
+                <View>
+                  <Text category="h5">Unlock Practice Questions?</Text>
+                  <Text category="h6" style={homeStyles.modalTitle}>Become A Membership Today!</Text>
+                </View>
+                <Button onPress={() => setVisible(false)}>
+                  Start Membership!
+                </Button>
+              </Card>
+            </Modal>
           </View>
           <View style={homeStyles.container}>
             <FlatList
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               data={Categories}
-              renderItem={itemCard}
+              renderItem={ItemCard}
+              keyExtractor={item => item.id.toString()}
             />
           </View>
         </View>

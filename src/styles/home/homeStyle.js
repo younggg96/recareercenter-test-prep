@@ -101,5 +101,21 @@ export const homeStyles = StyleSheet.create({
     borderBottomEndRadius: 8,
     paddingHorizontal: 16,
     paddingVertical: 8
-  }
+  },
+  backdrop: {
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
+  modal: {
+    width: '80%',
+  },
+  modalCard: {
+    height: 300,
+    justifyContent: 'space-between'
+  },
+  modalTitle: {
+    paddingVertical: 8,
+  },
+  modalBtn: {
+    marginVertical: 8,
+  },
 });
