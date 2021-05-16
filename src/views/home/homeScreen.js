@@ -190,7 +190,7 @@ export const HomeScreen = ({ navigation }) => {
           <View style={homeStyles.header}>
             <View>
               <Text category="h3" style={homeStyles.title}>
-                Practice Questions
+                Questions
               </Text>
               <Text category="s2" style={{ marginBottom: 8 }}>
                 65 Free of 555 Items

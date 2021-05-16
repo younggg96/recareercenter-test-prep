@@ -8,6 +8,7 @@ import { styles } from "../../../styles/home/home/quizStyle";
 import data from "../../../static/questions/data.json";
 import { ProgressBar } from "../../../components/progressBar/progressBar";
 import { ScrollView } from "react-native-gesture-handler";
+import { CorrectIcon, IncorrectIcon } from "../../../components/icons/icons";
 
 const getRandomArrayElements = (arr, count) => {
   let shuffled = arr.slice(0),
@@ -37,6 +38,9 @@ const Reviews = ({ result }) => {
             style={item.res ? styles.correctCard : styles.inCorrectCard}
             key={index}
           >
+            <View style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }} >
+              {item.res ? <CorrectIcon /> : <IncorrectIcon />}
+            </View>
             <Text category="s1" style={styles.reviewTitle}>{`Question ${
               index + 1
             }: ${quizData[index].Question}`}</Text>
@@ -90,7 +94,6 @@ export const QuizScreen = ({ navigation }) => {
       };
       result.push(itemRes);
       setResult(result);
-      console.log(result);
     }
     setSelectedIndex(-1);
     setCurrentQuestion(currentQuestion + 1);
@@ -126,6 +129,9 @@ export const QuizScreen = ({ navigation }) => {
                 </Text>
               )}
             </View>
+            <Text category="s1" appearance="hint" style={{...styles.title, paddingHorizontal: 32}}>
+                Your Quiz Reviews:
+              </Text>
             <Reviews result={result} />
           </ScrollView>
         </View>
