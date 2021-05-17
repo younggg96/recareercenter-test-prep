@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     marginTop: 32,
     borderRadius: 16,
   },
-  
+
   title: {
     marginVertical: 4,
   },
@@ -36,5 +36,15 @@ export const styles = StyleSheet.create({
     ...cardStyle,
     ...shadow,
     backgroundColor: "#FF9B9B",
+  },
+  correctionCards: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
+  correctionCard: {
+    maxWidth: 120,
+    height: 100,
   },
 });

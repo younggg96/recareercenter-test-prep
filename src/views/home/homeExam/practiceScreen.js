@@ -1,7 +1,7 @@
 import React from "react";
 // ui
-import { View } from "react-native";
-import { Button, Radio, RadioGroup, Text } from "@ui-kitten/components";
+import { Dimensions, View } from "react-native";
+import { Button, Card, Radio, RadioGroup, Text } from "@ui-kitten/components";
 
 // icons
 import { CorrectIcon, IncorrectIcon } from "../../../components/icons/icons";
@@ -13,12 +13,22 @@ import { ProgressBar } from "../../../components/progressBar/progressBar";
 import { styles } from "../../../styles/home/home/praceticeStyle";
 import { Categories } from "../../../static/questions/category";
 
+// chart
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart,
+} from "react-native-chart-kit";
+
 const Review = ({ result, question, currentQuestion }) => {
   const arr = ["A", "B", "C", "D"];
   const answer = arr[0];
   return (
     <View style={result.res ? styles.correctCard : styles.inCorrectCard}>
-      <View style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }} >
+      <View style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }}>
         {result.res ? <CorrectIcon /> : <IncorrectIcon />}
       </View>
       <Text category="s1" style={styles.reviewTitle}>{`Question ${
@@ -46,6 +56,108 @@ const Review = ({ result, question, currentQuestion }) => {
       <Text category="s1" style={styles.answerReview}>{`Correct answer: ${
         arr[parseInt(question.CorrectAnswer) - 1]
       }`}</Text>
+    </View>
+  );
+};
+
+const TotalReview = ({ totalResult }) => {
+  const data = [
+    {
+      name: "Know",
+      population: totalResult.know.length,
+      color: "#7EC13F",
+      legendFontColor: "#666",
+      legendFontSize: 12,
+    },
+    {
+      name: "Familar",
+      population: totalResult.familar.length,
+      color: "#E2DC28",
+      legendFontColor: "#666",
+      legendFontSize: 12,
+    },
+    {
+      name: "Don't Know",
+      population: totalResult.dontKnow.length,
+      color: "#E25D28",
+      legendFontColor: "#666",
+      legendFontSize: 12,
+    },
+  ];
+
+  const getCorrection = () => {
+    let dontKnowTrueCount = 0;
+    let knowTrueCount = 0;
+    let familarTrueCount = 0;
+
+    totalResult.dontKnow.forEach((element) => {
+      if (element.res.res) {
+        dontKnowTrueCount++;
+      }
+    });
+
+    totalResult.know.forEach((element) => {
+      if (element.res.res) {
+        knowTrueCount++;
+      }
+    });
+
+    totalResult.familar.forEach((element) => {
+      if (element.res.res) {
+        familarTrueCount++;
+      }
+    });
+    return {
+      dontKnow: `${dontKnowTrueCount} / ${totalResult.dontKnow.length}`,
+      know: `${knowTrueCount} / ${totalResult.know.length}`,
+      familar: `${familarTrueCount} / ${totalResult.familar.length}`,
+    };
+  };
+
+  const chartConfig = {
+    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: "#08130D",
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+  };
+
+  return (
+    <View
+      style={{
+        ...styles.questionCard,
+        alignItems: "flex-start",
+        justifyContent: "center",
+      }}
+    >
+      <Text category="s1" appearance="hint">
+        Feedback
+      </Text>
+      <PieChart
+        data={data}
+        width={280}
+        height={100}
+        chartConfig={chartConfig}
+        accessor={"population"}
+        center={[10, 5]}
+      />
+      <Text category="s1" appearance="hint" style={{ marginVertical: 8 }}>
+        Correction
+      </Text>
+      <View style={styles.correctionCards}>
+        <Card style={styles.correctionCard} status="success">
+          <Text category="s2" appearance="hint">Know: </Text>
+          <Text category="s1">{getCorrection().know}</Text>
+        </Card>
+        <Card style={styles.correctionCard} status="warning">
+          <Text category="s2" appearance="hint">Familar: </Text>
+          <Text category="s1">{getCorrection().familar}</Text>
+        </Card>
+        <Card style={styles.correctionCard} status="danger">
+          <Text category="s2" appearance="hint">Don't Know: </Text>
+          <Text category="s1">{getCorrection().dontKnow}</Text>
+        </Card>
+      </View>
     </View>
   );
 };
@@ -87,7 +199,7 @@ export const PracticeScreen = ({ route, navigation }) => {
 
   const addDontKnowQuestion = () => {
     setShowResult(false);
-    dontKnow.push(currentQuestion);
+    dontKnow.push({ currentQuestion, res });
     setDontKnow(dontKnow);
     if (currentQuestion === Categories[id].questions.length - 1) {
       setTotalResult({ dontKnow: dontKnow, familar: familar, know: know });
@@ -100,7 +212,7 @@ export const PracticeScreen = ({ route, navigation }) => {
 
   const addFamilarQuestion = () => {
     setShowResult(false);
-    familar.push(currentQuestion);
+    familar.push({ currentQuestion, res });
     setFamilar(familar);
     if (currentQuestion === Categories[id].questions.length - 1) {
       setTotalResult({ dontKnow: dontKnow, familar: familar, know: know });
@@ -113,7 +225,7 @@ export const PracticeScreen = ({ route, navigation }) => {
 
   const addKnowQuestion = () => {
     setShowResult(false);
-    know.push(currentQuestion);
+    know.push({ currentQuestion, res });
     setKnow(know);
     if (currentQuestion === Categories[id].questions.length - 1) {
       setTotalResult({ dontKnow: dontKnow, familar: familar, know: know });
@@ -123,6 +235,7 @@ export const PracticeScreen = ({ route, navigation }) => {
     }
     setCurrentQuestion(currentQuestion + 1);
   };
+  console.log(totalResult);
 
   return (
     <React.Fragment>
@@ -130,11 +243,7 @@ export const PracticeScreen = ({ route, navigation }) => {
         <View style={{ flex: 1, justifyContent: "space-between" }}>
           <View>
             <TopBar title="Total Reviews" navigation={navigation} />
-            <Review
-              result={res}
-              question={question}
-              currentQuestion={currentQuestion}
-            />
+            <TotalReview totalResult={totalResult} />
           </View>
         </View>
       ) : !showResult ? (
