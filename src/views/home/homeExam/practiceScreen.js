@@ -14,14 +14,7 @@ import { styles } from "../../../styles/home/home/praceticeStyle";
 import { Categories } from "../../../static/questions/category";
 
 // chart
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart,
-} from "react-native-chart-kit";
+import { PieChart } from "react-native-chart-kit";
 
 const Review = ({ result, question, currentQuestion }) => {
   const arr = ["A", "B", "C", "D"];
@@ -60,108 +53,6 @@ const Review = ({ result, question, currentQuestion }) => {
   );
 };
 
-const TotalReview = ({ totalResult }) => {
-  const data = [
-    {
-      name: "Know",
-      population: totalResult.know.length,
-      color: "#7EC13F",
-      legendFontColor: "#666",
-      legendFontSize: 12,
-    },
-    {
-      name: "Familar",
-      population: totalResult.familar.length,
-      color: "#E2DC28",
-      legendFontColor: "#666",
-      legendFontSize: 12,
-    },
-    {
-      name: "Don't Know",
-      population: totalResult.dontKnow.length,
-      color: "#E25D28",
-      legendFontColor: "#666",
-      legendFontSize: 12,
-    },
-  ];
-
-  const getCorrection = () => {
-    let dontKnowTrueCount = 0;
-    let knowTrueCount = 0;
-    let familarTrueCount = 0;
-
-    totalResult.dontKnow.forEach((element) => {
-      if (element.res.res) {
-        dontKnowTrueCount++;
-      }
-    });
-
-    totalResult.know.forEach((element) => {
-      if (element.res.res) {
-        knowTrueCount++;
-      }
-    });
-
-    totalResult.familar.forEach((element) => {
-      if (element.res.res) {
-        familarTrueCount++;
-      }
-    });
-    return {
-      dontKnow: `${dontKnowTrueCount} / ${totalResult.dontKnow.length}`,
-      know: `${knowTrueCount} / ${totalResult.know.length}`,
-      familar: `${familarTrueCount} / ${totalResult.familar.length}`,
-    };
-  };
-
-  const chartConfig = {
-    backgroundGradientFrom: "#1E2923",
-    backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: "#08130D",
-    backgroundGradientToOpacity: 0.5,
-    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-  };
-
-  return (
-    <View
-      style={{
-        ...styles.questionCard,
-        alignItems: "flex-start",
-        justifyContent: "center",
-      }}
-    >
-      <Text category="s1" appearance="hint">
-        Feedback
-      </Text>
-      <PieChart
-        data={data}
-        width={280}
-        height={100}
-        chartConfig={chartConfig}
-        accessor={"population"}
-        center={[10, 5]}
-      />
-      <Text category="s1" appearance="hint" style={{ marginVertical: 8 }}>
-        Correction
-      </Text>
-      <View style={styles.correctionCards}>
-        <Card style={styles.correctionCard} status="success">
-          <Text category="s2" appearance="hint">Know: </Text>
-          <Text category="s1">{getCorrection().know}</Text>
-        </Card>
-        <Card style={styles.correctionCard} status="warning">
-          <Text category="s2" appearance="hint">Familar: </Text>
-          <Text category="s1">{getCorrection().familar}</Text>
-        </Card>
-        <Card style={styles.correctionCard} status="danger">
-          <Text category="s2" appearance="hint">Don't Know: </Text>
-          <Text category="s1">{getCorrection().dontKnow}</Text>
-        </Card>
-      </View>
-    </View>
-  );
-};
-
 export const PracticeScreen = ({ route, navigation }) => {
   const { userData } = useSelector((state) => state.userReducer);
   /* states */
@@ -186,6 +77,191 @@ export const PracticeScreen = ({ route, navigation }) => {
   // pass params from homeScreen
   const { practice, id } = route.params;
   const question = Categories[id].questions[currentQuestion];
+
+  const TotalReview = ({ totalResult }) => {
+    const [showIndex, setShowIndex] = React.useState(2);
+
+    const showDontKnow = () => {
+      setShowIndex(2);
+    };
+    const showFamilar = () => {
+      setShowIndex(1);
+    };
+    const showKnow = () => {
+      setShowIndex(0);
+    };
+
+    const data = [
+      {
+        name: "Know",
+        population: totalResult.know.length,
+        color: "#7EC13F",
+        legendFontColor: "#666",
+        legendFontSize: 12,
+      },
+      {
+        name: "Familar",
+        population: totalResult.familar.length,
+        color: "#E2DC28",
+        legendFontColor: "#666",
+        legendFontSize: 12,
+      },
+      {
+        name: "Don't Know",
+        population: totalResult.dontKnow.length,
+        color: "#E25D28",
+        legendFontColor: "#666",
+        legendFontSize: 12,
+      },
+    ];
+
+    const getCorrection = () => {
+      let dontKnowTrueCount = 0;
+      let knowTrueCount = 0;
+      let familarTrueCount = 0;
+
+      totalResult.dontKnow.forEach((element) => {
+        if (element.res.res) {
+          dontKnowTrueCount++;
+        }
+      });
+
+      totalResult.know.forEach((element) => {
+        if (element.res.res) {
+          knowTrueCount++;
+        }
+      });
+
+      totalResult.familar.forEach((element) => {
+        if (element.res.res) {
+          familarTrueCount++;
+        }
+      });
+      return {
+        dontKnow: `${dontKnowTrueCount} / ${totalResult.dontKnow.length}`,
+        know: `${knowTrueCount} / ${totalResult.know.length}`,
+        familar: `${familarTrueCount} / ${totalResult.familar.length}`,
+      };
+    };
+
+    const chartConfig = {
+      backgroundGradientFrom: "#1E2923",
+      backgroundGradientFromOpacity: 0,
+      backgroundGradientTo: "#08130D",
+      backgroundGradientToOpacity: 0.5,
+      color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    };
+
+    return (
+      <React.Fragment>
+        <View
+          style={{
+            ...styles.questionCard,
+            alignItems: "flex-start",
+            justifyContent: "center",
+          }}
+        >
+          <Text category="s1" appearance="hint">
+            Feedback
+          </Text>
+          <PieChart
+            data={data}
+            width={280}
+            height={100}
+            chartConfig={chartConfig}
+            accessor={"population"}
+            center={[10, 5]}
+          />
+          <Text category="s1" appearance="hint" style={{ marginVertical: 8 }}>
+            Correction
+          </Text>
+          <View style={styles.correctionCards}>
+            <Card
+              style={styles.correctionCard}
+              status="success"
+              onPress={showKnow}
+            >
+              <Text category="s2" appearance="hint">
+                Know:{" "}
+              </Text>
+              <Text category="s1">{getCorrection().know}</Text>
+            </Card>
+            <Card
+              style={styles.correctionCard}
+              status="warning"
+              onPress={showFamilar}
+            >
+              <Text category="s2" appearance="hint">
+                Familar:{" "}
+              </Text>
+              <Text category="s1">{getCorrection().familar}</Text>
+            </Card>
+            <Card
+              style={styles.correctionCard}
+              status="danger"
+              onPress={showDontKnow}
+            >
+              <Text category="s2" appearance="hint">
+                Don't Know:{" "}
+              </Text>
+              <Text category="s1">{getCorrection().dontKnow}</Text>
+            </Card>
+          </View>
+        </View>
+        <View style={{ ...styles.questionCard, paddingHorizontal: 0, paddingVertical: 6 }}>
+          {showIndex === 0 ? (
+            <View>
+              <Text category="h6" appearance="hint" style={{marginVertical: 8, paddingHorizontal: 24 }}>
+                Know Questions
+              </Text>
+              {totalResult.know.map((item, index) => {
+                return (
+                  <Review
+                    result={item.res}
+                    key={index}
+                    question={Categories[id].questions[item.currentQuestion]}
+                    currentQuestion={item.currentQuestion}
+                  />
+                );
+              })}
+            </View>
+          ) : showIndex === 1 ? (
+            <View>
+              <Text category="h6" appearance="hint" style={{marginVertical: 8, paddingHorizontal: 24 }}>
+                Familar Questions
+              </Text>
+              {totalResult.familar.map((item, index) => {
+                return (
+                  <Review
+                    result={item.res}
+                    key={index}
+                    question={Categories[id].questions[item.currentQuestion]}
+                    currentQuestion={item.currentQuestion}
+                  />
+                );
+              })}
+            </View>
+          ) : showIndex === 2 ? (
+            <View>
+              <Text category="h6" appearance="hint" style={{marginVertical: 8, paddingHorizontal: 24 }}>
+                Don't Know Questions
+              </Text>
+              {totalResult.dontKnow.map((item, index) => {
+                return (
+                  <Review
+                    result={item.res}
+                    key={index}
+                    question={Categories[id].questions[item.currentQuestion]}
+                    currentQuestion={item.currentQuestion}
+                  />
+                );
+              })}
+            </View>
+          ) : null}
+        </View>
+      </React.Fragment>
+    );
+  };
 
   const getResult = () => {
     setSelectedIndex(-1);
@@ -235,18 +311,19 @@ export const PracticeScreen = ({ route, navigation }) => {
     }
     setCurrentQuestion(currentQuestion + 1);
   };
-  console.log(totalResult);
 
   return (
     <React.Fragment>
       {Object.keys(totalResult).length !== 0 ? (
-        <View style={{ flex: 1, justifyContent: "space-between" }}>
-          <View>
-            <TopBar title="Total Reviews" navigation={navigation} />
+        // total reviews
+        <View style={{ flex: 1 }}>
+          <TopBar title="Total Reviews" navigation={navigation} />
+          <ScrollView showsVerticalScrollIndicator={false}>
             <TotalReview totalResult={totalResult} />
-          </View>
+          </ScrollView>
         </View>
       ) : !showResult ? (
+        // question
         <View style={{ flex: 1 }}>
           <TopBar title={practice} navigation={navigation} />
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -280,6 +357,7 @@ export const PracticeScreen = ({ route, navigation }) => {
           </ScrollView>
         </View>
       ) : (
+        // result
         <View style={{ flex: 1, justifyContent: "space-between" }}>
           <View>
             <TopBar
