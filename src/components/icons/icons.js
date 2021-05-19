@@ -33,3 +33,6 @@ export const EditIcon = (props) => <Icon {...props} name="edit-outline" />;
 // question
 export const CorrectIcon = (props) => <Icon {...props} name="checkmark-circle-2" fill="#fff" style={{ width: 48, height: 48 }} />;
 export const IncorrectIcon = (props) => <Icon {...props} name="close-circle" fill="#fff" style={{ width: 48, height: 48 }} />;
+
+// star
+export const StarIcon = (props) => <Icon {...props} name="star" fill="#E52326" style={{ width: 16, height: 16 }} />;
