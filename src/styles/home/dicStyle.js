@@ -16,7 +16,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   container: {
-    // maxHeight: 320,
     backgroundColor: "#F2F2F2",
     ...shadow
   },

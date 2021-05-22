@@ -35,4 +35,6 @@ export const CorrectIcon = (props) => <Icon {...props} name="checkmark-circle-2"
 export const IncorrectIcon = (props) => <Icon {...props} name="close-circle" fill="#fff" style={{ width: 48, height: 48 }} />;
 
 // star
-export const StarIcon = (props) => <Icon {...props} name="star" fill="#E52326" style={{ width: 16, height: 16 }} />;
+export const StarIcon = (props) => <Icon {...props} name="star" fill="#E52326" style={{ width: 24, height: 24 }} />;
+export const StarOutlineIcon = (props) => <Icon {...props} name="star-outline" fill="#E52326" style={{ width: 24, height: 24 }} />;
+export const ListIcon = (props) => <Icon {...props} name="list" fill="#000" style={{ width: 24, height: 24 }} />;

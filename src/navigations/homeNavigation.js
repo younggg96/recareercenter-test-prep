@@ -17,7 +17,6 @@ import {
 import { HomeScreen } from "../views/home/homeScreen";
 import { ProfileScreen } from "../views/home/profileScreen";
 import { ExamsScreen } from "../views/home/examsScreen";
-import { DictionaryScreen } from "../views/home/dictionaryScreen";
 import { SettingsScreen } from "../views/profile/settingsScreen";
 import { StudyPlanScreen } from "../views/profile/studyPlanScreen";
 import { ReviewsScreen } from "../views/profile/reviewsScreen";
@@ -27,6 +26,7 @@ import { ChangePasswordScreen } from "../views/profile/changePasswordScreen";
 import { MembershipScreen } from "../views/profile/membershipScreen";
 import { QuizScreen } from "../views/home/homeExam/quizScreen";
 import { PracticeScreen } from "../views/home/homeExam/practiceScreen";
+import { DictionaryScreen } from "../views/home/dictionary/dictionaryScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
