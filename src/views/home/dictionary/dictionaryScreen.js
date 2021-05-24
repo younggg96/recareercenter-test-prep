@@ -21,23 +21,23 @@ import dic from "../../../static/dic/dic.json";
 import { useDispatch, useSelector } from "react-redux";
 import { saveWord, unSaveWord } from "../../../redux/actions/dicAction";
 
-const data = dic.dic;
+// const data = dic.dic;
 
-export const DictionaryScreen = () => {
-  const [seachShow, setSeachShow] = React.useState(false);
+const WordsList = ({ text }) => {
   const [pickedInList, setPickedInList] = React.useState(
-    Array(data.length).fill(false)
+    Array(dic.dic.length).fill(false)
   );
-  const textIn = React.useRef(null);
+
+  // dispatch
   const dispatch = useDispatch();
-  const savedWords = useSelector((state) => state.dicReducer);
 
-  useEffect(() => {
-    if (seachShow) {
-      textIn.current.focus();
-    }
-  });
+  // alert
+  const successAddedAlert = (item) =>
+    Alert.alert(`${item.word}`, "Alread added to saved list", [
+      { text: "OK", style: "default" },
+    ]);
 
+  // save
   const save = ({ index, item }) => {
     setPickedInList([
       ...pickedInList.slice(0, index),
@@ -48,6 +48,7 @@ export const DictionaryScreen = () => {
     successAddedAlert(item);
   };
 
+  // unsave
   const unSave = ({ index, item }) => {
     setPickedInList([
       ...pickedInList.slice(0, index),
@@ -57,20 +58,17 @@ export const DictionaryScreen = () => {
     dispatch(unSaveWord(index));
   };
 
-  const successAddedAlert = (item) =>
-    Alert.alert(`${item.word}`, "Alread added to saved list", [
-      { text: "OK", style: "default" },
-    ]);
-
-  const showSearch = () => {
-    setSeachShow(true);
+  // filter
+  const filterData = (text) => {
+    const filtered = dic.dic.filter((ele) => {
+      return ele.word.indexOf(text) != -1;
+    });
+    return filtered;
   };
-
-  console.log(savedWords);
 
   const renderItem = (info) => {
     return (
-      <Card style={styles.item}>
+      <Card style={styles.item} disabled>
         <View style={styles.itemHeader}>
           <Text category="h5" style={{ width: 200 }}>
             {info.item.word}
@@ -94,6 +92,49 @@ export const DictionaryScreen = () => {
         <Text category="s2">{info.item.value}</Text>
       </Card>
     );
+  };
+
+  return (
+    <React.Fragment>
+      {!filterData(text).length ? (
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Text category="h3" appearance="hint">
+            No Search Result
+          </Text>
+        </View>
+      ) : (
+        <List
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+          data={filterData(text)}
+          renderItem={renderItem}
+        />
+      )}
+    </React.Fragment>
+  );
+};
+
+export const DictionaryScreen = ({ navigation }) => {
+  const [seachShow, setSeachShow] = React.useState(false);
+  const [filterText, setFilterText] = React.useState("");
+  const textIn = React.useRef(null);
+
+  useEffect(() => {
+    if (seachShow) {
+      textIn.current.focus();
+    }
+  });
+
+  // search
+  const showSearch = () => {
+    setSeachShow(true);
+  };
+
+  // navigation
+  const navigateTo = () => {
+    navigation.navigate("SavedListScreen");
   };
 
   return (
@@ -123,6 +164,8 @@ export const DictionaryScreen = () => {
               onBlur={() => {
                 setSeachShow(false);
               }}
+              onChangeText={(text) => setFilterText(text)}
+              defaultValue={filterText}
               ref={textIn}
               style={
                 !seachShow
@@ -135,17 +178,13 @@ export const DictionaryScreen = () => {
               style={styles.button}
               appearance="ghost"
               accessoryLeft={ListIcon}
+              onPress={navigateTo}
             />
           </View>
         )}
         style={styles.topBar}
       />
-      <List
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
-        data={data}
-        renderItem={renderItem}
-      />
+      <WordsList text={filterText} />
     </View>
   );
 };

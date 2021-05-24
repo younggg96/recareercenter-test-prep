@@ -27,9 +27,17 @@ import { MembershipScreen } from "../views/profile/membershipScreen";
 import { QuizScreen } from "../views/home/homeExam/quizScreen";
 import { PracticeScreen } from "../views/home/homeExam/practiceScreen";
 import { DictionaryScreen } from "../views/home/dictionary/dictionaryScreen";
+import { SavedListScreen } from "../views/home/dictionary/savedListScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+
+const DictionaryNavigation = () => (
+  <Stack.Navigator headerMode="none" initialRouteName="ProfileScreen">
+    <Stack.Screen name="DictionaryScreen" component={DictionaryScreen} />
+    <Stack.Screen name="SavedListScreen" component={SavedListScreen} />
+  </Stack.Navigator>
+);
 
 const ProfileNavigation = () => (
   <Stack.Navigator headerMode="none" initialRouteName="ProfileScreen">
@@ -56,7 +64,7 @@ const HomeScreenNavigation = () => (
 
 const BottomTabBar = ({ navigation, state }) => (
   <BottomNavigation
-    style={{paddingBottom: 16, paddingTop: 8 }}
+    style={{ paddingBottom: 16, paddingTop: 8 }}
     selectedIndex={state.index}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
   >
@@ -72,7 +80,7 @@ export const HomeNavigation = () => {
     <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeScreenNavigation} />
       <Tab.Screen name="Exams" component={ExamsScreen} />
-      <Tab.Screen name="Dictionary" component={DictionaryScreen} />
+      <Tab.Screen name="Dictionary" component={DictionaryNavigation} />
       <Tab.Screen name="Profile" component={ProfileNavigation} />
     </Tab.Navigator>
   );
