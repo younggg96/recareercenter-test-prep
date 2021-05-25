@@ -74,11 +74,24 @@ export const homeStyles = StyleSheet.create({
     flex: 1,
     paddingTop: 8,
   },
+  categroyContainer: {
+    flex: 1,
+    paddingTop: 8,
+    justifyContent: "center",
+    alignItems: "center"
+  },
   item: {
     justifyContent: "space-between",
     marginHorizontal: 10,
-    height: 100,
+    height: 110,
     width: 200,
+    borderRadius: 8,
+  },
+  categoryItem: {
+    justifyContent: "space-between",
+    margin: 12,
+    height: 150,
+    width: 160,
     borderRadius: 8,
   },
   categoryTitle: {

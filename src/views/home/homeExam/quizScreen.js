@@ -1,6 +1,6 @@
 import { Button, Layout, Radio, RadioGroup, Text } from "@ui-kitten/components";
 import React from "react";
-import { View } from "react-native";
+import { Image, View } from "react-native";
 import { TopBar } from "../../../components/topBar/topBar";
 import { styles } from "../../../styles/home/home/quizStyle";
 
@@ -38,7 +38,9 @@ const Reviews = ({ result }) => {
             style={item.res ? styles.correctCard : styles.inCorrectCard}
             key={index}
           >
-            <View style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }} >
+            <View
+              style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }}
+            >
               {item.res ? <CorrectIcon /> : <IncorrectIcon />}
             </View>
             <Text category="s1" style={styles.reviewTitle}>{`Question ${
@@ -106,6 +108,12 @@ export const QuizScreen = ({ navigation }) => {
           <TopBar title="Quiz Review" navigation={navigation} />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <Image
+                  source={require("../../../../assets/img/QuizResultsVector.png")}
+                  style={{ width: 200, height: 200, marginBottom: 16 }}
+                />
+              </View>
               <Text category="s1" style={styles.title}>
                 Your Quiz Score:
               </Text>
@@ -129,9 +137,13 @@ export const QuizScreen = ({ navigation }) => {
                 </Text>
               )}
             </View>
-            <Text category="s1" appearance="hint" style={{...styles.title, paddingHorizontal: 32}}>
-                Your Quiz Reviews:
-              </Text>
+            <Text
+              category="s1"
+              appearance="hint"
+              style={{ ...styles.title, paddingHorizontal: 32 }}
+            >
+              Your Quiz Reviews:
+            </Text>
             <Reviews result={result} />
           </ScrollView>
         </View>

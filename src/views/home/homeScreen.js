@@ -10,13 +10,12 @@ import { Button, Card, Icon, Input, Layout, Modal, Text, TopNavigation } from "@
 import { styles } from "../../components/topBar/topBar";
 import { homeStyles } from "../../styles/home/homeStyle";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
-// icon
-import { SearchIcon } from "../../components/icons/icons";
+
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 // const
-import { itemWidth, sliderWidth, slideHeight } from "../../constants";
+import { itemWidth, sliderWidth } from "../../constants";
 // data
 import { ENTRIES1 } from "../../static/entries";
 import { Categories } from "../../static/questions/category";
@@ -27,10 +26,18 @@ export const HomeScreen = ({ navigation }) => {
 
   const [visible, setVisible] = React.useState(false);
 
+
+  // navigation
   const navigateTo = (link) => Linking.openURL(link);
 
   const navigateToQuiz = () => {
     navigation.navigate("QuizScreen");
+  };
+  const navigateToPlan = () => {
+    navigation.navigate("StudyPlanScreen");
+  };
+  const navigateToAllQuestion = () => {
+    navigation.navigate("AllCategroyScreen");
   };
 
   const navigateToPractice = (id, name) => {
@@ -40,7 +47,7 @@ export const HomeScreen = ({ navigation }) => {
     });
   };
 
-  const renderItem = ({ item, index }, parallaxProps) => {
+  const renderItem = ({ item }, parallaxProps) => {
     return (
       <View>
         <View style={homeStyles.itemContainer}>
@@ -130,14 +137,6 @@ export const HomeScreen = ({ navigation }) => {
             Home
           </Text>
         )}
-        accessoryRight={(props) => (
-          <Input
-            {...props}
-            placeholder={"Search..."}
-            style={{ borderRadius: 25, width: "80%" }}
-            accessoryLeft={SearchIcon}
-          />
-        )}
         style={styles.topBar}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -155,14 +154,14 @@ export const HomeScreen = ({ navigation }) => {
           autoplayInterval={3000}
           containerCustomStyle={homeStyles.slider}
           contentContainerCustomStyle={homeStyles.sliderContentContainer}
-          activeSlideAlignment={"center"}
+          activeSlideAlignment={"center"} 
         />
         <View style={homeStyles.content}>
           <View style={homeStyles.header}>
             <Text category="h3" style={homeStyles.title}>
               Today's Plan
             </Text>
-            <Button appearance="ghost">Adjust plan</Button>
+            <Button appearance="ghost" onPress={navigateToPlan}>Adjust plan</Button>
           </View>
           <View style={homeStyles.plan}>
             <View style={homeStyles.contentItem}>
@@ -195,7 +194,7 @@ export const HomeScreen = ({ navigation }) => {
                 65 Free of 555 Items
               </Text>
             </View>
-            <Button appearance="ghost">View All</Button>
+            <Button appearance="ghost" onPress={navigateToAllQuestion}>View All</Button>
             <Modal
               style={homeStyles.modal}
               visible={visible}
