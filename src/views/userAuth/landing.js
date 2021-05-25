@@ -18,16 +18,21 @@ const Landing = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={require("../../../assets/img/logo.png")} style={styles.logo} />
-      <Text style={styles.title} category="h5">Flexibility. Availability. Reliability.</Text>
-      <Text style={styles.subTitle} category="s1">We are everything real estate. Let us share it with you!</Text>
-      {!spinner ?
-        <Button style={styles.button} onPress={onStart}>
-          Let's Start
-        </Button> :
-        <Button style={styles.button} accessoryLeft={LoadingIndicator}>
-          Loading...
-      </Button>}
+      <View style={styles.header}>
+        <Image source={require("../../../assets/img/logo.png")} style={styles.logo} />
+        <Text style={styles.title} category="h5">Flexibility. Availability. Reliability.</Text>
+        <Text style={styles.subTitle} category="s1">We are everything real estate. Let us share it with you!</Text>
+      </View>
+      <View>
+        <Image source={require("../../../assets/img/LetsStartVector.png")} style={styles.start} />
+        {!spinner ?
+          <Button style={styles.button} onPress={onStart}>
+            Let's Start
+          </Button> :
+          <Button style={styles.button} accessoryLeft={LoadingIndicator}>
+            Loading...
+        </Button>}
+      </View>
     </View>
   );
 };

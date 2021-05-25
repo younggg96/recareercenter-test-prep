@@ -4,25 +4,27 @@ import Constants from "expo-constants";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "space-evenly",
+    margin: 32,
+  },
+  header: {
+    //   flexDirection: "row",
     justifyContent: "center",
-    marginLeft: 32,
-    marginRight: 32,
+    alignItems: "center",
+    marginVertical: 32,
   },
   paragraph: {
-    marginBottom: 48,
-    width: 200,
-    fontWeight: "800",
+    fontWeight: "700",
     letterSpacing: -2,
   },
   paragraphSignup: {
-    marginBottom: 40,
     width: 300,
     fontWeight: "800",
     letterSpacing: -2,
   },
   paragraphReset: {
-    marginBottom: 30,
-    fontWeight: "800",
+    marginVertical: 16,
+    fontWeight: "700",
   },
   forgetBtn: {
     justifyContent: "center",
@@ -30,11 +32,11 @@ export const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: "#F5F5F5",
-    marginBottom: 18,
+    marginBottom: 12,
     borderRadius: 16,
   },
   button: {
-    marginTop: 12,
+    marginBottom: 12,
     borderRadius: 16,
   },
   createAccBtn: {
@@ -42,7 +44,7 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
   },
   otherTitle: {
-    marginTop: 24,
+    marginTop: 8,
     textAlign: "center",
   },
   other: {
@@ -58,11 +60,15 @@ export const styles = StyleSheet.create({
   },
   otherBtn: {
     width: "80%",
-    margin: 8,
+    marginTop: 8,
     borderRadius: 16,
   },
   topBar: {
     backgroundColor: "#F2F2F2",
     marginTop: Constants.statusBarHeight,
-  }
+  },
+  topTitle: {
+    fontSize: 18,
+    paddingHorizontal: 16,
+  },
 });

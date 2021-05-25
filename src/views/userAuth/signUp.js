@@ -2,11 +2,12 @@ import React from "react";
 
 import { Button, CheckBox, Icon, Input, Text, TopNavigation, TopNavigationAction } from "@ui-kitten/components";
 import { useForm, Controller } from "react-hook-form";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, View } from "react-native";
 
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
 import { BackIcon } from "../../components/icons/icons";
+import { TopBar } from "../../components/topBar/topBar";
 
 
 const SignUp = ({ navigation }) => {
@@ -41,21 +42,23 @@ const SignUp = ({ navigation }) => {
   );
 
   // back button
-  const navigateBack = () => {
-    navigation.goBack();
-  };
+  // const navigateBack = () => {
+  //   navigation.goBack();
+  // };
 
-  const BackAction = () => (
-    <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
-  );
+  // const BackAction = () => (
+  //   <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
+  // );
 
   return (
     <>
-      <TopNavigation title='Sign up' alignment='center' accessoryLeft={BackAction} style={styles.topBar} />
+      {/* <TopNavigation title={() => <Text category="s1" style={styles.topTitle}>Sign up</Text>} accessoryLeft={BackAction} style={styles.topBar} /> */}
+      <TopBar title="Sign up" navigation={navigation} />
       <SafeAreaView style={styles.container}>
         <Text style={styles.paragraphSignup} category="h1">
           Sign Up and starting learning
         </Text>
+        <View>
         <Controller
           name="email"
           control={control}
@@ -157,7 +160,6 @@ const SignUp = ({ navigation }) => {
         >
           I've read and agree with Terms of Service and our Privacy Policy
         </CheckBox>
-        {/* <Text>{`${submitted}`}</Text> */}
         {submitted ? (
           !checked ? (
             <Text status="danger" category="c2">
@@ -165,6 +167,7 @@ const SignUp = ({ navigation }) => {
             </Text>
           ) : null
         ) : null}
+        </View>
         <Button style={styles.createAccBtn} onPress={handleSubmit(onSubmit)}>
           Create Account
         </Button>

@@ -129,7 +129,7 @@ export const DictionaryScreen = ({ navigation }) => {
       <TopNavigation
         title={() => (
           <Text category="s1" style={styles.topTitle}>
-            Home
+            Dictionary
           </Text>
         )}
         accessoryRight={() => (

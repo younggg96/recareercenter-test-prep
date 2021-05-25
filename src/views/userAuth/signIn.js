@@ -1,10 +1,11 @@
 import React from "react";
 
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
-import { View } from "react-native";
+import { Image, View } from "react-native";
 
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
+
 
 //form
 import { useForm, Controller } from "react-hook-form";
@@ -51,118 +52,129 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.paragraph} category="h1">
-        Welcome Back!
-      </Text>
-      <Controller
-        name="email"
-        control={control}
-        rules={{
-          required: true,
-          pattern: {
-            value: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
-            message: "Please enter a valid email address",
-          },
-        }}
-        defaultValue=""
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            style={styles.input}
-            label="Email"
-            size="large"
-            caption={
-              errors.email ? (
-                errors.email.type === "required" ? (
+      <View style={styles.header}>
+        <Text style={styles.paragraph} category="h1">
+          Welcome Back!
+        </Text>
+        <Image
+          source={require("../../../assets/img/WElcomebackvector.png")}
+          style={{ width: 200, height: 180 }}
+        />
+      </View>
+      <View>
+        <Controller
+          name="email"
+          control={control}
+          rules={{
+            required: true,
+            pattern: {
+              value:
+                /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
+              message: "Please enter a valid email address",
+            },
+          }}
+          defaultValue=""
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              style={styles.input}
+              label="Email"
+              size="large"
+              caption={
+                errors.email ? (
+                  errors.email.type === "required" ? (
+                    <Text status="danger" category="c2">
+                      Email is required.
+                    </Text>
+                  ) : errors.email.type === "pattern" ? (
+                    <Text status="danger" category="c2">
+                      {errors.email.message}
+                    </Text>
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  ""
+                )
+              }
+              placeholder="Enter your email"
+              onBlur={onBlur}
+              onChangeText={(v) => onChange(v)}
+              value={value}
+            />
+          )}
+        />
+        <Controller
+          name="password"
+          rules={{ required: true, minLength: 8 }}
+          defaultValue=""
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              style={styles.input}
+              label="Password"
+              size="large"
+              caption={
+                errors.password ? (
                   <Text status="danger" category="c2">
-                    Email is required.
-                  </Text>
-                ) : errors.email.type === "pattern" ? (
-                  <Text status="danger" category="c2">
-                    {errors.email.message}
+                    Should contain at least 8 symbols
                   </Text>
                 ) : (
                   ""
                 )
-              ) : (
-                ""
-              )
-            }
-            placeholder="Enter your email"
-            onBlur={onBlur}
-            onChangeText={(v) => onChange(v)}
-            value={value}
-          />
-        )}
-      />
-      <Controller
-        name="password"
-        rules={{ required: true, minLength: 8 }}
-        defaultValue=""
-        control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            style={styles.input}
-            label="Password"
-            size="large"
-            caption={
-              errors.password ? (
-                <Text status="danger" category="c2">
-                  Should contain at least 8 symbols
-                </Text>
-              ) : (
-                ""
-              )
-            }
-            placeholder="Enter your Password"
-            accessoryRight={renderIcon}
-            secureTextEntry={secureTextEntry}
-            onBlur={onBlur}
-            onChangeText={(v) => onChange(v)}
-            value={value}
-          />
-        )}
-      />
-      <View style={styles.forgetBtn}>
-        <Button
-          style={{ width: 140 }}
-          size="small"
-          appearance="ghost"
-          status="primary"
-          onPress={forgetPassword}
-        >
-          Forget password?
-        </Button>
-      </View>
-      <Button style={styles.button} onPress={handleSubmit(onSubmit)}>
-        Sign In
-      </Button>
-      <Button style={styles.button} onPress={signUp}>
-        Sign Up
-      </Button>
+              }
+              placeholder="Enter your Password"
+              accessoryRight={renderIcon}
+              secureTextEntry={secureTextEntry}
+              onBlur={onBlur}
+              onChangeText={(v) => onChange(v)}
+              value={value}
+            />
+          )}
+        />
 
-      <Text style={styles.otherTitle} category="c2">
-        Or sign in with
-      </Text>
-      <Layout style={styles.other}>
-        <Layout style={styles.otherBtnLayout}>
+        <View style={styles.forgetBtn}>
           <Button
-            style={styles.otherBtn}
-            appearance="outline"
-            accessoryLeft={GoogleIcon}
+            style={{ width: 140 }}
+            size="small"
+            appearance="ghost"
+            status="primary"
+            onPress={forgetPassword}
           >
-            Google
+            Forget password?
           </Button>
+        </View>
+      </View>
+      <View>
+        <Button style={styles.button} onPress={handleSubmit(onSubmit)}>
+          Sign In
+        </Button>
+        <Button style={styles.button} onPress={signUp}>
+          Sign Up
+        </Button>
+        <Text style={styles.otherTitle} category="c2">
+          Or sign in with
+        </Text>
+        <Layout style={styles.other}>
+          <Layout style={styles.otherBtnLayout}>
+            <Button
+              style={styles.otherBtn}
+              appearance="outline"
+              accessoryLeft={GoogleIcon}
+            >
+              Google
+            </Button>
+          </Layout>
+          <Layout style={styles.otherBtnLayout}>
+            <Button
+              style={styles.otherBtn}
+              appearance="outline"
+              accessoryLeft={FaceBookIcon}
+            >
+              FaceBook
+            </Button>
+          </Layout>
         </Layout>
-        <Layout style={styles.otherBtnLayout}>
-          <Button
-            style={styles.otherBtn}
-            appearance="outline"
-            accessoryLeft={FaceBookIcon}
-          >
-            FaceBook
-          </Button>
-        </Layout>
-      </Layout>
+      </View>
     </View>
   );
 };
