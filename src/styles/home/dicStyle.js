@@ -5,11 +5,10 @@ import { cardStyle, shadow } from "../shared/sharedStyle";
 
 export const styles = StyleSheet.create({
   topBar: {
-    paddingTop: Constants.statusBarHeight + 16,
-    paddingBottom: 18,
-    paddingHorizontal: 8,
-    marginBottom: 8,
-    ...shadow,
+		paddingTop: Constants.statusBarHeight + 16,
+		paddingBottom: 8,
+		marginBottom: 8,
+		...shadow
   },
   topTitle: {
     fontSize: 18,
@@ -17,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "#F2F2F2",
-    ...shadow
+    ...shadow,
   },
   contentContainer: {
     paddingHorizontal: 8,
@@ -28,9 +27,9 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
   },
   itemHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 12
-  }
+    marginBottom: 12,
+  },
 });

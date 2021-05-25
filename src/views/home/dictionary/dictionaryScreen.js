@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { Component } from "react";
 // ui
-import { Alert, View } from "react-native";
+import { Alert, View, TextInput, SafeAreaView } from "react-native";
 import {
   Button,
   Card,
@@ -117,20 +117,7 @@ const WordsList = ({ text }) => {
 };
 
 export const DictionaryScreen = ({ navigation }) => {
-  const [seachShow, setSeachShow] = React.useState(false);
   const [filterText, setFilterText] = React.useState("");
-  const textIn = React.useRef(null);
-
-  useEffect(() => {
-    if (seachShow) {
-      textIn.current.focus();
-    }
-  });
-
-  // search
-  const showSearch = () => {
-    setSeachShow(true);
-  };
 
   // navigation
   const navigateTo = () => {
@@ -140,50 +127,33 @@ export const DictionaryScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <TopNavigation
-        title={
-          !seachShow
-            ? () => (
-                <Text category="s1" style={styles.topTitle}>
-                  Dictionary
-                </Text>
-              )
-            : null
-        }
-        accessoryRight={(props) => (
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Input
-              {...props}
-              placeholder={"Search..."}
-              onFocus={showSearch}
-              onBlur={() => {
-                setSeachShow(false);
-              }}
-              onChangeText={(text) => setFilterText(text)}
-              defaultValue={filterText}
-              ref={textIn}
-              style={
-                !seachShow
-                  ? { borderRadius: 25, width: "80%" }
-                  : { borderRadius: 25, flex: 1 }
-              }
-              accessoryLeft={SearchIcon}
-            />
-            <Button
-              style={styles.button}
-              appearance="ghost"
-              accessoryLeft={ListIcon}
-              onPress={navigateTo}
-            />
-          </View>
+        title={() => (
+          <Text category="s1" style={styles.topTitle}>
+            Home
+          </Text>
+        )}
+        accessoryRight={() => (
+          <Button
+            style={styles.button}
+            appearance="ghost"
+            accessoryLeft={ListIcon}
+            onPress={navigateTo}
+          />
         )}
         style={styles.topBar}
       />
+      <Card disabled>
+        <Input
+          focusable
+          placeholder={"Search..."}
+          accessoryRight={SearchIcon}
+          onChangeText={(e) => {
+            setFilterText(e);
+          }}
+          value={filterText}
+          style={{ borderRadius: 25 }}
+        />
+      </Card>
       <WordsList text={filterText} />
     </View>
   );

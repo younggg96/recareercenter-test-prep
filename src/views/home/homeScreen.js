@@ -156,7 +156,6 @@ export const HomeScreen = ({ navigation }) => {
           containerCustomStyle={homeStyles.slider}
           contentContainerCustomStyle={homeStyles.sliderContentContainer}
           activeSlideAlignment={"center"}
-          // hasParallaxImages={true}
         />
         <View style={homeStyles.content}>
           <View style={homeStyles.header}>
