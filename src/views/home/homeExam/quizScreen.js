@@ -8,7 +8,11 @@ import { styles } from "../../../styles/home/home/quizStyle";
 import data from "../../../static/questions/data.json";
 import { ProgressBar } from "../../../components/progressBar/progressBar";
 import { ScrollView } from "react-native-gesture-handler";
-import { CorrectIcon, IncorrectIcon } from "../../../components/icons/icons";
+import {
+  CorrectIcon,
+  IncorrectIcon,
+  UnlikeIcon,
+} from "../../../components/icons/icons";
 
 const getRandomArrayElements = (arr, count) => {
   let shuffled = arr.slice(0),
@@ -38,36 +42,46 @@ const Reviews = ({ result }) => {
             style={item.res ? styles.correctCard : styles.inCorrectCard}
             key={index}
           >
-            <View
-              style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }}
-            >
-              {item.res ? <CorrectIcon /> : <IncorrectIcon />}
+            <View>
+              <Text category="s1" style={styles.reviewTitle}>{`Question ${
+                index + 1
+              }: ${quizData[index].Question}`}</Text>
+              <Text
+                category="s2"
+                style={styles.reviewContent}
+              >{`A. ${quizData[index].Answer1}`}</Text>
+              <Text
+                category="s2"
+                style={styles.reviewContent}
+              >{`B. ${quizData[index].Answer2}`}</Text>
+              <Text
+                category="s2"
+                style={styles.reviewContent}
+              >{`C. ${quizData[index].Answer3}`}</Text>
+              <Text
+                category="s2"
+                style={styles.reviewContent}
+              >{`D. ${quizData[index].Answer4}`}</Text>
+              <Text category="s1" style={styles.answerReview}>{`Your answer: ${
+                arr[item.pick]
+              }`}</Text>
+              <Text
+                category="s1"
+                style={styles.answerReview}
+              >{`Correct answer: ${
+                arr[parseInt(quizData[index].CorrectAnswer) - 1]
+              }`}</Text>
             </View>
-            <Text category="s1" style={styles.reviewTitle}>{`Question ${
-              index + 1
-            }: ${quizData[index].Question}`}</Text>
-            <Text
-              category="s2"
-              style={styles.reviewContent}
-            >{`A. ${quizData[index].Answer1}`}</Text>
-            <Text
-              category="s2"
-              style={styles.reviewContent}
-            >{`B. ${quizData[index].Answer2}`}</Text>
-            <Text
-              category="s2"
-              style={styles.reviewContent}
-            >{`C. ${quizData[index].Answer3}`}</Text>
-            <Text
-              category="s2"
-              style={styles.reviewContent}
-            >{`D. ${quizData[index].Answer4}`}</Text>
-            <Text category="s1" style={styles.answerReview}>{`Your answer: ${
-              arr[item.pick]
-            }`}</Text>
-            <Text category="s1" style={styles.answerReview}>{`Correct answer: ${
-              arr[parseInt(quizData[index].CorrectAnswer) - 1]
-            }`}</Text>
+            <View style={styles.controlBtn}>
+              <Button
+                style={{ borderRadius: 50, paddingVertical: 6 }}
+                status="control"
+                appearance="outline"
+                accessoryLeft={UnlikeIcon}
+              >
+                SAVE
+              </Button>
+            </View>
           </View>
         );
       })}
@@ -117,7 +131,11 @@ export const QuizScreen = ({ navigation }) => {
               <Text category="s1" style={styles.title}>
                 Your Quiz Score:
               </Text>
-              <Text category="h1" status="danger" style={{ marginBottom: 8 }}>
+              <Text
+                category="h1"
+                status="danger"
+                style={{ marginBottom: 8, fontSize: 48 }}
+              >
                 {`${score}`}{" "}
                 <Text category="h6" appearance="hint">
                   / 100
