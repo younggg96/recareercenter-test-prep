@@ -16,19 +16,14 @@ import {
   StarOutlineIcon,
 } from "../../../components/icons/icons";
 import { styles } from "../../../styles/home/dicStyle";
-// data
-import dic from "../../../static/dic/dic.json";
+
+// redux
 import { useDispatch, useSelector } from "react-redux";
 import { saveWord, unSaveWord } from "../../../redux/actions/dicAction";
 
-// const data = dic.dic;
 
 const WordsList = ({ text }) => {
-  const [pickedInList, setPickedInList] = React.useState(
-    Array(dic.dic.length).fill(false)
-  );
-
-  // dispatch
+  const data = useSelector((state) => state.dicReducer);
   const dispatch = useDispatch();
 
   // alert
@@ -39,28 +34,18 @@ const WordsList = ({ text }) => {
 
   // save
   const save = ({ index, item }) => {
-    setPickedInList([
-      ...pickedInList.slice(0, index),
-      true,
-      ...pickedInList.slice(index + 1, pickedInList.length),
-    ]);
-    dispatch(saveWord({ index, item }));
+    dispatch(saveWord({ index, item, saved: true }));
     successAddedAlert(item);
   };
 
   // unsave
-  const unSave = ({ index, item }) => {
-    setPickedInList([
-      ...pickedInList.slice(0, index),
-      false,
-      ...pickedInList.slice(index + 1, pickedInList.length),
-    ]);
+  const unSave = ({ index }) => {
     dispatch(unSaveWord(index));
   };
 
   // filter
   const filterData = (text) => {
-    const filtered = dic.dic.filter((ele) => {
+    const filtered = data.list.filter((ele) => {
       return ele.word.indexOf(text) != -1;
     });
     return filtered;
@@ -73,7 +58,7 @@ const WordsList = ({ text }) => {
           <Text category="h5" style={{ width: 200 }}>
             {info.item.word}
           </Text>
-          {pickedInList[info.index] ? (
+          {info.item.saved ? (
             <Button
               style={styles.button}
               appearance="ghost"
