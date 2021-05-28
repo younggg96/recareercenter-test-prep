@@ -27,7 +27,7 @@ export const HomeScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
 
 
-  // navigation
+  // navigations
   const navigateTo = (link) => Linking.openURL(link);
 
   const navigateToQuiz = () => {

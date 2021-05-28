@@ -83,7 +83,7 @@ export const homeStyles = StyleSheet.create({
   item: {
     justifyContent: "space-between",
     marginHorizontal: 10,
-    height: 110,
+    height: 132,
     width: 200,
     borderRadius: 8,
   },

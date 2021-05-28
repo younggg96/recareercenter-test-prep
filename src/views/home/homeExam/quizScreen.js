@@ -4,8 +4,6 @@ import { Image, View } from "react-native";
 import { TopBar } from "../../../components/topBar/topBar";
 import { styles } from "../../../styles/home/home/quizStyle";
 
-// data
-import data from "../../../static/questions/data.json";
 import { ProgressBar } from "../../../components/progressBar/progressBar";
 import { ScrollView } from "react-native-gesture-handler";
 import { LikeIcon, UnlikeIcon } from "../../../components/icons/icons";

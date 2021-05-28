@@ -1,6 +1,6 @@
 import React from "react";
 // ui
-import { Dimensions, View } from "react-native";
+import { View } from "react-native";
 import { Button, Card, Radio, RadioGroup, Text } from "@ui-kitten/components";
 
 // icons
@@ -15,10 +15,14 @@ import { Categories } from "../../../static/questions/category";
 
 // chart
 import { PieChart } from "react-native-chart-kit";
+import {
+  saveQuestion,
+  unsaveQuestion,
+} from "../../../redux/actions/questionAction";
 
 const Review = ({ result, question, currentQuestion }) => {
   const arr = ["A", "B", "C", "D"];
-  const answer = arr[0];
+  console.log(question);
   return (
     <View style={result.res ? styles.correctCard : styles.inCorrectCard}>
       <View style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }}>
@@ -49,6 +53,21 @@ const Review = ({ result, question, currentQuestion }) => {
       <Text category="s1" style={styles.answerReview}>{`Correct answer: ${
         arr[parseInt(question.CorrectAnswer) - 1]
       }`}</Text>
+      {/* <View style={styles.controlBtn}>
+        <Button
+          style={{ borderRadius: 16, paddingVertical: 6 }}
+          status="control"
+          appearance="outline"
+          accessoryLeft={!item.saved ? UnlikeIcon : LikeIcon}
+          onPress={
+            !item.saved
+              ? () => dispatch(saveQuestion(item))
+              : () => dispatch(unsaveQuestion(item))
+          }
+        >
+          {!item.saved ? "Save" : "Saved"}
+        </Button>
+      </View> */}
     </View>
   );
 };
@@ -78,6 +97,7 @@ export const PracticeScreen = ({ route, navigation }) => {
   const { practice, id } = route.params;
   const question = Categories[id].questions[currentQuestion];
 
+  // total review
   const TotalReview = ({ totalResult }) => {
     const [showIndex, setShowIndex] = React.useState(2);
 
@@ -91,6 +111,7 @@ export const PracticeScreen = ({ route, navigation }) => {
       setShowIndex(0);
     };
 
+    // chart data
     const data = [
       {
         name: "Know",
@@ -115,6 +136,16 @@ export const PracticeScreen = ({ route, navigation }) => {
       },
     ];
 
+    // chart config
+    const chartConfig = {
+      backgroundGradientFrom: "#1E2923",
+      backgroundGradientFromOpacity: 0,
+      backgroundGradientTo: "#08130D",
+      backgroundGradientToOpacity: 0.5,
+      color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    };
+
+    // correction
     const getCorrection = () => {
       let dontKnowTrueCount = 0;
       let knowTrueCount = 0;
@@ -142,14 +173,6 @@ export const PracticeScreen = ({ route, navigation }) => {
         know: `${knowTrueCount} / ${totalResult.know.length}`,
         familar: `${familarTrueCount} / ${totalResult.familar.length}`,
       };
-    };
-
-    const chartConfig = {
-      backgroundGradientFrom: "#1E2923",
-      backgroundGradientFromOpacity: 0,
-      backgroundGradientTo: "#08130D",
-      backgroundGradientToOpacity: 0.5,
-      color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
     };
 
     return (
@@ -208,54 +231,117 @@ export const PracticeScreen = ({ route, navigation }) => {
             </Card>
           </View>
         </View>
-        <View style={{ ...styles.questionCard, paddingHorizontal: 0, paddingVertical: 6 }}>
+        <View
+          style={{
+            ...styles.questionCard,
+            paddingHorizontal: 0,
+            paddingVertical: 6,
+          }}
+        >
           {showIndex === 0 ? (
             <View>
-              <Text category="h6" appearance="hint" style={{marginVertical: 8, paddingHorizontal: 24 }}>
+              <Text
+                category="h6"
+                appearance="hint"
+                style={{ marginVertical: 8, paddingHorizontal: 24 }}
+              >
                 Know Questions
               </Text>
-              {totalResult.know.map((item, index) => {
-                return (
-                  <Review
-                    result={item.res}
-                    key={index}
-                    question={Categories[id].questions[item.currentQuestion]}
-                    currentQuestion={item.currentQuestion}
-                  />
-                );
-              })}
+              {totalResult.know.length ? (
+                totalResult.know.map((item, index) => {
+                  return (
+                    <Review
+                      result={item.res}
+                      key={index}
+                      question={Categories[id].questions[item.currentQuestion]}
+                      currentQuestion={item.currentQuestion}
+                    />
+                  );
+                })
+              ) : (
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: 200,
+                  }}
+                >
+                  <Text category="h6" appearance="hint">
+                    No Questions!
+                  </Text>
+                </View>
+              )}
             </View>
           ) : showIndex === 1 ? (
             <View>
-              <Text category="h6" appearance="hint" style={{marginVertical: 8, paddingHorizontal: 24 }}>
+              <Text
+                category="h6"
+                appearance="hint"
+                style={{ marginVertical: 8, paddingHorizontal: 24 }}
+              >
                 Familar Questions
               </Text>
-              {totalResult.familar.map((item, index) => {
-                return (
-                  <Review
-                    result={item.res}
-                    key={index}
-                    question={Categories[id].questions[item.currentQuestion]}
-                    currentQuestion={item.currentQuestion}
-                  />
-                );
-              })}
+              {totalResult.familar.length ? (
+                totalResult.familar.map((item, index) => {
+                  return (
+                    <Review
+                      result={item.res}
+                      key={index}
+                      question={Categories[id].questions[item.currentQuestion]}
+                      currentQuestion={item.currentQuestion}
+                    />
+                  );
+                })
+              ) : (
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: 200,
+                  }}
+                >
+                  <Text category="h6" appearance="hint">
+                    No Questions!
+                  </Text>
+                </View>
+              )}
             </View>
           ) : showIndex === 2 ? (
             <View>
-              <Text category="h6" appearance="hint" style={{marginVertical: 8, paddingHorizontal: 24 }}>
+              <Text
+                category="h6"
+                appearance="hint"
+                style={{ marginVertical: 8, paddingHorizontal: 24 }}
+              >
                 Don't Know Questions
               </Text>
-              {totalResult.dontKnow.map((item, index) => {
-                return (
-                  <Review
-                    result={item.res}
-                    key={index}
-                    question={Categories[id].questions[item.currentQuestion]}
-                    currentQuestion={item.currentQuestion}
-                  />
-                );
-              })}
+              {totalResult.dontKnow.length ? (
+                totalResult.dontKnow.map((item, index) => {
+                  return (
+                    <Review
+                      result={item.res}
+                      key={index}
+                      question={Categories[id].questions[item.currentQuestion]}
+                      currentQuestion={item.currentQuestion}
+                    />
+                  );
+                })
+              ) : (
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: 200,
+                  }}
+                >
+                  <Text category="h6" appearance="hint">
+                    No Questions!
+                  </Text>
+                </View>
+              )}
             </View>
           ) : null}
         </View>
@@ -263,6 +349,7 @@ export const PracticeScreen = ({ route, navigation }) => {
     );
   };
 
+  // result
   const getResult = () => {
     setSelectedIndex(-1);
     setShowResult(true);
@@ -273,6 +360,7 @@ export const PracticeScreen = ({ route, navigation }) => {
     setRes(itemRes);
   };
 
+  // 3 categroies questions
   const addDontKnowQuestion = () => {
     setShowResult(false);
     dontKnow.push({ currentQuestion, res });

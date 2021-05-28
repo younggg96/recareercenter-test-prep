@@ -47,4 +47,9 @@ export const styles = StyleSheet.create({
     maxWidth: 120,
     height: 100,
   },
+  controlBtn: {
+    marginTop: 16,
+    color: "#fff",
+    paddingVertical: 8,
+  },
 });
