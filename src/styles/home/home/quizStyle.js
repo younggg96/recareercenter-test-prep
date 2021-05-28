@@ -34,16 +34,16 @@ export const styles = StyleSheet.create({
     ...cardStyle,
     ...shadow,
     justifyContent: "space-between",
-    backgroundColor: "#7DB46F",
+    backgroundColor: "#8ACE8B",
   },
   inCorrectCard: {
     ...cardStyle,
     ...shadow,
     justifyContent: "space-between",
-    backgroundColor: "#FF7070",
+    backgroundColor: "#FF9B9B",
   },
   controlBtn: {
-    marginTop: 24,
+    marginTop: 16,
     color: "#fff",
     paddingVertical: 8
   }

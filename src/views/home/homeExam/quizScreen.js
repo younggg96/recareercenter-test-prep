@@ -8,111 +8,108 @@ import { styles } from "../../../styles/home/home/quizStyle";
 import data from "../../../static/questions/data.json";
 import { ProgressBar } from "../../../components/progressBar/progressBar";
 import { ScrollView } from "react-native-gesture-handler";
+import { LikeIcon, UnlikeIcon } from "../../../components/icons/icons";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  CorrectIcon,
-  IncorrectIcon,
-  UnlikeIcon,
-} from "../../../components/icons/icons";
-
-const getRandomArrayElements = (arr, count) => {
-  let shuffled = arr.slice(0),
-    i = arr.length,
-    min = i - count,
-    temp,
-    index;
-  while (i-- > min) {
-    index = Math.floor((i + 1) * Math.random());
-    temp = shuffled[index];
-    shuffled[index] = shuffled[i];
-    shuffled[i] = temp;
-  }
-  return shuffled.slice(min);
-};
-
-const quizData = getRandomArrayElements(data.questionData, 10);
-
-const Reviews = ({ result }) => {
-  const arr = ["A", "B", "C", "D"];
-  return (
-    <View>
-      {result.map((item, index) => {
-        const answer = arr[0];
-        return (
-          <View
-            style={item.res ? styles.correctCard : styles.inCorrectCard}
-            key={index}
-          >
-            <View>
-              <Text category="s1" style={styles.reviewTitle}>{`Question ${
-                index + 1
-              }: ${quizData[index].Question}`}</Text>
-              <Text
-                category="s2"
-                style={styles.reviewContent}
-              >{`A. ${quizData[index].Answer1}`}</Text>
-              <Text
-                category="s2"
-                style={styles.reviewContent}
-              >{`B. ${quizData[index].Answer2}`}</Text>
-              <Text
-                category="s2"
-                style={styles.reviewContent}
-              >{`C. ${quizData[index].Answer3}`}</Text>
-              <Text
-                category="s2"
-                style={styles.reviewContent}
-              >{`D. ${quizData[index].Answer4}`}</Text>
-              <Text category="s1" style={styles.answerReview}>{`Your answer: ${
-                arr[item.pick]
-              }`}</Text>
-              <Text
-                category="s1"
-                style={styles.answerReview}
-              >{`Correct answer: ${
-                arr[parseInt(quizData[index].CorrectAnswer) - 1]
-              }`}</Text>
-            </View>
-            <View style={styles.controlBtn}>
-              <Button
-                style={{ borderRadius: 50, paddingVertical: 6 }}
-                status="control"
-                appearance="outline"
-                accessoryLeft={UnlikeIcon}
-              >
-                SAVE
-              </Button>
-            </View>
-          </View>
-        );
-      })}
-    </View>
-  );
-};
+  getResult,
+  saveQuestion,
+  unsaveQuestion,
+} from "../../../redux/actions/questionAction";
 
 export const QuizScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
-  const [result, setResult] = React.useState([]);
   const [score, setScore] = React.useState(0);
-  const question = quizData[currentQuestion];
 
+  // redux
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.questionReducer);
+  console.log(data.savedList)
+
+  // current question
+  const question = data.quizData[currentQuestion];
+
+  // next btn
   const goNextQuestion = () => {
-    if (result.length <= 10) {
+    if (currentQuestion < 10) {
       // add score
       if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
         setScore(score + 10);
       }
-
       // each result
       const itemRes = {
         res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
         pick: selectedIndex,
       };
-      result.push(itemRes);
-      setResult(result);
+      dispatch(getResult(itemRes, currentQuestion));
     }
     setSelectedIndex(-1);
     setCurrentQuestion(currentQuestion + 1);
+  };
+
+  const Reviews = ({ data }) => {
+    const arr = ["A", "B", "C", "D"];
+    return (
+      <View>
+        {data.map((item, index) => {
+          return (
+            <View
+              style={
+                item.result.res ? styles.correctCard : styles.inCorrectCard
+              }
+              key={index}
+            >
+              <View>
+                <Text category="s1" style={styles.reviewTitle}>{`Question ${
+                  index + 1
+                }: ${data[index].Question}`}</Text>
+                <Text
+                  category="s2"
+                  style={styles.reviewContent}
+                >{`A. ${data[index].Answer1}`}</Text>
+                <Text
+                  category="s2"
+                  style={styles.reviewContent}
+                >{`B. ${data[index].Answer2}`}</Text>
+                <Text
+                  category="s2"
+                  style={styles.reviewContent}
+                >{`C. ${data[index].Answer3}`}</Text>
+                <Text
+                  category="s2"
+                  style={styles.reviewContent}
+                >{`D. ${data[index].Answer4}`}</Text>
+                <Text
+                  category="s1"
+                  style={styles.answerReview}
+                >{`Your answer: ${arr[item.result.pick]}`}</Text>
+                <Text
+                  category="s1"
+                  style={styles.answerReview}
+                >{`Correct answer: ${
+                  arr[parseInt(data[index].CorrectAnswer) - 1]
+                }`}</Text>
+              </View>
+              <View style={styles.controlBtn}>
+                <Button
+                  style={{ borderRadius: 16, paddingVertical: 6 }}
+                  status="control"
+                  appearance="outline"
+                  accessoryLeft={!item.saved ? UnlikeIcon : LikeIcon}
+                  onPress={
+                    !item.saved
+                      ? () => dispatch(saveQuestion(item))
+                      : () => dispatch(unsaveQuestion(item))
+                  }
+                >
+                  {!item.saved ? "Save" : "Saved"}
+                </Button>
+              </View>
+            </View>
+          );
+        })}
+      </View>
+    );
   };
 
   return (
@@ -162,7 +159,7 @@ export const QuizScreen = ({ navigation }) => {
             >
               Your Quiz Reviews:
             </Text>
-            <Reviews result={result} />
+            <Reviews data={data.quizData} />
           </ScrollView>
         </View>
       ) : (

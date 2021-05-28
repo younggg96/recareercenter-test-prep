@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   correctCard: {
     ...cardStyle,
     ...shadow,
-    backgroundColor: "#A2FF8B",
+    backgroundColor: "#8ACE8B",
   },
   inCorrectCard: {
     ...cardStyle,
