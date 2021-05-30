@@ -37,7 +37,7 @@ export const IncorrectIcon = (props) => <Icon {...props} name="close-circle" fil
 // star
 export const StarIcon = (props) => <Icon {...props} name="star" fill="#E52326" style={{ width: 24, height: 24 }} />;
 export const StarOutlineIcon = (props) => <Icon {...props} name="star-outline" fill="#E52326" style={{ width: 24, height: 24 }} />;
-export const ListIcon = (props) => <Icon {...props} name="list" fill="#000" style={{ width: 24, height: 24 }} />;
+export const ListIcon = (props) => <Icon {...props} name="list" fill="#000"/>;
 // delete
 export const TrashIcon = (props) => <Icon {...props} name="trash-2-outline" fill="#E52326" style={{ width: 24, height: 24 }} />;
 

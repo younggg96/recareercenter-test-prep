@@ -35,7 +35,7 @@ const ForgetPassword = ({ navigation }) => {
 
   return (
     <>
-      <TopBar title="Reset password" navigation={navigation} />
+      <TopBar title="Reset password" navigation={navigation} hasBack={true} />
       <View style={styles.container}>
         <Text style={styles.paragraphReset} category="h1">
           Reset your password

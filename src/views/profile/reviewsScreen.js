@@ -1,8 +1,8 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Text } from '@ui-kitten/components';
-import { useDispatch, useSelector } from 'react-redux';
-import { TopBar } from '../../components/topBar/topBar';
+import React from "react";
+import { View } from "react-native";
+import { Text } from "@ui-kitten/components";
+import { useDispatch, useSelector } from "react-redux";
+import { TopBar } from "../../components/topBar/topBar";
 
 export const ReviewsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -10,9 +10,9 @@ export const ReviewsScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="Reviews" navigation={navigation} />
+      <TopBar title="Reviews" navigation={navigation} hasBack={true} />
       <View>
-        <Text category='s1' >ReviewsScreen</Text>
+        <Text category="s1">ReviewsScreen</Text>
       </View>
     </View>
   );

@@ -1,4 +1,4 @@
-import { Icon, Layout, Text } from "@ui-kitten/components";
+import { Button, Card, Icon, Layout, Text, Modal } from "@ui-kitten/components";
 import React from "react";
 import { View } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
@@ -7,13 +7,15 @@ import { Categories } from "../../../static/questions/category";
 import { homeStyles } from "../../../styles/home/homeStyle";
 
 export const AllCategroyScreen = ({ navigation }) => {
+  const [visible, setVisible] = React.useState(false);
+
   const navigateToPractice = (id, name) => {
     navigation.navigate("PracticeScreen", {
       id: id,
       practice: name,
     });
   };
-  
+
   const ItemCard = ({ item }) => {
     return (
       <React.Fragment>
@@ -63,7 +65,7 @@ export const AllCategroyScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="All Questions" navigation={navigation} />
+      <TopBar title="All Questions" navigation={navigation} hasBack={true} />
       <View style={homeStyles.categroyContainer}>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -72,6 +74,22 @@ export const AllCategroyScreen = ({ navigation }) => {
           numColumns={2}
           keyExtractor={(item) => item.id.toString()}
         />
+        <Modal
+          style={homeStyles.modal}
+          visible={visible}
+          backdropStyle={homeStyles.backdrop}
+          onBackdropPress={() => setVisible(false)}
+        >
+          <Card disabled={true} style={homeStyles.modalCard}>
+            <View>
+              <Text category="h5">Unlock Practice Questions?</Text>
+              <Text category="h6" style={homeStyles.modalTitle}>
+                Become A Membership Today!
+              </Text>
+            </View>
+            <Button onPress={() => setVisible(false)}>Start Membership!</Button>
+          </Card>
+        </Modal>
       </View>
     </View>
   );

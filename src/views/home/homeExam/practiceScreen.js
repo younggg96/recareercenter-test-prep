@@ -407,7 +407,11 @@ export const PracticeScreen = ({ route, navigation }) => {
       {Object.keys(totalResult).length !== 0 ? (
         // total reviews
         <View style={{ flex: 1 }}>
-          <TopBar title="Total Reviews" navigation={navigation} />
+          <TopBar
+            title="Total Reviews"
+            navigation={navigation}
+            hasBack={true}
+          />
           <ScrollView showsVerticalScrollIndicator={false}>
             <TotalReview totalResult={totalResult} />
           </ScrollView>
@@ -415,7 +419,7 @@ export const PracticeScreen = ({ route, navigation }) => {
       ) : !showResult ? (
         // question
         <View style={{ flex: 1 }}>
-          <TopBar title={practice} navigation={navigation} />
+          <TopBar title={practice} navigation={navigation} hasBack={true} />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.questionCard}>
               <ProgressBar

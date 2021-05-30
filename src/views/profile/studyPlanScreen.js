@@ -41,7 +41,7 @@ export const StudyPlanScreen = ({ navigation }) => {
   // exam date
   const editDate = () => {
     setVisible(false);
-    successChangeExamDateAlert()
+    successChangeExamDateAlert();
     dispatch(changeExamDate(examDate));
   };
 
@@ -92,11 +92,9 @@ export const StudyPlanScreen = ({ navigation }) => {
     );
 
   const successChangeTargetNumAlert = () =>
-    Alert.alert(
-      "Your Daily Practice Changed",
-      `${dailyTarget}`,
-      [{ text: "OK", style: "default" }]
-    );
+    Alert.alert("Your Daily Practice Changed", `${dailyTarget}`, [
+      { text: "OK", style: "default" },
+    ]);
 
   const successChangeExamDateAlert = () =>
     Alert.alert(
@@ -107,7 +105,7 @@ export const StudyPlanScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="Study Plan" navigation={navigation} />
+      <TopBar title="Study Plan" navigation={navigation} hasBack={true} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
           <View style={styles.title}>

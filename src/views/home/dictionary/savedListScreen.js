@@ -38,7 +38,7 @@ export const SavedListScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="Saved List" navigation={navigation} />
+      <TopBar title="Saved List" navigation={navigation} hasBack={true} />
       {!savedWords.savedWord.length ? (
         // not saved
         <View

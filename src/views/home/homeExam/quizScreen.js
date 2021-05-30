@@ -30,7 +30,7 @@ export const QuizScreen = ({ navigation }) => {
   // next btn
   const goNextQuestion = () => {
     if (currentQuestion < 10) {
-      // do question 
+      // do question
       dispatch(doQuestion());
       // add score
       if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
@@ -116,7 +116,7 @@ export const QuizScreen = ({ navigation }) => {
     <React.Fragment>
       {!question ? (
         <View style={{ flex: 1 }}>
-          <TopBar title="Quiz Review" navigation={navigation} />
+          <TopBar title="Quiz Review" navigation={navigation} hasBack={true} />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <View style={{ justifyContent: "center", alignItems: "center" }}>

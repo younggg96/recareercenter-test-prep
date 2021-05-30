@@ -36,7 +36,7 @@ export const ChangePasswordScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="Change Password" navigation={navigation} />
+      <TopBar title="Change Password" navigation={navigation} hasBack={true} />
       <View style={styles.passwordInput}>
         <Controller
           name="password"
