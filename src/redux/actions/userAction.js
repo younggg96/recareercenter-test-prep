@@ -5,6 +5,7 @@ import {
   USER_LOGIN,
   USER_LOGOUT,
   CHANGE_PASSWORD,
+  DO_QUESTION,
 } from "./actionTypes";
 
 export function login(email, password) {
@@ -60,5 +61,11 @@ export function setStartDay(dateObj) {
   return {
     type: SET_START_DAY,
     payload: dateObj,
+  };
+}
+
+export function doQuestion() {
+  return {
+    type: DO_QUESTION
   };
 }

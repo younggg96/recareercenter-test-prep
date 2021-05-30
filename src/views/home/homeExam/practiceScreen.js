@@ -19,6 +19,7 @@ import {
   saveQuestion,
   unsaveQuestion,
 } from "../../../redux/actions/questionAction";
+import { doQuestion } from "../../../redux/actions/userAction";
 
 const Review = ({ result, question, currentQuestion }) => {
   const arr = ["A", "B", "C", "D"];
@@ -353,6 +354,7 @@ export const PracticeScreen = ({ route, navigation }) => {
   const getResult = () => {
     setSelectedIndex(-1);
     setShowResult(true);
+    dispatch(doQuestion());
     const itemRes = {
       res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
       pick: selectedIndex,

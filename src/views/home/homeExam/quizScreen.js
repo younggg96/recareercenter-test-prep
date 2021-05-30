@@ -13,6 +13,7 @@ import {
   saveQuestion,
   unsaveQuestion,
 } from "../../../redux/actions/questionAction";
+import { doQuestion } from "../../../redux/actions/userAction";
 
 export const QuizScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
@@ -22,7 +23,6 @@ export const QuizScreen = ({ navigation }) => {
   // redux
   const dispatch = useDispatch();
   const data = useSelector((state) => state.questionReducer);
-  console.log(data.savedList)
 
   // current question
   const question = data.quizData[currentQuestion];
@@ -30,6 +30,8 @@ export const QuizScreen = ({ navigation }) => {
   // next btn
   const goNextQuestion = () => {
     if (currentQuestion < 10) {
+      // do question 
+      dispatch(doQuestion());
       // add score
       if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
         setScore(score + 10);

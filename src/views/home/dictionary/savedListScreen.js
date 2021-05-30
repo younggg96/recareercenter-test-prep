@@ -12,8 +12,8 @@ export const SavedListScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   // unsave
-  const unSave = ({ index }) => {
-    dispatch(unSaveWord(index));
+  const unSave = (info) => {
+    dispatch(unSaveWord(info.item.id));
   };
 
   // items

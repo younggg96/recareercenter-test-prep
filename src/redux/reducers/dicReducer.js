@@ -21,10 +21,14 @@ export const dicReducer = (state = dicReducerInitialState, action) => {
         ...state,
         list: [
           ...state.list.slice(0, action.payload.id),
-          { ...state.list[action.payload.id], ...{ item: state.list[action.payload.id].item, saved: false } },
+          {
+            ...state.list[action.payload.id],
+            ...{ item: state.list[action.payload.id].item, saved: false },
+          },
           ...state.list.slice(action.payload.id + 1),
         ],
         savedWord: state.savedWord.filter((item) => {
+          console.log(item, action.payload.id);
           return item.id != action.payload.id;
         }),
       };

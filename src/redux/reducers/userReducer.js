@@ -2,6 +2,7 @@ import {
   CHANGE_DAILY_PRACTICES,
   CHANGE_EXAM_DATE,
   CHANGE_PASSWORD,
+  DO_QUESTION,
   SET_START_DAY,
   USER_LOGIN,
   USER_LOGOUT,
@@ -13,7 +14,7 @@ const INITIAL_STATE = {
     email: "yangguanggeng960123@gmail.com",
     examTargetDate: new Date("December 17, 2021"),
     dailyTarget: 150,
-    finishedQuestions: 60,
+    finishedQuestions: 0,
     startDay: new Date("January 01, 2021"),
   },
   signIn: true,
@@ -41,6 +42,14 @@ export default (state = INITIAL_STATE, action) => {
       return {
         userData: { ...state.userData, startDay: action.payload },
         signIn: state.signIn,
+      };
+    case DO_QUESTION:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          finishedQuestions: state.userData.finishedQuestions + 1,
+        },
       };
     default:
       return state;

@@ -29,7 +29,6 @@ const quizData = getRandomArrayElements(data.questionData, 10);
 quizData.map((item) => {
   arr.push(Object.assign({}, item, { saved: false, result: {} }));
 });
-// console.log(arr);
 
 const questionReducerInitialState = {
   quizData: arr,
