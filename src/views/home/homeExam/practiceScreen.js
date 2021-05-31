@@ -457,6 +457,7 @@ export const PracticeScreen = ({ route, navigation }) => {
             <TopBar
               title={`Question ${currentQuestion + 1} Answer`}
               navigation={navigation}
+              hasBack={true}
             />
             <Review
               result={res}

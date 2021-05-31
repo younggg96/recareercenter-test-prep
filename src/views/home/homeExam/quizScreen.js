@@ -167,6 +167,7 @@ export const QuizScreen = ({ navigation }) => {
           <TopBar
             title={"Question " + `${currentQuestion + 1}`}
             navigation={navigation}
+            hasBack={true}
           />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
