@@ -33,12 +33,15 @@ const styles = StyleSheet.create({
 });
 
 export const ProgressBar = (props) => {
-  const { finished, target, isTimer } = props;
+  const { finished, target, isTimer, setTimeoutDisplay } = props;
   const [counter, setCounter] = React.useState(target * 60);
 
   if (isTimer) {
     React.useEffect(() => {
       counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+      if (counter == 0) {
+        setTimeoutDisplay(true);
+      }
     }, [counter]);
   }
 
@@ -51,7 +54,7 @@ export const ProgressBar = (props) => {
               style={{
                 backgroundColor: "#E53A3D",
                 borderRadius: 25,
-                width: `${5 + ((target * 60 - counter) / (target * 60)) * 95}%`,
+                width: `${(counter / (target * 60)) * 100}%`,
               }}
             />
           </View>
@@ -97,7 +100,6 @@ export const ProgressBar = (props) => {
               }}
             />
           </View>
-
           <Text style={styles.status}>
             <Text style={styles.finished}>{finished}</Text> / {target}
           </Text>

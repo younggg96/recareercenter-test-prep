@@ -46,5 +46,21 @@ export const styles = StyleSheet.create({
     marginTop: 16,
     color: "#fff",
     paddingVertical: 8
-  }
+  },
+  backdrop: {
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
+  modal: {
+    width: '80%',
+  },
+  modalCard: {
+    height: 300,
+    justifyContent: 'space-between'
+  },
+  modalTitle: {
+    paddingVertical: 8,
+  },
+  modalBtn: {
+    marginVertical: 8,
+  },
 });

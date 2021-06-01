@@ -25,8 +25,6 @@ export const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const [visible, setVisible] = React.useState(false);
-
-
   // navigations
   const navigateTo = (link) => Linking.openURL(link);
 

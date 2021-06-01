@@ -1,4 +1,12 @@
-import { Button, Layout, Radio, RadioGroup, Text } from "@ui-kitten/components";
+import {
+  Button,
+  Card,
+  // Layout,
+  Modal,
+  Radio,
+  RadioGroup,
+  Text,
+} from "@ui-kitten/components";
 import React from "react";
 import { Image, View } from "react-native";
 import { TopBar } from "../../../components/topBar/topBar";
@@ -24,8 +32,10 @@ export const MockExamScreen = ({ navigation }) => {
   // redux
   const dispatch = useDispatch();
   const data = useSelector((state) => state.questionReducer);
-  const [arr, ] = React.useState(getRandomArrayElements(data.questionData, 100));
+  const [arr] = React.useState(getRandomArrayElements(data.questionData, 100));
 
+  // timeout display
+  const [timeoutDisplay, setTimeoutDisplay] = React.useState(false);
 
   // current question
   const question = arr[currentQuestion];
@@ -174,7 +184,11 @@ export const MockExamScreen = ({ navigation }) => {
           />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
-              <ProgressBar target="30" isTimer={true}/>
+              <ProgressBar
+                target="1"
+                isTimer={true}
+                setTimeoutDisplay={setTimeoutDisplay}
+              />
               <View>
                 <Text category="s1" style={styles.questionTitle}>
                   Question: {`${question.Question}`}
@@ -200,6 +214,22 @@ export const MockExamScreen = ({ navigation }) => {
           </ScrollView>
         </View>
       )}
+      <Modal
+        visible={timeoutDisplay}
+        style={styles.modal}
+        backdropStyle={styles.backdrop}
+        onBackdropPress={() => {
+          setTimeoutDisplay(false);
+        }}
+      >
+        <Card disabled={true} style={styles.modalCard}>
+          <Text category="h4">Time Over</Text>
+          <Text category="h6" style={styles.modalTitle}>
+            Your Mock Exam Is Over
+          </Text>
+          <Button onPress={() => setTimeoutDisplay(false)}>Exam Results</Button>
+        </Card>
+      </Modal>
     </React.Fragment>
   );
 };
