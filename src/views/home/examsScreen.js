@@ -26,7 +26,7 @@ export const ExamsScreen = ({ navigation }) => {
           All Mock Exam
         </Text>
         <Text category="s2" appearance="hint" style={styles.time}>
-          Limited time 30 mins
+          Within 30 mins, To complete 100 questions
         </Text>
         <Button style={styles.button} onPress={goMockExam}>
           Let's Start A Real Mock Exam

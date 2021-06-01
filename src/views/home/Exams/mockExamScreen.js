@@ -14,6 +14,7 @@ import {
   unsaveQuestion,
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
+import { getRandomArrayElements } from "../../../helper";
 
 export const MockExamScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
@@ -23,18 +24,20 @@ export const MockExamScreen = ({ navigation }) => {
   // redux
   const dispatch = useDispatch();
   const data = useSelector((state) => state.questionReducer);
+  const [arr, ] = React.useState(getRandomArrayElements(data.questionData, 100));
+
 
   // current question
-  const question = data.quizData[currentQuestion];
+  const question = arr[currentQuestion];
 
   // next btn
   const goNextQuestion = () => {
-    if (currentQuestion < 10) {
+    if (currentQuestion < 100) {
       // do question
       dispatch(doQuestion());
       // add score
       if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
-        setScore(score + 10);
+        setScore(score + 1);
       }
       // each result
       const itemRes = {
@@ -159,7 +162,7 @@ export const MockExamScreen = ({ navigation }) => {
             >
               Your Quiz Reviews:
             </Text>
-            <Reviews data={data.quizData} />
+            <Reviews data={data.questionData} />
           </ScrollView>
         </View>
       ) : (

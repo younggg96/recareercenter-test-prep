@@ -14,18 +14,21 @@ import {
   unsaveQuestion,
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
+import { getRandomArrayElements } from "../../../helper";
+
 
 export const QuizScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
+  const data = useSelector((state) => state.questionReducer);
+  const [arr, ] = React.useState(getRandomArrayElements(data.questionData, 10));
 
   // redux
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.questionReducer);
 
   // current question
-  const question = data.quizData[currentQuestion];
+  const question = arr[currentQuestion];
 
   // next btn
   const goNextQuestion = () => {
@@ -159,7 +162,7 @@ export const QuizScreen = ({ navigation }) => {
             >
               Your Quiz Reviews:
             </Text>
-            <Reviews data={data.quizData} />
+            <Reviews data={data.questionData} />
           </ScrollView>
         </View>
       ) : (
