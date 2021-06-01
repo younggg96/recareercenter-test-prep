@@ -4,7 +4,11 @@ import { Image, View } from "react-native";
 import { TopBar } from "../../components/topBar/topBar";
 import { styles } from "../../styles/home/examStyle";
 
-export const ExamsScreen = () => {
+export const ExamsScreen = ({ navigation }) => {
+  const goMockExam = () => {
+    navigation.navigate("MockExamScreen");
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <TopBar title="Exams" hasBack={false} />
@@ -22,11 +26,12 @@ export const ExamsScreen = () => {
           All Mock Exam
         </Text>
         <Text category="s2" appearance="hint" style={styles.time}>
-          Estimated time 10 mins
+          Limited time 30 mins
         </Text>
-        <Button style={styles.button}>Let's Start A Real Mock Exam</Button>
+        <Button style={styles.button} onPress={goMockExam}>
+          Let's Start A Real Mock Exam
+        </Button>
       </View>
-      
     </View>
   );
 };

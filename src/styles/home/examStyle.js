@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     ...shadow,
   },
   title: {
-    marginBottom: 8,
+    marginBottom: 16,
   },
   time: {
     marginBottom: 4,

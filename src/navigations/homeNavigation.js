@@ -29,14 +29,22 @@ import { PracticeScreen } from "../views/home/homeExam/practiceScreen";
 import { DictionaryScreen } from "../views/home/dictionary/dictionaryScreen";
 import { SavedListScreen } from "../views/home/dictionary/savedListScreen";
 import { AllCategroyScreen } from "../views/home/homeExam/allCategroyScreen";
+import { MockExamScreen } from "../views/home/Exams/mockExamScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const DictionaryNavigation = () => (
-  <Stack.Navigator headerMode="none" initialRouteName="ProfileScreen">
+  <Stack.Navigator headerMode="none" initialRouteName="DictionaryScreen">
     <Stack.Screen name="DictionaryScreen" component={DictionaryScreen} />
     <Stack.Screen name="SavedListScreen" component={SavedListScreen} />
+  </Stack.Navigator>
+);
+
+const ExamNavigation = () => (
+  <Stack.Navigator headerMode="none" initialRouteName="ExamScreen">
+    <Stack.Screen name="ExamScreen" component={ExamsScreen} />
+    <Stack.Screen name="MockExamScreen" component={MockExamScreen} />
   </Stack.Navigator>
 );
 
@@ -82,7 +90,7 @@ export const HomeNavigation = () => {
   return (
     <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeScreenNavigation} />
-      <Tab.Screen name="Exams" component={ExamsScreen} />
+      <Tab.Screen name="Exams" component={ExamNavigation} />
       <Tab.Screen name="Dictionary" component={DictionaryNavigation} />
       <Tab.Screen name="Profile" component={ProfileNavigation} />
     </Tab.Navigator>
