@@ -60,6 +60,42 @@ export const MockExamScreen = ({ navigation }) => {
     setCurrentQuestion(currentQuestion + 1);
   };
 
+  // time over result
+  const notFinishedQuestions = (currentQuestion) => {
+    if (selectedIndex !== -1) {
+      // do question
+      dispatch(doQuestion());
+      // add score
+      if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
+        setScore(score + 1);
+      }
+      // each result
+      const itemRes = {
+        res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
+        pick: selectedIndex,
+      };
+      dispatch(getResult(itemRes, currentQuestion));
+      for (let i = currentQuestion + 1; i < 100; i++) {
+        const itemRes = {
+          res: "unfinished",
+          pick: null
+        };
+        dispatch(getResult(itemRes, i));
+      }
+    } else {
+      for (let i = currentQuestion; i < 100; i++) {
+        const itemRes = {
+          res: "unfinished",
+          pick: null
+        };
+        dispatch(getResult(itemRes, i));
+      }
+    }
+
+
+    setCurrentQuestion(100)
+  };
+
   const Reviews = ({ data }) => {
     const arr = ["A", "B", "C", "D"];
     return (
@@ -68,7 +104,7 @@ export const MockExamScreen = ({ navigation }) => {
           return (
             <View
               style={
-                item.result.res ? styles.correctCard : styles.inCorrectCard
+                item.result.res === "unfinished" ? styles.notFinishedCard :  item.result.res ? styles.correctCard : styles.inCorrectCard
               }
               key={index}
             >
@@ -95,7 +131,7 @@ export const MockExamScreen = ({ navigation }) => {
                 <Text
                   category="s1"
                   style={styles.answerReview}
-                >{`Your answer: ${arr[item.result.pick]}`}</Text>
+                >{item.result.pick ? `Your answer: ${arr[item.result.pick]}` : "Your answer: Unfinished"}</Text>
                 <Text
                   category="s1"
                   style={styles.answerReview}
@@ -129,7 +165,8 @@ export const MockExamScreen = ({ navigation }) => {
     <React.Fragment>
       {!question ? (
         <View style={{ flex: 1 }}>
-          <TopBar title="Quiz Review" navigation={navigation} hasBack={true} />
+          {/* reviews */}
+          <TopBar title="Real Mock Exam Review" navigation={navigation} hasBack={true} />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -177,6 +214,7 @@ export const MockExamScreen = ({ navigation }) => {
         </View>
       ) : (
         <View style={{ flex: 1 }}>
+          {/* questions */}
           <TopBar
             title={"Question " + `${currentQuestion + 1}`}
             navigation={navigation}
@@ -214,20 +252,38 @@ export const MockExamScreen = ({ navigation }) => {
           </ScrollView>
         </View>
       )}
+      {/* time over Modal */}
       <Modal
         visible={timeoutDisplay}
         style={styles.modal}
         backdropStyle={styles.backdrop}
         onBackdropPress={() => {
           setTimeoutDisplay(false);
+          notFinishedQuestions(currentQuestion)
         }}
       >
         <Card disabled={true} style={styles.modalCard}>
-          <Text category="h4">Time Over</Text>
+          <Image
+            source={require("../../../../assets/img/time-over.png")}
+            style={{
+              width: 180,
+              height: 180,
+              marginBottom: 8,
+              alignSelf: "center",
+            }}
+          />
+          <Text category="h3">Time Over</Text>
           <Text category="h6" style={styles.modalTitle}>
             Your Mock Exam Is Over
           </Text>
-          <Button onPress={() => setTimeoutDisplay(false)}>Exam Results</Button>
+          <Button
+            onPress={() => {
+              notFinishedQuestions(currentQuestion)
+              setTimeoutDisplay(false);
+            }}
+          >
+            Exam Results
+          </Button>
         </Card>
       </Modal>
     </React.Fragment>

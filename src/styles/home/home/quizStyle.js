@@ -30,6 +30,12 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 8
   },
+  notFinishedCard: {
+    ...cardStyle,
+    ...shadow,
+    justifyContent: "space-between",
+    backgroundColor: "#A3A3A3",
+  },
   correctCard: {
     ...cardStyle,
     ...shadow,
@@ -54,13 +60,10 @@ export const styles = StyleSheet.create({
     width: '80%',
   },
   modalCard: {
-    height: 300,
-    justifyContent: 'space-between'
+    // justifyContent: 'space-between'
+    textAlign: "center"
   },
   modalTitle: {
     paddingVertical: 8,
-  },
-  modalBtn: {
-    marginVertical: 8,
-  },
+  }
 });
