@@ -19,20 +19,25 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getResult,
   saveQuestion,
+  setNotFinishedQuestions,
   unsaveQuestion,
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
 import { getRandomArrayElements } from "../../../helper";
+import { LoadingIndicator } from "../../../components/loading/loadingIndicator";
 
 export const MockExamScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
+  const [loading, setLoading] = React.useState(false);
 
   // redux
   const dispatch = useDispatch();
   const data = useSelector((state) => state.questionReducer);
   const [arr] = React.useState(getRandomArrayElements(data.questionData, 100));
+
+  // console.log(getRandomArrayElements(data.questionData, 100).length, arr.length)
 
   // timeout display
   const [timeoutDisplay, setTimeoutDisplay] = React.useState(false);
@@ -75,32 +80,26 @@ export const MockExamScreen = ({ navigation }) => {
         pick: selectedIndex,
       };
       dispatch(getResult(itemRes, currentQuestion));
-      for (let i = currentQuestion + 1; i < 100; i++) {
-        const itemRes = {
-          res: "unfinished",
-          pick: null
-        };
-        dispatch(getResult(itemRes, i));
-      }
+      dispatch(setNotFinishedQuestions({
+        res: "unfinished",
+        pick: null
+      }, currentQuestion + 1))
     } else {
-      for (let i = currentQuestion; i < 100; i++) {
-        const itemRes = {
-          res: "unfinished",
-          pick: null
-        };
-        dispatch(getResult(itemRes, i));
-      }
+      dispatch(setNotFinishedQuestions({
+        res: "unfinished",
+        pick: null
+      }, currentQuestion))
     }
-
-
     setCurrentQuestion(100)
   };
 
-  const Reviews = ({ data }) => {
+  // Reviews
+  const Reviews = ({ d }) => {
     const arr = ["A", "B", "C", "D"];
+
     return (
       <View>
-        {data.map((item, index) => {
+        {d.map((item, index) => {
           return (
             <View
               style={
@@ -111,32 +110,32 @@ export const MockExamScreen = ({ navigation }) => {
               <View>
                 <Text category="s1" style={styles.reviewTitle}>{`Question ${
                   index + 1
-                }: ${data[index].Question}`}</Text>
+                }: ${d[index].Question}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`A. ${data[index].Answer1}`}</Text>
+                >{`A. ${d[index].Answer1}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`B. ${data[index].Answer2}`}</Text>
+                >{`B. ${d[index].Answer2}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`C. ${data[index].Answer3}`}</Text>
+                >{`C. ${d[index].Answer3}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`D. ${data[index].Answer4}`}</Text>
+                >{`D. ${d[index].Answer4}`}</Text>
                 <Text
                   category="s1"
                   style={styles.answerReview}
-                >{item.result.pick ? `Your answer: ${arr[item.result.pick]}` : "Your answer: Unfinished"}</Text>
+                >{item.result.pick ? `Your answer: ${arr[item.result.pick]}` : "Your answer: Not Finished"}</Text>
                 <Text
                   category="s1"
                   style={styles.answerReview}
                 >{`Correct answer: ${
-                  arr[parseInt(data[index].CorrectAnswer) - 1]
+                  arr[parseInt(d[index].CorrectAnswer) - 1]
                 }`}</Text>
               </View>
               <View style={styles.controlBtn}>
@@ -209,7 +208,7 @@ export const MockExamScreen = ({ navigation }) => {
             >
               Your Quiz Reviews:
             </Text>
-            <Reviews data={data.questionData} />
+            <Reviews d={data.questionData} />
           </ScrollView>
         </View>
       ) : (
@@ -223,7 +222,7 @@ export const MockExamScreen = ({ navigation }) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <ProgressBar
-                target="1"
+                target="10"
                 isTimer={true}
                 setTimeoutDisplay={setTimeoutDisplay}
               />
@@ -258,8 +257,10 @@ export const MockExamScreen = ({ navigation }) => {
         style={styles.modal}
         backdropStyle={styles.backdrop}
         onBackdropPress={() => {
+          setLoading(true);
           setTimeoutDisplay(false);
-          notFinishedQuestions(currentQuestion)
+          notFinishedQuestions(currentQuestion);
+          setLoading(false);
         }}
       >
         <Card disabled={true} style={styles.modalCard}>
@@ -272,15 +273,20 @@ export const MockExamScreen = ({ navigation }) => {
               alignSelf: "center",
             }}
           />
-          <Text category="h3">Time Over</Text>
+          <Text category="h3" style={{textAlign: "center", fontWeight: "bold"}}>Time Over</Text>
           <Text category="h6" style={styles.modalTitle}>
             Your Mock Exam Is Over
           </Text>
           <Button
             onPress={() => {
-              notFinishedQuestions(currentQuestion)
+              setLoading(true);
+              notFinishedQuestions(currentQuestion);
               setTimeoutDisplay(false);
+              // setTimeout(() => {
+              // }, 1000)
             }}
+            style={{borderRadius: 25, marginTop: 8}}
+            accessoryLeft={ loading ? LoadingIndicator : null }
           >
             Exam Results
           </Button>

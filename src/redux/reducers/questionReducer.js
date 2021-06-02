@@ -1,6 +1,7 @@
 import {
   GET_RESULT,
   SAVE_QUESTION,
+  SET_NOT_FINISHED,
   UNSAVE_QUESTION,
 } from "../actions/actionTypes";
 
@@ -32,6 +33,18 @@ export const questionReducer = (
           { ...state.questionData[currentQuestion], result: itemRes },
           ...state.questionData.slice(currentQuestion + 1, state.questionData.length),
         ],
+      };
+    case SET_NOT_FINISHED:
+      const { itemRes2, currentQuestion2 } = action.payload;
+      state.questionData.map((item, index) => {
+        if(index >= currentQuestion2) {
+          item.result = itemRes2;
+        }
+      })
+      console.log(state.questionData)
+      return {
+        ...state,
+        questionData: state.questionData
       };
     case SAVE_QUESTION:
       const { item } = action.payload;

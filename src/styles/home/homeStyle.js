@@ -37,7 +37,7 @@ export const homeStyles = StyleSheet.create({
   },
   button: {
     marginTop: 4,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   exploreBtn: {
     marginTop: 16,

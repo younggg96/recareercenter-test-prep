@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
   },
   answerReview: {
     fontSize: 16,
-    marginTop: 8
+    marginTop: 8,
   },
   notFinishedCard: {
     ...cardStyle,
@@ -51,19 +51,21 @@ export const styles = StyleSheet.create({
   controlBtn: {
     marginTop: 16,
     color: "#fff",
-    paddingVertical: 8
+    paddingVertical: 8,
   },
   backdrop: {
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
   },
   modal: {
-    width: '80%',
+    width: "80%",
+    borderRadius: 25,
+    overflow: "hidden"
   },
   modalCard: {
-    // justifyContent: 'space-between'
-    textAlign: "center"
+    paddingVertical: 8,
   },
   modalTitle: {
+    textAlign: "center",
     paddingVertical: 8,
-  }
+  },
 });

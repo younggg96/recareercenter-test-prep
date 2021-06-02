@@ -18,5 +18,6 @@ export const DIC_UNSAVE_WORD = 'DIC_UNSAVE_WORD';
 export const SAVE_QUESTION = 'SAVE_QUESTION';
 export const UNSAVE_QUESTION = 'UNSAVE_QUESTION';
 export const GET_RESULT = 'GET_RESULT';
+export const SET_NOT_FINISHED = 'SET_NOT_FINISHED';
 
 export const DO_QUESTION = 'DO_QUESTION';
