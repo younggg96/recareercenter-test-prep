@@ -1,21 +1,33 @@
 import {
   GET_RESULT,
+  GET_QUIZ_RESULT,
   SAVE_QUESTION,
-  SET_NOT_FINISHED,
   UNSAVE_QUESTION,
+  REFRESH_QUESTIONDATA,
+  REFRESH_QUIZ
 } from "../actions/actionTypes";
 
 // data
 import data from "../../static/questions/data.json";
+import { getRandomArrayElements } from "../../helper";
 
 // data
 let arr = [];
 data.questionData.map((item) => {
-  arr.push(Object.assign({}, item, { saved: false, result: {} }));
+  arr.push(
+    Object.assign({}, item, {
+      saved: false,
+      result: {
+        res: "unfinished",
+        pick: null,
+      },
+    })
+  );
 });
 
 const questionReducerInitialState = {
-  questionData: arr,
+  questionData: getRandomArrayElements(arr, 100),
+  quizData: getRandomArrayElements(arr, 10),
   savedList: [],
 };
 
@@ -24,6 +36,16 @@ export const questionReducer = (
   action
 ) => {
   switch (action.type) {
+    case REFRESH_QUIZ: 
+      return {
+        ...state,
+        quizData: getRandomArrayElements(arr, 10),
+      }
+    case REFRESH_QUESTIONDATA: 
+      return {
+        ...state,
+        questionData: getRandomArrayElements(arr, 10),
+      }
     case GET_RESULT:
       const { itemRes, currentQuestion } = action.payload;
       return {
@@ -31,20 +53,21 @@ export const questionReducer = (
         questionData: [
           ...state.questionData.slice(0, currentQuestion),
           { ...state.questionData[currentQuestion], result: itemRes },
-          ...state.questionData.slice(currentQuestion + 1, state.questionData.length),
+          ...state.questionData.slice(
+            currentQuestion + 1,
+            state.questionData.length
+          ),
         ],
       };
-    case SET_NOT_FINISHED:
+    case GET_QUIZ_RESULT:
       const { itemRes2, currentQuestion2 } = action.payload;
-      state.questionData.map((item, index) => {
-        if(index >= currentQuestion2) {
-          item.result = itemRes2;
-        }
-      })
-      console.log(state.questionData)
       return {
         ...state,
-        questionData: state.questionData
+        quizData: [
+          ...state.quizData.slice(0, currentQuestion2),
+          { ...state.quizData[currentQuestion2], result: itemRes2 },
+          ...state.quizData.slice(currentQuestion2 + 1, state.quizData.length),
+        ],
       };
     case SAVE_QUESTION:
       const { item } = action.payload;

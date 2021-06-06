@@ -23,7 +23,6 @@ import { doQuestion } from "../../../redux/actions/userAction";
 
 const Review = ({ result, question, currentQuestion }) => {
   const arr = ["A", "B", "C", "D"];
-  console.log(question);
   return (
     <View style={result.res ? styles.correctCard : styles.inCorrectCard}>
       <View style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }}>

@@ -1,30 +1,48 @@
 import {
   Button,
   Card,
-  // Layout,
   Modal,
   Radio,
   RadioGroup,
   Text,
+  TopNavigation,
+  TopNavigationAction,
 } from "@ui-kitten/components";
 import React from "react";
-import { Image, View } from "react-native";
-import { TopBar } from "../../../components/topBar/topBar";
+import { Image, StyleSheet, View } from "react-native";
 import { styles } from "../../../styles/home/home/quizStyle";
+import { shadow } from "../../../styles/shared/sharedStyle";
+import Constants from "expo-constants";
 
 import { ProgressBar } from "../../../components/progressBar/progressBar";
 import { ScrollView } from "react-native-gesture-handler";
-import { LikeIcon, UnlikeIcon } from "../../../components/icons/icons";
+import {
+  BackIcon,
+  LikeIcon,
+  UnlikeIcon,
+} from "../../../components/icons/icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getResult,
   saveQuestion,
-  setNotFinishedQuestions,
   unsaveQuestion,
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
-import { getRandomArrayElements } from "../../../helper";
 import { LoadingIndicator } from "../../../components/loading/loadingIndicator";
+import { TopBar } from "../../../components/topBar/topBar";
+
+const topStyles = StyleSheet.create({
+  topBar: {
+    paddingTop: Constants.statusBarHeight + 16,
+    paddingBottom: 18,
+    marginBottom: 8,
+    ...shadow,
+  },
+  topTitle: {
+    fontSize: 18,
+    paddingHorizontal: 16,
+  },
+});
 
 export const MockExamScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
@@ -35,9 +53,10 @@ export const MockExamScreen = ({ navigation }) => {
   // redux
   const dispatch = useDispatch();
   const data = useSelector((state) => state.questionReducer);
-  const [arr] = React.useState(getRandomArrayElements(data.questionData, 100));
+  const arr = data.questionData;
 
-  // console.log(getRandomArrayElements(data.questionData, 100).length, arr.length)
+  // quit display
+  const [quitExamDisplay, setQuitExamDisplay] = React.useState(false);
 
   // timeout display
   const [timeoutDisplay, setTimeoutDisplay] = React.useState(false);
@@ -66,76 +85,58 @@ export const MockExamScreen = ({ navigation }) => {
   };
 
   // time over result
-  const notFinishedQuestions = (currentQuestion) => {
-    if (selectedIndex !== -1) {
-      // do question
-      dispatch(doQuestion());
-      // add score
-      if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
-        setScore(score + 1);
-      }
-      // each result
-      const itemRes = {
-        res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
-        pick: selectedIndex,
-      };
-      dispatch(getResult(itemRes, currentQuestion));
-      dispatch(setNotFinishedQuestions({
-        res: "unfinished",
-        pick: null
-      }, currentQuestion + 1))
-    } else {
-      dispatch(setNotFinishedQuestions({
-        res: "unfinished",
-        pick: null
-      }, currentQuestion))
-    }
-    setCurrentQuestion(100)
+  const notFinishedQuestions = () => {
+    setCurrentQuestion(100);
   };
 
   // Reviews
-  const Reviews = ({ d }) => {
+  const Reviews = ({ data }) => {
     const arr = ["A", "B", "C", "D"];
-
     return (
       <View>
-        {d.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <View
               style={
-                item.result.res === "unfinished" ? styles.notFinishedCard :  item.result.res ? styles.correctCard : styles.inCorrectCard
+                item.result.res === "unfinished"
+                  ? styles.notFinishedCard
+                  : item.result.res
+                  ? styles.correctCard
+                  : styles.inCorrectCard
               }
               key={index}
             >
               <View>
+                <Text>{JSON.stringify(item.result)}</Text>
                 <Text category="s1" style={styles.reviewTitle}>{`Question ${
                   index + 1
-                }: ${d[index].Question}`}</Text>
+                }: ${data[index].Question}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`A. ${d[index].Answer1}`}</Text>
+                >{`A. ${data[index].Answer1}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`B. ${d[index].Answer2}`}</Text>
+                >{`B. ${data[index].Answer2}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`C. ${d[index].Answer3}`}</Text>
+                >{`C. ${data[index].Answer3}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`D. ${d[index].Answer4}`}</Text>
-                <Text
-                  category="s1"
-                  style={styles.answerReview}
-                >{item.result.pick ? `Your answer: ${arr[item.result.pick]}` : "Your answer: Not Finished"}</Text>
+                >{`D. ${data[index].Answer4}`}</Text>
+                <Text category="s1" style={styles.answerReview}>
+                  {item.result.pick !== null
+                    ? `Your answer: ${arr[item.result.pick]}`
+                    : "Your answer: Not Finished"}
+                </Text>
                 <Text
                   category="s1"
                   style={styles.answerReview}
                 >{`Correct answer: ${
-                  arr[parseInt(d[index].CorrectAnswer) - 1]
+                  arr[parseInt(data[index].CorrectAnswer) - 1]
                 }`}</Text>
               </View>
               <View style={styles.controlBtn}>
@@ -160,12 +161,29 @@ export const MockExamScreen = ({ navigation }) => {
     );
   };
 
+  // Top bar
+  const BackAction = () => (
+    <TopNavigationAction icon={BackIcon} onPress={exitModal} />
+  );
+
+  const exitModal = () => {
+    setQuitExamDisplay(true);
+  };
+
+  const navigateBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <React.Fragment>
-      {!question ? (
+      {currentQuestion > 99 ? (
         <View style={{ flex: 1 }}>
           {/* reviews */}
-          <TopBar title="Real Mock Exam Review" navigation={navigation} hasBack={true} />
+          <TopBar
+            title="Real Mock Exam Review"
+            navigation={navigation}
+            hasBack={true}
+          />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -175,7 +193,7 @@ export const MockExamScreen = ({ navigation }) => {
                 />
               </View>
               <Text category="s1" style={styles.title}>
-                Your Quiz Score:
+                Your Mock Exam Score:
               </Text>
               <Text
                 category="h1"
@@ -206,23 +224,27 @@ export const MockExamScreen = ({ navigation }) => {
               appearance="hint"
               style={{ ...styles.title, paddingHorizontal: 32 }}
             >
-              Your Quiz Reviews:
+              Your Mock Exam Reviews:
             </Text>
-            <Reviews d={data.questionData} />
+            <Reviews data={data.questionData} />
           </ScrollView>
         </View>
       ) : (
         <View style={{ flex: 1 }}>
           {/* questions */}
-          <TopBar
-            title={"Question " + `${currentQuestion + 1}`}
-            navigation={navigation}
-            hasBack={true}
+          <TopNavigation
+            title={() => (
+              <Text category="s1" style={topStyles.topTitle}>
+                {"Question " + `${currentQuestion + 1}`}
+              </Text>
+            )}
+            accessoryLeft={BackAction}
+            style={topStyles.topBar}
           />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <ProgressBar
-                target="10"
+                target="0.3"
                 isTimer={true}
                 setTimeoutDisplay={setTimeoutDisplay}
               />
@@ -251,16 +273,73 @@ export const MockExamScreen = ({ navigation }) => {
           </ScrollView>
         </View>
       )}
+      {/* quit modal */}
+      <Modal
+        visible={quitExamDisplay}
+        style={styles.modal}
+        backdropStyle={styles.backdrop}
+        onBackdropPress={() => {
+          setQuitExamDisplay(false);
+        }}
+      >
+        <Card disabled={true} style={styles.modalCard}>
+          <Image
+            source={require("../../../../assets/img/quit_exit.png")}
+            style={{
+              width: 180,
+              height: 120,
+              marginBottom: 8,
+              alignSelf: "center",
+            }}
+          />
+          <Text
+            category="h4"
+            style={{ textAlign: "center", fontWeight: "bold" }}
+          >
+            Exam Not fanished
+          </Text>
+          <Text category="h6" style={styles.modalTitle}>
+            Do you want to leave?
+          </Text>
+          <View
+            style={{
+              paddingHorizontal: 16,
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+              marginTop: 8,
+            }}
+          >
+            <Button
+              onPress={() => {
+                setQuitExamDisplay(false);
+                navigateBack();
+              }}
+              style={{ marginTop: 8, width: 100 }}
+            >
+              Yes
+            </Button>
+            <Button
+              onPress={() => {
+                setQuitExamDisplay(false);
+              }}
+              appearance="ghost"
+              style={{ marginTop: 8, width: 100 }}
+            >
+              Cancel
+            </Button>
+          </View>
+        </Card>
+      </Modal>
       {/* time over Modal */}
       <Modal
         visible={timeoutDisplay}
         style={styles.modal}
         backdropStyle={styles.backdrop}
         onBackdropPress={() => {
-          setLoading(true);
+          // setLoading(true);
           setTimeoutDisplay(false);
-          notFinishedQuestions(currentQuestion);
-          setLoading(false);
+          notFinishedQuestions();
+          // setLoading(false);
         }}
       >
         <Card disabled={true} style={styles.modalCard}>
@@ -273,20 +352,25 @@ export const MockExamScreen = ({ navigation }) => {
               alignSelf: "center",
             }}
           />
-          <Text category="h3" style={{textAlign: "center", fontWeight: "bold"}}>Time Over</Text>
+          <Text
+            category="h3"
+            style={{ textAlign: "center", fontWeight: "bold" }}
+          >
+            Time Over
+          </Text>
           <Text category="h6" style={styles.modalTitle}>
             Your Mock Exam Is Over
           </Text>
           <Button
             onPress={() => {
               setLoading(true);
-              notFinishedQuestions(currentQuestion);
+              notFinishedQuestions();
               setTimeoutDisplay(false);
               // setTimeout(() => {
               // }, 1000)
             }}
-            style={{borderRadius: 25, marginTop: 8}}
-            accessoryLeft={ loading ? LoadingIndicator : null }
+            style={{ borderRadius: 25, marginTop: 8 }}
+            accessoryLeft={loading ? LoadingIndicator : null}
           >
             Exam Results
           </Button>

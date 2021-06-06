@@ -1,4 +1,4 @@
-import { SAVE_QUESTION, GET_RESULT, UNSAVE_QUESTION, SET_NOT_FINISHED } from "./actionTypes";
+import { SAVE_QUESTION, GET_RESULT, UNSAVE_QUESTION, GET_QUIZ_RESULT, REFRESH_QUIZ, REFRESH_QUESTIONDATA } from "./actionTypes";
 
 export function getResult(itemRes, currentQuestion) {
   return {
@@ -6,11 +6,24 @@ export function getResult(itemRes, currentQuestion) {
     payload: { itemRes, currentQuestion },
   };
 }
-export function setNotFinishedQuestions(itemRes, currentQuestion) {
+
+export function getQuizResult(itemRes2, currentQuestion2) {
   return {
-    type: SET_NOT_FINISHED,
-    payload: { itemRes2: itemRes, currentQuestion2: currentQuestion},
+    type: GET_QUIZ_RESULT,
+    payload: { itemRes2, currentQuestion2 },
   };
+}
+
+export function refreshQuestionData() {
+  return {
+    type: REFRESH_QUESTIONDATA
+  }
+}
+
+export function refreshQuiz() {
+  return {
+    type: REFRESH_QUIZ
+  }
 }
 
 export function saveQuestion(item) {

@@ -28,7 +28,6 @@ export const dicReducer = (state = dicReducerInitialState, action) => {
           ...state.list.slice(action.payload.id + 1),
         ],
         savedWord: state.savedWord.filter((item) => {
-          console.log(item, action.payload.id);
           return item.id != action.payload.id;
         }),
       };

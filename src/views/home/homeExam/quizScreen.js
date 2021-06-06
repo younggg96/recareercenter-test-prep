@@ -9,20 +9,18 @@ import { ScrollView } from "react-native-gesture-handler";
 import { LikeIcon, UnlikeIcon } from "../../../components/icons/icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getResult,
+  getQuizResult,
   saveQuestion,
   unsaveQuestion,
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
-import { getRandomArrayElements } from "../../../helper";
-
 
 export const QuizScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const data = useSelector((state) => state.questionReducer);
-  const [arr, ] = React.useState(getRandomArrayElements(data.questionData, 10));
+  const arr = data.quizData;
 
   // redux
   const dispatch = useDispatch();
@@ -44,7 +42,7 @@ export const QuizScreen = ({ navigation }) => {
         res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
         pick: selectedIndex,
       };
-      dispatch(getResult(itemRes, currentQuestion));
+      dispatch(getQuizResult(itemRes, currentQuestion));
     }
     setSelectedIndex(-1);
     setCurrentQuestion(currentQuestion + 1);
@@ -117,7 +115,7 @@ export const QuizScreen = ({ navigation }) => {
 
   return (
     <React.Fragment>
-      {!question ? (
+      {currentQuestion > 9 ? (
         <View style={{ flex: 1 }}>
           <TopBar title="Quiz Review" navigation={navigation} hasBack={true} />
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -162,11 +160,12 @@ export const QuizScreen = ({ navigation }) => {
             >
               Your Quiz Reviews:
             </Text>
-            <Reviews data={data.questionData} />
+            <Reviews data={data.quizData} />
           </ScrollView>
         </View>
       ) : (
         <View style={{ flex: 1 }}>
+          {/* question */}
           <TopBar
             title={"Question " + `${currentQuestion + 1}`}
             navigation={navigation}

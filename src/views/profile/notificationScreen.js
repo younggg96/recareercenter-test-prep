@@ -21,7 +21,7 @@ import { styles } from "../../styles/home/settings/notificationStyle";
 export const NotificationScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { notification } = useSelector((state) => state.settingReducer);
-  console.log(useSelector((state) => state.settingReducer));
+  // console.log(useSelector((state) => state.settingReducer));
   const { status, time } = notification;
   // const [checked, setChecked] = React.useState(status);
   const onCheckedChange = (isChecked) => {
