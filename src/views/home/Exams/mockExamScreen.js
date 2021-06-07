@@ -48,7 +48,7 @@ export const MockExamScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
-  const [loading, setLoading] = React.useState(false);
+  // const [loading, setLoading] = React.useState(false);
 
   // redux
   const dispatch = useDispatch();
@@ -168,10 +168,6 @@ export const MockExamScreen = ({ navigation }) => {
 
   const exitModal = () => {
     setQuitExamDisplay(true);
-  };
-
-  const navigateBack = () => {
-    navigation.goBack();
   };
 
   return (
@@ -296,7 +292,7 @@ export const MockExamScreen = ({ navigation }) => {
             category="h4"
             style={{ textAlign: "center", fontWeight: "bold" }}
           >
-            Exam Not fanished
+            Exam Not Fanished
           </Text>
           <Text category="h6" style={styles.modalTitle}>
             Do you want to leave?
@@ -312,7 +308,8 @@ export const MockExamScreen = ({ navigation }) => {
             <Button
               onPress={() => {
                 setQuitExamDisplay(false);
-                navigateBack();
+                
+                setCurrentQuestion(100);
               }}
               style={{ marginTop: 8, width: 100 }}
             >
@@ -336,10 +333,8 @@ export const MockExamScreen = ({ navigation }) => {
         style={styles.modal}
         backdropStyle={styles.backdrop}
         onBackdropPress={() => {
-          // setLoading(true);
           setTimeoutDisplay(false);
           notFinishedQuestions();
-          // setLoading(false);
         }}
       >
         <Card disabled={true} style={styles.modalCard}>
@@ -363,14 +358,10 @@ export const MockExamScreen = ({ navigation }) => {
           </Text>
           <Button
             onPress={() => {
-              setLoading(true);
-              notFinishedQuestions();
               setTimeoutDisplay(false);
-              // setTimeout(() => {
-              // }, 1000)
+              notFinishedQuestions();
             }}
             style={{ borderRadius: 25, marginTop: 8 }}
-            accessoryLeft={loading ? LoadingIndicator : null}
           >
             Exam Results
           </Button>
