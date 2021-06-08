@@ -33,13 +33,15 @@ const styles = StyleSheet.create({
 });
 
 export const ProgressBar = (props) => {
-  const { finished, target, isTimer, setTimeoutDisplay } = props;
+  const { finished, target, isTimer, setTimeoutDisplay, setQuitExamDisplay } =
+    props;
   const [counter, setCounter] = React.useState(target * 60);
 
   if (isTimer) {
     React.useEffect(() => {
       counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
       if (counter == 0) {
+        setQuitExamDisplay(false);
         setTimeoutDisplay(true);
       }
     }, [counter]);

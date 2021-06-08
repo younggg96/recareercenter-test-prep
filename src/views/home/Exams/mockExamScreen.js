@@ -107,7 +107,7 @@ export const MockExamScreen = ({ navigation }) => {
               key={index}
             >
               <View>
-                <Text>{JSON.stringify(item.result)}</Text>
+                {/* <Text>{JSON.stringify(item.result)}</Text> */}
                 <Text category="s1" style={styles.reviewTitle}>{`Question ${
                   index + 1
                 }: ${data[index].Question}`}</Text>
@@ -240,9 +240,10 @@ export const MockExamScreen = ({ navigation }) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <ProgressBar
-                target="0.3"
+                target="2"
                 isTimer={true}
                 setTimeoutDisplay={setTimeoutDisplay}
+                setQuitExamDisplay={setQuitExamDisplay}
               />
               <View>
                 <Text category="s1" style={styles.questionTitle}>
