@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     ...shadow,
   },
   title: {
-    marginBottom: 16,
+    marginBottom: 8,
   },
   time: {
     marginBottom: 4,
@@ -22,4 +22,9 @@ export const styles = StyleSheet.create({
     marginTop: 4,
     borderRadius: 8,
   },
+  history: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  }
 });
