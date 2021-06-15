@@ -3,22 +3,20 @@ import Constants from "expo-constants";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "space-evenly",
     margin: 32,
   },
   header: {
-    justifyContent: "center",
     alignItems: "center",
-    marginVertical: 32,
+    marginVertical: 48,
   },
   paragraph: {
     fontWeight: "700",
     letterSpacing: -2,
+    marginVertical: 8,
   },
   paragraphSignup: {
     width: 300,
-    fontWeight: "800",
+    fontWeight: "700",
     letterSpacing: -2,
   },
   paragraphReset: {
@@ -26,17 +24,18 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
   },
   forgetBtn: {
-    // marginVertical: 4,
-    justifyContent: "center",
+    marginVertical: 4,
+    // justifyContent: "center",
     alignItems: "flex-end",
   },
   input: {
     backgroundColor: "#F5F5F5",
-    marginBottom: 12,
+    marginBottom: 16,
     borderRadius: 16,
   },
   button: {
-    marginBottom: 12,
+    marginTop: 12,
+    marginBottom: 4,
     borderRadius: 16,
   },
   createAccBtn: {

@@ -32,7 +32,7 @@ const SignUp = ({ navigation }) => {
   const onSubmit = (data) => {
     setSubmitted(true);
     if (checked) {
-      console.log(data);
+      // console.log(data);
       dispatch(register(data.email, data.password, data.username));
       setTimeout(() => {
         navigation.navigate("SignIn");

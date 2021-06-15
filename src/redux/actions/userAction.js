@@ -13,25 +13,28 @@ import FirebaseAuth from "../../firebase/index";
 import { Alert } from "react-native";
 
 export async function login(email, password) {
-  const response = await FirebaseAuth.auth.signInWithEmailAndPassword(
-    email,
-    password
-  );
-  console.log(response);
-  const req = {
-    userData: {
-      userName: response.user.displayName,
-      email: response.user.email,
-      examTargetDate: new Date("December 19, 2021"),
-      dailyTarget: 180,
-      finishedQuestions: 30,
-    },
-    signIn: true,
-  };
-  return {
-    type: USER_LOGIN,
-    payload: req,
-  };
+  try {
+    const response = await FirebaseAuth.auth.signInWithEmailAndPassword(
+      email,
+      password
+    );
+    const req = {
+      userData: {
+        userName: response.user.displayName,
+        email: response.user.email,
+        examTargetDate: new Date("December 19, 2021"),
+        dailyTarget: 180,
+        finishedQuestions: 30,
+      },
+      signIn: true,
+    };
+    return {
+      type: USER_LOGIN,
+      payload: req,
+    };
+  } catch (err) {
+    alert(err);
+  }
 }
 
 export async function register(email, password, username) {
@@ -54,8 +57,8 @@ export async function register(email, password, username) {
       type: USER_REGISTER,
       payload: response.user,
     };
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    alert(err);
   }
 }
 

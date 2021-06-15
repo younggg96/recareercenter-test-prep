@@ -18,7 +18,7 @@ export const SettingsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
 
-  const logOut = () => {
+  const logoutAccount = () => {
     dispatch(logout());
   };
 
@@ -31,7 +31,7 @@ export const SettingsScreen = ({ navigation }) => {
         </Text>
         <View style={styles.email}>
           <Text category="s1">Email: {userData.email}</Text>
-          <Button onPress={logOut} style={styles.logOutBtn}>
+          <Button onPress={logoutAccount} style={styles.logOutBtn}>
             Log Out
           </Button>
         </View>
