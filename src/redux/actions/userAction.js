@@ -6,14 +6,22 @@ import {
   USER_LOGOUT,
   CHANGE_PASSWORD,
   DO_QUESTION,
+  USER_REGISTER,
 } from "./actionTypes";
 
-export function login(email, password) {
-  // const req = firebaseAuth.login(email, password);
+import FirebaseAuth from "../../firebase/index";
+import { Alert } from "react-native";
+
+export async function login(email, password) {
+  const response = await FirebaseAuth.auth.signInWithEmailAndPassword(
+    email,
+    password
+  );
+  console.log(response);
   const req = {
     userData: {
-      userName: "aaa",
-      email: "yang960123@gmail.com",
+      userName: response.user.displayName,
+      email: response.user.email,
       examTargetDate: new Date("December 19, 2021"),
       dailyTarget: 180,
       finishedQuestions: 30,
@@ -24,6 +32,31 @@ export function login(email, password) {
     type: USER_LOGIN,
     payload: req,
   };
+}
+
+export async function register(email, password, username) {
+  try {
+    const response = await FirebaseAuth.auth.createUserWithEmailAndPassword(
+      email,
+      password
+    );
+    await response.user.updateProfile({
+      displayName: username,
+    });
+    if (!response.user.emailVerified) {
+      Alert.alert(
+        "Success!",
+        "We already sent you an email for verification, free to check and then log in."
+      );
+      response.user.sendEmailVerification();
+    }
+    return {
+      type: USER_REGISTER,
+      payload: response.user,
+    };
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function logout() {
@@ -66,6 +99,6 @@ export function setStartDay(dateObj) {
 
 export function doQuestion() {
   return {
-    type: DO_QUESTION
+    type: DO_QUESTION,
   };
 }

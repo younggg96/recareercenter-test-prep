@@ -6,6 +6,7 @@ import {
   SET_START_DAY,
   USER_LOGIN,
   USER_LOGOUT,
+  USER_REGISTER,
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
@@ -17,7 +18,7 @@ const INITIAL_STATE = {
     finishedQuestions: 0,
     startDay: new Date("January 01, 2021"),
   },
-  signIn: true,
+  signIn: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -26,6 +27,12 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, userData: action.payload };
     case USER_LOGOUT:
       return { ...state, signIn: action.payload };
+    case USER_REGISTER:
+      return {
+        ...state,
+        userName: action.payload.displayName,
+        email: action.payload.email,
+      };
     case CHANGE_PASSWORD:
       return state;
     case CHANGE_DAILY_PRACTICES:

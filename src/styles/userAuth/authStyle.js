@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     margin: 32,
   },
   header: {
-    //   flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 32,
@@ -23,10 +22,11 @@ export const styles = StyleSheet.create({
     letterSpacing: -2,
   },
   paragraphReset: {
-    marginVertical: 16,
+    marginVertical: 8,
     fontWeight: "700",
   },
   forgetBtn: {
+    // marginVertical: 4,
     justifyContent: "center",
     alignItems: "flex-end",
   },

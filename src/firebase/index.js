@@ -1,9 +1,9 @@
-import firebase from 'firebase/app'
+import firebase from "firebase/app";
 
 // Optionally import the services that you want to use
-//import "firebase/auth";
+import "firebase/auth";
 //import "firebase/database";
-//import "firebase/firestore";
+import "firebase/firestore";
 //import "firebase/functions";
 //import "firebase/storage";
 
@@ -18,4 +18,16 @@ const firebaseConfig = {
   measurementId: "G-18707DKYZM",
 };
 
-firebase.initializeApp(firebaseConfig);
+class FirebaseAuth {
+  constructor() {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    } else {
+      firebase.app(); // if already initialized, use that one
+    }
+    this.auth = firebase.auth();
+    this.db = firebase.firestore();
+  }
+}
+
+export default new FirebaseAuth();

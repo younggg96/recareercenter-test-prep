@@ -17,6 +17,9 @@ import { login } from "../../redux/actions/userAction";
 // icons
 import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
 
+// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
+
 const SignIn = ({ navigation }) => {
   const {
     control,
@@ -26,7 +29,6 @@ const SignIn = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(login(data.email, data.password));
   };
 

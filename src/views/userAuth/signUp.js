@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-  Button,
-  CheckBox,
-  Icon,
-  Input,
-  Text,
-  TopNavigation,
-  TopNavigationAction,
-} from "@ui-kitten/components";
+import { Button, CheckBox, Icon, Input, Text } from "@ui-kitten/components";
 import { useForm, Controller } from "react-hook-form";
 import { SafeAreaView, View } from "react-native";
 
@@ -16,6 +8,8 @@ import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
 import { BackIcon } from "../../components/icons/icons";
 import { TopBar } from "../../components/topBar/topBar";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/actions/userAction";
 
 const SignUp = ({ navigation }) => {
   const {
@@ -26,6 +20,7 @@ const SignUp = ({ navigation }) => {
 
   const [checked, setChecked] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
+  const dispatch = useDispatch();
 
   // password input
   const [secureTextEntry, setSecureTextEntry] = React.useState(true);
@@ -38,7 +33,11 @@ const SignUp = ({ navigation }) => {
     setSubmitted(true);
     if (checked) {
       console.log(data);
-      setSubmitted(false);
+      dispatch(register(data.email, data.password, data.username));
+      setTimeout(() => {
+        navigation.navigate("SignIn");
+        setSubmitted(false);
+      }, 1500);
     }
   };
 
@@ -48,18 +47,8 @@ const SignUp = ({ navigation }) => {
     </TouchableWithoutFeedback>
   );
 
-  // back button
-  // const navigateBack = () => {
-  //   navigation.goBack();
-  // };
-
-  // const BackAction = () => (
-  //   <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
-  // );
-
   return (
     <>
-      {/* <TopNavigation title={() => <Text category="s1" style={styles.topTitle}>Sign up</Text>} accessoryLeft={BackAction} style={styles.topBar} /> */}
       <TopBar title="Sign up" navigation={navigation} hasBack={true} />
       <SafeAreaView style={styles.container}>
         <Text style={styles.paragraphSignup} category="h1">
