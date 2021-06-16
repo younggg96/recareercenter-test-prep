@@ -18,14 +18,15 @@ export const styles = StyleSheet.create({
     width: 300,
     fontWeight: "700",
     letterSpacing: -2,
+    marginBottom: 16
   },
   paragraphReset: {
-    marginVertical: 8,
+    marginBottom: 16,
+    letterSpacing: -1,
     fontWeight: "700",
   },
   forgetBtn: {
     marginVertical: 4,
-    // justifyContent: "center",
     alignItems: "flex-end",
   },
   input: {
@@ -34,12 +35,12 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
   },
   button: {
-    marginTop: 12,
+    marginTop: 8,
     marginBottom: 4,
     borderRadius: 16,
   },
   createAccBtn: {
-    marginTop: 26,
+    marginTop: 8,
     borderRadius: 16,
   },
   otherTitle: {

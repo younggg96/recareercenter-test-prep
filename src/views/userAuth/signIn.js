@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
-import { Image, View } from "react-native";
+import { Alert, Image, View } from "react-native";
 
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
@@ -17,8 +17,7 @@ import { login } from "../../redux/actions/userAction";
 import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
 import { ScrollView } from "react-native-gesture-handler";
 
-
-import FirebaseAuth from "../../firebase/index";
+import { LoadingIndicator } from "../../components/loading/loadingIndicator";
 
 const SignIn = ({ navigation }) => {
   const [submitted, setSubmitted] = React.useState(false);
@@ -31,12 +30,11 @@ const SignIn = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log("log in", FirebaseAuth.auth.currentUser);
-    // const curUser = FirebaseAuth.auth.currentUser
-    // if({})
-    dispatch(login(data.email, data.password));
     setSubmitted(true);
-    console.log(submitted);
+    dispatch(login(data.email, data.password));
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 2000);
   };
 
   const signUp = () => {
@@ -89,6 +87,7 @@ const SignIn = ({ navigation }) => {
                 style={styles.input}
                 label="Email"
                 size="large"
+                autoCapitalize='none'
                 caption={
                   errors.email ? (
                     errors.email.type === "required" ? (
@@ -138,6 +137,7 @@ const SignIn = ({ navigation }) => {
                 onBlur={onBlur}
                 onChangeText={(v) => onChange(v)}
                 value={value}
+                autoCorrect={false}
               />
             )}
           />
@@ -155,14 +155,18 @@ const SignIn = ({ navigation }) => {
           </View>
         </View>
         <View>
-          <Button style={styles.button} onPress={handleSubmit(onSubmit)}>
+          <Button
+            style={styles.button}
+            onPress={handleSubmit(onSubmit)}
+            accessoryLeft={submitted ? LoadingIndicator : null}
+          >
             Sign In
           </Button>
           <Button style={styles.button} onPress={signUp}>
             Sign Up
           </Button>
           <Text style={styles.otherTitle} category="c2">
-            Or sign in with
+            Or Sign In With
           </Text>
           <Layout style={styles.other}>
             <Layout style={styles.otherBtnLayout}>

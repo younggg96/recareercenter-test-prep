@@ -18,8 +18,30 @@ export async function login(email, password) {
       email,
       password
     );
+    if (!response.user.emailVerified) {
+      Alert.alert(
+        "Your email is not verified, Cannot log in",
+        "Please check your mailbox",
+        [
+          {
+            text: "Resend Email",
+            onPress: () => response.user.sendEmailVerification(),
+            style: "cancel",
+          },
+          { text: "OK" },
+        ]
+      );
+      return {
+        type: USER_LOGIN,
+        payload: {
+          userData: null,
+          signIn: false,
+        },
+      };
+    }
     const req = {
       userData: {
+        uid: response.uid,
         userName: response.user.displayName,
         email: response.user.email,
         examTargetDate: new Date("December 19, 2021"),
@@ -63,19 +85,31 @@ export async function register(email, password, username) {
 }
 
 export function logout() {
-  // const req = firebaseAuth.login(email, password);
   const req = { userData: null, signIn: false };
+
+  try {
+    FirebaseAuth.auth.signOut().then(() => {
+      Alert.alert("Successed", "Your account sign out")
+    })
+  } catch (error) {
+    alert(error);
+  }
   return {
     type: USER_LOGOUT,
     payload: req,
   };
 }
 
-export function changePassword(password) {
-  // const req = firebaseAuth.login(email, password);
+export function changePassword(email) {
+  try {
+    FirebaseAuth.auth.sendPasswordResetEmail(email).then(() => {
+      Alert.alert("Reset email is sent", "Please check your mailbox.")
+    })
+  } catch (error) {
+    alert(error);
+  }
   return {
     type: CHANGE_PASSWORD,
-    payload: req,
   };
 }
 
