@@ -1,12 +1,16 @@
 import React from "react";
 // ui
+import { Image, Linking, TouchableOpacity, View } from "react-native";
 import {
-  Image,
-  Linking,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { Button, Card, Icon, Input, Layout, Modal, Text, TopNavigation } from "@ui-kitten/components";
+  Button,
+  Card,
+  Icon,
+  Input,
+  Layout,
+  Modal,
+  Text,
+  TopNavigation,
+} from "@ui-kitten/components";
 import { styles } from "../../components/topBar/topBar";
 import { homeStyles } from "../../styles/home/homeStyle";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
@@ -19,9 +23,11 @@ import { itemWidth, sliderWidth } from "../../constants";
 // data
 import { ENTRIES1 } from "../../static/entries";
 import { Categories } from "../../static/questions/category";
+import { refreshQuestionData, refreshQuiz } from "../../redux/actions/questionAction";
 
 export const HomeScreen = ({ navigation }) => {
   const { userData } = useSelector((state) => state.userReducer);
+  const { quizData } = useSelector((state) => state.questionReducer);
   const dispatch = useDispatch();
 
   const [visible, setVisible] = React.useState(false);
@@ -29,6 +35,8 @@ export const HomeScreen = ({ navigation }) => {
   const navigateTo = (link) => Linking.openURL(link);
 
   const navigateToQuiz = () => {
+    dispatch(refreshQuiz());
+    console.log('home', quizData)
     navigation.navigate("QuizScreen");
   };
   const navigateToPlan = () => {
@@ -152,14 +160,16 @@ export const HomeScreen = ({ navigation }) => {
           autoplayInterval={3000}
           containerCustomStyle={homeStyles.slider}
           contentContainerCustomStyle={homeStyles.sliderContentContainer}
-          activeSlideAlignment={"center"} 
+          activeSlideAlignment={"center"}
         />
         <View style={homeStyles.content}>
           <View style={homeStyles.header}>
             <Text category="h3" style={homeStyles.title}>
               Today's Plan
             </Text>
-            <Button appearance="ghost" onPress={navigateToPlan}>Adjust plan</Button>
+            <Button appearance="ghost" onPress={navigateToPlan}>
+              Adjust plan
+            </Button>
           </View>
           <View style={homeStyles.plan}>
             <View style={homeStyles.contentItem}>
@@ -192,16 +202,21 @@ export const HomeScreen = ({ navigation }) => {
                 65 Free of 555 Items
               </Text>
             </View>
-            <Button appearance="ghost" onPress={navigateToAllQuestion}>View All</Button>
+            <Button appearance="ghost" onPress={navigateToAllQuestion}>
+              View All
+            </Button>
             <Modal
               style={homeStyles.modal}
               visible={visible}
               backdropStyle={homeStyles.backdrop}
-              onBackdropPress={() => setVisible(false)}>
+              onBackdropPress={() => setVisible(false)}
+            >
               <Card disabled={true} style={homeStyles.modalCard}>
                 <View>
                   <Text category="h5">Unlock Practice Questions?</Text>
-                  <Text category="h6" style={homeStyles.modalTitle}>Become A Membership Today!</Text>
+                  <Text category="h6" style={homeStyles.modalTitle}>
+                    Become A Membership Today!
+                  </Text>
                 </View>
                 <Button onPress={() => setVisible(false)}>
                   Start Membership!
@@ -215,7 +230,7 @@ export const HomeScreen = ({ navigation }) => {
               showsHorizontalScrollIndicator={false}
               data={Categories}
               renderItem={ItemCard}
-              keyExtractor={item => item.id.toString()}
+              keyExtractor={(item) => item.id.toString()}
             />
           </View>
         </View>

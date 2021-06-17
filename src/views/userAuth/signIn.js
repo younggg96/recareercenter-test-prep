@@ -134,10 +134,10 @@ const SignIn = ({ navigation }) => {
                 placeholder="Enter your Password"
                 accessoryRight={renderIcon}
                 secureTextEntry={secureTextEntry}
+                textContentType="oneTimeCode"
                 onBlur={onBlur}
                 onChangeText={(v) => onChange(v)}
                 value={value}
-                autoCorrect={false}
               />
             )}
           />

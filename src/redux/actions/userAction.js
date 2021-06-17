@@ -55,7 +55,7 @@ export async function login(email, password) {
       payload: req,
     };
   } catch (err) {
-    alert(err);
+    Alert.alert("Error", `${err.message}`);
   }
 }
 
@@ -89,8 +89,8 @@ export function logout() {
 
   try {
     FirebaseAuth.auth.signOut().then(() => {
-      Alert.alert("Successed", "Your account sign out")
-    })
+      Alert.alert("Succeed", "Your account sign out");
+    });
   } catch (error) {
     alert(error);
   }
@@ -103,8 +103,8 @@ export function logout() {
 export function changePassword(email) {
   try {
     FirebaseAuth.auth.sendPasswordResetEmail(email).then(() => {
-      Alert.alert("Reset email is sent", "Please check your mailbox.")
-    })
+      Alert.alert("Reset email is sent", "Please check your mailbox.");
+    });
   } catch (error) {
     alert(error);
   }
