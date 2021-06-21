@@ -3,24 +3,21 @@ import React from "react";
 import { Image, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { ScrollView } from "react-native-gesture-handler";
+import { useDispatch } from "react-redux";
 import { TopBar } from "../../components/topBar/topBar";
+import { refreshQuestionData } from "../../redux/actions/questionAction";
 import { styles } from "../../styles/home/examStyle";
 
 export const ExamsScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+
   const goMockExam = () => {
+    dispatch(refreshQuestionData());
     navigation.navigate("MockExamScreen");
   };
 
   const data = {
-    labels: [
-      "Mon",
-      "Tues",
-      "Wed",
-      "Thur",
-      "Fir",
-      "Sat",
-      "Sun",
-    ],
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
       {
         data: [80, 65, 70, 80, 99, 83, 78],
@@ -83,7 +80,9 @@ export const ExamsScreen = ({ navigation }) => {
               </Button>
             </View>
           </View>
-          <View style={{justifyContent: "center",display: "flex", marginTop: 16}}>
+          <View
+            style={{ justifyContent: "center", display: "flex", marginTop: 16 }}
+          >
             <LineChart
               data={data}
               width={300}

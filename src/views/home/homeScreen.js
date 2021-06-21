@@ -23,7 +23,10 @@ import { itemWidth, sliderWidth } from "../../constants";
 // data
 import { ENTRIES1 } from "../../static/entries";
 import { Categories } from "../../static/questions/category";
-import { refreshQuestionData, refreshQuiz } from "../../redux/actions/questionAction";
+import {
+  refreshQuestionData,
+  refreshQuiz,
+} from "../../redux/actions/questionAction";
 
 export const HomeScreen = ({ navigation }) => {
   const { userData } = useSelector((state) => state.userReducer);
@@ -36,12 +39,14 @@ export const HomeScreen = ({ navigation }) => {
 
   const navigateToQuiz = () => {
     dispatch(refreshQuiz());
-    console.log('home', quizData)
+    // console.log("home", quizData);
     navigation.navigate("QuizScreen");
   };
+
   const navigateToPlan = () => {
     navigation.navigate("StudyPlanScreen");
   };
+
   const navigateToAllQuestion = () => {
     navigation.navigate("AllCategroyScreen");
   };

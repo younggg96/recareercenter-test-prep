@@ -4,30 +4,32 @@ import {
   SAVE_QUESTION,
   UNSAVE_QUESTION,
   REFRESH_QUESTIONDATA,
-  REFRESH_QUIZ
+  REFRESH_QUIZ,
 } from "../actions/actionTypes";
 
-// data
-import data from "../../static/questions/data.json";
-import { getRandomArrayElements } from "../../helper";
+// // data
+// import data from "../../static/questions/data.json";
+// import { getRandomArrayElements } from "../../helper";
 
-// data
-let arr = [];
-data.questionData.map((item) => {
-  arr.push(
-    Object.assign({}, item, {
-      saved: false,
-      result: {
-        res: "unfinished",
-        pick: null,
-      },
-    })
-  );
-});
+// // data
+// let arr = [];
+// data.questionData.map((item) => {
+//   arr.push(
+//     Object.assign({}, item, {
+//       saved: false,
+//       result: {
+//         res: "unfinished",
+//         pick: null,
+//       },
+//     })
+//   );
+// });
 
 const questionReducerInitialState = {
-  questionData: getRandomArrayElements(arr, 100),
-  quizData: getRandomArrayElements(arr, 10),
+  // questionData: getRandomArrayElements(arr, 100),
+  // quizData: getRandomArrayElements(arr, 10),
+  questionData: [],
+  quizData: [],
   savedList: [],
 };
 
@@ -36,16 +38,16 @@ export const questionReducer = (
   action
 ) => {
   switch (action.type) {
-    case REFRESH_QUIZ: 
+    case REFRESH_QUIZ:
       return {
         ...state,
-        quizData: getRandomArrayElements(arr, 10),
-      }
-    case REFRESH_QUESTIONDATA: 
+        quizData: action.payload,
+      };
+    case REFRESH_QUESTIONDATA:
       return {
         ...state,
-        questionData: getRandomArrayElements(arr, 10),
-      }
+        questionData: action.payload,
+      };
     case GET_RESULT:
       const { itemRes, currentQuestion } = action.payload;
       return {
@@ -80,6 +82,7 @@ export const questionReducer = (
       return {
         ...state,
         questionData: arr,
+        // quizData: arr,
         savedList: [...state.savedList, item],
       };
     case UNSAVE_QUESTION:
@@ -92,6 +95,7 @@ export const questionReducer = (
       return {
         ...state,
         questionData: arr2,
+        // quizData: arr2,
         savedList: state.savedList.filter((i) => {
           return i.Id != action.payload.item.Id;
         }),

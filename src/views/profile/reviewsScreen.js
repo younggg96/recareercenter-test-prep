@@ -4,15 +4,37 @@ import { Text } from "@ui-kitten/components";
 import { useDispatch, useSelector } from "react-redux";
 import { TopBar } from "../../components/topBar/topBar";
 
+import { List, ListItem, Divider } from "@ui-kitten/components";
+
 export const ReviewsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const { userData } = useSelector((state) => state.userReducer);
+  const { savedList } = useSelector((state) => state.questionReducer);
+
+  const renderItem = ({ item, index }) => (
+    <ListItem title={`${item.Id}. ${" "}  ${item.Question}`} />
+  );
 
   return (
     <View style={{ flex: 1 }}>
       <TopBar title="Reviews" navigation={navigation} hasBack={true} />
       <View>
-        <Text category="s1">ReviewsScreen</Text>
+        {/* <Text>{JSON.stringify(savedList)}</Text> */}
+        {savedList.length ? (
+          <List
+            ItemSeparatorComponent={Divider}
+            data={savedList}
+            renderItem={renderItem}
+          />
+        ) : (
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Text category="h5">No Saved Item</Text>
+          </View>
+        )}
       </View>
     </View>
   );
