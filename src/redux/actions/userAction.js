@@ -80,7 +80,7 @@ export async function register(email, password, username) {
       payload: response.user,
     };
   } catch (err) {
-    alert(err);
+    Alert.alert("Error", `${err.message}`);
   }
 }
 
@@ -88,11 +88,16 @@ export function logout() {
   const req = { userData: null, signIn: false };
 
   try {
-    FirebaseAuth.auth.signOut().then(() => {
-      Alert.alert("Succeed", "Your account sign out");
-    });
+    FirebaseAuth.auth
+      .signOut()
+      .then(() => {
+        Alert.alert("Succeed", "Your account sign out");
+      })
+      .catch((error) => {
+        Alert.alert("Error", `${error.message}`);
+      });
   } catch (error) {
-    alert(error);
+    Alert.alert("Error", `${error.message}`);
   }
   return {
     type: USER_LOGOUT,
@@ -102,15 +107,20 @@ export function logout() {
 
 export function changePassword(email) {
   try {
-    FirebaseAuth.auth.sendPasswordResetEmail(email).then(() => {
-      Alert.alert("Reset email is sent", "Please check your mailbox.");
-    });
+    FirebaseAuth.auth
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        Alert.alert("Reset email is sent", "Please check your mailbox.");
+      })
+      .catch((error) => {
+        Alert.alert("Error", `${error.message}`);
+      });
+    return {
+      type: CHANGE_PASSWORD,
+    };
   } catch (error) {
-    alert(error);
+    Alert.alert("Error", `${error.message}`);
   }
-  return {
-    type: CHANGE_PASSWORD,
-  };
 }
 
 export function changeDailyPractices(numInput) {

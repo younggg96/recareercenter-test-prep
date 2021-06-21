@@ -35,6 +35,7 @@ const ForgetPassword = ({ navigation }) => {
 
   const onSubmit = (data) => {
     dispatch(changePassword(data.email));
+    navigation.navigate("SignIn");
   };
 
   return (

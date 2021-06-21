@@ -14,12 +14,11 @@ const Stack = createStackNavigator();
 
 export const AppNavigator = () => {
   const user = useSelector((state) => state.userReducer);
-  // console.log("user signIn status:", user.signIn);
 
   return (
     <NavigationContainer ref={navigationRef}>
-      {/* {user.signIn ? <HomeNavigation /> : <AuthNavigation />} */}
-      <HomeNavigation />
+      {user.signIn ? <HomeNavigation /> : <AuthNavigation />}
+      {/* <HomeNavigation /> */}
     </NavigationContainer>
   );
 };
