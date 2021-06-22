@@ -46,11 +46,11 @@ export const HomeScreen = ({ navigation }) => {
   const navigateToPlan = () => {
     navigation.navigate("StudyPlanScreen");
   };
-  
+
   const navigateToAllQuestion = () => {
     navigation.navigate("AllCategroyScreen");
   };
-  
+
   const navigateToPractice = (id, name) => {
     navigation.navigate("PracticeScreen", {
       id: id,
@@ -180,13 +180,13 @@ export const HomeScreen = ({ navigation }) => {
             <View style={homeStyles.contentItem}>
               <Text category="s2">To learn</Text>
               <Text category="h4" style={homeStyles.amount}>
-                {userData.dailyTarget - userData.finishedQuestions}
+                {userData.dailyTarget - userData.dailyPractice}
               </Text>
             </View>
             <View style={homeStyles.contentItem}>
               <Text category="s2">Finished</Text>
               <Text category="h4" style={homeStyles.amount}>
-                {userData.finishedQuestions}
+                {userData.dailyPractice}
               </Text>
             </View>
           </View>
@@ -223,7 +223,12 @@ export const HomeScreen = ({ navigation }) => {
                     Become A Membership Today!
                   </Text>
                 </View>
-                <Button onPress={() => setVisible(false)}>
+                <Button
+                  onPress={() => {
+                    setVisible(false);
+                    navigateTo("")
+                  }}
+                >
                   Start Membership!
                 </Button>
               </Card>

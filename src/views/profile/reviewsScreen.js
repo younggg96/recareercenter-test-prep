@@ -17,8 +17,7 @@ export const ReviewsScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <TopBar title="Reviews" navigation={navigation} hasBack={true} />
-      <View>
-        {/* <Text>{JSON.stringify(savedList)}</Text> */}
+      <View style={{ flex: 1 }}>
         {savedList.length ? (
           <List
             ItemSeparatorComponent={Divider}
@@ -27,12 +26,11 @@ export const ReviewsScreen = ({ navigation }) => {
           />
         ) : (
           <View
-            style={{
-              justifyContent: "center",
-              alignItems: "center"
-            }}
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Text category="h5">No Saved Item</Text>
+            <Text category="h3" appearance="hint">
+              No Saved Item
+            </Text>
           </View>
         )}
       </View>

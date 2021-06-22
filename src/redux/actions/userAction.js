@@ -45,8 +45,10 @@ export async function login(email, password) {
         userName: response.user.displayName,
         email: response.user.email,
         examTargetDate: new Date("December 19, 2021"),
+        practiceStartDate: new Date("January 01, 2021"),
         dailyTarget: 180,
-        finishedQuestions: 30,
+        dailyPractice: 30,
+        membership: false,
       },
       signIn: true,
     };

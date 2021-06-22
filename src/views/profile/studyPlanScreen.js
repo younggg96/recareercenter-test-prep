@@ -27,7 +27,7 @@ export const StudyPlanScreen = ({ navigation }) => {
   // change data
   const [examDate, setExamDate] = React.useState(userData.examTargetDate);
   const [dailyTarget, setDailyTarget] = React.useState(userData.dailyTarget);
-  const [date, setDate] = React.useState(userData.startDay);
+  const [date, setDate] = React.useState(userData.practiceStartDate);
 
   // modal
   const [visible, setVisible] = React.useState(false);
@@ -64,7 +64,7 @@ export const StudyPlanScreen = ({ navigation }) => {
       return;
     }
     setErrorInput(false);
-    if (num < userData.finishedQuestions) {
+    if (num < userData.dailyPractice) {
       setErrorInputNum(true);
       // setDailyTarget(0);
       return;
@@ -210,8 +210,8 @@ export const StudyPlanScreen = ({ navigation }) => {
           <Text category="s1" style={styles.titleContent}>
             Start Day:
           </Text>
-          <Text category="h2" style={styles.startDay}>
-            {userData.startDay.toString().substring(0, 10)}
+          <Text category="h2" style={styles.practiceStartDate}>
+            {userData.practiceStartDate.toString().substring(0, 10)}
           </Text>
           <Text
             category="s1"

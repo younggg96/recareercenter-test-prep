@@ -11,8 +11,13 @@ export const MembershipScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <TopBar title="Membership" navigation={navigation} hasBack={true} />
-      <View>
-        <Text category="s1">membershipScreen</Text>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text category="h3" appearance="hint">
+          Wait, Coming soon...
+        </Text>
+        <Text category="h5" appearance="hint">
+          {userData.membership ? "You have membership" : "You Don't have membership"}
+        </Text>
       </View>
     </View>
   );

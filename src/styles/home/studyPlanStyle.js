@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
   modalBtn: {
     marginVertical: 8,
   },
-  startDay: {
+  practiceStartDate: {
     marginBottom: 4
   }
 })

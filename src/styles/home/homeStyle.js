@@ -119,6 +119,7 @@ export const homeStyles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
   modal: {
+    marginTop: '100%',
     width: '80%',
   },
   modalCard: {

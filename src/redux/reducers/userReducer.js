@@ -15,8 +15,9 @@ const INITIAL_STATE = {
     email: "yangguanggeng960123@gmail.com",
     examTargetDate: new Date("December 17, 2021"),
     dailyTarget: 150,
-    finishedQuestions: 0,
-    startDay: new Date("January 01, 2021"),
+    dailyPractice: 0,
+    practiceStartDate: new Date("January 01, 2021"),
+    membership: false
   },
   signIn: false,
 };
@@ -51,7 +52,7 @@ export default (state = INITIAL_STATE, action) => {
       };
     case SET_START_DAY:
       return {
-        userData: { ...state.userData, startDay: action.payload },
+        userData: { ...state.userData, practiceStartDate: action.payload },
         signIn: state.signIn,
       };
     case DO_QUESTION:
@@ -59,7 +60,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         userData: {
           ...state.userData,
-          finishedQuestions: state.userData.finishedQuestions + 1,
+          dailyPractice: state.userData.dailyPractice + 1,
         },
       };
     default:
