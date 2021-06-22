@@ -16,6 +16,10 @@ export const ExamsScreen = ({ navigation }) => {
     navigation.navigate("MockExamScreen");
   };
 
+  const navigateToHistory = () => {
+    navigation.navigate("ExamHistoryScreen");
+  };
+
   const data = {
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
@@ -75,7 +79,11 @@ export const ExamsScreen = ({ navigation }) => {
               </Text>
             </View>
             <View>
-              <Button style={styles.button} appearance="ghost">
+              <Button
+                style={styles.button}
+                appearance="ghost"
+                onPress={navigateToHistory}
+              >
                 View All Time
               </Button>
             </View>

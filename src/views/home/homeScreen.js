@@ -46,11 +46,11 @@ export const HomeScreen = ({ navigation }) => {
   const navigateToPlan = () => {
     navigation.navigate("StudyPlanScreen");
   };
-
+  
   const navigateToAllQuestion = () => {
     navigation.navigate("AllCategroyScreen");
   };
-
+  
   const navigateToPractice = (id, name) => {
     navigation.navigate("PracticeScreen", {
       id: id,
