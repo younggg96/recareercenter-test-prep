@@ -46,10 +46,10 @@ export const SettingList = (props) => {
             style={styles.menuItem}
             key={index}
             title={evaProps => <Text {...evaProps} style={styles.itemTitle}>{setting.title}</Text>}
-            disabled={setting.disable}
+            disabled={setting.link ? setting.disable : null}
             accessoryLeft={setting.icon}
             accessoryRight={setting.rightIcon}
-            onPress={() => navigatorTo(setting.link)}
+            onPress={setting.link ? () => navigatorTo(setting.link) : null}
           />
         );
       })}
