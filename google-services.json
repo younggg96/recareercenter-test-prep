@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "302752564422",
+    "project_id": "recareercenter-exam",
+    "storage_bucket": "recareercenter-exam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302752564422:android:2f9b67ea6ca204d7cd83c7",
+        "android_client_info": {
+          "package_name": "com.recareercenter.exam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302752564422-flft7srihcfumb84is14mbtmpp4btlfb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKmJYVTbb85zURd8___TJMpwt_LTtWS5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302752564422-flft7srihcfumb84is14mbtmpp4btlfb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

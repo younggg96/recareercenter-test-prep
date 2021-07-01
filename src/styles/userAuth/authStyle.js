@@ -3,16 +3,21 @@ import Constants from "expo-constants";
 
 export const styles = StyleSheet.create({
   container: {
-    margin: 32,
+    marginHorizontal: 32,
+  },
+  mainBody: {
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
   },
   header: {
     alignItems: "center",
-    marginVertical: 48,
+    marginBottom: 16,
   },
   paragraph: {
     fontWeight: "700",
     letterSpacing: -2,
-    marginVertical: 8,
+    marginBottom: 8,
   },
   paragraphSignup: {
     width: 300,
@@ -21,7 +26,6 @@ export const styles = StyleSheet.create({
     marginBottom: 16
   },
   paragraphReset: {
-    marginBottom: 16,
     letterSpacing: -1,
     fontWeight: "700",
   },

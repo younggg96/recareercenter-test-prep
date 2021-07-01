@@ -58,12 +58,12 @@ const SignIn = ({ navigation }) => {
   );
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <View style={styles.mainBody}>
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.paragraph} category="h1">
             Welcome Back!
-          </Text>
+            </Text>
           <Image
             source={require("../../../assets/img/WElcomebackvector.png")}
             style={{ width: 200, height: 180 }}
@@ -190,7 +190,7 @@ const SignIn = ({ navigation }) => {
           </Layout>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
