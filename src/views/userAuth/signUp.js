@@ -50,9 +50,9 @@ const SignUp = ({ navigation }) => {
     <>
       <TopBar title="Sign up" navigation={navigation} hasBack={true} />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={styles.container}>
+        <View style={{...styles.container, paddingTop: 16}}>
           <Text style={styles.paragraphSignup} category="h1">
-            Sign Up and starting learning
+            Sign Up and Start learning
           </Text>
           <View>
             <Controller
@@ -167,9 +167,9 @@ const SignUp = ({ navigation }) => {
               ) : null
             ) : null}
           </View>
-        </SafeAreaView>
+        </View>
       </TouchableWithoutFeedback>
-      <Button style={{...styles.createAccBtn, marginHorizontal: 32}} onPress={handleSubmit(onSubmit)}>
+      <Button style={{ ...styles.createAccBtn, marginHorizontal: 32 }} onPress={handleSubmit(onSubmit)}>
         Create Account
       </Button>
     </>

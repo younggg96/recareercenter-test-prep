@@ -11,13 +11,15 @@ import {
 
 const INITIAL_STATE = {
   userData: {
-    userName: "Yang",
-    email: "yangguanggeng960123@gmail.com",
-    examTargetDate: new Date("December 17, 2021"),
-    dailyTarget: 150,
+    uid: "",
+    userName: "",
+    email: "",
+    examStartDate: new Date(),
+    targetPractice: 0,
     dailyPractice: 0,
-    practiceStartDate: new Date("January 01, 2021"),
-    membership: false
+    practiceStartDate: new Date(),
+    membership: false,
+    totalPractice: 0,
   },
   signIn: false,
 };
@@ -33,21 +35,29 @@ export default (state = INITIAL_STATE, action) => {
     case USER_LOGOUT:
       return { ...state, userData: null, signIn: false };
     case USER_REGISTER:
+      console.log(action.payload)
       return {
         ...state,
+        uid: action.payload.uid,
         userName: action.payload.displayName,
         email: action.payload.email,
+        examStartDate: new Date(action.payload.examStartDate),
+        practiceStartDate: new Date(action.payload.practiceStartDate),
+        membership: action.payload.membership,
+        targetPractice: action.payload.targetPractice,
+        dailyPractice: action.payload.dailyPractice,
+        totalPractice: action.payload.totalPractice
       };
     case CHANGE_PASSWORD:
       return state;
     case CHANGE_DAILY_PRACTICES:
       return {
-        userData: { ...state.userData, dailyTarget: action.payload },
+        userData: { ...state.userData, targetPractice: action.payload },
         signIn: state.signIn,
       };
     case CHANGE_EXAM_DATE:
       return {
-        userData: { ...state.userData, examTargetDate: action.payload },
+        userData: { ...state.userData, examStartDate: action.payload },
         signIn: state.signIn,
       };
     case SET_START_DAY:

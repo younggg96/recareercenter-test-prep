@@ -1,0 +1,1 @@
+export const BASE_URL = "http://realestateexam-env-3.eba-uanhhd5e.us-east-2.elasticbeanstalk.com/api";

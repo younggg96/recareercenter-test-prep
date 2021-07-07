@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   titleContent: {
     paddingVertical: 4,
-    marginBottom: 4
+    // marginBottom: 4
   },
   pickStartTitle: {
     marginTop: 16,
@@ -38,6 +38,7 @@ export const styles = StyleSheet.create({
   },
   modalTitle: {
     paddingVertical: 8,
+    marginVertical: 8,
   },
   modalBtn: {
     marginVertical: 8,

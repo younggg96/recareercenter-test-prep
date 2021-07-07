@@ -7,6 +7,7 @@ import {
   Datepicker,
   Input,
   Modal,
+  NativeDateService,
   Text,
 } from "@ui-kitten/components";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,18 +21,21 @@ import {
 } from "../../redux/actions/userAction";
 import { ScrollView } from "react-native-gesture-handler";
 
+const today = new Date();
+
 export const StudyPlanScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
 
   // change data
-  const [examDate, setExamDate] = React.useState(userData.examTargetDate);
-  const [dailyTarget, setDailyTarget] = React.useState(userData.dailyTarget);
-  const [date, setDate] = React.useState(userData.practiceStartDate);
+  const [examDate, setExamDate] = React.useState(new Date(userData.examStartDate));
+  const [targetPractice, settargetPractice] = React.useState(new Date(userData.targetPractice));
+  const [date, setDate] = React.useState(new Date(userData.practiceStartDate));
 
   // modal
   const [visible, setVisible] = React.useState(false);
   const [praceticeVisible, setPraceticeVisible] = React.useState(false);
+  const [errorExamDay, setErrorExamDay] = React.useState(false);
   const [errorInput, setErrorInput] = React.useState(false);
   const [errorInputNum, setErrorInputNum] = React.useState(false);
   const [errorSetDay, setErrorSetDay] = React.useState(false);
@@ -40,37 +44,39 @@ export const StudyPlanScreen = ({ navigation }) => {
 
   // exam date
   const editDate = () => {
+    if (examDate.getTime() < today.getTime()) {
+      setErrorExamDay(true);
+      return;
+    }
     setVisible(false);
     successChangeExamDateAlert();
     dispatch(changeExamDate(examDate));
   };
 
   // daily target edit
-  const submitDailyTarget = () => {
+  const submittargetPractice = () => {
     setPraceticeVisible(false);
     successChangeTargetNumAlert();
-    dispatch(changeDailyPractices(dailyTarget));
+    dispatch(changeDailyPractices(targetPractice));
   };
 
   const onChangeTargetInput = (num) => {
     if (!reg.test(num)) {
       setErrorInput(true);
-      setDailyTarget(0);
+      settargetPractice(0);
       return;
     }
     if (num > 300 || num <= 0) {
       setErrorInput(true);
-      // setDailyTarget(0);
       return;
     }
     setErrorInput(false);
     if (num < userData.dailyPractice) {
       setErrorInputNum(true);
-      // setDailyTarget(0);
       return;
     }
     setErrorInputNum(false);
-    setDailyTarget(num);
+    settargetPractice(num);
   };
 
   // start day
@@ -92,7 +98,7 @@ export const StudyPlanScreen = ({ navigation }) => {
     );
 
   const successChangeTargetNumAlert = () =>
-    Alert.alert("Your Daily Practice Changed", `${dailyTarget}`, [
+    Alert.alert("Your Daily Practice Changed", `${targetPractice}`, [
       { text: "OK", style: "default" },
     ]);
 
@@ -102,6 +108,8 @@ export const StudyPlanScreen = ({ navigation }) => {
       `${examDate.toString().substring(0, 10)}`,
       [{ text: "OK", style: "default" }]
     );
+  
+  const formatDateService = new NativeDateService('en', { format: 'MM/DD/YYYY' });
 
   return (
     <View style={{ flex: 1 }}>
@@ -113,7 +121,7 @@ export const StudyPlanScreen = ({ navigation }) => {
               <Text category="s1" style={styles.titleContent}>
                 Your Daily Practice:{" "}
               </Text>
-              <Text category="h2">{userData.dailyTarget}</Text>
+              <Text category="h2">{userData.targetPractice}</Text>
             </View>
             <View>
               <Button
@@ -142,22 +150,22 @@ export const StudyPlanScreen = ({ navigation }) => {
                         ? !errorInputNum
                           ? () => <Text category="s2">Range is 0-300</Text>
                           : () => (
-                              <Text status="danger" category="s2">
-                                Target cannot more than finished
-                              </Text>
-                            )
-                        : () => (
                             <Text status="danger" category="s2">
-                              Invlid input
+                              Target cannot more than finished
                             </Text>
                           )
+                        : () => (
+                          <Text status="danger" category="s2">
+                            Invlid input
+                          </Text>
+                        )
                     }
-                    placeholder={`${userData.dailyTarget}`}
+                    placeholder={`${userData.targetPractice}`}
                     keyboardType={"numeric"}
                     onChangeText={onChangeTargetInput}
                   />
                   <Button
-                    onPress={submitDailyTarget}
+                    onPress={submittargetPractice}
                     style={styles.submitBtn}
                     disabled={errorInput || errorInputNum}
                   >
@@ -175,7 +183,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                 Your exam date:
               </Text>
               <Text category="h2">
-                {userData.examTargetDate.toString().substring(0, 10)}
+                {new Date(userData.examStartDate).toString().substring(0, 10)}
               </Text>
             </View>
             <View>
@@ -197,9 +205,15 @@ export const StudyPlanScreen = ({ navigation }) => {
                   </Text>
                   <Datepicker
                     date={examDate}
+                    dateService={formatDateService}
                     onSelect={(nextDate) => setExamDate(nextDate)}
                     size="small"
                   />
+                  {errorExamDay && (
+                    <Text category="s2" style={styles.titleContent} status="danger">
+                      Exam day should be later than today
+                    </Text>
+                  )}
                   <Button onPress={editDate} style={styles.submitBtn}>
                     Submit
                   </Button>
@@ -211,7 +225,7 @@ export const StudyPlanScreen = ({ navigation }) => {
             Start Day:
           </Text>
           <Text category="h2" style={styles.practiceStartDate}>
-            {userData.practiceStartDate.toString().substring(0, 10)}
+            {new Date(userData.practiceStartDate).toString().substring(0, 10)}
           </Text>
           <Text
             category="s1"
@@ -226,11 +240,11 @@ export const StudyPlanScreen = ({ navigation }) => {
               setDate(nextDate);
             }}
           />
-          {errorSetDay ? (
+          {errorSetDay && (
             <Text category="s2" style={styles.titleContent} status="danger">
               Cannot later than exam date
             </Text>
-          ) : null}
+          )}
 
           <Button style={styles.submitBtn} onPress={submitStartDay}>
             Submit

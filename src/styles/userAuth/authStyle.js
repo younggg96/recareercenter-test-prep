@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     marginBottom: 8,
   },
   paragraphSignup: {
-    width: 300,
+    width: 240,
     fontWeight: "700",
     letterSpacing: -2,
     marginBottom: 16

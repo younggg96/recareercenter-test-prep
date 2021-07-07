@@ -11,7 +11,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { profileSettings } from "../../components/settingList/settingConfig";
 
 const diffTime = (startDate, endDate) => {
-  var diff = endDate.getTime() - startDate;
+  var diff = new Date(endDate).getTime() - new Date(startDate).getTime();
   var days = Math.floor(diff / (24 * 3600 * 1000));
   return days;
 };
@@ -25,10 +25,11 @@ export const ProfileScreen = ({ navigation }) => {
   return (
     <>
       <ScrollView showsVerticalScrollIndicator={false}>
+        {/* <Text>{JSON.stringify(userData, null, '\t')}</Text> */}
         <View>
           <View style={styles.headerContainer}>
             <View>
-              <Text category="h1">Hi! {userData.userName}</Text>
+              <Text category="h1">Hi! {userData.displayName}</Text>
             </View>
             <View>
               <Button
@@ -50,11 +51,12 @@ export const ProfileScreen = ({ navigation }) => {
               <View style={styles.text}>
                 <Text category="s1">
                   Exam Day:{" "}
-                  {userData.examTargetDate.toString().substring(0, 10)}
+                  {userData.examStartDate.toString().substring(0, 10)}
                 </Text>
                 <Text category="s1">
                   You have{" "}
-                  {diffTime(userData.practiceStartDate, userData.examTargetDate)
+                  {/* {JSON.stringify(userData, null, '\t')} */}
+                  {diffTime(userData.practiceStartDate, userData.examStartDate)
                     .toString()
                     .substring(0, 10)}{" "}
                   days left
@@ -71,7 +73,7 @@ export const ProfileScreen = ({ navigation }) => {
             </Text>
             <ProgressBar
               finished={userData.dailyPractice}
-              target={userData.dailyTarget}
+              target={userData.targetPractice}
             />
           </View>
           <View style={styles.totalStats}>
@@ -87,9 +89,10 @@ export const ProfileScreen = ({ navigation }) => {
                 <View style={styles.text}>
                   <Text category="label">Learning Days</Text>
                   <Text category="s1">
-                    {diffTime(userData.practiceStartDate, new Date())
-                      .toString()
-                      .substring(0, 10)}{" "}
+                    {
+                      (diffTime(userData.practiceStartDate, new Date()) + 1)
+                        .toString()
+                    }{" "}
                     Days
                   </Text>
                 </View>
@@ -104,7 +107,7 @@ export const ProfileScreen = ({ navigation }) => {
                 </View>
                 <View style={styles.text}>
                   <Text category="label">Completed</Text>
-                  <Text category="s1">195 Questions</Text>
+                  <Text category="s1">{userData.totalPractice} Questions</Text>
                 </View>
               </View>
             </View>

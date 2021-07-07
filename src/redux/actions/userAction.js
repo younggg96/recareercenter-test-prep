@@ -11,6 +11,8 @@ import {
 
 import FirebaseAuth from "../../firebase/index";
 import { Alert } from "react-native";
+import axios from "axios";
+import { BASE_URL } from "../../../config";
 
 export async function login(email, password) {
   try {
@@ -18,6 +20,7 @@ export async function login(email, password) {
       email,
       password
     );
+    console.log(response.user.uid)
     if (!response.user.emailVerified) {
       Alert.alert(
         "Your email is not verified, Cannot log in",
@@ -39,22 +42,15 @@ export async function login(email, password) {
         },
       };
     }
-    const req = {
-      userData: {
-        uid: response.uid,
-        userName: response.user.displayName,
-        email: response.user.email,
-        examTargetDate: new Date("December 19, 2021"),
-        practiceStartDate: new Date("January 01, 2021"),
-        dailyTarget: 180,
-        dailyPractice: 30,
-        membership: false,
-      },
+    const res = await axios.get(BASE_URL + `/users/findUser?uid=${response.user.uid}`);
+    const payload = {
+      userData: Object.assign(res.data, { email: response.user.email, displayName: response.user.displayName }),
       signIn: true,
     };
+    console.log(payload)
     return {
       type: USER_LOGIN,
-      payload: req,
+      payload: payload,
     };
   } catch (err) {
     Alert.alert("Error", `${err.message}`);
@@ -70,6 +66,8 @@ export async function register(email, password, username) {
     await response.user.updateProfile({
       displayName: username,
     });
+    const res = await axios.post(BASE_URL + `/users/createUser?uid=${response.user.uid}`);
+    const payload = Object.assign(res.data, { uid: response.user.uid, email: response.user.email, displayName: response.user.displayName });
     if (!response.user.emailVerified) {
       Alert.alert(
         "Success!",
@@ -79,9 +77,10 @@ export async function register(email, password, username) {
     }
     return {
       type: USER_REGISTER,
-      payload: response.user,
+      payload: payload,
     };
   } catch (err) {
+    console.log(err)
     Alert.alert("Error", `${err.message}`);
   }
 }

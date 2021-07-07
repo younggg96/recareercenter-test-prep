@@ -180,7 +180,7 @@ export const HomeScreen = ({ navigation }) => {
             <View style={homeStyles.contentItem}>
               <Text category="s2">To learn</Text>
               <Text category="h4" style={homeStyles.amount}>
-                {userData.dailyTarget - userData.dailyPractice}
+                {userData.targetPractice - userData.dailyPractice}
               </Text>
             </View>
             <View style={homeStyles.contentItem}>

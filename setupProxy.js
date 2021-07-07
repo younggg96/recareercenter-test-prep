@@ -1,9 +1,11 @@
-const { createProxyMiddleware } = require('http-proxy-middleware');
 
-module.exports = function (app) {
-    const proxy = createProxyMiddleware({
-        target: 'http://localhost:8080/api',
-        changeOrigin: true
-    })
-    app.use('/questions/findForQuiz', proxy);
-};
+// const { createProxyMiddleware } = require('http-proxy-middleware');
+// const { BASE_URL } = require('./config');
+
+// module.exports = function (app) {
+//     const proxy = createProxyMiddleware({
+//         target: BASE_URL,
+//         changeOrigin: true
+//     })
+//     app.use('/users/createUser', proxy);
+// };

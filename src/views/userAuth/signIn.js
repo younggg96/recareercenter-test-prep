@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
 import { Alert, Image, View } from "react-native";
@@ -45,6 +45,12 @@ const SignIn = ({ navigation }) => {
     navigation.navigate("ResetPassword");
   };
 
+  useEffect(() => {
+    return () => {
+      setSubmitted(null); 
+    };
+  }, []);
+
   // password input
   const [secureTextEntry, setSecureTextEntry] = React.useState(true);
   const toggleSecureEntry = () => {
@@ -63,7 +69,7 @@ const SignIn = ({ navigation }) => {
         <View style={styles.header}>
           <Text style={styles.paragraph} category="h1">
             Welcome Back!
-            </Text>
+          </Text>
           <Image
             source={require("../../../assets/img/WElcomebackvector.png")}
             style={{ width: 200, height: 180 }}
