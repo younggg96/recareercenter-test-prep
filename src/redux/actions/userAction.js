@@ -14,13 +14,32 @@ import { Alert } from "react-native";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
 
+const successSubmitAlert = (date) =>
+  Alert.alert(
+    "Your Start Day Changed",
+    `${date.toISOString().substring(0, 10)}`,
+    [{ text: "OK", style: "default" }]
+  );
+
+const successChangeTargetNumAlert = (targetPractice) =>
+  Alert.alert("Your Daily Practice Changed", `${targetPractice}`, [
+    { text: "OK", style: "default" },
+  ]);
+
+const successChangeExamDateAlert = (examDate) =>
+  Alert.alert(
+    "Your Exam Date Changed",
+    `${examDate.toISOString().substring(0, 10)}`,
+    [{ text: "OK", style: "default" }]
+  );
+
 export async function login(email, password) {
   try {
     const response = await FirebaseAuth.auth.signInWithEmailAndPassword(
       email,
       password
     );
-    console.log(response.user.uid)
+    // console.log(response.user.uid)
     if (!response.user.emailVerified) {
       Alert.alert(
         "Your email is not verified, Cannot log in",
@@ -47,7 +66,7 @@ export async function login(email, password) {
       userData: Object.assign(res.data, { email: response.user.email, displayName: response.user.displayName }),
       signIn: true,
     };
-    console.log(payload)
+    // console.log(payload)
     return {
       type: USER_LOGIN,
       payload: payload,
@@ -80,7 +99,7 @@ export async function register(email, password, username) {
       payload: payload,
     };
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     Alert.alert("Error", `${err.message}`);
   }
 }
@@ -124,29 +143,66 @@ export function changePassword(email) {
   }
 }
 
-export function changeDailyPractices(numInput) {
-  return {
-    type: CHANGE_DAILY_PRACTICES,
-    payload: numInput,
-  };
+export async function changeDailyPractices(numInput, uid) {
+  try {
+    const res = await axios.put(BASE_URL + `/users/updateTargetPractice?uid=${uid}&practice=${numInput}`)
+    if (res) {
+      successChangeTargetNumAlert(numInput);
+      return {
+        type: CHANGE_DAILY_PRACTICES,
+        payload: numInput,
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
 }
 
-export function changeExamDate(dateObj) {
-  return {
-    type: CHANGE_EXAM_DATE,
-    payload: dateObj,
-  };
+export async function changeExamDate(dateObj, uid) {
+  try {
+    // console.log(dateObj.toISOString().slice(0, 10))
+    const res = await axios.put(BASE_URL + `/users/updateExamStartDate?uid=${uid}&date=${dateObj.toISOString().slice(0, 10)}`)
+    if (res) {
+      console.log(res.data)
+      successChangeExamDateAlert(dateObj);
+      return {
+        type: CHANGE_EXAM_DATE,
+        payload: dateObj,
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
+
 }
 
-export function setStartDay(dateObj) {
-  return {
-    type: SET_START_DAY,
-    payload: dateObj,
-  };
+export async function setStartDay(dateObj, uid) {
+  try {
+    // console.log(dateObj.toISOString().slice(0, 10))
+    const res = await axios.put(BASE_URL + `/users/updatePracticeStartDate?uid=${uid}&date=${dateObj.toISOString().slice(0, 10)}`)
+    if (res) {
+      console.log(res.data)
+      successSubmitAlert(dateObj);
+      return {
+        type: SET_START_DAY,
+        payload: dateObj,
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
 }
 
-export function doQuestion() {
-  return {
-    type: DO_QUESTION,
-  };
+export async function doQuestion(uid) {
+  try {
+    const res = await axios.post(BASE_URL + `/users/addPractice?uid=${uid}`)
+    if (res.status === 200) {
+      return {
+        type: DO_QUESTION,
+        payload: res
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
 }

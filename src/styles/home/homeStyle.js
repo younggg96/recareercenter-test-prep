@@ -124,7 +124,8 @@ export const homeStyles = StyleSheet.create({
   },
   modalCard: {
     height: 300,
-    justifyContent: 'space-between'
+    borderRadius: 16,
+    justifyContent: 'center'
   },
   modalTitle: {
     paddingVertical: 8,

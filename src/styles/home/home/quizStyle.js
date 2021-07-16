@@ -63,6 +63,7 @@ export const styles = StyleSheet.create({
   },
   modalCard: {
     paddingVertical: 8,
+    borderRadius: 16,
   },
   modalTitle: {
     textAlign: "center",

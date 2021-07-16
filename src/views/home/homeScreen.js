@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // ui
 import { Image, Linking, TouchableOpacity, View } from "react-native";
 import {
@@ -32,14 +32,20 @@ export const HomeScreen = ({ navigation }) => {
   const { userData } = useSelector((state) => state.userReducer);
   const { quizData } = useSelector((state) => state.questionReducer);
   const dispatch = useDispatch();
-
+  const [toPlanVisible, setToPlanVisible] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
+
+  useEffect(() => {
+    if (!userData.examStartDate || !userData.practiceStartDate) {
+      setToPlanVisible(true);
+    }
+  }, [])
+
   // navigations
   const navigateTo = (link) => Linking.openURL(link);
 
   const navigateToQuiz = () => {
     dispatch(refreshQuiz());
-    // console.log("home", quizData);
     navigation.navigate("QuizScreen");
   };
 
@@ -245,6 +251,40 @@ export const HomeScreen = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
+      <Modal
+        style={homeStyles.modal}
+        visible={toPlanVisible}
+        backdropStyle={homeStyles.backdrop}
+      >
+        <Card disabled={true} style={{ ...homeStyles.modalCard, height: 400 }}>
+          <View style={{ marginBottom: 8 }}>
+            <Image
+              source={require("../../../assets/img/empty-plan.jpg")}
+              style={{ width: '100%', height: 200, marginBottom: 16 }}
+            />
+            <Text category="h6" style={{ ...homeStyles.modalTitle, textAlign: 'center' }}>
+              Study plan is not completed!
+            </Text>
+          </View>
+          <Button
+            onPress={() => {
+              setToPlanVisible(false);
+              navigateToPlan();
+            }}
+            style={{ marginBottom: 12 }}
+          >
+            Set Your Study Plan
+          </Button>
+          <Button
+            onPress={() => {
+              setToPlanVisible(false);
+            }}
+            appearance='ghost'
+          >
+            Skip
+          </Button>
+        </Card>
+      </Modal>
     </View>
   );
 };

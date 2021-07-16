@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Card, Icon, Text } from "@ui-kitten/components";
+import { Button, Icon, Text } from "@ui-kitten/components";
 import { styles } from "../../styles/home/profileStyle";
 import { View } from "react-native";
 import { useSelector } from "react-redux";
@@ -25,7 +25,6 @@ export const ProfileScreen = ({ navigation }) => {
   return (
     <>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {/* <Text>{JSON.stringify(userData, null, '\t')}</Text> */}
         <View>
           <View style={styles.headerContainer}>
             <View>
@@ -50,17 +49,10 @@ export const ProfileScreen = ({ navigation }) => {
               </View>
               <View style={styles.text}>
                 <Text category="s1">
-                  Exam Day:{" "}
-                  {userData.examStartDate.toString().substring(0, 10)}
+                  Exam Day :{" "}
+                  {userData.examStartDate ? new Date(userData.examStartDate).toISOString().substring(0, 10) : " - "}
                 </Text>
-                <Text category="s1">
-                  You have{" "}
-                  {/* {JSON.stringify(userData, null, '\t')} */}
-                  {diffTime(userData.practiceStartDate, userData.examStartDate)
-                    .toString()
-                    .substring(0, 10)}{" "}
-                  days left
-                </Text>
+                {(userData.examStartDate && userData.practiceStartDate) && <Text category="s1">'You have ' + diffTime(userData.practiceStartDate, userData.examStartDate) + ' days left ' </Text>}
               </View>
             </View>
           </View>
@@ -89,10 +81,7 @@ export const ProfileScreen = ({ navigation }) => {
                 <View style={styles.text}>
                   <Text category="label">Learning Days</Text>
                   <Text category="s1">
-                    {
-                      (diffTime(userData.practiceStartDate, new Date()) + 1)
-                        .toString()
-                    }{" "}
+                    {userData.totalStudyDay}{" "}
                     Days
                   </Text>
                 </View>

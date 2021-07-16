@@ -9,12 +9,10 @@ const DATA = [
     exams: [
       {
         id: 1,
-        using_time: 30,
         score: 90,
       },
       {
         id: 1,
-        using_time: 40,
         score: 70,
       },
     ],

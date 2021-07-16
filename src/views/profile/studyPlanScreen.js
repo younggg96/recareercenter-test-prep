@@ -28,9 +28,9 @@ export const StudyPlanScreen = ({ navigation }) => {
   const { userData } = useSelector((state) => state.userReducer);
 
   // change data
-  const [examDate, setExamDate] = React.useState(new Date(userData.examStartDate));
-  const [targetPractice, settargetPractice] = React.useState(new Date(userData.targetPractice));
-  const [date, setDate] = React.useState(new Date(userData.practiceStartDate));
+  const [examDate, setExamDate] = React.useState(null);
+  const [targetPractice, settargetPractice] = React.useState(null);
+  const [date, setDate] = React.useState(null);
 
   // modal
   const [visible, setVisible] = React.useState(false);
@@ -42,22 +42,20 @@ export const StudyPlanScreen = ({ navigation }) => {
 
   const reg = /^[1-9]\d*$/;
 
-  // exam date
+  // exam date 
   const editDate = () => {
     if (examDate.getTime() < today.getTime()) {
       setErrorExamDay(true);
       return;
     }
     setVisible(false);
-    successChangeExamDateAlert();
-    dispatch(changeExamDate(examDate));
+    dispatch(changeExamDate(examDate, userData.uid));
   };
 
   // daily target edit
-  const submittargetPractice = () => {
+  const submitTargetPractice = () => {
     setPraceticeVisible(false);
-    successChangeTargetNumAlert();
-    dispatch(changeDailyPractices(targetPractice));
+    dispatch(changeDailyPractices(targetPractice, userData.uid));
   };
 
   const onChangeTargetInput = (num) => {
@@ -86,29 +84,9 @@ export const StudyPlanScreen = ({ navigation }) => {
       return;
     }
     setErrorSetDay(false);
-    successSubmitAlert();
-    dispatch(setStartDay(date));
+    dispatch(setStartDay(date, userData.uid));
   };
 
-  const successSubmitAlert = () =>
-    Alert.alert(
-      "Your Start Day Changed",
-      `${date.toString().substring(0, 10)}`,
-      [{ text: "OK", style: "default" }]
-    );
-
-  const successChangeTargetNumAlert = () =>
-    Alert.alert("Your Daily Practice Changed", `${targetPractice}`, [
-      { text: "OK", style: "default" },
-    ]);
-
-  const successChangeExamDateAlert = () =>
-    Alert.alert(
-      "Your Daily Practice Changed",
-      `${examDate.toString().substring(0, 10)}`,
-      [{ text: "OK", style: "default" }]
-    );
-  
   const formatDateService = new NativeDateService('en', { format: 'MM/DD/YYYY' });
 
   return (
@@ -140,7 +118,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                 }}
                 style={styles.modal}
               >
-                <Card disabled={true}>
+                <Card disabled={true} style={{ borderRadius: 16 }}>
                   <Text category="s1" style={styles.modalTitle}>
                     Change Daily Practices
                   </Text>
@@ -165,7 +143,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                     onChangeText={onChangeTargetInput}
                   />
                   <Button
-                    onPress={submittargetPractice}
+                    onPress={submitTargetPractice}
                     style={styles.submitBtn}
                     disabled={errorInput || errorInputNum}
                   >
@@ -183,7 +161,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                 Your exam date:
               </Text>
               <Text category="h2">
-                {new Date(userData.examStartDate).toString().substring(0, 10)}
+                {userData.examStartDate ? new Date(userData.examStartDate).toISOString().substring(0, 10) : 'Unset'}
               </Text>
             </View>
             <View>
@@ -225,7 +203,7 @@ export const StudyPlanScreen = ({ navigation }) => {
             Start Day:
           </Text>
           <Text category="h2" style={styles.practiceStartDate}>
-            {new Date(userData.practiceStartDate).toString().substring(0, 10)}
+            {userData.practiceStartDate ? new Date(userData.practiceStartDate).toISOString().substring(0, 10) : 'Unset'}
           </Text>
           <Text
             category="s1"
@@ -245,7 +223,6 @@ export const StudyPlanScreen = ({ navigation }) => {
               Cannot later than exam date
             </Text>
           )}
-
           <Button style={styles.submitBtn} onPress={submitStartDay}>
             Submit
           </Button>

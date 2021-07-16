@@ -20,6 +20,7 @@ export const QuizScreen = ({ navigation }) => {
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const data = useSelector((state) => state.questionReducer);
+  const { userData } = useSelector((state) => state.userReducer);
   const arr = data.quizData;
 
   // redux
@@ -32,7 +33,7 @@ export const QuizScreen = ({ navigation }) => {
   const goNextQuestion = () => {
     if (currentQuestion < 10) {
       // do question
-      dispatch(doQuestion());
+      dispatch(doQuestion(userData.uid));
       // add score
       if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
         setScore(score + 10);

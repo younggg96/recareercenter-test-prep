@@ -353,7 +353,7 @@ export const PracticeScreen = ({ route, navigation }) => {
   const getResult = () => {
     setSelectedIndex(-1);
     setShowResult(true);
-    dispatch(doQuestion());
+    dispatch(doQuestion(userData.uid));
     const itemRes = {
       res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
       pick: selectedIndex,

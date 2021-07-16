@@ -53,6 +53,7 @@ export const MockExamScreen = ({ navigation }) => {
   // redux
   const dispatch = useDispatch();
   const data = useSelector((state) => state.questionReducer);
+  const { userData } = useSelector((state) => state.userReducer);
   const arr = data.questionData;
 
   // quit display
@@ -68,7 +69,7 @@ export const MockExamScreen = ({ navigation }) => {
   const goNextQuestion = () => {
     if (currentQuestion < 100) {
       // do question
-      dispatch(doQuestion());
+      dispatch(doQuestion(userData.uid));
       // add score
       if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
         setScore(score + 1);

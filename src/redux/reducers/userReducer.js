@@ -35,7 +35,7 @@ export default (state = INITIAL_STATE, action) => {
     case USER_LOGOUT:
       return { ...state, userData: null, signIn: false };
     case USER_REGISTER:
-      console.log(action.payload)
+      // console.log(action.payload)
       return {
         ...state,
         uid: action.payload.uid,
@@ -71,6 +71,7 @@ export default (state = INITIAL_STATE, action) => {
         userData: {
           ...state.userData,
           dailyPractice: state.userData.dailyPractice + 1,
+          totalPractice: state.userData.totalPractice + 1,
         },
       };
     default:
