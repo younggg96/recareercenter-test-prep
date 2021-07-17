@@ -1,1309 +1,1309 @@
 {
   "questionData": [
     {
-      "Id": "123",
-      "Question": "The owner of an interest in commonly held property who wishes to dispose of the property, while the other owners do NOT want to do so, will probably",
-      "Answer1": "Give an exclusive right to sell a licensee.",
-      "Answer2": "Begin a suit for partition.",
-      "Answer3": "Advertise that the property is for sale.",
-      "Answer4": "File a discrimination complaint with the Justice Department.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "124",
-      "Question": "Which of the following statements about discount points is FALSE?",
-      "Answer1": "They are computed as a percentage of the selling price.",
-      "Answer2": "They are used to buy down interest rate.",
-      "Answer3": "They are a function of the marketplace.",
-      "Answer4": "They are paid by either the buyer or the seller.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "125",
-      "Question": "In New Jersey, the realty transfer fee is always",
-      "Answer1": "Split between the seller and the buyer.",
-      "Answer2": "Charged to the buyer.",
-      "Answer3": "Charged to the seller.",
-      "Answer4": "Negotiated between the buyer and the seller.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "1",
-      "Question": "A competitive market analysis takes into consideration",
-      "Answer1": "Square footage of the subject property.",
-      "Answer2": "Neighborhood nuances. ",
-      "Answer3": "Unemployment levels in the community.",
-      "Answer4": "Age of the sellers.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "2",
-      "Question": "A major difference between freehold and nonfreehold estates is that all freehold estates",
-      "Answer1": "Are of indeterminable duration.",
-      "Answer2": "Terminate upon the death of the person on whose life they are based.",
-      "Answer3": "Are inheritable by the holder&apos;s heirs.",
-      "Answer4": "Are estates for a fixed term.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "11",
-      "Question": "Which of the following services can be provided by a real estate salesperson?",
-      "Answer1": "Residential appraisals of single-family dwellings.",
-      "Answer2": "Land surveys if the property is in a subdivision.",
-      "Answer3": "Title examinations on potential listings.",
-      "Answer4": "Competitive market analyses.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "12",
-      "Question": "A minority couple comes to a salesperson looking for a house. The salesperson has some properties for which the couple qualify, but avoids showing or mentioning these listings. Instead, the salesperson shows only properties in low-priced and integrated neighborhoods. This practice is known as",
-      "Answer1": "Steering",
-      "Answer2": "Blockbusting",
-      "Answer3": "Redlining",
-      "Answer4": "Conciliation",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "14",
-      "Question": "When compiling a competitive market analysis, a broker would look for comparable properties that",
-      "Answer1": "Were sold for all cash.",
-      "Answer2": "Had been extensively advertised.",
-      "Answer3": "Were offered by owner with no broker.",
-      "Answer4": "Were located near the property being listed.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "15",
-      "Question": "What critical aspect of the property inspection process MUST licensees convey to prospective buyers?",
-      "Answer1": "Difficulty of finding competent inspectors.",
-      "Answer2": "Appropriate fee splitting between inspectors and brokers.",
-      "Answer3": "Need for inspections to be completed within the time stated in the contract.",
-      "Answer4": "Likelihood that the inspection will generate a list of items sellers must repair.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "28",
-      "Question": "Under the terms of their listing contract, the owners may sell their house themselves and pay no commission. If their agent sells it, a commission will be due. What kind of listing contract do the owners have?",
-      "Answer1": "Multiple listing.",
-      "Answer2": "Net listing.",
-      "Answer3": "Exclusive agency listing.",
-      "Answer4": "Exclusive right to sell listing.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "29",
-      "Question": "An escheat occurs when",
-      "Answer1": "Property is seized to satisfy a tax lien.",
-      "Answer2": "Property is condemned for a necessary public use",
-      "Answer3": "A property owner dies without heirs or a valid will.",
-      "Answer4": "A property owner fails to perform legally required cleanup of toxic waste.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "30",
-      "Question": "A landlord may legally refuse to rent to a prospective tenant if the tenant",
-      "Answer1": "Has a history of serious mental illness.",
-      "Answer2": "Is unable to live alone without assistance.",
-      "Answer3": "Has ever been convicted of using illegal drugs.",
-      "Answer4": "Has ever been convicted of selling illegal drugs.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "43",
-      "Question": "State law differs on whether a buyer is entitled to know about",
-      "Answer1": "A suicide that occurred in the house last year",
-      "Answer2": "Possible lead paint in the property",
-      "Answer3": "The flooding of the basement every spring.",
-      "Answer4": "The fact that the sellers are getting a divorce.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "44",
-      "Question": "A judgment has been properly recorded. Any subsequent purchasers, whether they have actually examined the record or not, have been given",
-      "Answer1": "Actual notice.",
-      "Answer2": "Prescriptive notice.",
-      "Answer3": "Constructive notice.",
-      "Answer4": "Exculpatory notice.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "45",
-      "Question": "In MOST states, foreclosed property is sold through",
-      "Answer1": "Sealed bids.",
-      "Answer2": "Public auction.",
-      "Answer3": "Deficiency judgement.",
-      "Answer4": "Right of redemption.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "58",
-      "Question": "An equal housing opportunity notice MUST be",
-      "Answer1": "Displayed in the brokerage office.",
-      "Answer2": "Included in all written advertisements.",
-      "Answer3": "Specified in all listing agreements and offers to purchase.",
-      "Answer4": "Given to all prospective clients.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "59",
-      "Question": "Antitrust laws prohibit competing brokers from all of the following EXCEPT",
-      "Answer1": "Boycotting other brokers in the marketplace.",
-      "Answer2": "Dividing the market to restrict competition.",
-      "Answer3": "Agreeing to set sales commissions and management rates.",
-      "Answer4": "Receiving compensation from both the buyer and the seller.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "60",
-      "Question": "Salesperson Shelley was at the local coffee shop with some agents from other offices. The subject of commissions came up, and agents began to compare their commission rates. Shelley should",
-      "Answer1": "Excuse herself from the discussion as this could constitute illegal blockbusting.",
-      "Answer2": "Advise her friends this could constitute a violation of Sherman Antitrust Act.",
-      "Answer3": "Listen carefully so she can be more competitive in the market.",
-      "Answer4": "Be certain her company is charging as much as the others.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "62",
-      "Question": "A seller&apos;s statement in a property disclosure document means",
-      "Answer1": "The owner is disclosing known latent defects.",
-      "Answer2": "Nothing, because the seller will not be responsible for any defects.",
-      "Answer3": "The property is fully suitable for the uses contemplated by the buyer.",
-      "Answer4": "The owner creates a warranty that there are no defects in the property.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "81",
-      "Question": "The Civil Rights Act of 1866 prohibits any type of discrimination based on",
-      "Answer1": "Gender",
-      "Answer2": "Race",
-      "Answer3": "Race and Gender",
-      "Answer4": "Religion",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "82",
-      "Question": "A broker says, while showing rural property, “This property has the world&apos;s purest well water.” This would be an example of",
-      "Answer1": "A verbal water quality report.",
-      "Answer2": "An assurance that the property is not on the public water system.",
-      "Answer3": "An expression of opinion, or puffing, which could lead to misrepresentation.",
-      "Answer4": "A licensee&apos;s disclosure of the qualities of the property.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "96",
-      "Question": "If conditions for purchase are included in a deed and these conditions are violated, what is the penalty?",
-      "Answer1": "A court order enforcing compliance.",
-      "Answer2": "Penalty charges.",
-      "Answer3": "An injunction against further use of the property.",
-      "Answer4": "Return of the property to the original owner",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "97",
-      "Question": "Another term for the owner of a property listed with your firm is the",
-      "Answer1": "Customer",
-      "Answer2": "Prospect",
-      "Answer3": "Consumer",
-      "Answer4": "Client",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "111",
-      "Question": "In an exclusive right-to-sell, an owner lists the property for sale with how many brokers?",
-      "Answer1": "One.",
-      "Answer2": "Two.",
-      "Answer3": "Three.",
-      "Answer4": "Any number.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "113",
-      "Question": "An easement can be terminated by",
-      "Answer1": "A license.",
-      "Answer2": "Prescription.",
-      "Answer3": "An express grant.",
-      "Answer4": "Merger of titles",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "114",
-      "Question": "Errors and Omissions insurance covers the broker for",
-      "Answer1": "Title defects.",
-      "Answer2": "Intentional misrepresentations.",
-      "Answer3": "Unintentional misrepresentations.",
-      "Answer4": "Commission losses.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "115",
-      "Question": "At the time of listing, the seller tells the listing agent that they are moving because the neighbor has loud parties every weekend. The agent should",
-      "Answer1": "Suggest talking to the neighbor about being quiet.",
-      "Answer2": "Schedule only daytime showings.",
-      "Answer3": "Tell potential buyers about the parties.",
-      "Answer4": "Do not tell anyone about the parties.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "78",
-      "Question": "When is flood insurance REQUIRED in order to obtain a loan?",
-      "Answer1": "When the property is located in a Flood Hazard Zone.",
-      "Answer2": "If the lender learns that the property securing an existing loan has been recategorized as being located in a flood Hazard Zone.",
-      "Answer3": "When there is no hazard insurance. If the property is covered by hazard insurance, flood hazard is also covered.",
-      "Answer4": "Never. Flood insurance is optional, and requiring special insurance in certain areas is called redlining.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "79",
-      "Question": "The Real Estate Settlement Procedures Act (RESPA) specifically prohibits",
-      "Answer1": "Lenders from requiring escrow accounts.",
-      "Answer2": "Kickbacks to real estate licensees for making referrals to lenders or other interested parties.",
-      "Answer3": "Discriminatory advertising.",
-      "Answer4": "Redlining.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "80",
-      "Question": "For federal income tax purposes, which of the following are costs of homeownership that may be deducted from gross income?",
-      "Answer1": "Mortgage loan interest, local property taxes, mortgage loan origination fees.",
-      "Answer2": "Mortgage loan interest, homeowner&apos;s insurance premium, local property taxes.",
-      "Answer3": "Cost of essential repairs, mortgage loan origination fees, mortgage loan interest.",
-      "Answer4": "Homeowner&apos;s insurance premium, mortgage loan origination fees, mortgage loan interest.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "93",
-      "Question": "A major reason for buying and owning a condominium rather than a detached single-family home is that",
-      "Answer1": "A condominium tends to be more affordable.",
-      "Answer2": "A condominium requires no maintenance.",
-      "Answer3": "A condominium is easier to resell.",
-      "Answer4": "Condominium ownership has more tax advantages.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "94",
-      "Question": "A couple owns an older home in a neighborhood that is becoming a commercial area. Because of the change in the use of the land, the couple can expect the value of their parcel to increase at some future time. This is an example of the principle of",
-      "Answer1": "Substitution",
-      "Answer2": "Contribution",
-      "Answer3": "Conformity",
-      "Answer4": "Anticipation",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "95",
-      "Question": "The gross rent multiplier for a single-family home is calculated by dividing the sales price of the property by",
-      "Answer1": "The cost per square foot.",
-      "Answer2": "Its gross annual rent.",
-      "Answer3": "Its gross monthly rent.",
-      "Answer4": "Expected rate of return.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "108",
-      "Question": "Ownership of common stock in a corporation gives",
-      "Answer1": "Co-ownership in any real property held by that corporation.",
-      "Answer2": "The right to order the sale of any corporate real estate.",
-      "Answer3": "An interest that is classified as personal property.",
-      "Answer4": "Assurance that a decline in land values will not affect the value of the stock.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "109",
-      "Question": "The practice of inducing panic selling in a neighborhood for financial gain is",
-      "Answer1": "Antitrust.",
-      "Answer2": "Steering.",
-      "Answer3": "Redlining.",
-      "Answer4": "Blockbusting.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "110",
-      "Question": "The real estate contract for a specific property for use as an unlicensed whiskey sales operation was forced to terminate. The termination was the result of",
-      "Answer1": "Operation of law.",
-      "Answer2": "Impossibility of performance.",
-      "Answer3": "Novation.",
-      "Answer4": "Breach of contract.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "112",
-      "Question": "An environmental impact statement typically describes the effect of a proposed   project on factors such as",
-      "Answer1": "Public health and safety.",
-      "Answer2": "Zoning regulations.",
-      "Answer3": "Highest and best use of the land.",
-      "Answer4": "Mapping requirements.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "121",
-      "Question": "A mentally disabled person who has been declared incompetent by a judge wishes to enter into a contract. Under what conditions can such a person do so?",
-      "Answer1": "The person must obtain prior written approval by a licensed psychiatrist or psychologist.",
-      "Answer2": "The person must be capable of understanding the transaction.",
-      "Answer3": "The person appointed by the court to act for the disabled person must contract on his or her behalf.",
-      "Answer4": "The person may enter a contract under any condition, because the law prohibits discrimination against persons with disabilities.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "122",
-      "Question": "The economic characteristics of land are",
-      "Answer1": "Scarcity, location, and durability.",
-      "Answer2": "Immovability, indestructibility, and uniqueness.",
-      "Answer3": "Latitude and longitude.",
-      "Answer4": "Wooded, barren, and water bearing.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "144",
-      "Question": "In New Jersey, unless otherwise stated in the deed, a conveyance of two or more persons (not married to each other) creates a",
-      "Answer1": "joint tenancy.",
-      "Answer2": "tenancy in common.",
-      "Answer3": "tenancy by the entirety.",
-      "Answer4": "multiple tenancy.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "145",
-      "Question": "The four unities required to create a joint tenancy are time, title, interest, and",
-      "Answer1": "possession.",
-      "Answer2": "residence.",
-      "Answer3": "equity.",
-      "Answer4": "survivorship.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "8",
-      "Question": "A broker has bought a ready, willing, and able buyer to a seller. In MOST listing contracts, the broker has earned his commission when",
-      "Answer1": "Any offer is delivered to the seller.",
-      "Answer2": "The seller accepts the offer.",
-      "Answer3": "All contingencies are removed.",
-      "Answer4": "The sale closes.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "9",
-      "Question": "A land owner wishes to build a neighborhood grocery store on a busy street in an area zoned for residential use. Which of the following would MOST likely be used to obtain permission for this store?",
-      "Answer1": "Deed amendment.",
-      "Answer2": "Approval of surrounding property owners.",
-      "Answer3": "Inclusionary zoning.",
-      "Answer4": "Conditional use permit or zoning variance.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "10",
-      "Question": "A salesperson qualified a minority couple with two children and defined their price range as between $110,000 and $120,000 for the three-bedroom house they wanted. They asked to look at two listings in a non-minority neighborhood. The salesperson did not show them the properties because they were priced under $90,000 and only had two small bedrooms. Did the salesperson act appropriately and why or why not?",
-      "Answer1": "Yes, because they were overqualified for the homes they had requested to see.",
-      "Answer2": "Yes, because it is the salesperson&apos;s job to tailor the properties shown to the needs of the buyer.",
-      "Answer3": "Id, because it is appropriate to show any property for which the buyer is qualified.",
-      "Answer4": "Id, because the presence of children required granting occupancy if they desire it.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "26",
-      "Question": "Legal descriptions using the government survey system are NOT generally used in",
-      "Answer1": "The original 13 states.",
-      "Answer2": "Subdivisions.",
-      "Answer3": "Quitclaim deeds.",
-      "Answer4": "Mortgages or deeds of trust.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "27",
-      "Question": "A buyer wants to purchase a home for $160,000 with a 15% down payment. The lender charges 2 points. How much money does the buyer need up front to make the purchase?",
-      "Answer1": "$2,720 ",
-      "Answer2": "$24,000 ",
-      "Answer3": "$24,408 ",
-      "Answer4": "$26,720 ",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "41",
-      "Question": "All of the following are methods to calculate the reproduction or replacement cost of a building EXCEPT the",
-      "Answer1": "Quantity survey method.",
-      "Answer2": "Unit-in-place method.",
-      "Answer3": "Square foot method.",
-      "Answer4": "Straight-line method.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "42",
-      "Question": "When a principal authorizes an agent to perform a particular act or transaction, it is an example of a",
-      "Answer1": "Universal agency.",
-      "Answer2": "Special agency.",
-      "Answer3": "General agency.",
-      "Answer4": "Common agency.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "56",
-      "Question": "Under the Federal Fair Housing Law, which of the following is considered discriminatory advertising?",
-      "Answer1": "“Nonsmoker preferred.”",
-      "Answer2": "“Military discount.”",
-      "Answer3": "“Seniors welcome.”",
-      "Answer4": "“Catholics preferred.”",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "57",
-      "Question": "Which of these Federal laws regulates the advertisement of a lender&apos;s credit terms (rates, payment, etc.)?",
-      "Answer1": "Real Estate Settlement Procedures Act.",
-      "Answer2": "ECOA.",
-      "Answer3": "Regulation Z.",
-      "Answer4": "Federal Fair Housing Act of 1968.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "88",
-      "Question": "When someone has living heirs but dies without leaving a will, the estate is distributed according to the",
-      "Answer1": "Statute of decent.",
-      "Answer2": "Marital property law.",
-      "Answer3": "Power of escheat.",
-      "Answer4": "Devisees",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "89",
-      "Question": "The sellers have agreed to give the buyer a carpet allowance to replace the family room carpet. They will allow $19.95 per square yard for carpet plus $5 per square yard for pad and installation. If the family room is 22&apos;6x15&apos;, how much will it cost the sellers (to the nearest cent)?",
-      "Answer1": "$935.63 ",
-      "Answer2": "$939.78 ",
-      "Answer3": "$966.81 ",
-      "Answer4": "None of the above.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "91",
-      "Question": "Davis, Hernandez, and Moore are vested as tenants in common on a parcel of land. Each received a pro-rata undivided interest in the parcel. The total price was $120,000. David put up 40% and Hernandez put up $22,500. What percentage does Moore own (to the nearest tenth of a percent)?",
-      "Answer1": "33.30%",
-      "Answer2": "36.00%",
-      "Answer3": "45.00%",
-      "Answer4": "None of the above.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "92",
-      "Question": "A couple signed a lease on an apartment for a period of 1 year. The lease does NOT contain an automatic renewal clause. The couple plans to move out at the end of the lease rather than renew it. How much notice MUST they give to comply with the lease term?",
-      "Answer1": "30 days",
-      "Answer2": "60 days.",
-      "Answer3": "90 days",
-      "Answer4": "Id notice is required",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "136",
-      "Question": "The creation of dry land by the gradual withdrawal of water from the land by the lowering of its surface level is known as",
-      "Answer1": "erosion.",
-      "Answer2": "reliction.",
-      "Answer3": "avulsion.",
-      "Answer4": "accretion.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "137",
-      "Question": "Unlike trade fixtures, other fixtures are",
-      "Answer1": "removable.",
-      "Answer2": "used in the conduct of business.",
-      "Answer3": "legally considered real estate.",
-      "Answer4": "owned and installed by a tenant.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "138",
-      "Question": "An estate that an individual may own for a lifetime or forever is referred to as",
-      "Answer1": "a freehold estate.",
-      "Answer2": "an indeterminate estate",
-      "Answer3": "an estate for years.",
-      "Answer4": "a dominant estate.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "139",
-      "Question": "An estate in which the holder is entitled to all rights in the property is called",
-      "Answer1": "priority.",
-      "Answer2": "gross.",
-      "Answer3": "dower.",
-      "Answer4": "fee simple.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "140",
-      "Question": "Which of the following activities by a property owner would result in a general lien against all of his property?",
-      "Answer1": "Not paying federal income taxes",
-      "Answer2": "Borrowing money through a second mortgage",
-      "Answer3": "Owing money to a contractor for a new roof",
-      "Answer4": "Not paying a special assessment tax for new sidewalks",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "141",
-      "Question": "Permission to enter the land owned by another person for a specific purpose is",
-      "Answer1": "an easement.",
-      "Answer2": "a license.",
-      "Answer3": "an encroachment.",
-      "Answer4": "deed restriction.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "142",
-      "Question": "Which of the following liens serves as a notice of possible future legal actions against a parcel of real estate?",
-      "Answer1": "Curtesy",
-      "Answer2": "Tacking",
-      "Answer3": "Lis pendens",
-      "Answer4": "Defeasance",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "143",
-      "Question": "An easement by prescription is NOT created if the property owner",
-      "Answer1": "has observed the claimant&apos;s use of the land.",
-      "Answer2": "specifically grants permission for use of the land.",
-      "Answer3": "allows for continuous use of the land use of the land.",
-      "Answer4": "is unaware of the claimant&apos;s use of the land.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "38",
-      "Question": "Real property can be converted to personal property by",
-      "Answer1": "Annexation",
-      "Answer2": "Severance",
-      "Answer3": "Accession",
-      "Answer4": "Extension",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "39",
-      "Question": "A deed restriction is applicable to the activities of",
-      "Answer1": "The current owner only",
-      "Answer2": "All owners, present and future",
-      "Answer3": "Tenant",
-      "Answer4": "Mortgagors",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "40",
-      "Question": "A broker has signed a listing contract for the sale of a home. Which of the following could make this contract voidable?",
-      "Answer1": "The seller cannot write and sign with and “X”.",
-      "Answer2": "The listing contract specifies that no other broker may show the house.",
-      "Answer3": "The seller is heavily under the influence of alcohol at the time of signing.",
-      "Answer4": "The listing contract specifies that a commission will be paid only if the house is sold within 3 months.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "53",
-      "Question": "An owner lists her home at a 7% commission rate and wants to net $45,000 after paying the mortgage balance of $68,000 and the broker&apos;s commission. To the nearest dollar, what should the selling price be to net her $45,000.",
-      "Answer1": "$105,090 ",
-      "Answer2": "$110,753 ",
-      "Answer3": "$120,910 ",
-      "Answer4": "$121,505 ",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "54",
-      "Question": "Which restrictive covenant would be considered illegal?",
-      "Answer1": "A covenant that is more restrictive than local zoning ordinances.",
-      "Answer2": "A restriction that is time-limited and expires after a stated period.",
-      "Answer3": "A covenant that restricts the type of building that may be constructed.",
-      "Answer4": "A covenant that restricts selected parcels within a defined subdivision.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "55",
-      "Question": "A licensee is listing a property in a known flood plain. The seller flatly denies that the structure and the property have ever been flooded. What is the licensee required to do in this situation?",
-      "Answer1": "Rely on the face value of seller&apos;s statement.",
-      "Answer2": "Inform the seller of potential legal consequences if this claim is untrue.",
-      "Answer3": "Inform the seller of the legal obligation to disclose facts regarding flood plains.",
-      "Answer4": "Refuse to list the property and explain to the seller that all properties in this area flood.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "76",
-      "Question": "Three people buy a house as tenants in common. Subsequently, two of the owners want to sell, but the third discourages each potential purchaser. The two owners who wish to sell the house can",
-      "Answer1": "Sell without the third owner&apos;s consent.",
-      "Answer2": "File an action for partition against the third owner.",
-      "Answer3": "File for a lien against the third owner&apos;s interest as damages.",
-      "Answer4": "Force the third owner to sell if they invoke the rule of specific performance.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "77",
-      "Question": "Under a land contract for deed, who retains fee ownership of the property?",
-      "Answer1": "Vendor",
-      "Answer2": "Vendee",
-      "Answer3": "Grantor",
-      "Answer4": "Grantee",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "106",
-      "Question": "The purpose of requiring an earnest money deposit in a real estate sale contract is to",
-      "Answer1": "Ensure that the broker will receive some compensation if either party defaults.",
-      "Answer2": "Ensure that the seller will not be bother by offers from buyers who are unable to qualify for appropriate financing.",
-      "Answer3": "Provide evidence of the buyer&apos;s intention to carry out the contract.",
-      "Answer4": "Set aside fund to cover the buyer&apos;s closing costs and mortgage insurance premiums.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "107",
-      "Question": "Regulation Z requires that the borrower be fully informed of all of the following EXCEPT",
-      "Answer1": "The annual percentage rate.",
-      "Answer2": "The total interest.",
-      "Answer3": "Loan fees.",
-      "Answer4": "The origination fee.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "134",
-      "Question": "When brokers&apos; licenses are suspended or revoked, their salespersons&apos; licenses are",
-      "Answer1": "not affected.",
-      "Answer2": "affected only if they had guilty knowledge.",
-      "Answer3": "suspended until the end of the current license period.",
-      "Answer4": "suspended until they affiliate with another broker.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "135",
-      "Question": "Real estate is defined to include all of the components of land and also",
-      "Answer1": "natural attachments.",
-      "Answer2": "trade fixtures.",
-      "Answer3": "personal property.",
-      "Answer4": "man-made improvements.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "23",
-      "Question": "A competitive market analysis is most often used for",
-      "Answer1": "Estate tax purposes.",
-      "Answer2": "Setting a listing price.",
-      "Answer3": "Divorce proceedings.",
-      "Answer4": "Property tax assessment.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "24",
-      "Question": "The day after a broker&apos;s listing on a house expired, it was listed with another broker and offered in the MLS. Several days later, a third licensee called the first broker and asked for the key to show the home. The broker should inform the caller that",
-      "Answer1": "He is no longer the listing agent.",
-      "Answer2": "He will set up an appointment for showing the home.",
-      "Answer3": "He will leave the key under the door mat.",
-      "Answer4": "The house is currently off the market.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "25",
-      "Question": "An exception to title insurance coverage is",
-      "Answer1": "Forged documents.",
-      "Answer2": "Defects found in public newspapers.",
-      "Answer3": "Incorrect records of material status.",
-      "Answer4": "Defects that clearly appear in the title search.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "21",
-      "Question": "The Department of Housing and Urban Development estimates that most private homes built before 1978 contain potentially dangerous levels of lead. Because of this, some Federal agencies, such as FHA,",
-      "Answer1": "Will no longer lend or guarantee loans on these older properties.",
-      "Answer2": "Require evidence of testing for and disclosure of any type of lead contamination before they will lend or guarantee loans on such properties.",
-      "Answer3": "Require funds to be escrowed for lead abatement as a condition of lending or guaranteeing loans on such properties.",
-      "Answer4": "Require the buyer to acknowledge disclosure of the presence of any known lead paint.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "22",
-      "Question": "When a listing broker is preparing an Offer to Purchase for a buyer customer, contingencies involving inspections or approval by a third party should",
-      "Answer1": "Have short deadlines.",
-      "Answer2": "Be discouraged by the broker.",
-      "Answer3": "Be stated as briefly as possible.",
-      "Answer4": "Be limited to mortgage arrangements.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "51",
-      "Question": "A perspective seller asks a salesperson to recommend a listing price for a property. The salesperson should suggest",
-      "Answer1": "Listing the property at the price the owner believes it is worth.",
-      "Answer2": "Listing the property at least 30% above the current mortgage.",
-      "Answer3": "A competitive market analysis to determine the property&apos;s value.",
-      "Answer4": "Setting the price at the value of the most recent sale in the neighborhood.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "52",
-      "Question": "A realty firm has just entered into an agreement to represent a home builder in the sale of a new subdivision. The firm has located several potential buyers and give homes have been sold to purchasers that the firm&apos;s agents have contacted. The realty firm has an agency relationship with",
-      "Answer1": "The builder.",
-      "Answer2": "The buyers.",
-      "Answer3": "The builder and the buyers.",
-      "Answer4": "Neither the builder nor the buyers.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "71",
-      "Question": "What is the duration of a home warranty&apos;s coverage?",
-      "Answer1": "The expected life of a purchaser.",
-      "Answer2": "The expected life of the product or system covered.",
-      "Answer3": "As disclosed in the contract that offers the warranty.",
-      "Answer4": "A minimum of 5 years or the duration of the purchaser&apos;s ownership, whichever is shorter.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "73",
-      "Question": "An appraiser MUST be licensed or certified to handle Federally related work on residential property valued at more than",
-      "Answer1": "$100,000 ",
-      "Answer2": "$250,000 ",
-      "Answer3": "$500,000 ",
-      "Answer4": "$1,000,000 ",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "74",
-      "Question": "Earnest money should be deposited into a trust account",
-      "Answer1": "In a timely manner, according to state laws.",
-      "Answer2": "Upon removal of all contingencies.",
-      "Answer3": "At the broker&apos;s discretion.",
-      "Answer4": "According to MLS rules.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "75",
-      "Question": "Even after an offer has been accepted and is binding, the buyer and seller may still choose to sign mutual release papers rather than proceed to closing. Which of the following circumstances would NOT give either party a justifiable reason to insist on a mutual release?",
-      "Answer1": "The buyer finds a better property for better terms.",
-      "Answer2": "A title defect that will take months to clear is discovered.",
-      "Answer3": "A basement fire causes damage that requires extensive repairs.",
-      "Answer4": "The buyer is unable to obtain financing that meets the terms of the contract&apos;s financing contingency.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "103",
-      "Question": "At the time of harvest, crops that require annual planting are generally considered to be",
-      "Answer1": "Improvements.",
-      "Answer2": "Personal property.",
-      "Answer3": "Real property.",
-      "Answer4": "Appurtenances.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "104",
-      "Question": "A property owner died, having willed his real property to his two daughters. There is still a chance that they could lose the land for a variety of reasons, but it CANNOT be taken through",
-      "Answer1": "Condemnation.",
-      "Answer2": "A challenge to the will.",
-      "Answer3": "Sale to satisfy a tax lien.",
-      "Answer4": "Escheat",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "105",
-      "Question": "A lawsuit for inverse condemnation may be brought by",
-      "Answer1": "The police.",
-      "Answer2": "The city.",
-      "Answer3": "A homeowner.",
-      "Answer4": "The zoning board.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "131",
-      "Question": "A Waiver of Broker Cooperation must be completed and signed when cooperation with other brokers is NOT desired by the",
-      "Answer1": "seller.",
-      "Answer2": "listing broker.",
-      "Answer3": "supervising broker.",
-      "Answer4": "prospective buyer.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "132",
-      "Question": "Prohibitions against commingling are aimed to prevent",
-      "Answer1": "mixing brokers&apos; funds with clients&apos; funds.",
-      "Answer2": "promising financing indiscriminately.",
-      "Answer3": "representing both parties in a transaction.",
-      "Answer4": "preventing brokers from lending licenses.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "36",
-      "Question": "Under the common law of agency, licensees owe the broker with whom they are associated, all of the following duties EXCEPT",
-      "Answer1": "Loyalty",
-      "Answer2": "Competence",
-      "Answer3": "Indemnification",
-      "Answer4": "Full disclosure",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "37",
-      "Question": "A company agrees to lease a property to be used as a gambling casino. State law prohibits gambling. This particular contract would be legally defined as",
-      "Answer1": "Void",
-      "Answer2": "Voidable",
-      "Answer3": "Valid",
-      "Answer4": "Unenforceable",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "48",
-      "Question": "To be valid, every deed must",
-      "Answer1": "Contain a warranty.",
-      "Answer2": "Include granting language.",
-      "Answer3": "Be executed by the grantor.",
-      "Answer4": "Be signed by the grantee if there are covenants.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "49",
-      "Question": "The FHA functions MOST like",
-      "Answer1": "A ban or savings and loan association.",
-      "Answer2": "A mortgage company.",
-      "Answer3": "An investment group.",
-      "Answer4": "An Insurance company.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "50",
-      "Question": "A gross lease can be best defined as one where the tenant pays, as a part of the rent,",
-      "Answer1": "All property changes excluding utilities.",
-      "Answer2": "Id operating expenses of the leased space.",
-      "Answer3": "Outside maintenance and property taxes only.",
-      "Answer4": "All property expenses except the interest on the owner&apos;s mortgage.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "68",
-      "Question": "A managing broker can be held responsible for",
-      "Answer1": "All actions of associated salespersons.",
-      "Answer2": "All real estate activities of salespersons.",
-      "Answer3": "Only those real estate activities the broker is aware of.",
-      "Answer4": "Id activities of independent contractors.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "69",
-      "Question": "To what party or parties does the broker owe the fiduciary duty or care?",
-      "Answer1": "The seller.",
-      "Answer2": "Both the buyer and the seller.",
-      "Answer3": "The party or parties employing the broker.",
-      "Answer4": "The party or parties paying the commission.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "70",
-      "Question": "An Environmental Impact Statement (EIS)",
-      "Answer1": "Summarizes the environmental impact of an existing project.",
-      "Answer2": "Projects the impact on the environment of a proposed project.",
-      "Answer3": "Is used primarily for state and Federally funded projects.",
-      "Answer4": "Must be approved by all affected water districts.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "72",
-      "Question": "An exclusive right to sell listing obtained by a broker associate belongs to",
-      "Answer1": "The seller only.",
-      "Answer2": "The employing broker only.",
-      "Answer3": "The broker associate only.",
-      "Answer4": "Both the broker associate and the responsible broker.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "86",
-      "Question": "At the closing, a seller&apos;s attorney informed her that he would be giving credit to the buyer for certain accrued items. These items represent",
-      "Answer1": "Bills related to the real estate that have already been paid by the seller.",
-      "Answer2": "Bills related to the real estate that have not been paid as of the time of the closing.",
-      "Answer3": "All of the seller&apos;s outstanding bills.",
-      "Answer4": "All of the buyer&apos;s outstanding bills.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "87",
-      "Question": "Which of the following approaches MOST reliably estimates the sales price of a single-family residence?",
-      "Answer1": "Appreciation.",
-      "Answer2": "Market data.",
-      "Answer3": "Cost.",
-      "Answer4": "Mortgage value.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "90",
-      "Question": "Usury laws were enacted to protect the",
-      "Answer1": "Lender",
-      "Answer2": "Broker",
-      "Answer3": "Seller",
-      "Answer4": "Borrower",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "101",
-      "Question": "A written agreement in which a purchaser agrees to buy, and a seller agrees to sell is called",
-      "Answer1": "An agency.",
-      "Answer2": "An assessment.",
-      "Answer3": "A contract.",
-      "Answer4": "A fiduciary obligation.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "102",
-      "Question": "A contract has been drawn which obliges the sellers to convey the title of their land to the buyers, if the buyers come up with $22,000 on or before December 31st. This is called",
-      "Answer1": "A buy-sell agreement",
-      "Answer2": "An option contract.",
-      "Answer3": "An installment contract.",
-      "Answer4": "A vendor&apos;s lien interest.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "118",
-      "Question": "The document used in a real estate sale that establishes the legal rights of the buyer and seller is the",
-      "Answer1": "Purchase contract.",
-      "Answer2": "Deed.",
-      "Answer3": "Listing Agreement.",
-      "Answer4": "Abstract of title.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "119",
-      "Question": "A loan which requires the borrower to pay interest only until the maturity date (or due date), and then to pay the entire principal on the maturity date, is called a",
-      "Answer1": "Term loan.",
-      "Answer2": "Wrap-around loan.",
-      "Answer3": "Shared-equity loan.",
-      "Answer4": "Partially amortized loan.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "120",
-      "Question": "The escrow officer or closing agent MUST give information regarding the sales price and the seller&apos;s social security number to",
-      "Answer1": " HUD.",
-      "Answer2": "FIRPTA.",
-      "Answer3": "IRS.",
-      "Answer4": "OSS.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "128",
-      "Question": "Which of the following documents must be retained by a broker for only six months?",
-      "Answer1": "Trust account records",
-      "Answer2": "Listing agreements",
-      "Answer3": "Contracts of sale",
-      "Answer4": "Unaccepted offers to purchase",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "129",
-      "Question": "In New Jersey, no ads for real estate may",
-      "Answer1": "indiscriminately promise financing.",
-      "Answer2": "refer to a home warranty.",
-      "Answer3": "contain the phrase “in the vicinity of.”",
-      "Answer4": "offer a free comparative market analysis.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "130",
-      "Question": "The supervising licensee of a main real estate office must NOT be",
-      "Answer1": "under 25 years old.",
-      "Answer2": "otherwise employed.",
-      "Answer3": "licensed in more than one state.",
-      "Answer4": "a licensed insurance broker.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "6",
-      "Question": "The buyer is assuming a mortgage presently on the property in the amount of $110,000. What is the adjustment made at closing?",
-      "Answer1": "Credit buyer $110,000; debit seller $110,000.",
-      "Answer2": "Credit seller $110,000; debit buyer $110,000.",
-      "Answer3": "Credit buyer $110,000; no adjustment to seller.",
-      "Answer4": "Credit seller $110,000; no adjustment to buyer.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "7",
-      "Question": "A prospective buyer made an offer to purchase a property. The owner responded with a counteroffer. While the buyer was reviewing the counteroffer, the owner received a better offer. The owner can accept the second offer if",
-      "Answer1": "It satisfies or exceeds all terms included in the counteroffer.",
-      "Answer2": "The owner withdraws the counteroffer before it is accepted.",
-      "Answer3": "The owner gives the first buyer notice that another offer was received and an opportunity to revise the bid.",
-      "Answer4": "The first buyer is informed, in writing, of the owner&apos;s intent to accept another offer.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "18",
-      "Question": "An agency relationship between a property owner and a property manager is usually created by",
-      "Answer1": "A management agreement.",
-      "Answer2": "Payment of a management fee.",
-      "Answer3": "An exclusive agency agreement.",
-      "Answer4": "An independent contractor agreement.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "19",
-      "Question": "A borrower has defaulted on the mortgage. The mortgage contains an acceleration clause. This permits the lender to",
-      "Answer1": "Confiscate the borrower&apos;s personal assets.",
-      "Answer2": "Demand immediate payment of the entire note.",
-      "Answer3": "Report the borrower to the Federal Housing Authority",
-      "Answer4": "Force the borrower to vacate the premises.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "20",
-      "Question": "A property is encumbered by a first mortgage of $60,000 and a second mortgage of $23,500. The property has just been sold at a foreclosure auction to a speculating investor for $88,000. Assume that all costs of the foreclosure sale are included in these balances. Which of the following statements is FALSE regarding the distribution of funds?",
-      "Answer1": "The first mortgagee received $60,000.",
-      "Answer2": "The second mortgagee received $23,500.",
-      "Answer3": "The second mortgagee receives nothing unless he forced the foreclosure auction.",
-      "Answer4": "The former owner receives $4500.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "3",
-      "Question": "The buyer wants to make the purchase offer contingent on a complex mortgage arrangement. The buyer&apos;s agent who is drawing up the contract should",
-      "Answer1": "Include the provision for the mortgage at the buyers&apos; request.",
-      "Answer2": "Suggest the buyer ask a lawyer to furnish the wording.",
-      "Answer3": "Consult the supervising broker for advice.",
-      "Answer4": "Refer the matter to the seller&apos;s agent.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "4",
-      "Question": "Three identical homes in a neighborhood were listed at the same time in a market where demand was constant. According to the law of supply and demand, which would have sold for the lowest price?",
-      "Answer1": "The first sold.",
-      "Answer2": "The second sold.",
-      "Answer3": "The last sold.",
-      "Answer4": "Cannot tell from the information given.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "5",
-      "Question": "A licensee has an agency representation agreement with a buyer. When showing another company&apos;s listing, what obligation does the licensee have to the seller and the listing broker at the other company?",
-      "Answer1": "There is no obligation because the buyer&apos;s agent has fiduciary duty to the buyer.",
-      "Answer2": "The buyer&apos;s agent will be paid by the buyer and has no obligations to the seller or his agent.",
-      "Answer3": "The listing broker works for the seller and has no right to any information from the buyer&apos;s broker or the buyer.",
-      "Answer4": "Disclose the agency relationship when arranging the showing and disclose material information about the buyer if presenting an offer.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "13",
-      "Question": "In helping a buyer to select a lender, if the buyer believes he has good credit and his income is documentable as a salary and by tax returns, the licensee might recommend a mortgage banker, instead of a mortgage broker, for all of the following reasons EXCEPT",
-      "Answer1": "Closing costs may be lower.",
-      "Answer2": "Loan originator has knowledge of the underwriter&apos;s policies.",
-      "Answer3": "More variety of loan programs available.",
-      "Answer4": "Originator and lender are part of the same company.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "16",
-      "Question": "According to the Truth-in-Lending Act, if any “trigger terms” are used in an ad, all of the following disclosures MUST appear in the ad EXCEPT the",
-      "Answer1": "Cash price or amount of the loan.",
-      "Answer2": "Amount of down payment required.",
-      "Answer3": "Number, amount, and frequency of payments.",
-      "Answer4": "Prepayment penalties and rebates.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "17",
-      "Question": "A property management plan may serve different purposes for different owners and generally has to strike a balance between preservation of the property&apos;s value and generation of income. Which of the following owners would MOST likely prefer a property manager who emphasizes maintenance of value over profitability?",
-      "Answer1": "An individual entrepreneur who owns several apartment buildings.",
-      "Answer2": "The Department of Housing and Urban Development.",
-      "Answer3": "The investment division of a bank.",
-      "Answer4": "A corporate Real Estate Investment Trust.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "31",
-      "Question": "A real estate salesperson is representing only the buyer in a transaction. Which of the following actions would be a violation of the salesperson&apos;s agency duties to the client?",
-      "Answer1": "Disclosing the price the seller originally paid for the property.",
-      "Answer2": "Disclosing the highest price the buyer is willing to pay.",
-      "Answer3": "Preparing a competitive market analysis.",
-      "Answer4": "Identify latent property defects.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "32",
-      "Question": "If all other factors are equal, in which location is a parking lot likely to bring the highest sales price?",
-      "Answer1": "Residential district zones for two-story apartments.",
-      "Answer2": "Business district zoned for a two-story commercial building.",
-      "Answer3": "Business district zoned for a six-story office building.",
-      "Answer4": "The price for the parking lot will be the same regardless of area and zoning.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "33",
-      "Question": "A buyer was negotiating the purchase of a house for himself. During a conversation with the seller, the seller agreed to include all kitchen appliances in the sale, and this fact was included in the sales contract. In this situation, if the seller takes the appliances with him, what recourse does the buyer have?",
-      "Answer1": "The buyer has no recourse because he negotiated the sales himself.",
-      "Answer2": "The buyer may declare the sales contract invalid.",
-      "Answer3": "The buyer may sue the seller for partial performance.",
-      "Answer4": "The buyer may sue the seller for specific performance.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "34",
-      "Question": "During the listing presentation, the seller questions the amount of commission to be paid and is told",
-      "Answer1": "The amount is set by law.",
-      "Answer2": "Everyone charges the same amount.",
-      "Answer3": "The amount of commission is negotiable.",
-      "Answer4": "The agent that charges a lower commission will not do as good a job selling the property.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "35",
-      "Question": "A salesperson lists a property with a contract that allows for subagency and dual agency. The salesperson is",
-      "Answer1": "An independent contractor to the broker and an agent to the principal.",
-      "Answer2": "An agent to the broker and a subagent to the principal.",
-      "Answer3": "A subagent to the broker and an agent to the principal.",
-      "Answer4": "An agent to the broker and an agent to the principal.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "46",
-      "Question": "A salesperson in a branch office is sued for damages by a buyer after the salesperson misrepresents a property. Who has the ultimate responsibility for the salesperson&apos;s actions?",
-      "Answer1": "The owner of the property.",
-      "Answer2": "The supervising broker.",
-      "Answer3": "The branch manager.",
-      "Answer4": "The salesperson.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "47",
-      "Question": "Building codes are",
-      "Answer1": "Created to establish zoning in a neighborhood.",
-      "Answer2": "Ordinances that specify construction standards.",
-      "Answer3": "Established in each neighborhood or development.",
-      "Answer4": "Set up to hear complaints about effects of zoning ordinances.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "61",
-      "Question": "Which of the following consumers would be able to derive the most benefit from a reverse mortgage?",
-      "Answer1": "A homeowner whose property is free of any mortgage encumbrance.",
-      "Answer2": "A young couple whose mortgage loan has a higher interest than the current rate for new loans.",
-      "Answer3": "A 65-year-old man who has recently bought a condominium with a conventional loan for 90 percent of the purchase price.",
-      "Answer4": "A couple in their late 60&apos;s who need to tap their home equity to help cover their expenses but do not want to sell their house.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "63",
-      "Question": "A seller tells the listing agent that her home was treated for termites 10 years ago, so there are no termites now. Before listing the property, the agent should",
-      "Answer1": "Tell the seller not to disclose, because the statute of limitations has run out.",
-      "Answer2": "Tell the seller to disclose the termite treatment on the property disclosure.",
-      "Answer3": "Talk to neighbors to see if there are termites in the neighborhood.",
-      "Answer4": "Talk to the planning and zoning department for local termite eradication ordinance.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "64",
-      "Question": "Although states make specific laws governing water rights and the rights in land that borders water, most states generally follow one of the two basic doctrines regarding water rights. In many states, the common law doctrine of riparian and littoral rights dictates that water rights are automatically conveyed with property. In others, all water rights are controlled by the state under the doctrine of",
-      "Answer1": "Eminent domain.",
-      "Answer2": "Prior appropriation.",
-      "Answer3": "Express reservation.",
-      "Answer4": "Avulsion",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "65",
-      "Question": "If you own a building free and clear that is worth $115,000 and want an annual return of 12%, what net income is needed each month?",
-      "Answer1": "$1,062 ",
-      "Answer2": "$1,150 ",
-      "Answer3": "$9,583 ",
-      "Answer4": "$13,800 ",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "66",
-      "Question": "Unrepresented buyers ask the licensee who listed the home whether they should order a property inspection as a part of their due diligence for the purchase of the home. Which of the following would be the most appropriate way for the listing agent to respond?",
-      "Answer1": "If you feel it is in your best interest, please do so.",
-      "Answer2": "Since I represent the seller, I am not able to answer your question.",
-      "Answer3": "I am not aware of any issues that such an inspection would identify.",
-      "Answer4": "Since the seller has provided a property disclosure, there should be no need for any further inspection.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "67",
-      "Question": "MOST closed real estate transactions should be reported to the IRS. Required information includes the seller name(s) and social security number(s) and",
-      "Answer1": "Buyers name(s) and social security number(s).",
-      "Answer2": "The property financing.",
-      "Answer3": "The mortgage lender&apos;s name and address.",
-      "Answer4": "The sale price.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "83",
-      "Question": "The real estate broker who is listing a house for sale should personally verify",
-      "Answer1": "Whether radon is present in the basement.",
-      "Answer2": "The number of square feet in the building",
-      "Answer3": "That the electrical wiring is up to code.",
-      "Answer4": "How much the seller originally paid for the property.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "84",
-      "Question": "Which of the following may be considered prima facie evidence of discrimination by a broker?",
-      "Answer1": "Failure to show property in certain neighborhoods.",
-      "Answer2": "Failure to display the equal housing poster at the broker&apos;s place of business.",
-      "Answer3": "Failure to keep appointments with minority customers even though the broker was unaware of the minority status.",
-      "Answer4": "Failure of a minority buyer to qualify for a loan arranged by the broker.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "85",
-      "Question": "The relationship in which the agent is placed in the position of trust and confidence to the principal is known by the term",
-      "Answer1": "Disclosure",
-      "Answer2": "Brokerage",
-      "Answer3": "Fiduciary",
-      "Answer4": "Implied agreement",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "98",
-      "Question": "A broker supplies the financing for a project to build condominiums with the stipulation that he has the exclusive right to sell the completed condos. Which of the following BEST describes this relationship?",
-      "Answer1": "Agency coupled with an interest.",
-      "Answer2": "Specific agency.",
-      "Answer3": "General agency.",
-      "Answer4": "Exclusive Agency.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "99",
-      "Question": "Steve signed an offer to purchase in a state of obvious drunkenness.  The next morning, he realized what he had done and told the broker that he did not want to be bound by the terms of the contract. This would be an example of a(n)",
-      "Answer1": "Valid Contract",
-      "Answer2": "Voidable Contract",
-      "Answer3": "Unenforceable Contract",
-      "Answer4": "Void Contract",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "100",
-      "Question": "Which of the following forms of ownership may be held by a wife and husband?",
-      "Answer1": "Tenancy in common",
-      "Answer2": "Tenancy at will",
-      "Answer3": "Tenancy by the entirety",
-      "Answer4": "Joint tenancy",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "116",
-      "Question": "Tenants are still in their rental property even though their lease has expired. The landlord has given them written notice to quit and refused to accept rent. They are",
-      "Answer1": "Periodic tenants.",
-      "Answer2": "Tenants by reversion.",
-      "Answer3": "Tenants in common.",
-      "Answer4": "Tenants at sufferance.",
-      "CorrectAnswer": "4"
-    },
-    {
-      "Id": "117",
-      "Question": "A seller mentions to his agent that the previous owners of his property may have dumped hazardous waste on the site. Under the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA), who is liable for damages from the dumping prior to the sale of the property?",
-      "Answer1": "Seller.",
-      "Answer2": "Agent.",
-      "Answer3": "Company that manufactured the waste.",
-      "Answer4": "Federal government.",
-      "CorrectAnswer": "1"
-    },
-    {
-      "Id": "126",
-      "Question": "Which of the following acts is illegal?",
-      "Answer1": "A non-licensed property owner sells a lot to a developer.",
-      "Answer2": "A non-licensed banker collects rents on behalf of the bank.",
-      "Answer3": "A licensed broker shares a commission with a real estate attorney.",
-      "Answer4": "A licensed salesperson assists a licensed broker with purchase negotiations.",
-      "CorrectAnswer": "3"
-    },
-    {
-      "Id": "127",
-      "Question": "An unlicensed assistant in a real estate broker&apos;s office may",
-      "Answer1": "show property.",
-      "Answer2": "pick up keys.",
-      "Answer3": "host an open house.",
-      "Answer4": "answer questions on listings.",
-      "CorrectAnswer": "2"
-    },
-    {
-      "Id": "133",
-      "Question": "All ads for real estate must specify the",
-      "Answer1": "broker&apos;s name.",
-      "Answer2": "asking price.",
-      "Answer3": "property&apos;s municipal location.",
-      "Answer4": "listing expiration date.",
-      "CorrectAnswer": "3"
+      "id": "123",
+      "questionName": "The owner of an interest in commonly held property who wishes to dispose of the property, while the other owners do NOT want to do so, will probably",
+      "answer_1": "Give an exclusive right to sell a licensee.",
+      "answer_2": "Begin a suit for partition.",
+      "answer_3": "Advertise that the property is for sale.",
+      "answer_4": "File a discrimination complaint with the Justice Department.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "124",
+      "questionName": "Which of the following statements about discount points is FALSE?",
+      "answer_1": "They are computed as a percentage of the selling price.",
+      "answer_2": "They are used to buy down interest rate.",
+      "answer_3": "They are a function of the marketplace.",
+      "answer_4": "They are paid by either the buyer or the seller.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "125",
+      "questionName": "In New Jersey, the realty transfer fee is always",
+      "answer_1": "Split between the seller and the buyer.",
+      "answer_2": "Charged to the buyer.",
+      "answer_3": "Charged to the seller.",
+      "answer_4": "Negotiated between the buyer and the seller.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "1",
+      "questionName": "A competitive market analysis takes into consideration",
+      "answer_1": "Square footage of the subject property.",
+      "answer_2": "Neighborhood nuances. ",
+      "answer_3": "Unemployment levels in the community.",
+      "answer_4": "Age of the sellers.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "2",
+      "questionName": "A major difference between freehold and nonfreehold estates is that all freehold estates",
+      "answer_1": "Are of indeterminable duration.",
+      "answer_2": "Terminate upon the death of the person on whose life they are based.",
+      "answer_3": "Are inheritable by the holder&apos;s heirs.",
+      "answer_4": "Are estates for a fixed term.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "11",
+      "questionName": "Which of the following services can be provided by a real estate salesperson?",
+      "answer_1": "Residential appraisals of single-family dwellings.",
+      "answer_2": "Land surveys if the property is in a subdivision.",
+      "answer_3": "Title examinations on potential listings.",
+      "answer_4": "Competitive market analyses.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "12",
+      "questionName": "A minority couple comes to a salesperson looking for a house. The salesperson has some properties for which the couple qualify, but avoids showing or mentioning these listings. Instead, the salesperson shows only properties in low-priced and integrated neighborhoods. This practice is known as",
+      "answer_1": "Steering",
+      "answer_2": "Blockbusting",
+      "answer_3": "Redlining",
+      "answer_4": "Conciliation",
+      "correct_ans": "1"
+    },
+    {
+      "id": "14",
+      "questionName": "When compiling a competitive market analysis, a broker would look for comparable properties that",
+      "answer_1": "Were sold for all cash.",
+      "answer_2": "Had been extensively advertised.",
+      "answer_3": "Were offered by owner with no broker.",
+      "answer_4": "Were located near the property being listed.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "15",
+      "questionName": "What critical aspect of the property inspection process MUST licensees convey to prospective buyers?",
+      "answer_1": "Difficulty of finding competent inspectors.",
+      "answer_2": "Appropriate fee splitting between inspectors and brokers.",
+      "answer_3": "Need for inspections to be completed within the time stated in the contract.",
+      "answer_4": "Likelihood that the inspection will generate a list of items sellers must repair.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "28",
+      "questionName": "Under the terms of their listing contract, the owners may sell their house themselves and pay no commission. If their agent sells it, a commission will be due. What kind of listing contract do the owners have?",
+      "answer_1": "Multiple listing.",
+      "answer_2": "Net listing.",
+      "answer_3": "Exclusive agency listing.",
+      "answer_4": "Exclusive right to sell listing.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "29",
+      "questionName": "An escheat occurs when",
+      "answer_1": "Property is seized to satisfy a tax lien.",
+      "answer_2": "Property is condemned for a necessary public use",
+      "answer_3": "A property owner dies without heirs or a valid will.",
+      "answer_4": "A property owner fails to perform legally required cleanup of toxic waste.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "30",
+      "questionName": "A landlord may legally refuse to rent to a prospective tenant if the tenant",
+      "answer_1": "Has a history of serious mental illness.",
+      "answer_2": "Is unable to live alone without assistance.",
+      "answer_3": "Has ever been convicted of using illegal drugs.",
+      "answer_4": "Has ever been convicted of selling illegal drugs.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "43",
+      "questionName": "State law differs on whether a buyer is entitled to know about",
+      "answer_1": "A suicide that occurred in the house last year",
+      "answer_2": "Possible lead paint in the property",
+      "answer_3": "The flooding of the basement every spring.",
+      "answer_4": "The fact that the sellers are getting a divorce.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "44",
+      "questionName": "A judgment has been properly recorded. Any subsequent purchasers, whether they have actually examined the record or not, have been given",
+      "answer_1": "Actual notice.",
+      "answer_2": "Prescriptive notice.",
+      "answer_3": "Constructive notice.",
+      "answer_4": "Exculpatory notice.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "45",
+      "questionName": "In MOST states, foreclosed property is sold through",
+      "answer_1": "Sealed bids.",
+      "answer_2": "Public auction.",
+      "answer_3": "Deficiency judgement.",
+      "answer_4": "Right of redemption.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "58",
+      "questionName": "An equal housing opportunity notice MUST be",
+      "answer_1": "Displayed in the brokerage office.",
+      "answer_2": "Included in all written advertisements.",
+      "answer_3": "Specified in all listing agreements and offers to purchase.",
+      "answer_4": "Given to all prospective clients.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "59",
+      "questionName": "Antitrust laws prohibit competing brokers from all of the following EXCEPT",
+      "answer_1": "Boycotting other brokers in the marketplace.",
+      "answer_2": "Dividing the market to restrict competition.",
+      "answer_3": "Agreeing to set sales commissions and management rates.",
+      "answer_4": "Receiving compensation from both the buyer and the seller.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "60",
+      "questionName": "Salesperson Shelley was at the local coffee shop with some agents from other offices. The subject of commissions came up, and agents began to compare their commission rates. Shelley should",
+      "answer_1": "Excuse herself from the discussion as this could constitute illegal blockbusting.",
+      "answer_2": "Advise her friends this could constitute a violation of Sherman Antitrust Act.",
+      "answer_3": "Listen carefully so she can be more competitive in the market.",
+      "answer_4": "Be certain her company is charging as much as the others.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "62",
+      "questionName": "A seller&apos;s statement in a property disclosure document means",
+      "answer_1": "The owner is disclosing known latent defects.",
+      "answer_2": "Nothing, because the seller will not be responsible for any defects.",
+      "answer_3": "The property is fully suitable for the uses contemplated by the buyer.",
+      "answer_4": "The owner creates a warranty that there are no defects in the property.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "81",
+      "questionName": "The Civil Rights Act of 1866 prohibits any type of discrimination based on",
+      "answer_1": "Gender",
+      "answer_2": "Race",
+      "answer_3": "Race and Gender",
+      "answer_4": "Religion",
+      "correct_ans": "2"
+    },
+    {
+      "id": "82",
+      "questionName": "A broker says, while showing rural property, “This property has the world&apos;s purest well water.” This would be an example of",
+      "answer_1": "A verbal water quality report.",
+      "answer_2": "An assurance that the property is not on the public water system.",
+      "answer_3": "An expression of opinion, or puffing, which could lead to misrepresentation.",
+      "answer_4": "A licensee&apos;s disclosure of the qualities of the property.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "96",
+      "questionName": "If conditions for purchase are included in a deed and these conditions are violated, what is the penalty?",
+      "answer_1": "A court order enforcing compliance.",
+      "answer_2": "Penalty charges.",
+      "answer_3": "An injunction against further use of the property.",
+      "answer_4": "Return of the property to the original owner",
+      "correct_ans": "4"
+    },
+    {
+      "id": "97",
+      "questionName": "Another term for the owner of a property listed with your firm is the",
+      "answer_1": "Customer",
+      "answer_2": "Prospect",
+      "answer_3": "Consumer",
+      "answer_4": "Client",
+      "correct_ans": "4"
+    },
+    {
+      "id": "111",
+      "questionName": "In an exclusive right-to-sell, an owner lists the property for sale with how many brokers?",
+      "answer_1": "One.",
+      "answer_2": "Two.",
+      "answer_3": "Three.",
+      "answer_4": "Any number.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "113",
+      "questionName": "An easement can be terminated by",
+      "answer_1": "A license.",
+      "answer_2": "Prescription.",
+      "answer_3": "An express grant.",
+      "answer_4": "Merger of titles",
+      "correct_ans": "4"
+    },
+    {
+      "id": "114",
+      "questionName": "Errors and Omissions insurance covers the broker for",
+      "answer_1": "Title defects.",
+      "answer_2": "Intentional misrepresentations.",
+      "answer_3": "Unintentional misrepresentations.",
+      "answer_4": "Commission losses.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "115",
+      "questionName": "At the time of listing, the seller tells the listing agent that they are moving because the neighbor has loud parties every weekend. The agent should",
+      "answer_1": "Suggest talking to the neighbor about being quiet.",
+      "answer_2": "Schedule only daytime showings.",
+      "answer_3": "Tell potential buyers about the parties.",
+      "answer_4": "Do not tell anyone about the parties.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "78",
+      "questionName": "When is flood insurance REQUIRED in order to obtain a loan?",
+      "answer_1": "When the property is located in a Flood Hazard Zone.",
+      "answer_2": "If the lender learns that the property securing an existing loan has been recategorized as being located in a flood Hazard Zone.",
+      "answer_3": "When there is no hazard insurance. If the property is covered by hazard insurance, flood hazard is also covered.",
+      "answer_4": "Never. Flood insurance is optional, and requiring special insurance in certain areas is called redlining.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "79",
+      "questionName": "The Real Estate Settlement Procedures Act (RESPA) specifically prohibits",
+      "answer_1": "Lenders from requiring escrow accounts.",
+      "answer_2": "Kickbacks to real estate licensees for making referrals to lenders or other interested parties.",
+      "answer_3": "Discriminatory advertising.",
+      "answer_4": "Redlining.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "80",
+      "questionName": "For federal income tax purposes, which of the following are costs of homeownership that may be deducted from gross income?",
+      "answer_1": "Mortgage loan interest, local property taxes, mortgage loan origination fees.",
+      "answer_2": "Mortgage loan interest, homeowner&apos;s insurance premium, local property taxes.",
+      "answer_3": "Cost of essential repairs, mortgage loan origination fees, mortgage loan interest.",
+      "answer_4": "Homeowner&apos;s insurance premium, mortgage loan origination fees, mortgage loan interest.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "93",
+      "questionName": "A major reason for buying and owning a condominium rather than a detached single-family home is that",
+      "answer_1": "A condominium tends to be more affordable.",
+      "answer_2": "A condominium requires no maintenance.",
+      "answer_3": "A condominium is easier to resell.",
+      "answer_4": "Condominium ownership has more tax advantages.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "94",
+      "questionName": "A couple owns an older home in a neighborhood that is becoming a commercial area. Because of the change in the use of the land, the couple can expect the value of their parcel to increase at some future time. This is an example of the principle of",
+      "answer_1": "Substitution",
+      "answer_2": "Contribution",
+      "answer_3": "Conformity",
+      "answer_4": "Anticipation",
+      "correct_ans": "4"
+    },
+    {
+      "id": "95",
+      "questionName": "The gross rent multiplier for a single-family home is calculated by dividing the sales price of the property by",
+      "answer_1": "The cost per square foot.",
+      "answer_2": "Its gross annual rent.",
+      "answer_3": "Its gross monthly rent.",
+      "answer_4": "Expected rate of return.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "108",
+      "questionName": "Ownership of common stock in a corporation gives",
+      "answer_1": "Co-ownership in any real property held by that corporation.",
+      "answer_2": "The right to order the sale of any corporate real estate.",
+      "answer_3": "An interest that is classified as personal property.",
+      "answer_4": "Assurance that a decline in land values will not affect the value of the stock.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "109",
+      "questionName": "The practice of inducing panic selling in a neighborhood for financial gain is",
+      "answer_1": "Antitrust.",
+      "answer_2": "Steering.",
+      "answer_3": "Redlining.",
+      "answer_4": "Blockbusting.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "110",
+      "questionName": "The real estate contract for a specific property for use as an unlicensed whiskey sales operation was forced to terminate. The termination was the result of",
+      "answer_1": "Operation of law.",
+      "answer_2": "Impossibility of performance.",
+      "answer_3": "Novation.",
+      "answer_4": "Breach of contract.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "112",
+      "questionName": "An environmental impact statement typically describes the effect of a proposed   project on factors such as",
+      "answer_1": "Public health and safety.",
+      "answer_2": "Zoning regulations.",
+      "answer_3": "Highest and best use of the land.",
+      "answer_4": "Mapping requirements.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "121",
+      "questionName": "A mentally disabled person who has been declared incompetent by a judge wishes to enter into a contract. Under what conditions can such a person do so?",
+      "answer_1": "The person must obtain prior written approval by a licensed psychiatrist or psychologist.",
+      "answer_2": "The person must be capable of understanding the transaction.",
+      "answer_3": "The person appointed by the court to act for the disabled person must contract on his or her behalf.",
+      "answer_4": "The person may enter a contract under any condition, because the law prohibits discrimination against persons with disabilities.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "122",
+      "questionName": "The economic characteristics of land are",
+      "answer_1": "Scarcity, location, and durability.",
+      "answer_2": "Immovability, indestructibility, and uniqueness.",
+      "answer_3": "Latitude and longitude.",
+      "answer_4": "Wooded, barren, and water bearing.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "144",
+      "questionName": "In New Jersey, unless otherwise stated in the deed, a conveyance of two or more persons (not married to each other) creates a",
+      "answer_1": "joint tenancy.",
+      "answer_2": "tenancy in common.",
+      "answer_3": "tenancy by the entirety.",
+      "answer_4": "multiple tenancy.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "145",
+      "questionName": "The four unities required to create a joint tenancy are time, title, interest, and",
+      "answer_1": "possession.",
+      "answer_2": "residence.",
+      "answer_3": "equity.",
+      "answer_4": "survivorship.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "8",
+      "questionName": "A broker has bought a ready, willing, and able buyer to a seller. In MOST listing contracts, the broker has earned his commission when",
+      "answer_1": "Any offer is delivered to the seller.",
+      "answer_2": "The seller accepts the offer.",
+      "answer_3": "All contingencies are removed.",
+      "answer_4": "The sale closes.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "9",
+      "questionName": "A land owner wishes to build a neighborhood grocery store on a busy street in an area zoned for residential use. Which of the following would MOST likely be used to obtain permission for this store?",
+      "answer_1": "Deed amendment.",
+      "answer_2": "Approval of surrounding property owners.",
+      "answer_3": "Inclusionary zoning.",
+      "answer_4": "Conditional use permit or zoning variance.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "10",
+      "questionName": "A salesperson qualified a minority couple with two children and defined their price range as between $110,000 and $120,000 for the three-bedroom house they wanted. They asked to look at two listings in a non-minority neighborhood. The salesperson did not show them the properties because they were priced under $90,000 and only had two small bedrooms. Did the salesperson act appropriately and why or why not?",
+      "answer_1": "Yes, because they were overqualified for the homes they had requested to see.",
+      "answer_2": "Yes, because it is the salesperson&apos;s job to tailor the properties shown to the needs of the buyer.",
+      "answer_3": "id, because it is appropriate to show any property for which the buyer is qualified.",
+      "answer_4": "id, because the presence of children required granting occupancy if they desire it.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "26",
+      "questionName": "Legal descriptions using the government survey system are NOT generally used in",
+      "answer_1": "The original 13 states.",
+      "answer_2": "Subdivisions.",
+      "answer_3": "Quitclaim deeds.",
+      "answer_4": "Mortgages or deeds of trust.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "27",
+      "questionName": "A buyer wants to purchase a home for $160,000 with a 15% down payment. The lender charges 2 points. How much money does the buyer need up front to make the purchase?",
+      "answer_1": "$2,720 ",
+      "answer_2": "$24,000 ",
+      "answer_3": "$24,408 ",
+      "answer_4": "$26,720 ",
+      "correct_ans": "4"
+    },
+    {
+      "id": "41",
+      "questionName": "All of the following are methods to calculate the reproduction or replacement cost of a building EXCEPT the",
+      "answer_1": "Quantity survey method.",
+      "answer_2": "Unit-in-place method.",
+      "answer_3": "Square foot method.",
+      "answer_4": "Straight-line method.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "42",
+      "questionName": "When a principal authorizes an agent to perform a particular act or transaction, it is an example of a",
+      "answer_1": "Universal agency.",
+      "answer_2": "Special agency.",
+      "answer_3": "General agency.",
+      "answer_4": "Common agency.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "56",
+      "questionName": "Under the Federal Fair Housing Law, which of the following is considered discriminatory advertising?",
+      "answer_1": "“Nonsmoker preferred.”",
+      "answer_2": "“Military discount.”",
+      "answer_3": "“Seniors welcome.”",
+      "answer_4": "“Catholics preferred.”",
+      "correct_ans": "4"
+    },
+    {
+      "id": "57",
+      "questionName": "Which of these Federal laws regulates the advertisement of a lender&apos;s credit terms (rates, payment, etc.)?",
+      "answer_1": "Real Estate Settlement Procedures Act.",
+      "answer_2": "ECOA.",
+      "answer_3": "Regulation Z.",
+      "answer_4": "Federal Fair Housing Act of 1968.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "88",
+      "questionName": "When someone has living heirs but dies without leaving a will, the estate is distributed according to the",
+      "answer_1": "Statute of decent.",
+      "answer_2": "Marital property law.",
+      "answer_3": "Power of escheat.",
+      "answer_4": "Devisees",
+      "correct_ans": "1"
+    },
+    {
+      "id": "89",
+      "questionName": "The sellers have agreed to give the buyer a carpet allowance to replace the family room carpet. They will allow $19.95 per square yard for carpet plus $5 per square yard for pad and installation. If the family room is 22&apos;6x15&apos;, how much will it cost the sellers (to the nearest cent)?",
+      "answer_1": "$935.63 ",
+      "answer_2": "$939.78 ",
+      "answer_3": "$966.81 ",
+      "answer_4": "None of the above.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "91",
+      "questionName": "Davis, Hernandez, and Moore are vested as tenants in common on a parcel of land. Each received a pro-rata undivided interest in the parcel. The total price was $120,000. David put up 40% and Hernandez put up $22,500. What percentage does Moore own (to the nearest tenth of a percent)?",
+      "answer_1": "33.30%",
+      "answer_2": "36.00%",
+      "answer_3": "45.00%",
+      "answer_4": "None of the above.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "92",
+      "questionName": "A couple signed a lease on an apartment for a period of 1 year. The lease does NOT contain an automatic renewal clause. The couple plans to move out at the end of the lease rather than renew it. How much notice MUST they give to comply with the lease term?",
+      "answer_1": "30 days",
+      "answer_2": "60 days.",
+      "answer_3": "90 days",
+      "answer_4": "id notice is required",
+      "correct_ans": "4"
+    },
+    {
+      "id": "136",
+      "questionName": "The creation of dry land by the gradual withdrawal of water from the land by the lowering of its surface level is known as",
+      "answer_1": "erosion.",
+      "answer_2": "reliction.",
+      "answer_3": "avulsion.",
+      "answer_4": "accretion.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "137",
+      "questionName": "Unlike trade fixtures, other fixtures are",
+      "answer_1": "removable.",
+      "answer_2": "used in the conduct of business.",
+      "answer_3": "legally considered real estate.",
+      "answer_4": "owned and installed by a tenant.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "138",
+      "questionName": "An estate that an individual may own for a lifetime or forever is referred to as",
+      "answer_1": "a freehold estate.",
+      "answer_2": "an indeterminate estate",
+      "answer_3": "an estate for years.",
+      "answer_4": "a dominant estate.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "139",
+      "questionName": "An estate in which the holder is entitled to all rights in the property is called",
+      "answer_1": "priority.",
+      "answer_2": "gross.",
+      "answer_3": "dower.",
+      "answer_4": "fee simple.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "140",
+      "questionName": "Which of the following activities by a property owner would result in a general lien against all of his property?",
+      "answer_1": "Not paying federal income taxes",
+      "answer_2": "Borrowing money through a second mortgage",
+      "answer_3": "Owing money to a contractor for a new roof",
+      "answer_4": "Not paying a special assessment tax for new sidewalks",
+      "correct_ans": "1"
+    },
+    {
+      "id": "141",
+      "questionName": "Permission to enter the land owned by another person for a specific purpose is",
+      "answer_1": "an easement.",
+      "answer_2": "a license.",
+      "answer_3": "an encroachment.",
+      "answer_4": "deed restriction.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "142",
+      "questionName": "Which of the following liens serves as a notice of possible future legal actions against a parcel of real estate?",
+      "answer_1": "Curtesy",
+      "answer_2": "Tacking",
+      "answer_3": "Lis pendens",
+      "answer_4": "Defeasance",
+      "correct_ans": "3"
+    },
+    {
+      "id": "143",
+      "questionName": "An easement by prescription is NOT created if the property owner",
+      "answer_1": "has observed the claimant&apos;s use of the land.",
+      "answer_2": "specifically grants permission for use of the land.",
+      "answer_3": "allows for continuous use of the land use of the land.",
+      "answer_4": "is unaware of the claimant&apos;s use of the land.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "38",
+      "questionName": "Real property can be converted to personal property by",
+      "answer_1": "Annexation",
+      "answer_2": "Severance",
+      "answer_3": "Accession",
+      "answer_4": "Extension",
+      "correct_ans": "2"
+    },
+    {
+      "id": "39",
+      "questionName": "A deed restriction is applicable to the activities of",
+      "answer_1": "The current owner only",
+      "answer_2": "All owners, present and future",
+      "answer_3": "Tenant",
+      "answer_4": "Mortgagors",
+      "correct_ans": "2"
+    },
+    {
+      "id": "40",
+      "questionName": "A broker has signed a listing contract for the sale of a home. Which of the following could make this contract voidable?",
+      "answer_1": "The seller cannot write and sign with and “X”.",
+      "answer_2": "The listing contract specifies that no other broker may show the house.",
+      "answer_3": "The seller is heavily under the influence of alcohol at the time of signing.",
+      "answer_4": "The listing contract specifies that a commission will be paid only if the house is sold within 3 months.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "53",
+      "questionName": "An owner lists her home at a 7% commission rate and wants to net $45,000 after paying the mortgage balance of $68,000 and the broker&apos;s commission. To the nearest dollar, what should the selling price be to net her $45,000.",
+      "answer_1": "$105,090 ",
+      "answer_2": "$110,753 ",
+      "answer_3": "$120,910 ",
+      "answer_4": "$121,505 ",
+      "correct_ans": "4"
+    },
+    {
+      "id": "54",
+      "questionName": "Which restrictive covenant would be considered illegal?",
+      "answer_1": "A covenant that is more restrictive than local zoning ordinances.",
+      "answer_2": "A restriction that is time-limited and expires after a stated period.",
+      "answer_3": "A covenant that restricts the type of building that may be constructed.",
+      "answer_4": "A covenant that restricts selected parcels within a defined subdivision.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "55",
+      "questionName": "A licensee is listing a property in a known flood plain. The seller flatly denies that the structure and the property have ever been flooded. What is the licensee required to do in this situation?",
+      "answer_1": "Rely on the face value of seller&apos;s statement.",
+      "answer_2": "Inform the seller of potential legal consequences if this claim is untrue.",
+      "answer_3": "Inform the seller of the legal obligation to disclose facts regarding flood plains.",
+      "answer_4": "Refuse to list the property and explain to the seller that all properties in this area flood.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "76",
+      "questionName": "Three people buy a house as tenants in common. Subsequently, two of the owners want to sell, but the third discourages each potential purchaser. The two owners who wish to sell the house can",
+      "answer_1": "Sell without the third owner&apos;s consent.",
+      "answer_2": "File an action for partition against the third owner.",
+      "answer_3": "File for a lien against the third owner&apos;s interest as damages.",
+      "answer_4": "Force the third owner to sell if they invoke the rule of specific performance.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "77",
+      "questionName": "Under a land contract for deed, who retains fee ownership of the property?",
+      "answer_1": "Vendor",
+      "answer_2": "Vendee",
+      "answer_3": "Grantor",
+      "answer_4": "Grantee",
+      "correct_ans": "1"
+    },
+    {
+      "id": "106",
+      "questionName": "The purpose of requiring an earnest money deposit in a real estate sale contract is to",
+      "answer_1": "Ensure that the broker will receive some compensation if either party defaults.",
+      "answer_2": "Ensure that the seller will not be bother by offers from buyers who are unable to qualify for appropriate financing.",
+      "answer_3": "Provide evidence of the buyer&apos;s intention to carry out the contract.",
+      "answer_4": "Set aside fund to cover the buyer&apos;s closing costs and mortgage insurance premiums.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "107",
+      "questionName": "Regulation Z requires that the borrower be fully informed of all of the following EXCEPT",
+      "answer_1": "The annual percentage rate.",
+      "answer_2": "The total interest.",
+      "answer_3": "Loan fees.",
+      "answer_4": "The origination fee.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "134",
+      "questionName": "When brokers&apos; licenses are suspended or revoked, their salespersons&apos; licenses are",
+      "answer_1": "not affected.",
+      "answer_2": "affected only if they had guilty knowledge.",
+      "answer_3": "suspended until the end of the current license period.",
+      "answer_4": "suspended until they affiliate with another broker.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "135",
+      "questionName": "Real estate is defined to include all of the components of land and also",
+      "answer_1": "natural attachments.",
+      "answer_2": "trade fixtures.",
+      "answer_3": "personal property.",
+      "answer_4": "man-made improvements.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "23",
+      "questionName": "A competitive market analysis is most often used for",
+      "answer_1": "Estate tax purposes.",
+      "answer_2": "Setting a listing price.",
+      "answer_3": "Divorce proceedings.",
+      "answer_4": "Property tax assessment.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "24",
+      "questionName": "The day after a broker&apos;s listing on a house expired, it was listed with another broker and offered in the MLS. Several days later, a third licensee called the first broker and asked for the key to show the home. The broker should inform the caller that",
+      "answer_1": "He is no longer the listing agent.",
+      "answer_2": "He will set up an appointment for showing the home.",
+      "answer_3": "He will leave the key under the door mat.",
+      "answer_4": "The house is currently off the market.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "25",
+      "questionName": "An exception to title insurance coverage is",
+      "answer_1": "Forged documents.",
+      "answer_2": "Defects found in public newspapers.",
+      "answer_3": "Incorrect records of material status.",
+      "answer_4": "Defects that clearly appear in the title search.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "21",
+      "questionName": "The Department of Housing and Urban Development estimates that most private homes built before 1978 contain potentially dangerous levels of lead. Because of this, some Federal agencies, such as FHA,",
+      "answer_1": "Will no longer lend or guarantee loans on these older properties.",
+      "answer_2": "Require evidence of testing for and disclosure of any type of lead contamination before they will lend or guarantee loans on such properties.",
+      "answer_3": "Require funds to be escrowed for lead abatement as a condition of lending or guaranteeing loans on such properties.",
+      "answer_4": "Require the buyer to acknowledge disclosure of the presence of any known lead paint.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "22",
+      "questionName": "When a listing broker is preparing an Offer to Purchase for a buyer customer, contingencies involving inspections or approval by a third party should",
+      "answer_1": "Have short deadlines.",
+      "answer_2": "Be discouraged by the broker.",
+      "answer_3": "Be stated as briefly as possible.",
+      "answer_4": "Be limited to mortgage arrangements.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "51",
+      "questionName": "A perspective seller asks a salesperson to recommend a listing price for a property. The salesperson should suggest",
+      "answer_1": "Listing the property at the price the owner believes it is worth.",
+      "answer_2": "Listing the property at least 30% above the current mortgage.",
+      "answer_3": "A competitive market analysis to determine the property&apos;s value.",
+      "answer_4": "Setting the price at the value of the most recent sale in the neighborhood.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "52",
+      "questionName": "A realty firm has just entered into an agreement to represent a home builder in the sale of a new subdivision. The firm has located several potential buyers and give homes have been sold to purchasers that the firm&apos;s agents have contacted. The realty firm has an agency relationship with",
+      "answer_1": "The builder.",
+      "answer_2": "The buyers.",
+      "answer_3": "The builder and the buyers.",
+      "answer_4": "Neither the builder nor the buyers.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "71",
+      "questionName": "What is the duration of a home warranty&apos;s coverage?",
+      "answer_1": "The expected life of a purchaser.",
+      "answer_2": "The expected life of the product or system covered.",
+      "answer_3": "As disclosed in the contract that offers the warranty.",
+      "answer_4": "A minimum of 5 years or the duration of the purchaser&apos;s ownership, whichever is shorter.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "73",
+      "questionName": "An appraiser MUST be licensed or certified to handle Federally related work on residential property valued at more than",
+      "answer_1": "$100,000 ",
+      "answer_2": "$250,000 ",
+      "answer_3": "$500,000 ",
+      "answer_4": "$1,000,000 ",
+      "correct_ans": "2"
+    },
+    {
+      "id": "74",
+      "questionName": "Earnest money should be deposited into a trust account",
+      "answer_1": "In a timely manner, according to state laws.",
+      "answer_2": "Upon removal of all contingencies.",
+      "answer_3": "At the broker&apos;s discretion.",
+      "answer_4": "According to MLS rules.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "75",
+      "questionName": "Even after an offer has been accepted and is binding, the buyer and seller may still choose to sign mutual release papers rather than proceed to closing. Which of the following circumstances would NOT give either party a justifiable reason to insist on a mutual release?",
+      "answer_1": "The buyer finds a better property for better terms.",
+      "answer_2": "A title defect that will take months to clear is discovered.",
+      "answer_3": "A basement fire causes damage that requires extensive repairs.",
+      "answer_4": "The buyer is unable to obtain financing that meets the terms of the contract&apos;s financing contingency.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "103",
+      "questionName": "At the time of harvest, crops that require annual planting are generally considered to be",
+      "answer_1": "Improvements.",
+      "answer_2": "Personal property.",
+      "answer_3": "Real property.",
+      "answer_4": "Appurtenances.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "104",
+      "questionName": "A property owner died, having willed his real property to his two daughters. There is still a chance that they could lose the land for a variety of reasons, but it CANNOT be taken through",
+      "answer_1": "Condemnation.",
+      "answer_2": "A challenge to the will.",
+      "answer_3": "Sale to satisfy a tax lien.",
+      "answer_4": "Escheat",
+      "correct_ans": "4"
+    },
+    {
+      "id": "105",
+      "questionName": "A lawsuit for inverse condemnation may be brought by",
+      "answer_1": "The police.",
+      "answer_2": "The city.",
+      "answer_3": "A homeowner.",
+      "answer_4": "The zoning board.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "131",
+      "questionName": "A Waiver of Broker Cooperation must be completed and signed when cooperation with other brokers is NOT desired by the",
+      "answer_1": "seller.",
+      "answer_2": "listing broker.",
+      "answer_3": "supervising broker.",
+      "answer_4": "prospective buyer.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "132",
+      "questionName": "Prohibitions against commingling are aimed to prevent",
+      "answer_1": "mixing brokers&apos; funds with clients&apos; funds.",
+      "answer_2": "promising financing indiscriminately.",
+      "answer_3": "representing both parties in a transaction.",
+      "answer_4": "preventing brokers from lending licenses.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "36",
+      "questionName": "Under the common law of agency, licensees owe the broker with whom they are associated, all of the following duties EXCEPT",
+      "answer_1": "Loyalty",
+      "answer_2": "Competence",
+      "answer_3": "Indemnification",
+      "answer_4": "Full disclosure",
+      "correct_ans": "3"
+    },
+    {
+      "id": "37",
+      "questionName": "A company agrees to lease a property to be used as a gambling casino. State law prohibits gambling. This particular contract would be legally defined as",
+      "answer_1": "Void",
+      "answer_2": "Voidable",
+      "answer_3": "Valid",
+      "answer_4": "Unenforceable",
+      "correct_ans": "1"
+    },
+    {
+      "id": "48",
+      "questionName": "To be valid, every deed must",
+      "answer_1": "Contain a warranty.",
+      "answer_2": "Include granting language.",
+      "answer_3": "Be executed by the grantor.",
+      "answer_4": "Be signed by the grantee if there are covenants.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "49",
+      "questionName": "The FHA functions MOST like",
+      "answer_1": "A ban or savings and loan association.",
+      "answer_2": "A mortgage company.",
+      "answer_3": "An investment group.",
+      "answer_4": "An Insurance company.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "50",
+      "questionName": "A gross lease can be best defined as one where the tenant pays, as a part of the rent,",
+      "answer_1": "All property changes excluding utilities.",
+      "answer_2": "id operating expenses of the leased space.",
+      "answer_3": "Outside maintenance and property taxes only.",
+      "answer_4": "All property expenses except the interest on the owner&apos;s mortgage.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "68",
+      "questionName": "A managing broker can be held responsible for",
+      "answer_1": "All actions of associated salespersons.",
+      "answer_2": "All real estate activities of salespersons.",
+      "answer_3": "Only those real estate activities the broker is aware of.",
+      "answer_4": "id activities of independent contractors.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "69",
+      "questionName": "To what party or parties does the broker owe the fiduciary duty or care?",
+      "answer_1": "The seller.",
+      "answer_2": "Both the buyer and the seller.",
+      "answer_3": "The party or parties employing the broker.",
+      "answer_4": "The party or parties paying the commission.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "70",
+      "questionName": "An Environmental Impact Statement (EIS)",
+      "answer_1": "Summarizes the environmental impact of an existing project.",
+      "answer_2": "Projects the impact on the environment of a proposed project.",
+      "answer_3": "Is used primarily for state and Federally funded projects.",
+      "answer_4": "Must be approved by all affected water districts.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "72",
+      "questionName": "An exclusive right to sell listing obtained by a broker associate belongs to",
+      "answer_1": "The seller only.",
+      "answer_2": "The employing broker only.",
+      "answer_3": "The broker associate only.",
+      "answer_4": "Both the broker associate and the responsible broker.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "86",
+      "questionName": "At the closing, a seller&apos;s attorney informed her that he would be giving credit to the buyer for certain accrued items. These items represent",
+      "answer_1": "Bills related to the real estate that have already been paid by the seller.",
+      "answer_2": "Bills related to the real estate that have not been paid as of the time of the closing.",
+      "answer_3": "All of the seller&apos;s outstanding bills.",
+      "answer_4": "All of the buyer&apos;s outstanding bills.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "87",
+      "questionName": "Which of the following approaches MOST reliably estimates the sales price of a single-family residence?",
+      "answer_1": "Appreciation.",
+      "answer_2": "Market data.",
+      "answer_3": "Cost.",
+      "answer_4": "Mortgage value.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "90",
+      "questionName": "Usury laws were enacted to protect the",
+      "answer_1": "Lender",
+      "answer_2": "Broker",
+      "answer_3": "Seller",
+      "answer_4": "Borrower",
+      "correct_ans": "4"
+    },
+    {
+      "id": "101",
+      "questionName": "A written agreement in which a purchaser agrees to buy, and a seller agrees to sell is called",
+      "answer_1": "An agency.",
+      "answer_2": "An assessment.",
+      "answer_3": "A contract.",
+      "answer_4": "A fiduciary obligation.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "102",
+      "questionName": "A contract has been drawn which obliges the sellers to convey the title of their land to the buyers, if the buyers come up with $22,000 on or before December 31st. This is called",
+      "answer_1": "A buy-sell agreement",
+      "answer_2": "An option contract.",
+      "answer_3": "An installment contract.",
+      "answer_4": "A vendor&apos;s lien interest.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "118",
+      "questionName": "The document used in a real estate sale that establishes the legal rights of the buyer and seller is the",
+      "answer_1": "Purchase contract.",
+      "answer_2": "Deed.",
+      "answer_3": "Listing Agreement.",
+      "answer_4": "Abstract of title.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "119",
+      "questionName": "A loan which requires the borrower to pay interest only until the maturity date (or due date), and then to pay the entire principal on the maturity date, is called a",
+      "answer_1": "Term loan.",
+      "answer_2": "Wrap-around loan.",
+      "answer_3": "Shared-equity loan.",
+      "answer_4": "Partially amortized loan.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "120",
+      "questionName": "The escrow officer or closing agent MUST give information regarding the sales price and the seller&apos;s social security number to",
+      "answer_1": " HUD.",
+      "answer_2": "FIRPTA.",
+      "answer_3": "IRS.",
+      "answer_4": "OSS.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "128",
+      "questionName": "Which of the following documents must be retained by a broker for only six months?",
+      "answer_1": "Trust account records",
+      "answer_2": "Listing agreements",
+      "answer_3": "Contracts of sale",
+      "answer_4": "Unaccepted offers to purchase",
+      "correct_ans": "4"
+    },
+    {
+      "id": "129",
+      "questionName": "In New Jersey, no ads for real estate may",
+      "answer_1": "indiscriminately promise financing.",
+      "answer_2": "refer to a home warranty.",
+      "answer_3": "contain the phrase “in the vicinity of.”",
+      "answer_4": "offer a free comparative market analysis.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "130",
+      "questionName": "The supervising licensee of a main real estate office must NOT be",
+      "answer_1": "under 25 years old.",
+      "answer_2": "otherwise employed.",
+      "answer_3": "licensed in more than one state.",
+      "answer_4": "a licensed insurance broker.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "6",
+      "questionName": "The buyer is assuming a mortgage presently on the property in the amount of $110,000. What is the adjustment made at closing?",
+      "answer_1": "Credit buyer $110,000; debit seller $110,000.",
+      "answer_2": "Credit seller $110,000; debit buyer $110,000.",
+      "answer_3": "Credit buyer $110,000; no adjustment to seller.",
+      "answer_4": "Credit seller $110,000; no adjustment to buyer.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "7",
+      "questionName": "A prospective buyer made an offer to purchase a property. The owner responded with a counteroffer. While the buyer was reviewing the counteroffer, the owner received a better offer. The owner can accept the second offer if",
+      "answer_1": "It satisfies or exceeds all terms included in the counteroffer.",
+      "answer_2": "The owner withdraws the counteroffer before it is accepted.",
+      "answer_3": "The owner gives the first buyer notice that another offer was received and an opportunity to revise the bid.",
+      "answer_4": "The first buyer is informed, in writing, of the owner&apos;s intent to accept another offer.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "18",
+      "questionName": "An agency relationship between a property owner and a property manager is usually created by",
+      "answer_1": "A management agreement.",
+      "answer_2": "Payment of a management fee.",
+      "answer_3": "An exclusive agency agreement.",
+      "answer_4": "An independent contractor agreement.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "19",
+      "questionName": "A borrower has defaulted on the mortgage. The mortgage contains an acceleration clause. This permits the lender to",
+      "answer_1": "Confiscate the borrower&apos;s personal assets.",
+      "answer_2": "Demand immediate payment of the entire note.",
+      "answer_3": "Report the borrower to the Federal Housing Authority",
+      "answer_4": "Force the borrower to vacate the premises.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "20",
+      "questionName": "A property is encumbered by a first mortgage of $60,000 and a second mortgage of $23,500. The property has just been sold at a foreclosure auction to a speculating investor for $88,000. Assume that all costs of the foreclosure sale are included in these balances. Which of the following statements is FALSE regarding the distribution of funds?",
+      "answer_1": "The first mortgagee received $60,000.",
+      "answer_2": "The second mortgagee received $23,500.",
+      "answer_3": "The second mortgagee receives nothing unless he forced the foreclosure auction.",
+      "answer_4": "The former owner receives $4500.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "3",
+      "questionName": "The buyer wants to make the purchase offer contingent on a complex mortgage arrangement. The buyer&apos;s agent who is drawing up the contract should",
+      "answer_1": "Include the provision for the mortgage at the buyers&apos; request.",
+      "answer_2": "Suggest the buyer ask a lawyer to furnish the wording.",
+      "answer_3": "Consult the supervising broker for advice.",
+      "answer_4": "Refer the matter to the seller&apos;s agent.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "4",
+      "questionName": "Three identical homes in a neighborhood were listed at the same time in a market where demand was constant. According to the law of supply and demand, which would have sold for the lowest price?",
+      "answer_1": "The first sold.",
+      "answer_2": "The second sold.",
+      "answer_3": "The last sold.",
+      "answer_4": "Cannot tell from the information given.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "5",
+      "questionName": "A licensee has an agency representation agreement with a buyer. When showing another company&apos;s listing, what obligation does the licensee have to the seller and the listing broker at the other company?",
+      "answer_1": "There is no obligation because the buyer&apos;s agent has fiduciary duty to the buyer.",
+      "answer_2": "The buyer&apos;s agent will be paid by the buyer and has no obligations to the seller or his agent.",
+      "answer_3": "The listing broker works for the seller and has no right to any information from the buyer&apos;s broker or the buyer.",
+      "answer_4": "Disclose the agency relationship when arranging the showing and disclose material information about the buyer if presenting an offer.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "13",
+      "questionName": "In helping a buyer to select a lender, if the buyer believes he has good credit and his income is documentable as a salary and by tax returns, the licensee might recommend a mortgage banker, instead of a mortgage broker, for all of the following reasons EXCEPT",
+      "answer_1": "Closing costs may be lower.",
+      "answer_2": "Loan originator has knowledge of the underwriter&apos;s policies.",
+      "answer_3": "More variety of loan programs available.",
+      "answer_4": "Originator and lender are part of the same company.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "16",
+      "questionName": "According to the Truth-in-Lending Act, if any “trigger terms” are used in an ad, all of the following disclosures MUST appear in the ad EXCEPT the",
+      "answer_1": "Cash price or amount of the loan.",
+      "answer_2": "Amount of down payment required.",
+      "answer_3": "Number, amount, and frequency of payments.",
+      "answer_4": "Prepayment penalties and rebates.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "17",
+      "questionName": "A property management plan may serve different purposes for different owners and generally has to strike a balance between preservation of the property&apos;s value and generation of income. Which of the following owners would MOST likely prefer a property manager who emphasizes maintenance of value over profitability?",
+      "answer_1": "An individual entrepreneur who owns several apartment buildings.",
+      "answer_2": "The Department of Housing and Urban Development.",
+      "answer_3": "The investment division of a bank.",
+      "answer_4": "A corporate Real Estate Investment Trust.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "31",
+      "questionName": "A real estate salesperson is representing only the buyer in a transaction. Which of the following actions would be a violation of the salesperson&apos;s agency duties to the client?",
+      "answer_1": "Disclosing the price the seller originally paid for the property.",
+      "answer_2": "Disclosing the highest price the buyer is willing to pay.",
+      "answer_3": "Preparing a competitive market analysis.",
+      "answer_4": "Identify latent property defects.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "32",
+      "questionName": "If all other factors are equal, in which location is a parking lot likely to bring the highest sales price?",
+      "answer_1": "Residential district zones for two-story apartments.",
+      "answer_2": "Business district zoned for a two-story commercial building.",
+      "answer_3": "Business district zoned for a six-story office building.",
+      "answer_4": "The price for the parking lot will be the same regardless of area and zoning.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "33",
+      "questionName": "A buyer was negotiating the purchase of a house for himself. During a conversation with the seller, the seller agreed to include all kitchen appliances in the sale, and this fact was included in the sales contract. In this situation, if the seller takes the appliances with him, what recourse does the buyer have?",
+      "answer_1": "The buyer has no recourse because he negotiated the sales himself.",
+      "answer_2": "The buyer may declare the sales contract invalid.",
+      "answer_3": "The buyer may sue the seller for partial performance.",
+      "answer_4": "The buyer may sue the seller for specific performance.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "34",
+      "questionName": "During the listing presentation, the seller questions the amount of commission to be paid and is told",
+      "answer_1": "The amount is set by law.",
+      "answer_2": "Everyone charges the same amount.",
+      "answer_3": "The amount of commission is negotiable.",
+      "answer_4": "The agent that charges a lower commission will not do as good a job selling the property.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "35",
+      "questionName": "A salesperson lists a property with a contract that allows for subagency and dual agency. The salesperson is",
+      "answer_1": "An independent contractor to the broker and an agent to the principal.",
+      "answer_2": "An agent to the broker and a subagent to the principal.",
+      "answer_3": "A subagent to the broker and an agent to the principal.",
+      "answer_4": "An agent to the broker and an agent to the principal.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "46",
+      "questionName": "A salesperson in a branch office is sued for damages by a buyer after the salesperson misrepresents a property. Who has the ultimate responsibility for the salesperson&apos;s actions?",
+      "answer_1": "The owner of the property.",
+      "answer_2": "The supervising broker.",
+      "answer_3": "The branch manager.",
+      "answer_4": "The salesperson.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "47",
+      "questionName": "Building codes are",
+      "answer_1": "Created to establish zoning in a neighborhood.",
+      "answer_2": "Ordinances that specify construction standards.",
+      "answer_3": "Established in each neighborhood or development.",
+      "answer_4": "Set up to hear complaints about effects of zoning ordinances.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "61",
+      "questionName": "Which of the following consumers would be able to derive the most benefit from a reverse mortgage?",
+      "answer_1": "A homeowner whose property is free of any mortgage encumbrance.",
+      "answer_2": "A young couple whose mortgage loan has a higher interest than the current rate for new loans.",
+      "answer_3": "A 65-year-old man who has recently bought a condominium with a conventional loan for 90 percent of the purchase price.",
+      "answer_4": "A couple in their late 60&apos;s who need to tap their home equity to help cover their expenses but do not want to sell their house.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "63",
+      "questionName": "A seller tells the listing agent that her home was treated for termites 10 years ago, so there are no termites now. Before listing the property, the agent should",
+      "answer_1": "Tell the seller not to disclose, because the statute of limitations has run out.",
+      "answer_2": "Tell the seller to disclose the termite treatment on the property disclosure.",
+      "answer_3": "Talk to neighbors to see if there are termites in the neighborhood.",
+      "answer_4": "Talk to the planning and zoning department for local termite eradication ordinance.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "64",
+      "questionName": "Although states make specific laws governing water rights and the rights in land that borders water, most states generally follow one of the two basic doctrines regarding water rights. In many states, the common law doctrine of riparian and littoral rights dictates that water rights are automatically conveyed with property. In others, all water rights are controlled by the state under the doctrine of",
+      "answer_1": "Eminent domain.",
+      "answer_2": "Prior appropriation.",
+      "answer_3": "Express reservation.",
+      "answer_4": "Avulsion",
+      "correct_ans": "2"
+    },
+    {
+      "id": "65",
+      "questionName": "If you own a building free and clear that is worth $115,000 and want an annual return of 12%, what net income is needed each month?",
+      "answer_1": "$1,062 ",
+      "answer_2": "$1,150 ",
+      "answer_3": "$9,583 ",
+      "answer_4": "$13,800 ",
+      "correct_ans": "2"
+    },
+    {
+      "id": "66",
+      "questionName": "Unrepresented buyers ask the licensee who listed the home whether they should order a property inspection as a part of their due diligence for the purchase of the home. Which of the following would be the most appropriate way for the listing agent to respond?",
+      "answer_1": "If you feel it is in your best interest, please do so.",
+      "answer_2": "Since I represent the seller, I am not able to answer your question.",
+      "answer_3": "I am not aware of any issues that such an inspection would identify.",
+      "answer_4": "Since the seller has provided a property disclosure, there should be no need for any further inspection.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "67",
+      "questionName": "MOST closed real estate transactions should be reported to the IRS. Required information includes the seller name(s) and social security number(s) and",
+      "answer_1": "Buyers name(s) and social security number(s).",
+      "answer_2": "The property financing.",
+      "answer_3": "The mortgage lender&apos;s name and address.",
+      "answer_4": "The sale price.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "83",
+      "questionName": "The real estate broker who is listing a house for sale should personally verify",
+      "answer_1": "Whether radon is present in the basement.",
+      "answer_2": "The number of square feet in the building",
+      "answer_3": "That the electrical wiring is up to code.",
+      "answer_4": "How much the seller originally paid for the property.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "84",
+      "questionName": "Which of the following may be considered prima facie evidence of discrimination by a broker?",
+      "answer_1": "Failure to show property in certain neighborhoods.",
+      "answer_2": "Failure to display the equal housing poster at the broker&apos;s place of business.",
+      "answer_3": "Failure to keep appointments with minority customers even though the broker was unaware of the minority status.",
+      "answer_4": "Failure of a minority buyer to qualify for a loan arranged by the broker.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "85",
+      "questionName": "The relationship in which the agent is placed in the position of trust and confidence to the principal is known by the term",
+      "answer_1": "Disclosure",
+      "answer_2": "Brokerage",
+      "answer_3": "Fiduciary",
+      "answer_4": "Implied agreement",
+      "correct_ans": "3"
+    },
+    {
+      "id": "98",
+      "questionName": "A broker supplies the financing for a project to build condominiums with the stipulation that he has the exclusive right to sell the completed condos. Which of the following BEST describes this relationship?",
+      "answer_1": "Agency coupled with an interest.",
+      "answer_2": "Specific agency.",
+      "answer_3": "General agency.",
+      "answer_4": "Exclusive Agency.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "99",
+      "questionName": "Steve signed an offer to purchase in a state of obvious drunkenness.  The next morning, he realized what he had done and told the broker that he did not want to be bound by the terms of the contract. This would be an example of a(n)",
+      "answer_1": "Valid Contract",
+      "answer_2": "Voidable Contract",
+      "answer_3": "Unenforceable Contract",
+      "answer_4": "Void Contract",
+      "correct_ans": "2"
+    },
+    {
+      "id": "100",
+      "questionName": "Which of the following forms of ownership may be held by a wife and husband?",
+      "answer_1": "Tenancy in common",
+      "answer_2": "Tenancy at will",
+      "answer_3": "Tenancy by the entirety",
+      "answer_4": "Joint tenancy",
+      "correct_ans": "3"
+    },
+    {
+      "id": "116",
+      "questionName": "Tenants are still in their rental property even though their lease has expired. The landlord has given them written notice to quit and refused to accept rent. They are",
+      "answer_1": "Periodic tenants.",
+      "answer_2": "Tenants by reversion.",
+      "answer_3": "Tenants in common.",
+      "answer_4": "Tenants at sufferance.",
+      "correct_ans": "4"
+    },
+    {
+      "id": "117",
+      "questionName": "A seller mentions to his agent that the previous owners of his property may have dumped hazardous waste on the site. Under the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA), who is liable for damages from the dumping prior to the sale of the property?",
+      "answer_1": "Seller.",
+      "answer_2": "Agent.",
+      "answer_3": "Company that manufactured the waste.",
+      "answer_4": "Federal government.",
+      "correct_ans": "1"
+    },
+    {
+      "id": "126",
+      "questionName": "Which of the following acts is illegal?",
+      "answer_1": "A non-licensed property owner sells a lot to a developer.",
+      "answer_2": "A non-licensed banker collects rents on behalf of the bank.",
+      "answer_3": "A licensed broker shares a commission with a real estate attorney.",
+      "answer_4": "A licensed salesperson assists a licensed broker with purchase negotiations.",
+      "correct_ans": "3"
+    },
+    {
+      "id": "127",
+      "questionName": "An unlicensed assistant in a real estate broker&apos;s office may",
+      "answer_1": "show property.",
+      "answer_2": "pick up keys.",
+      "answer_3": "host an open house.",
+      "answer_4": "answer questions on listings.",
+      "correct_ans": "2"
+    },
+    {
+      "id": "133",
+      "questionName": "All ads for real estate must specify the",
+      "answer_1": "broker&apos;s name.",
+      "answer_2": "asking price.",
+      "answer_3": "property&apos;s municipal location.",
+      "answer_4": "listing expiration date.",
+      "correct_ans": "3"
     }
   ]
 }

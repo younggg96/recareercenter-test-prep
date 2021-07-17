@@ -71,12 +71,12 @@ export const MockExamScreen = ({ navigation }) => {
       // do question
       dispatch(doQuestion(userData.uid));
       // add score
-      if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
+      if (selectedIndex === parseInt(question.correct_ans) - 1) {
         setScore(score + 1);
       }
       // each result
       const itemRes = {
-        res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
+        res: selectedIndex === parseInt(question.correct_ans) - 1,
         pick: selectedIndex,
       };
       dispatch(getResult(itemRes, currentQuestion));
@@ -109,25 +109,25 @@ export const MockExamScreen = ({ navigation }) => {
             >
               <View>
                 {/* <Text>{JSON.stringify(item.result)}</Text> */}
-                <Text category="s1" style={styles.reviewTitle}>{`Question ${
+                <Text category="s1" style={styles.reviewTitle}>{`questionName ${
                   index + 1
-                }: ${data[index].Question}`}</Text>
+                }: ${data[index].questionName}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`A. ${data[index].Answer1}`}</Text>
+                >{`A. ${data[index].answer_1}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`B. ${data[index].Answer2}`}</Text>
+                >{`B. ${data[index].answer_2}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`C. ${data[index].Answer3}`}</Text>
+                >{`C. ${data[index].answer_3}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`D. ${data[index].Answer4}`}</Text>
+                >{`D. ${data[index].answer_4}`}</Text>
                 <Text category="s1" style={styles.answerReview}>
                   {item.result.pick !== null
                     ? `Your answer: ${arr[item.result.pick]}`
@@ -137,7 +137,7 @@ export const MockExamScreen = ({ navigation }) => {
                   category="s1"
                   style={styles.answerReview}
                 >{`Correct answer: ${
-                  arr[parseInt(data[index].CorrectAnswer) - 1]
+                  arr[parseInt(data[index].correct_ans) - 1]
                 }`}</Text>
               </View>
               <View style={styles.controlBtn}>
@@ -232,7 +232,7 @@ export const MockExamScreen = ({ navigation }) => {
           <TopNavigation
             title={() => (
               <Text category="s1" style={topStyles.topTitle}>
-                {"Question " + `${currentQuestion + 1}`}
+                {"questionName " + `${currentQuestion + 1}`}
               </Text>
             )}
             accessoryLeft={BackAction}
@@ -248,17 +248,17 @@ export const MockExamScreen = ({ navigation }) => {
               />
               <View>
                 <Text category="s1" style={styles.questionTitle}>
-                  Question: {`${question.Question}`}
+                  questionName: {`${question.questionName}`}
                 </Text>
               </View>
               <RadioGroup
                 selectedIndex={selectedIndex}
                 onChange={(index) => setSelectedIndex(index)}
               >
-                <Radio>{`A. ${question.Answer1}`}</Radio>
-                <Radio>{`B. ${question.Answer2}`}</Radio>
-                <Radio>{`C. ${question.Answer3}`}</Radio>
-                <Radio>{`D. ${question.Answer4}`}</Radio>
+                <Radio>{`A. ${question.answer_1}`}</Radio>
+                <Radio>{`B. ${question.answer_2}`}</Radio>
+                <Radio>{`C. ${question.answer_3}`}</Radio>
+                <Radio>{`D. ${question.answer_4}`}</Radio>
               </RadioGroup>
               <Button
                 style={styles.button}

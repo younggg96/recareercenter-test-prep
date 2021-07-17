@@ -1,4 +1,4 @@
-import { Button, Layout, Radio, RadioGroup, Text } from "@ui-kitten/components";
+import { Button, Radio, RadioGroup, Text } from "@ui-kitten/components";
 import React from "react";
 import { Image, View } from "react-native";
 import { TopBar } from "../../../components/topBar/topBar";
@@ -19,15 +19,15 @@ export const QuizScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
-  const data = useSelector((state) => state.questionReducer);
+  const { quizData } = useSelector((state) => state.questionReducer);
   const { userData } = useSelector((state) => state.userReducer);
-  const arr = data.quizData;
+  // const arr = data.quizData;
 
   // redux
   const dispatch = useDispatch();
 
   // current question
-  const question = arr[currentQuestion];
+  const question = quizData[currentQuestion];
 
   // next btn
   const goNextQuestion = () => {
@@ -35,12 +35,12 @@ export const QuizScreen = ({ navigation }) => {
       // do question
       dispatch(doQuestion(userData.uid));
       // add score
-      if (selectedIndex === parseInt(question.CorrectAnswer) - 1) {
+      if (selectedIndex === parseInt(question.correct_ans) - 1) {
         setScore(score + 10);
       }
       // each result
       const itemRes = {
-        res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
+        res: selectedIndex === parseInt(question.correct_ans) - 1,
         pick: selectedIndex,
       };
       dispatch(getQuizResult(itemRes, currentQuestion));
@@ -62,25 +62,24 @@ export const QuizScreen = ({ navigation }) => {
               key={index}
             >
               <View>
-                <Text category="s1" style={styles.reviewTitle}>{`Question ${
-                  index + 1
-                }: ${data[index].Question}`}</Text>
+                <Text category="s1" style={styles.reviewTitle}>{`Question ${index + 1
+                  }: ${data[index].questionName}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`A. ${data[index].Answer1}`}</Text>
+                >{`A. ${data[index].answer_1}`}</Text>
                 <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`B. ${data[index].Answer2}`}</Text>
-                <Text
+                >{`B. ${data[index].answer_2}`}</Text>
+                {data[index].answer_3 && <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`C. ${data[index].Answer3}`}</Text>
-                <Text
+                >{`C. ${data[index].answer_3}`}</Text>}
+                {data[index].answer_4 && <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`D. ${data[index].Answer4}`}</Text>
+                >{`D. ${data[index].answer_4}`}</Text>}
                 <Text
                   category="s1"
                   style={styles.answerReview}
@@ -88,9 +87,8 @@ export const QuizScreen = ({ navigation }) => {
                 <Text
                   category="s1"
                   style={styles.answerReview}
-                >{`Correct answer: ${
-                  arr[parseInt(data[index].CorrectAnswer) - 1]
-                }`}</Text>
+                >{`Correct answer: ${arr[parseInt(data[index].correct_ans) - 1]
+                  }`}</Text>
               </View>
               <View style={styles.controlBtn}>
                 <Button
@@ -100,8 +98,8 @@ export const QuizScreen = ({ navigation }) => {
                   accessoryLeft={!item.saved ? UnlikeIcon : LikeIcon}
                   onPress={
                     !item.saved
-                      ? () => dispatch(saveQuestion(item))
-                      : () => dispatch(unsaveQuestion(item))
+                      ? () => dispatch(saveQuestion(item, userData.uid))
+                      : () => dispatch(unsaveQuestion(item, userData.uid))
                   }
                 >
                   {!item.saved ? "Save" : "Saved"}
@@ -161,10 +159,10 @@ export const QuizScreen = ({ navigation }) => {
             >
               Your Quiz Reviews:
             </Text>
-            <Reviews data={data.quizData} />
+            <Reviews data={quizData} />
           </ScrollView>
         </View>
-      ) : (
+      ) : question ? (
         <View style={{ flex: 1 }}>
           {/* question */}
           <TopBar
@@ -175,19 +173,20 @@ export const QuizScreen = ({ navigation }) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <ProgressBar finished={currentQuestion + 1} target="10" />
+              {/* <Text>{JSON.stringify(quizData, null, '\t')}</Text> */}
               <View>
                 <Text category="s1" style={styles.questionTitle}>
-                  Question: {`${question.Question}`}
+                  Question: {`${question.questionName}`}
                 </Text>
               </View>
               <RadioGroup
                 selectedIndex={selectedIndex}
                 onChange={(index) => setSelectedIndex(index)}
               >
-                <Radio>{`A. ${question.Answer1}`}</Radio>
-                <Radio>{`B. ${question.Answer2}`}</Radio>
-                <Radio>{`C. ${question.Answer3}`}</Radio>
-                <Radio>{`D. ${question.Answer4}`}</Radio>
+                <Radio>{`A. ${question.answer_1}`}</Radio>
+                <Radio>{`B. ${question.answer_2}`}</Radio>
+                {question.answer_3 ? <Radio>{`C. ${question.answer_3}`}</Radio> : <></>}
+                {question.answer_4 ? <Radio>{`D. ${question.answer_4}`}</Radio> : <></>}
               </RadioGroup>
               <Button
                 style={styles.button}
@@ -199,7 +198,7 @@ export const QuizScreen = ({ navigation }) => {
             </View>
           </ScrollView>
         </View>
-      )}
+      ) : <Text>loading...</Text>}
     </React.Fragment>
   );
 };

@@ -28,30 +28,30 @@ const Review = ({ result, question, currentQuestion }) => {
       <View style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }}>
         {result.res ? <CorrectIcon /> : <IncorrectIcon />}
       </View>
-      <Text category="s1" style={styles.reviewTitle}>{`Question ${
+      <Text category="s1" style={styles.reviewTitle}>{`questionName ${
         currentQuestion + 1
-      }: ${question.Question}`}</Text>
+      }: ${question.questionName}`}</Text>
       <Text
         category="s2"
         style={styles.reviewContent}
-      >{`A. ${question.Answer1}`}</Text>
+      >{`A. ${question.answer_1}`}</Text>
       <Text
         category="s2"
         style={styles.reviewContent}
-      >{`B. ${question.Answer2}`}</Text>
+      >{`B. ${question.answer_2}`}</Text>
       <Text
         category="s2"
         style={styles.reviewContent}
-      >{`C. ${question.Answer3}`}</Text>
+      >{`C. ${question.answer_3}`}</Text>
       <Text
         category="s2"
         style={styles.reviewContent}
-      >{`D. ${question.Answer4}`}</Text>
+      >{`D. ${question.answer_4}`}</Text>
       <Text category="s1" style={styles.answerReview}>{`Your answer: ${
         arr[result.pick]
       }`}</Text>
       <Text category="s1" style={styles.answerReview}>{`Correct answer: ${
-        arr[parseInt(question.CorrectAnswer) - 1]
+        arr[parseInt(question.correct_ans) - 1]
       }`}</Text>
       {/* <View style={styles.controlBtn}>
         <Button
@@ -355,7 +355,7 @@ export const PracticeScreen = ({ route, navigation }) => {
     setShowResult(true);
     dispatch(doQuestion(userData.uid));
     const itemRes = {
-      res: selectedIndex === parseInt(question.CorrectAnswer) - 1,
+      res: selectedIndex === parseInt(question.correct_ans) - 1,
       pick: selectedIndex,
     };
     setRes(itemRes);
@@ -427,17 +427,17 @@ export const PracticeScreen = ({ route, navigation }) => {
               />
               <View>
                 <Text category="s1" style={styles.questionTitle}>
-                  Question: {`${question.Question}`}
+                  questionName: {`${question.questionName}`}
                 </Text>
               </View>
               <RadioGroup
                 selectedIndex={selectedIndex}
                 onChange={(index) => setSelectedIndex(index)}
               >
-                <Radio>{`A. ${question.Answer1}`}</Radio>
-                <Radio>{`B. ${question.Answer2}`}</Radio>
-                <Radio>{`C. ${question.Answer3}`}</Radio>
-                <Radio>{`D. ${question.Answer4}`}</Radio>
+                <Radio>{`A. ${question.answer_1}`}</Radio>
+                <Radio>{`B. ${question.answer_2}`}</Radio>
+                <Radio>{`C. ${question.answer_3}`}</Radio>
+                <Radio>{`D. ${question.answer_4}`}</Radio>
               </RadioGroup>
               <Button
                 style={styles.button}
@@ -454,7 +454,7 @@ export const PracticeScreen = ({ route, navigation }) => {
         <View style={{ flex: 1, justifyContent: "space-between" }}>
           <View>
             <TopBar
-              title={`Question ${currentQuestion + 1} Answer`}
+              title={`questionName ${currentQuestion + 1} answer_`}
               navigation={navigation}
               hasBack={true}
             />

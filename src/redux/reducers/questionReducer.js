@@ -7,27 +7,7 @@ import {
   REFRESH_QUIZ,
 } from "../actions/actionTypes";
 
-// // data
-// import data from "../../static/questions/data.json";
-// import { getRandomArrayElements } from "../../helper";
-
-// // data
-// let arr = [];
-// data.questionData.map((item) => {
-//   arr.push(
-//     Object.assign({}, item, {
-//       saved: false,
-//       result: {
-//         res: "unfinished",
-//         pick: null,
-//       },
-//     })
-//   );
-// });
-
 const questionReducerInitialState = {
-  // questionData: getRandomArrayElements(arr, 100),
-  // quizData: getRandomArrayElements(arr, 10),
   questionData: [],
   quizData: [],
   savedList: [],
@@ -74,7 +54,7 @@ export const questionReducer = (
     case SAVE_QUESTION:
       const { item } = action.payload;
       const arr = state.questionData.map((i) => {
-        if (i.Id == item.Id) {
+        if (i.id == item.id) {
           i.saved = true;
         }
         return i;
@@ -87,7 +67,7 @@ export const questionReducer = (
       };
     case UNSAVE_QUESTION:
       const arr2 = state.questionData.map((i) => {
-        if (i.Id == action.payload.item.Id) {
+        if (i.id == action.payload.item.id) {
           i.saved = false;
         }
         return i;
@@ -97,7 +77,7 @@ export const questionReducer = (
         questionData: arr2,
         // quizData: arr2,
         savedList: state.savedList.filter((i) => {
-          return i.Id != action.payload.item.Id;
+          return i.id != action.payload.item.id;
         }),
       };
     default:

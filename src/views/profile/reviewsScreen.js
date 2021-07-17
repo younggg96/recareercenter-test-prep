@@ -11,7 +11,7 @@ export const ReviewsScreen = ({ navigation }) => {
   const { savedList } = useSelector((state) => state.questionReducer);
 
   const renderItem = ({ item, index }) => (
-    <ListItem title={`${item.Id}. ${" "}  ${item.Question}`} />
+    <ListItem title={`${item.id}. ${" "}  ${item.questionName}`} />
   );
 
   return (

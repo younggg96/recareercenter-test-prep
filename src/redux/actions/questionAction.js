@@ -9,6 +9,9 @@ import {
 
 import data from "../../static/questions/data.json";
 import { getRandomArrayElements } from "../../helper";
+import { Alert } from "react-native";
+import axios from "axios";
+import { BASE_URL } from "../../../config";
 
 // data
 let arr = [];
@@ -38,28 +41,45 @@ export function getQuizResult(itemRes2, currentQuestion2) {
   };
 }
 
-export function refreshQuestionData() {
-  return {
-    type: REFRESH_QUESTIONDATA,
-    payload: getRandomArrayElements(arr, 100),
-  };
+export async function refreshQuestionData() {
+  try {
+    const res = await axios.get(BASE_URL + '/questions/findForQuiz');
+    // console.log(res)
+    if (res) {
+      return {
+        type: REFRESH_QUESTIONDATA,
+        payload: res
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
+
 }
 
-export function refreshQuiz() {
-  return {
-    type: REFRESH_QUIZ,
-    payload: getRandomArrayElements(arr, 10),
-  };
+export async function refreshQuiz() {
+  try {
+    const res = await axios.get(BASE_URL + '/questions/findForQuiz')
+    console.log(res.data)
+    if (res) {
+      return {
+        type: REFRESH_QUIZ,
+        payload: res.data
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
 }
 
-export function saveQuestion(item) {
+export function saveQuestion(item, uid) {
   return {
     type: SAVE_QUESTION,
     payload: { item },
   };
 }
 
-export function unsaveQuestion(item) {
+export function unsaveQuestion(item, uid) {
   return {
     type: UNSAVE_QUESTION,
     payload: { item },
