@@ -7,25 +7,11 @@ import {
   REFRESH_QUESTIONDATA,
 } from "./actionTypes";
 
-import data from "../../static/questions/data.json";
-import { getRandomArrayElements } from "../../helper";
+// import data from "../../static/questions/data.json";
+// import { getRandomArrayElements } from "../../helper";
 import { Alert } from "react-native";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
-
-// data
-let arr = [];
-data.questionData.map((item) => {
-  arr.push(
-    Object.assign({}, item, {
-      saved: false,
-      result: {
-        res: "unfinished",
-        pick: null,
-      },
-    })
-  );
-});
 
 export function getResult(itemRes, currentQuestion) {
   return {
@@ -43,12 +29,24 @@ export function getQuizResult(itemRes2, currentQuestion2) {
 
 export async function refreshQuestionData() {
   try {
-    const res = await axios.get(BASE_URL + '/questions/findForQuiz');
-    // console.log(res)
+    const res = await axios.get(BASE_URL + '/questions/findForExam');
     if (res) {
+      // data
+      let arr = [];
+      res.data.map((item) => {
+        arr.push(
+          Object.assign({}, item, {
+            saved: false,
+            result: {
+              res: "unfinished",
+              pick: null,
+            },
+          })
+        );
+      });
       return {
         type: REFRESH_QUESTIONDATA,
-        payload: res
+        payload: arr
       };
     }
   } catch (error) {
@@ -60,7 +58,6 @@ export async function refreshQuestionData() {
 export async function refreshQuiz() {
   try {
     const res = await axios.get(BASE_URL + '/questions/findForQuiz')
-    console.log(res.data)
     if (res) {
       return {
         type: REFRESH_QUIZ,

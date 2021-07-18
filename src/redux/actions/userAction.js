@@ -14,6 +14,7 @@ import { Alert } from "react-native";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
 
+// alerts
 const successSubmitAlert = (date) =>
   Alert.alert(
     "Your Start Day Changed",
@@ -22,9 +23,11 @@ const successSubmitAlert = (date) =>
   );
 
 const successChangeTargetNumAlert = (targetPractice) =>
-  Alert.alert("Your Daily Practice Changed", `${targetPractice}`, [
-    { text: "OK", style: "default" },
-  ]);
+  Alert.alert(
+    "Your Daily Practice Changed",
+    `${targetPractice}`,
+    [{ text: "OK", style: "default" },]
+  );
 
 const successChangeExamDateAlert = (examDate) =>
   Alert.alert(
@@ -66,7 +69,6 @@ export async function login(email, password) {
       userData: Object.assign(res.data, { email: response.user.email, displayName: response.user.displayName }),
       signIn: true,
     };
-    // console.log(payload)
     return {
       type: USER_LOGIN,
       payload: payload,

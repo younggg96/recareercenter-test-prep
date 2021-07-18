@@ -23,17 +23,16 @@ import { itemWidth, sliderWidth } from "../../constants";
 // data
 import { ENTRIES1 } from "../../static/entries";
 import { Categories } from "../../static/questions/category";
-import {
-  refreshQuestionData,
-  refreshQuiz,
-} from "../../redux/actions/questionAction";
+import { refreshQuiz } from "../../redux/actions/questionAction";
 
 export const HomeScreen = ({ navigation }) => {
-  const { userData } = useSelector((state) => state.userReducer);
-  const { quizData } = useSelector((state) => state.questionReducer);
-  const dispatch = useDispatch();
   const [toPlanVisible, setToPlanVisible] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
+
+  // redux
+  const dispatch = useDispatch();
+  const { userData } = useSelector((state) => state.userReducer);
+  const { quizData } = useSelector((state) => state.questionReducer);
 
   useEffect(() => {
     if (!userData.examStartDate || !userData.practiceStartDate) {

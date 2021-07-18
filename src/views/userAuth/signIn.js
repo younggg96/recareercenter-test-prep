@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
-import { Alert, Image, View } from "react-native";
+import { Image, View } from "react-native";
 
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
@@ -15,9 +15,8 @@ import { login } from "../../redux/actions/userAction";
 
 // icons
 import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
-import { ScrollView } from "react-native-gesture-handler";
-
 import { LoadingIndicator } from "../../components/loading/loadingIndicator";
+
 
 const SignIn = ({ navigation }) => {
   const [submitted, setSubmitted] = React.useState(false);
@@ -47,7 +46,7 @@ const SignIn = ({ navigation }) => {
 
   useEffect(() => {
     return () => {
-      setSubmitted(null); 
+      setSubmitted(null);
     };
   }, []);
 

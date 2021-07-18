@@ -21,7 +21,6 @@ export const QuizScreen = ({ navigation }) => {
   const [score, setScore] = React.useState(0);
   const { quizData } = useSelector((state) => state.questionReducer);
   const { userData } = useSelector((state) => state.userReducer);
-  // const arr = data.quizData;
 
   // redux
   const dispatch = useDispatch();
@@ -116,6 +115,7 @@ export const QuizScreen = ({ navigation }) => {
     <React.Fragment>
       {currentQuestion > 9 ? (
         <View style={{ flex: 1 }}>
+          {/* reviews */}
           <TopBar title="Quiz Review" navigation={navigation} hasBack={true} />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
