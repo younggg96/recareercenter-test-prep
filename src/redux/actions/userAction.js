@@ -3,6 +3,7 @@ import {
   CHANGE_EXAM_DATE,
   SET_START_DAY,
   USER_LOGIN,
+  USER_LOGIN_WITH_CACHE,
   USER_LOGOUT,
   CHANGE_PASSWORD,
   DO_QUESTION,
@@ -13,6 +14,8 @@ import FirebaseAuth from "../../firebase/index";
 import { Alert } from "react-native";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
+import { getValueFormStore, setValueToStore } from "../../storage";
+import { USER_AUTH_INFO } from "../../storage/keys";
 
 // alerts
 const successSubmitAlert = (date) =>
@@ -69,12 +72,20 @@ export async function login(email, password) {
       userData: Object.assign(res.data, { email: response.user.email, displayName: response.user.displayName }),
       signIn: true,
     };
+    await setValueToStore(USER_AUTH_INFO, JSON.stringify(payload))
     return {
       type: USER_LOGIN,
       payload: payload,
     };
   } catch (err) {
     Alert.alert("Error", `${err.message}`);
+  }
+}
+
+export async function loginWithCache(payload) {
+  return {
+    type: USER_LOGIN_WITH_CACHE,
+    payload: payload,
   }
 }
 

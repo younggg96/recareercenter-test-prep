@@ -1,19 +1,31 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Button, Text } from "@ui-kitten/components";
 import { Image, View } from 'react-native';
 import { styles } from '../../styles/userAuth/landingStyle';
 import { LoadingIndicator } from '../../components/loading/loadingIndicator';
 
+import { USER_AUTH_INFO } from '../../storage/keys';
+import { loginWithCache } from '../../redux/actions/userAction';
+import { getValueFormStore } from '../../storage';
+
 const Landing = ({ navigation }) => {
   const [spinner, setSpinner] = React.useState(false);
+  const dispatch = useDispatch();
   
-  const onStart = () => {
+  const onStart = async () => {
     setSpinner(true);
-    setTimeout(() => {
-      navigation.navigate("SignIn");
+    const auth = JSON.parse(await getValueFormStore(USER_AUTH_INFO));
+    if (auth) {
+      dispatch(loginWithCache(auth))
       setSpinner(false);
-    }, 1000);
+    } else {
+      setTimeout(() => {
+        navigation.navigate("SignIn");
+        setSpinner(false);
+      }, 1000);
+    }
   };
 
   return (

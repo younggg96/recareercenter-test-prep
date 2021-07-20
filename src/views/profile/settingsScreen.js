@@ -1,6 +1,6 @@
 import React from "react";
 // ui
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import { Button, Divider, Text } from "@ui-kitten/components";
 
 import { styles } from "../../styles/home/settingsStyle";
@@ -13,12 +13,19 @@ import { settings } from "../../components/settingList/settingConfig";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/actions/userAction";
+import { deleteItemAsync } from "expo-secure-store";
+import { USER_AUTH_INFO } from "../../storage/keys";
 
 export const SettingsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
 
-  const logoutAccount = () => {
+  const logoutAccount = async () => {
+    try {
+      deleteItemAsync(USER_AUTH_INFO);
+    } catch (error) {
+      Alert.alert("Error", `${error.message}`);
+    }
     dispatch(logout());
   };
 

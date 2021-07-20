@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
 import { Image, View } from "react-native";
+
+import * as AppAuth from 'expo-app-auth';
+import * as Google from 'expo-google-app-auth';
 
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
@@ -11,15 +14,64 @@ import { useForm, Controller } from "react-hook-form";
 
 // redux
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/actions/userAction";
+import { login, loginWithCache } from "../../redux/actions/userAction";
 
 // icons
 import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
 import { LoadingIndicator } from "../../components/loading/loadingIndicator";
+import { GOOGLE_AUTH_CONFIG } from "../../../config";
+import { getValueFormStore, setValueToStore } from "../../storage";
+import { STORE_SIGNIN_GOOGLE_KEY } from "../../storage/keys";
+
+
+// // store key for config secure store setter/getter
+// const STORE_SIGNIN_GOOGLE_KEY = 'recareercenter_exam_google_oauth_key';
+
+// sign in with Google
+
+async function signInWithGoogleAsync() {
+  try {
+    const result = await Google.logInAsync({
+      androidClientId: '967088008445-6r18r61vnondm6nard1a73ldvoecps1u.apps.googleusercontent.com',
+      iosClientId: '967088008445-0g6j85pssuoq7phjd8fptmesgubgcu00.apps.googleusercontent.com',
+      scopes: ['profile', 'email'],
+    });
+
+    if (result.type === 'success') {
+      console.log(result)
+      return result;
+    } else {
+      return { cancelled: true };
+    }
+  } catch (e) {
+    return { error: true };
+  }
+}
+
+export const signInAsync = async () => {
+  let authState = await AppAuth.authAsync(GOOGLE_AUTH_CONFIG);
+  console.log('signInAsync', authState);
+  await setValueToStore(STORE_SIGNIN_GOOGLE_KEY, JSON.stringify(authState));
+  return authState;
+}
+
+// check token expired
+const checkIfTokenExpired = ({ accessTokenExpirationDate }) => {
+  return new Date(accessTokenExpirationDate) < new Date();
+}
+
+// refresh token
+const refreshAuthAsync = async ({ refreshToken }) => {
+  let authState = await AppAuth.refreshAsync(GOOGLE_AUTH_CONFIG, refreshToken);
+  console.log('refreshAuth', authState);
+  await setValueToStore(STORE_SIGNIN_GOOGLE_KEY, JSON.stringify(authState));
+  return authState;
+}
 
 
 const SignIn = ({ navigation }) => {
-  const [submitted, setSubmitted] = React.useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [authState, setAuthState] = useState(null);
 
   const {
     control,
@@ -28,14 +80,38 @@ const SignIn = ({ navigation }) => {
   } = useForm();
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    setSubmitted(true);
+  const onSubmit = async (data) => {
     dispatch(login(data.email, data.password));
+    setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
     }, 2000);
   };
 
+  const getAuth = async () => {
+    // whether store has token
+    let authState = JSON.parse(await getValueFormStore(STORE_SIGNIN_GOOGLE_KEY));
+    console.log('getAuth', authState);
+    if (authState) {
+      if (checkIfTokenExpired(authState)) {
+        return refreshAuthAsync(authState);
+      } else {
+        return authState;
+      }
+    }
+    return null;
+  }
+
+  useEffect(() => {
+    (async () => {
+      let cachedAuth = await getAuth();
+      if (cachedAuth && !authState) {
+        setAuthState(cachedAuth);
+      }
+    })();
+  }, []);
+
+  // navigation screen
   const signUp = () => {
     navigation.navigate("SignUp");
   };
@@ -44,11 +120,11 @@ const SignIn = ({ navigation }) => {
     navigation.navigate("ResetPassword");
   };
 
-  useEffect(() => {
-    return () => {
-      setSubmitted(null);
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     setSubmitted(null);
+  //   };
+  // }, []);
 
   // password input
   const [secureTextEntry, setSecureTextEntry] = React.useState(true);
@@ -162,7 +238,9 @@ const SignIn = ({ navigation }) => {
         <View>
           <Button
             style={styles.button}
-            onPress={handleSubmit(onSubmit)}
+            onPress={
+              handleSubmit(onSubmit)
+            }
             accessoryLeft={submitted ? LoadingIndicator : null}
           >
             Sign In
@@ -179,6 +257,11 @@ const SignIn = ({ navigation }) => {
                 style={styles.otherBtn}
                 appearance="outline"
                 accessoryLeft={GoogleIcon}
+                // onPress={async () => {
+                //   const _authState = await signInAsync();
+                //   setAuthState(_authState);
+                // }}
+                onPress={signInWithGoogleAsync}
               >
                 Google
               </Button>
