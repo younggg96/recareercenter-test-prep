@@ -5,10 +5,9 @@ import {
   GET_QUIZ_RESULT,
   REFRESH_QUIZ,
   REFRESH_QUESTIONDATA,
+  SAVED_QUESTION_ID_LIST,
 } from "./actionTypes";
 
-// import data from "../../static/questions/data.json";
-// import { getRandomArrayElements } from "../../helper";
 import { Alert } from "react-native";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
@@ -69,16 +68,47 @@ export async function refreshQuiz() {
   }
 }
 
-export function saveQuestion(item, uid) {
-  return {
-    type: SAVE_QUESTION,
-    payload: { item },
-  };
+export async function saveQuestion(item, uid) {
+  try {
+    await axios.post(BASE_URL + `/users/saveQuestion?uid=${uid}&qid=${item.id}`);
+    const res = await axios.get(BASE_URL + `/users/getSavedQuestionId?uid=${uid}`);
+    if (res) {
+      return {
+        type: SAVE_QUESTION,
+        payload: res.data,
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
+
 }
 
-export function unsaveQuestion(item, uid) {
-  return {
-    type: UNSAVE_QUESTION,
-    payload: { item },
-  };
+export async function unsaveQuestion(item, uid) {
+  try {
+    await axios.post(BASE_URL + `/users/deleteQuestion?uid=${uid}&qid=${item.id}`)
+    const res = await axios.get(BASE_URL + `/users/getSavedQuestionId?uid=${uid}`);
+    if (res) {
+      return {
+        type: UNSAVE_QUESTION,
+        payload: res.data,
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
+}
+
+export async function getSavedQuestionsID(uid) {
+  try {
+    const res = await axios.get(BASE_URL + `/users/getSavedQuestionId?uid=${uid}`);
+    if (res) {
+      return {
+        type: SAVED_QUESTION_ID_LIST,
+        payload: res.data
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
 }

@@ -5,12 +5,13 @@ import {
   UNSAVE_QUESTION,
   REFRESH_QUESTIONDATA,
   REFRESH_QUIZ,
+  SAVED_QUESTION_ID_LIST,
 } from "../actions/actionTypes";
 
 const questionReducerInitialState = {
   questionData: [],
   quizData: [],
-  savedList: [],
+  savedIdList: [],
 };
 
 export const questionReducer = (
@@ -52,34 +53,20 @@ export const questionReducer = (
         ],
       };
     case SAVE_QUESTION:
-      const { item } = action.payload;
-      const arr = state.questionData.map((i) => {
-        if (i.id == item.id) {
-          i.saved = true;
-        }
-        return i;
-      });
       return {
         ...state,
-        questionData: arr,
-        // quizData: arr,
-        savedList: [...state.savedList, item],
-      };
+        savedIdList: action.payload
+      }
     case UNSAVE_QUESTION:
-      const arr2 = state.questionData.map((i) => {
-        if (i.id == action.payload.item.id) {
-          i.saved = false;
-        }
-        return i;
-      });
       return {
         ...state,
-        questionData: arr2,
-        // quizData: arr2,
-        savedList: state.savedList.filter((i) => {
-          return i.id != action.payload.item.id;
-        }),
-      };
+        savedIdList: action.payload
+      }
+    case SAVED_QUESTION_ID_LIST:
+      return {
+        ...state,
+        savedIdList: action.payload
+      }
     default:
       return state;
   }

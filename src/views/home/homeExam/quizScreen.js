@@ -1,6 +1,7 @@
+import React, { useEffect } from "react";
 import { Button, Radio, RadioGroup, Text } from "@ui-kitten/components";
-import React from "react";
 import { Image, View } from "react-native";
+
 import { TopBar } from "../../../components/topBar/topBar";
 import { styles } from "../../../styles/home/home/quizStyle";
 
@@ -10,6 +11,7 @@ import { LikeIcon, UnlikeIcon } from "../../../components/icons/icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getQuizResult,
+  getSavedQuestionsID,
   saveQuestion,
   unsaveQuestion,
 } from "../../../redux/actions/questionAction";
@@ -19,11 +21,15 @@ export const QuizScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
-  const { quizData } = useSelector((state) => state.questionReducer);
+  const { quizData, savedIdList } = useSelector((state) => state.questionReducer);
   const { userData } = useSelector((state) => state.userReducer);
 
   // redux
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getSavedQuestionsID(userData.uid));
+  }, [])
 
   // current question
   const question = quizData[currentQuestion];
@@ -89,21 +95,21 @@ export const QuizScreen = ({ navigation }) => {
                 >{`Correct answer: ${arr[parseInt(data[index].correct_ans) - 1]
                   }`}</Text>
               </View>
-              <View style={styles.controlBtn}>
+              {savedIdList !== null && (<View style={styles.controlBtn}>
                 <Button
                   style={{ borderRadius: 16, paddingVertical: 6 }}
                   status="control"
                   appearance="outline"
-                  accessoryLeft={!item.saved ? UnlikeIcon : LikeIcon}
+                  accessoryLeft={!savedIdList.includes(item.id) ? UnlikeIcon : LikeIcon}
                   onPress={
-                    !item.saved
+                    !savedIdList.includes(item.id)
                       ? () => dispatch(saveQuestion(item, userData.uid))
                       : () => dispatch(unsaveQuestion(item, userData.uid))
                   }
                 >
-                  {!item.saved ? "Save" : "Saved"}
+                  {!savedIdList.includes(item.id) ? "Save" : "Saved"}
                 </Button>
-              </View>
+              </View>)}
             </View>
           );
         })}
