@@ -17,7 +17,7 @@ import { Categories } from "../../../static/questions/category";
 import { PieChart } from "react-native-chart-kit";
 import {
   saveQuestion,
-  unsaveQuestion,
+  unsaveQuestionReturnIds,
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
 
@@ -62,7 +62,7 @@ const Review = ({ result, question, currentQuestion }) => {
           onPress={
             !item.saved
               ? () => dispatch(saveQuestion(item))
-              : () => dispatch(unsaveQuestion(item))
+              : () => dispatch(unsaveQuestionReturnIds(item))
           }
         >
           {!item.saved ? "Save" : "Saved"}

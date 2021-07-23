@@ -13,7 +13,7 @@ import {
   getQuizResult,
   getSavedQuestionsID,
   saveQuestion,
-  unsaveQuestion,
+  unsaveQuestionReturnIds,
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
 
@@ -21,11 +21,11 @@ export const QuizScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
-  const { quizData, savedIdList } = useSelector((state) => state.questionReducer);
-  const { userData } = useSelector((state) => state.userReducer);
-
+  
   // redux
   const dispatch = useDispatch();
+  const { quizData, savedIdList } = useSelector((state) => state.questionReducer);
+  const { userData } = useSelector((state) => state.userReducer);
 
   useEffect(() => {
     dispatch(getSavedQuestionsID(userData.uid));
@@ -104,7 +104,7 @@ export const QuizScreen = ({ navigation }) => {
                   onPress={
                     !savedIdList.includes(item.id)
                       ? () => dispatch(saveQuestion(item, userData.uid))
-                      : () => dispatch(unsaveQuestion(item, userData.uid))
+                      : () => dispatch(unsaveQuestionReturnIds(item, userData.uid))
                   }
                 >
                   {!savedIdList.includes(item.id) ? "Save" : "Saved"}
@@ -179,7 +179,6 @@ export const QuizScreen = ({ navigation }) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <ProgressBar finished={currentQuestion + 1} target="10" />
-              {/* <Text>{JSON.stringify(quizData, null, '\t')}</Text> */}
               <View>
                 <Text category="s1" style={styles.questionTitle}>
                   Question: {`${question.questionName}`}

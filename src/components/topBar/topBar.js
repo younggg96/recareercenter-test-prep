@@ -1,4 +1,5 @@
 import {
+  Button,
   Text,
   TopNavigation,
   TopNavigationAction,
@@ -30,7 +31,7 @@ export const TopBar = (props) => {
   };
 
   const BackAction = () => (
-    <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
+    <Button appearance='ghost' accessoryLeft={BackIcon} onPress={navigateBack} size="small"/>
   );
 
   return (

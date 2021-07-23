@@ -13,13 +13,15 @@ import { getValueFormStore } from '../../storage';
 const Landing = ({ navigation }) => {
   const [spinner, setSpinner] = React.useState(false);
   const dispatch = useDispatch();
-  
+
   const onStart = async () => {
     setSpinner(true);
-    const auth = JSON.parse(await getValueFormStore(USER_AUTH_INFO));
-    if (auth) {
-      dispatch(loginWithCache(auth))
-      setSpinner(false);
+    const userObj = JSON.parse(await getValueFormStore(USER_AUTH_INFO));
+    if (userObj) {
+      setTimeout(() => {
+        dispatch(loginWithCache(userObj));
+        setSpinner(false);
+      }, 1000);
     } else {
       setTimeout(() => {
         navigation.navigate("SignIn");
@@ -43,7 +45,7 @@ const Landing = ({ navigation }) => {
           </Button> :
           <Button style={styles.button} accessoryLeft={LoadingIndicator}>
             Loading...
-        </Button>}
+          </Button>}
       </View>
     </View>
   );

@@ -20,6 +20,7 @@ import { ExamsScreen } from "../views/home/examsScreen";
 import { SettingsScreen } from "../views/profile/settingsScreen";
 import { StudyPlanScreen } from "../views/profile/studyPlanScreen";
 import { ReviewsScreen } from "../views/profile/reviewsScreen";
+import { ReviewDetailsScreen } from "../views/profile/reviewDetailsScreen";
 import { AboutUsScreen } from "../views/profile/aboutUsScreen";
 import { NotificationScreen } from "../views/profile/notificationScreen";
 import { ChangePasswordScreen } from "../views/profile/changePasswordScreen";
@@ -61,6 +62,7 @@ const ProfileNavigation = () => (
     <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
     <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
     <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
+    <Stack.Screen name="ReviewDetailsScreen" component={ReviewDetailsScreen} />
     <Stack.Screen name="StudyPlanScreen" component={StudyPlanScreen} />
     <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
   </Stack.Navigator>

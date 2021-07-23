@@ -45,7 +45,7 @@ export async function login(email, password) {
       email,
       password
     );
-    // console.log(response.user.uid)
+    console.log(response.user.uid)
     if (!response.user.emailVerified) {
       Alert.alert(
         "Your email is not verified, Cannot log in",
@@ -68,11 +68,12 @@ export async function login(email, password) {
       };
     }
     const res = await axios.get(BASE_URL + `/users/findUser?uid=${response.user.uid}`);
+    const userInfo = { email: response.user.email, displayName: response.user.displayName }
     const payload = {
-      userData: Object.assign(res.data, { email: response.user.email, displayName: response.user.displayName }),
+      userData: Object.assign(res.data, userInfo),
       signIn: true,
     };
-    await setValueToStore(USER_AUTH_INFO, JSON.stringify(payload))
+    await setValueToStore(USER_AUTH_INFO, JSON.stringify({ uid: response.user.uid, userInfo }))
     return {
       type: USER_LOGIN,
       payload: payload,
@@ -82,7 +83,12 @@ export async function login(email, password) {
   }
 }
 
-export async function loginWithCache(payload) {
+export async function loginWithCache(userObj) {
+  const res = await axios.get(BASE_URL + `/users/findUser?uid=${userObj.uid}`);
+  const payload = {
+    userData: Object.assign(res.data, userObj.userInfo),
+    signIn: true,
+  };
   return {
     type: USER_LOGIN_WITH_CACHE,
     payload: payload,
@@ -191,7 +197,6 @@ export async function changeExamDate(dateObj, uid) {
 
 export async function setStartDay(dateObj, uid) {
   try {
-    // console.log(dateObj.toISOString().slice(0, 10))
     const res = await axios.put(BASE_URL + `/users/updatePracticeStartDate?uid=${uid}&date=${dateObj.toISOString().slice(0, 10)}`)
     if (res) {
       console.log(res.data)
@@ -209,10 +214,10 @@ export async function setStartDay(dateObj, uid) {
 export async function doQuestion(uid) {
   try {
     const res = await axios.post(BASE_URL + `/users/addPractice?uid=${uid}`)
-    if (res.status === 200) {
+    if (res) {
       return {
         type: DO_QUESTION,
-        payload: res
+        payload: res.data
       };
     }
   } catch (error) {

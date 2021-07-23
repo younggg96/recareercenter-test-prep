@@ -3,15 +3,18 @@ import {
   GET_QUIZ_RESULT,
   SAVE_QUESTION,
   UNSAVE_QUESTION,
+  UNSAVE_QUESTION_RETURN_WITH_DETAIL,
   REFRESH_QUESTIONDATA,
   REFRESH_QUIZ,
   SAVED_QUESTION_ID_LIST,
+  SAVED_QUESTIONS_LIST,
 } from "../actions/actionTypes";
 
 const questionReducerInitialState = {
   questionData: [],
   quizData: [],
   savedIdList: [],
+  savedList: []
 };
 
 export const questionReducer = (
@@ -56,17 +59,27 @@ export const questionReducer = (
       return {
         ...state,
         savedIdList: action.payload
-      }
+      };
     case UNSAVE_QUESTION:
       return {
         ...state,
         savedIdList: action.payload
-      }
+      };
+    case UNSAVE_QUESTION_RETURN_WITH_DETAIL:
+      return {
+        ...state,
+        savedList: action.payload
+      };
     case SAVED_QUESTION_ID_LIST:
       return {
         ...state,
         savedIdList: action.payload
-      }
+      };
+    case SAVED_QUESTIONS_LIST:
+      return {
+        ...state,
+        savedList: action.payload
+      };
     default:
       return state;
   }

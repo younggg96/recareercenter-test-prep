@@ -2,10 +2,12 @@ import {
   SAVE_QUESTION,
   GET_RESULT,
   UNSAVE_QUESTION,
+  UNSAVE_QUESTION_RETURN_WITH_DETAIL,
   GET_QUIZ_RESULT,
   REFRESH_QUIZ,
   REFRESH_QUESTIONDATA,
   SAVED_QUESTION_ID_LIST,
+  SAVED_QUESTIONS_LIST,
 } from "./actionTypes";
 
 import { Alert } from "react-native";
@@ -84,7 +86,7 @@ export async function saveQuestion(item, uid) {
 
 }
 
-export async function unsaveQuestion(item, uid) {
+export async function unsaveQuestionReturnIds(item, uid) {
   try {
     await axios.post(BASE_URL + `/users/deleteQuestion?uid=${uid}&qid=${item.id}`)
     const res = await axios.get(BASE_URL + `/users/getSavedQuestionId?uid=${uid}`);
@@ -99,12 +101,41 @@ export async function unsaveQuestion(item, uid) {
   }
 }
 
+export async function unsaveQuestionReturnDetails(item, uid) {
+  try {
+    await axios.post(BASE_URL + `/users/deleteQuestion?uid=${uid}&qid=${item.id}`)
+    const res = await axios.get(BASE_URL + `/users/getSavedQuestion?uid=${uid}`);
+    if (res) {
+      return {
+        type: UNSAVE_QUESTION_RETURN_WITH_DETAIL,
+        payload: res.data,
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
+}
+
 export async function getSavedQuestionsID(uid) {
   try {
     const res = await axios.get(BASE_URL + `/users/getSavedQuestionId?uid=${uid}`);
     if (res) {
       return {
         type: SAVED_QUESTION_ID_LIST,
+        payload: res.data
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
+}
+
+export async function getSavedQuestions(uid) {
+  try {
+    const res = await axios.get(BASE_URL + `/users/getSavedQuestion?uid=${uid}`);
+    if (res) {
+      return {
+        type: SAVED_QUESTIONS_LIST,
         payload: res.data
       };
     }

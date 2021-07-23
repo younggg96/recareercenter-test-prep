@@ -25,10 +25,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getResult,
   saveQuestion,
-  unsaveQuestion,
+  unsaveQuestionReturnIds,
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
-// import { LoadingIndicator } from "../../../components/loading/loadingIndicator";
 import { TopBar } from "../../../components/topBar/topBar";
 
 const topStyles = StyleSheet.create({
@@ -48,19 +47,17 @@ export const MockExamScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
-  // const [loading, setLoading] = React.useState(false);
-
-  // redux
-  const dispatch = useDispatch();
-  const { questionData } = useSelector((state) => state.questionReducer);
-  const { userData } = useSelector((state) => state.userReducer);
-  // const arr = data.questionData;
 
   // quit display
   const [quitExamDisplay, setQuitExamDisplay] = React.useState(false);
 
   // timeout display
   const [timeoutDisplay, setTimeoutDisplay] = React.useState(false);
+
+  // redux
+  const dispatch = useDispatch();
+  const { questionData, savedIdList } = useSelector((state) => state.questionReducer);
+  const { userData } = useSelector((state) => state.userReducer);
 
   // current question
   const question = questionData[currentQuestion];
@@ -138,21 +135,21 @@ export const MockExamScreen = ({ navigation }) => {
                   >{`Correct answer: ${arr[parseInt(data[index].correct_ans) - 1]
                     }`}</Text>
                 </View>
-                <View style={styles.controlBtn}>
+                {savedIdList !== null && (<View style={styles.controlBtn}>
                   <Button
                     style={{ borderRadius: 16, paddingVertical: 6 }}
                     status="control"
                     appearance="outline"
-                    accessoryLeft={!item.saved ? UnlikeIcon : LikeIcon}
+                    accessoryLeft={!savedIdList.includes(item.id) ? UnlikeIcon : LikeIcon}
                     onPress={
-                      !item.saved
-                        ? () => dispatch(saveQuestion(item))
-                        : () => dispatch(unsaveQuestion(item))
+                      !savedIdList.includes(item.id)
+                        ? () => dispatch(saveQuestion(item, userData.uid))
+                        : () => dispatch(unsaveQuestionReturnIds(item, userData.uid))
                     }
                   >
-                    {!item.saved ? "Save" : "Saved"}
+                    {!savedIdList.includes(item.id) ? "Save" : "Saved"}
                   </Button>
-                </View>
+                </View>)}
               </View>
             );
           } else {
@@ -165,7 +162,7 @@ export const MockExamScreen = ({ navigation }) => {
 
   // Top bar
   const BackAction = () => (
-    <TopNavigationAction icon={BackIcon} onPress={exitModal} />
+    <Button appearance='ghost' accessoryLeft={BackIcon} onPress={exitModal} size="small" />
   );
 
   const exitModal = () => {
