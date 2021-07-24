@@ -37,7 +37,7 @@ export const SettingsScreen = ({ navigation }) => {
           Account Info
         </Text>
         <View style={styles.email}>
-          <Text category="s1">Email: {userData.email}</Text>
+          <Text category="s1">Email: {userData.email ? userData.email : "Please login again"}</Text>
           <Button onPress={logoutAccount} style={styles.logOutBtn}>
             Log Out
           </Button>

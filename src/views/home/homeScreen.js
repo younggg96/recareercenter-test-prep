@@ -32,10 +32,10 @@ export const HomeScreen = ({ navigation }) => {
   // redux
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
-  const { quizData } = useSelector((state) => state.questionReducer);
 
   useEffect(() => {
-    if (!userData.examStartDate || !userData.practiceStartDate) {
+    // miss plan, modal show up
+    if (!new Date(userData.examStartDate).getTime() || !new Date(userData.practiceStartDate).getTime) {
       setToPlanVisible(true);
     }
   }, [])
@@ -54,6 +54,10 @@ export const HomeScreen = ({ navigation }) => {
 
   const navigateToAllQuestion = () => {
     navigation.navigate("AllCategroyScreen");
+  };
+
+  const navigateToReview = () => {
+    navigation.navigate("ReviewsScreen");
   };
 
   const navigateToPractice = (id, name) => {
@@ -199,7 +203,10 @@ export const HomeScreen = ({ navigation }) => {
             Estimated time 10 mins
           </Text>
           <Button style={homeStyles.button} onPress={navigateToQuiz}>
-            Let's Start a Quiz
+            Let's Start A Quiz
+          </Button>
+          <Button appearance="ghost" style={{...homeStyles.button, marginTop: 8}} onPress={navigateToReview}>
+            Review Questions 
           </Button>
         </View>
         <View style={homeStyles.content}>
@@ -261,8 +268,8 @@ export const HomeScreen = ({ navigation }) => {
               source={require("../../../assets/img/empty-plan.jpg")}
               style={{ width: '100%', height: 200, marginBottom: 16 }}
             />
-            <Text category="h6" style={{ ...homeStyles.modalTitle, textAlign: 'center' }}>
-              Study plan is not completed!
+            <Text category="h5" style={{ ...homeStyles.modalTitle, textAlign: 'center' }}>
+              Study Plan Is Not Completed!
             </Text>
           </View>
           <Button

@@ -18,14 +18,14 @@ const Landing = ({ navigation }) => {
     setSpinner(true);
     const userObj = JSON.parse(await getValueFormStore(USER_AUTH_INFO));
     if (userObj) {
+      dispatch(loginWithCache(userObj));
       setTimeout(() => {
-        dispatch(loginWithCache(userObj));
         setSpinner(false);
-      }, 1000);
+      }, 2000);
     } else {
       setTimeout(() => {
-        navigation.navigate("SignIn");
         setSpinner(false);
+        navigation.navigate("SignIn");
       }, 1000);
     }
   };

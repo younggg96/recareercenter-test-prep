@@ -74,6 +74,8 @@ const HomeScreenNavigation = () => (
     <Stack.Screen name="PracticeScreen" component={PracticeScreen} />
     <Stack.Screen name="StudyPlanScreen" component={StudyPlanScreen} />
     <Stack.Screen name="AllCategroyScreen" component={AllCategroyScreen} />
+    <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
+    <Stack.Screen name="ReviewDetailsScreen" component={ReviewDetailsScreen} />
   </Stack.Navigator>
 );
 

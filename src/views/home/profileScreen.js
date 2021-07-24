@@ -28,7 +28,7 @@ export const ProfileScreen = ({ navigation }) => {
         <View>
           <View style={styles.headerContainer}>
             <View>
-              <Text category="h1">Hi! {userData.displayName}</Text>
+              <Text category="h1">Hi! {userData.displayName ? userData.displayName : "Student"}</Text>
             </View>
             <View>
               <Button
@@ -50,9 +50,9 @@ export const ProfileScreen = ({ navigation }) => {
               <View style={styles.text}>
                 <Text category="s1">
                   Exam Day :{" "}
-                  {userData.examStartDate ? new Date(userData.examStartDate).toISOString().substring(0, 10) : " - "}
+                  {new Date(userData.examStartDate).getTime() ? new Date(userData.examStartDate).toISOString().substring(0, 10) : " - "}
                 </Text>
-                {(userData.examStartDate && userData.practiceStartDate) && <Text category="s1">'You have ' + diffTime(userData.practiceStartDate, userData.examStartDate) + ' days left ' </Text>}
+                {new Date(userData.examStartDate).getTime() && new Date(userData.practiceStartDate).getTime() ? <Text category="s1">You have {diffTime(userData.practiceStartDate, userData.examStartDate)} days left</Text> : <></>}
               </View>
             </View>
           </View>

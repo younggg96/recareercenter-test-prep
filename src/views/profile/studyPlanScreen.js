@@ -13,7 +13,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { TopBar } from "../../components/topBar/topBar";
 import { styles } from "../../styles/home/studyPlanStyle";
-import { EditIcon, SettingsIcon } from "../../components/icons/icons";
+import { EditIcon } from "../../components/icons/icons";
 import {
   changeDailyPractices,
   changeExamDate,
@@ -26,11 +26,12 @@ const today = new Date();
 export const StudyPlanScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
+  // console.log('29', new Date('1970-01-01').getTime() == false);
 
   // change data
-  const [examDate, setExamDate] = React.useState(null);
-  const [targetPractice, settargetPractice] = React.useState(null);
-  const [date, setDate] = React.useState(null);
+  const [examDate, setExamDate] = React.useState(new Date(userData.examStartDate));
+  const [targetPractice, setTargetPractice] = React.useState(userData.targetPractice);
+  const [date, setDate] = React.useState(new Date());
 
   // modal
   const [visible, setVisible] = React.useState(false);
@@ -61,7 +62,7 @@ export const StudyPlanScreen = ({ navigation }) => {
   const onChangeTargetInput = (num) => {
     if (!reg.test(num)) {
       setErrorInput(true);
-      settargetPractice(0);
+      setTargetPractice(0);
       return;
     }
     if (num > 300 || num <= 0) {
@@ -74,7 +75,7 @@ export const StudyPlanScreen = ({ navigation }) => {
       return;
     }
     setErrorInputNum(false);
-    settargetPractice(num);
+    setTargetPractice(num);
   };
 
   // start day
@@ -161,7 +162,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                 Your exam date:
               </Text>
               <Text category="h2">
-                {userData.examStartDate ? new Date(userData.examStartDate).toISOString().substring(0, 10) : 'Unset'}
+                {new Date(userData.examStartDate).getTime() ? new Date(userData.examStartDate).toISOString().substring(0, 10) : 'Unset'}
               </Text>
             </View>
             <View>
@@ -182,7 +183,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                     Change exam date
                   </Text>
                   <Datepicker
-                    date={examDate}
+                    date={new Date()}
                     dateService={formatDateService}
                     onSelect={(nextDate) => setExamDate(nextDate)}
                     size="small"
@@ -203,7 +204,7 @@ export const StudyPlanScreen = ({ navigation }) => {
             Start Day:
           </Text>
           <Text category="h2" style={styles.practiceStartDate}>
-            {userData.practiceStartDate ? new Date(userData.practiceStartDate).toISOString().substring(0, 10) : 'Unset'}
+            {new Date(userData.practiceStartDate).getTime() ? new Date(userData.practiceStartDate).toISOString().substring(0, 10) : 'Unset'}
           </Text>
           <Text
             category="s1"
@@ -219,8 +220,8 @@ export const StudyPlanScreen = ({ navigation }) => {
             }}
           />
           {errorSetDay && (
-            <Text category="s2" style={styles.titleContent} status="danger">
-              Cannot later than exam date
+            <Text category="s2" style={{...styles.titleContent, paddingLeft: 8, paddingVertical: 4}} status="danger">
+              Start day cannot later than exam date
             </Text>
           )}
           <Button style={styles.submitBtn} onPress={submitStartDay}>
