@@ -93,7 +93,9 @@ export const MockExamScreen = ({ navigation }) => {
     return (
       <View>
         {data.map((item, index) => {
-          if (item.result.pick) {
+          // console.log('num', index + 1,item.result);
+          if (item.result.pick !== null) {
+            // console.log(item.id, index);
             return (
               <View
                 style={
@@ -103,7 +105,7 @@ export const MockExamScreen = ({ navigation }) => {
                       ? styles.correctCard
                       : styles.inCorrectCard
                 }
-                key={index}
+                key={item.id}
               >
                 <View>
                   <Text category="s1" style={styles.reviewTitle}>{`Question ${index + 1
