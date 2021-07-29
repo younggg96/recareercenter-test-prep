@@ -1,31 +1,70 @@
-import { Button, Text } from "@ui-kitten/components";
 import React from "react";
-import { Image, View } from "react-native";
-import { LineChart } from "react-native-chart-kit";
-import { ScrollView } from "react-native-gesture-handler";
-import { useDispatch } from "react-redux";
-import { TopBar } from "../../components/topBar/topBar";
-import { refreshQuestionData } from "../../redux/actions/questionAction";
+import { useEffect } from "react";
+// style
 import { styles } from "../../styles/home/examStyle";
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { refreshQuestionData } from "../../redux/actions/questionAction";
+// components
+import { Button, Text } from "@ui-kitten/components";
+import { Image, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { TopBar } from "../../components/topBar/topBar";
+import { LineChart } from "react-native-chart-kit";
+import { getExamData } from "../../helper/api";
 
 export const ExamsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
-  const goMockExam = () => {
+  const [exams, setExams] = React.useState([]);
+  const { userData } = useSelector(state => state.userReducer);
+
+  useEffect(() => {
+    const res = getExamData(userData.uid);
+    res.then((res) => {
+      setExams(res);
+    })
+  }, [])
+
+  // navigation
+  const navigateToMockExam = () => {
     dispatch(refreshQuestionData());
     navigation.navigate("MockExamScreen");
   };
 
   const navigateToHistory = () => {
-    navigation.navigate("ExamHistoryScreen");
+    navigation.navigate("ExamHistoryScreen", { exams: exams });
   };
 
+  // chart
+  const getChartLabel = () => {
+    let arr = [];
+    exams.slice(0, 7).forEach(element => {
+      arr.push(element.examDate.slice(5, 10))
+    });
+    return arr;
+  }
+
+  const getChartData = () => {
+    let high = [];
+    let low = [];
+    exams.slice(0, 7).forEach(element => {
+      high.push(element.highestScore);
+      low.push(element.lowestScore);
+    });
+    return { high, low }
+  }
+
   const data = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    labels: getChartLabel(),
     datasets: [
       {
-        data: [80, 65, 70, 80, 99, 83, 78],
+        data: getChartData().high,
         color: () => "#E42425",
+      },
+      {
+        data: getChartData().low,
+        color: () => "#666666",
       },
     ],
   };
@@ -57,7 +96,7 @@ export const ExamsScreen = ({ navigation }) => {
           <Text category="s2" appearance="hint" style={styles.time}>
             Within 30 mins, To complete 100 questions
           </Text>
-          <Button style={styles.button} onPress={goMockExam}>
+          <Button style={styles.button} onPress={navigateToMockExam}>
             Let's Start A Real Mock Exam
           </Button>
         </View>
@@ -84,11 +123,11 @@ export const ExamsScreen = ({ navigation }) => {
                 appearance="ghost"
                 onPress={navigateToHistory}
               >
-                View All Time
+                View All Records
               </Button>
             </View>
           </View>
-          <View
+          {exams.length ? <View
             style={{ justifyContent: "center", display: "flex", marginTop: 16 }}
           >
             <LineChart
@@ -99,7 +138,12 @@ export const ExamsScreen = ({ navigation }) => {
               chartConfig={chartConfig}
               bezier
             />
-          </View>
+          </View> :
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", height: 160 }}>
+              <Text category="h6" appearance="hint">
+                No Exam History Records
+              </Text>
+            </View>}
         </View>
       </ScrollView>
     </View>
