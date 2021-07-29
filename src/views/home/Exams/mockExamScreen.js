@@ -29,6 +29,8 @@ import {
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
 import { TopBar } from "../../../components/topBar/topBar";
+import { useEffect } from "react";
+import { postExamRecord } from "../../../helper/api";
 
 const topStyles = StyleSheet.create({
   topBar: {
@@ -62,9 +64,20 @@ export const MockExamScreen = ({ navigation }) => {
   // current question
   const question = questionData[currentQuestion];
 
+  const getRecordQuestions = () => {
+    let res = [];
+    const arr = questionData.filter((item) => {
+      return item.result.pick && item.result.pick !== parseInt(item.correct_ans);
+    })
+    arr.map((item) => {
+      res.push({ qid: item.id, choice: item.result.pick });
+    })
+    return res;
+  }
+
   // next btn
   const goNextQuestion = () => {
-    if (currentQuestion < 100) {
+    if (currentQuestion < 99) {
       // do question
       dispatch(doQuestion(userData.uid));
       // add score
@@ -77,6 +90,9 @@ export const MockExamScreen = ({ navigation }) => {
         pick: selectedIndex,
       };
       dispatch(getResult(itemRes, currentQuestion));
+    } else {
+      const data = { score, uid: userData.uid, recordQuestions: getRecordQuestions() }
+      postExamRecord(data);
     }
     setSelectedIndex(-1);
     setCurrentQuestion(currentQuestion + 1);
@@ -88,14 +104,14 @@ export const MockExamScreen = ({ navigation }) => {
   };
 
   // Reviews
-  const Reviews = ({ data }) => {
+  const Reviews = () => {
     const arr = ["A", "B", "C", "D"];
+    const data = questionData;
+
     return (
       <View>
         {data.map((item, index) => {
-          // console.log('num', index + 1,item.result);
           if (item.result.pick !== null) {
-            // console.log(item.id, index);
             return (
               <View
                 style={
@@ -118,14 +134,14 @@ export const MockExamScreen = ({ navigation }) => {
                     category="s2"
                     style={styles.reviewContent}
                   >{`B. ${data[index].answer_2}`}</Text>
-                  <Text
+                  {data[index].answer_3 && <Text
                     category="s2"
                     style={styles.reviewContent}
-                  >{`C. ${data[index].answer_3}`}</Text>
-                  <Text
+                  >{`C. ${data[index].answer_3}`}</Text>}
+                  {data[index].answer_4 && <Text
                     category="s2"
                     style={styles.reviewContent}
-                  >{`D. ${data[index].answer_4}`}</Text>
+                  >{`D. ${data[index].answer_4}`}</Text>}
                   <Text category="s1" style={styles.answerReview}>
                     {item.result.pick !== null
                       ? `Your answer: ${arr[item.result.pick]}`
@@ -155,7 +171,7 @@ export const MockExamScreen = ({ navigation }) => {
               </View>
             );
           } else {
-            return <></>
+            return <React.Fragment key={item.id}></React.Fragment>
           }
         })}
       </View>
@@ -226,7 +242,7 @@ export const MockExamScreen = ({ navigation }) => {
               </Text>
               <Text appearance="hint" style={{ ...styles.title, paddingHorizontal: 32, fontSize: 12, marginTop: 0 }}>(Only show up the questions you finished)</Text>
             </View>
-            <Reviews data={questionData} />
+            <Reviews />
           </ScrollView>
         </View>
       ) : question ? (

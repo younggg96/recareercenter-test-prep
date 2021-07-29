@@ -31,7 +31,7 @@ import { DictionaryScreen } from "../views/home/dictionary/dictionaryScreen";
 import { SavedListScreen } from "../views/home/dictionary/savedListScreen";
 import { AllCategroyScreen } from "../views/home/homeExam/allCategroyScreen";
 import { MockExamScreen } from "../views/home/Exams/mockExamScreen";
-import { examHistoryScreen } from "../views/home/homeExam/examHistoryScreen";
+import { ExamHistoryScreen } from "../views/home/Exams/examHistoryScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -47,7 +47,7 @@ const ExamNavigation = () => (
   <Stack.Navigator headerMode="none" initialRouteName="ExamScreen">
     <Stack.Screen name="ExamScreen" component={ExamsScreen} />
     <Stack.Screen name="MockExamScreen" component={MockExamScreen} />
-    <Stack.Screen name="ExamHistoryScreen" component={examHistoryScreen} />
+    <Stack.Screen name="ExamHistoryScreen" component={ExamHistoryScreen} />
   </Stack.Navigator>
 );
 
