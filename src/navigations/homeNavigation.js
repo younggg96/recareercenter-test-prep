@@ -32,6 +32,7 @@ import { SavedListScreen } from "../views/home/dictionary/savedListScreen";
 import { AllCategroyScreen } from "../views/home/homeExam/allCategroyScreen";
 import { MockExamScreen } from "../views/home/Exams/mockExamScreen";
 import { ExamHistoryScreen } from "../views/home/Exams/examHistoryScreen";
+import { ExamDetailScreen } from "../views/home/Exams/examDetailScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -48,6 +49,7 @@ const ExamNavigation = () => (
     <Stack.Screen name="ExamScreen" component={ExamsScreen} />
     <Stack.Screen name="MockExamScreen" component={MockExamScreen} />
     <Stack.Screen name="ExamHistoryScreen" component={ExamHistoryScreen} />
+    <Stack.Screen name="ExamDetailsScreen" component={ExamDetailScreen} />
   </Stack.Navigator>
 );
 

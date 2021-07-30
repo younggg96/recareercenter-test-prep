@@ -262,7 +262,7 @@ export const HomeScreen = ({ navigation }) => {
         visible={toPlanVisible}
         backdropStyle={homeStyles.backdrop}
       >
-        <Card disabled={true} style={{ ...homeStyles.modalCard, height: 400 }}>
+        <Card disabled={true} style={{ ...homeStyles.modalCard, height: 420 }}>
           <View style={{ marginBottom: 8 }}>
             <Image
               source={require("../../../assets/img/empty-plan.jpg")}

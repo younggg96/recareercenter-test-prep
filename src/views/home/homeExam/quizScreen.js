@@ -95,7 +95,7 @@ export const QuizScreen = ({ navigation }) => {
                 >{`Correct answer: ${arr[parseInt(data[index].correct_ans) - 1]
                   }`}</Text>
               </View>
-              {savedIdList !== null && (<View style={styles.controlBtn}>
+              {savedIdList && (<View style={styles.controlBtn}>
                 <Button
                   style={{ borderRadius: 16, paddingVertical: 6 }}
                   status="control"

@@ -23,6 +23,7 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
   },
   history: {
+    marginBottom: 24,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

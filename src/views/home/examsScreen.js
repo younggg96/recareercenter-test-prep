@@ -13,6 +13,9 @@ import { TopBar } from "../../components/topBar/topBar";
 import { LineChart } from "react-native-chart-kit";
 import { getExamData } from "../../helper/api";
 
+
+const today = new Date();
+
 export const ExamsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
@@ -22,7 +25,7 @@ export const ExamsScreen = ({ navigation }) => {
   useEffect(() => {
     const res = getExamData(userData.uid);
     res.then((res) => {
-      setExams(res);
+      setExams(res.reverse());
     })
   }, [])
 
@@ -45,6 +48,18 @@ export const ExamsScreen = ({ navigation }) => {
     return arr;
   }
 
+  const getLastWeekLabel = () => {
+    let arr = [];
+    arr.push(today.toISOString().slice(5, 10));
+    let newDay = new Date(today.getTime() - 24 * 60 * 60 * 1000);
+    [0, 1, 2, 3, 4, 5].forEach(item => {
+      arr.push(newDay.toISOString().slice(5, 10));
+      newDay = new Date(newDay.getTime() - 24 * 60 * 60 * 1000);
+    });
+    console.log(arr);
+    return arr;
+  }
+
   const getChartData = () => {
     let high = [];
     let low = [];
@@ -54,6 +69,7 @@ export const ExamsScreen = ({ navigation }) => {
     });
     return { high, low }
   }
+
 
   const data = {
     labels: getChartLabel(),
@@ -68,6 +84,17 @@ export const ExamsScreen = ({ navigation }) => {
       },
     ],
   };
+
+  const noData = {
+    labels: getLastWeekLabel(),
+    datasets: [
+      {
+        data: [0,0,0,0,0,0,0],
+        color: () => "#666666",
+      },
+    ],
+  };
+
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
     backgroundGradientFromOpacity: 0,
@@ -96,7 +123,7 @@ export const ExamsScreen = ({ navigation }) => {
           <Text category="s2" appearance="hint" style={styles.time}>
             Within 30 mins, To complete 100 questions
           </Text>
-          <Button style={styles.button} onPress={navigateToMockExam}>
+          <Button style={{...styles.button, marginBottom: 8}} onPress={navigateToMockExam}>
             Let's Start A Real Mock Exam
           </Button>
         </View>
@@ -111,10 +138,10 @@ export const ExamsScreen = ({ navigation }) => {
           <View style={styles.history}>
             <View>
               <Text category="s1" style={styles.time}>
-                Last Week Exam Report
+                Last 7 Days Exam Report
               </Text>
               <Text category="s2" appearance="hint" style={styles.time}>
-                (Pick daily highest score)
+                (Show daily highest & lowest scores)
               </Text>
             </View>
             <View>
@@ -123,7 +150,7 @@ export const ExamsScreen = ({ navigation }) => {
                 appearance="ghost"
                 onPress={navigateToHistory}
               >
-                View All Records
+                All Records
               </Button>
             </View>
           </View>
@@ -133,17 +160,28 @@ export const ExamsScreen = ({ navigation }) => {
             <LineChart
               data={data}
               width={300}
-              height={220}
+              height={280}
               verticalLabelRotation={30}
               chartConfig={chartConfig}
               bezier
             />
           </View> :
-            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", height: 160 }}>
-              <Text category="h6" appearance="hint">
-                No Exam History Records
-              </Text>
-            </View>}
+            <View>
+              <LineChart
+                data={noData}
+                width={300}
+                height={280}
+                verticalLabelRotation={30}
+                chartConfig={chartConfig}
+                bezier
+              />
+              <View style={{ flex: 1, justifyContent: "center", alignItems: "center", height: 20, position: 'relative', top: -180, zIndex: 999 }}>
+                <Text category="h6" appearance="hint">
+                  No Exam History Reports
+                </Text>
+              </View>
+            </View>
+          }
         </View>
       </ScrollView>
     </View>
