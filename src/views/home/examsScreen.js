@@ -45,10 +45,13 @@ export const ExamsScreen = ({ navigation }) => {
     exams.slice(0, 7).forEach(element => {
       arr.push(element.examDate.slice(5, 10))
     });
+    while (arr.length < 7) {
+      arr.push('unknown');
+    }
     return arr;
   }
 
-  const getLastWeekLabel = () => {
+  const getNoDataLastWeekLabel = () => {
     let arr = [];
     arr.push(today.toISOString().slice(5, 10));
     let newDay = new Date(today.getTime() - 24 * 60 * 60 * 1000);
@@ -56,8 +59,7 @@ export const ExamsScreen = ({ navigation }) => {
       arr.push(newDay.toISOString().slice(5, 10));
       newDay = new Date(newDay.getTime() - 24 * 60 * 60 * 1000);
     });
-    console.log(arr);
-    return arr;
+    return arr.reverse();
   }
 
   const getChartData = () => {
@@ -67,12 +69,16 @@ export const ExamsScreen = ({ navigation }) => {
       high.push(element.highestScore);
       low.push(element.lowestScore);
     });
-    return { high, low }
+    while (high.length < 7 && low.length < 7) {
+      high.push(0);
+      low.push(0);
+    }
+    return { high: high.reverse(), low: low.reverse() }
   }
 
 
   const data = {
-    labels: getChartLabel(),
+    labels: getChartLabel().reverse(),
     datasets: [
       {
         data: getChartData().high,
@@ -86,11 +92,15 @@ export const ExamsScreen = ({ navigation }) => {
   };
 
   const noData = {
-    labels: getLastWeekLabel(),
+    labels: getNoDataLastWeekLabel(),
     datasets: [
       {
         data: [0,0,0,0,0,0,0],
         color: () => "#666666",
+      },
+      {
+        data: [100, 100, 100, 100, 100, 100, 100],
+        color: () => "#E42425",
       },
     ],
   };
@@ -175,8 +185,8 @@ export const ExamsScreen = ({ navigation }) => {
                 chartConfig={chartConfig}
                 bezier
               />
-              <View style={{ flex: 1, justifyContent: "center", alignItems: "center", height: 20, position: 'relative', top: -180, zIndex: 999 }}>
-                <Text category="h6" appearance="hint">
+              <View style={{ flex: 1, justifyContent: "center", alignItems: "center", zIndex: 999, backgroundColor: '#666666', paddingHorizontal: 16, height: 40, top: -180, marginHorizontal: 10, position: 'relative'}}>
+                <Text category="h6" appearance="hint" style={{ color: '#fff'}}>
                   No Exam History Reports
                 </Text>
               </View>
