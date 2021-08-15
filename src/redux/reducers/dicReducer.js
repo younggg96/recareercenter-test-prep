@@ -6,30 +6,14 @@ const dicReducerInitialState = { list: dic.dic, savedWord: [] };
 export const dicReducer = (state = dicReducerInitialState, action) => {
   switch (action.type) {
     case DIC_SAVE_WORD:
-      const { item, id } = action.payload;
       return {
         ...state,
-        list: [
-          ...state.list.slice(0, id),
-          item,
-          ...state.list.slice(id + 1, state.list.length),
-        ],
-        savedWord: [...state.savedWord, action.payload],
+        savedWord: action.payload,
       };
     case DIC_UNSAVE_WORD:
       return {
         ...state,
-        list: [
-          ...state.list.slice(0, action.payload.id),
-          {
-            ...state.list[action.payload.id],
-            ...{ item: state.list[action.payload.id].item, saved: false },
-          },
-          ...state.list.slice(action.payload.id + 1),
-        ],
-        savedWord: state.savedWord.filter((item) => {
-          return item.id != action.payload.id;
-        }),
+        savedWord: action.payload,
       };
     default:
       return state;

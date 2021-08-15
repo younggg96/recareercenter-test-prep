@@ -24,18 +24,20 @@ import { saveWord, unSaveWord } from "../../../redux/actions/dicAction";
 
 const WordsList = ({ text }) => {
   const data = useSelector((state) => state.dicReducer);
+  const { userData } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
+  console.dir(Object.keys(data));
 
   // alert
-  const successAddedAlert = (item) =>
-    Alert.alert(`${item.word}`, "Alread added to saved list", [
-      { text: "OK", style: "default" },
-    ]);
+  // const successAddedAlert = (item) =>
+  //   Alert.alert(`${item.word}`, "Alread added to saved list", [
+  //     { text: "OK", style: "default" },
+  //   ]);
 
   // save
-  const save = ({ index, item }) => {
-    dispatch(saveWord({ index, item, saved: true }));
-    successAddedAlert(item);
+  const save = ({ index }) => {
+    dispatch(saveWord({ index, uid: userData.uid }));
+    // successAddedAlert(item);
   };
 
   // unsave
@@ -52,6 +54,7 @@ const WordsList = ({ text }) => {
   };
 
   const renderItem = (info) => {
+
     return (
       <Card style={styles.item} disabled>
         <View style={styles.itemHeader}>
