@@ -4,7 +4,7 @@ import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
 import { Image, View } from "react-native";
 
 import * as AppAuth from 'expo-app-auth';
-import * as Google from 'expo-google-app-auth';
+// import * as Google from 'expo-google-app-auth';
 
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
@@ -29,24 +29,24 @@ import { STORE_SIGNIN_GOOGLE_KEY } from "../../storage/keys";
 
 // sign in with Google
 
-async function signInWithGoogleAsync() {
-  try {
-    const result = await Google.logInAsync({
-      androidClientId: '967088008445-6r18r61vnondm6nard1a73ldvoecps1u.apps.googleusercontent.com',
-      iosClientId: '967088008445-0g6j85pssuoq7phjd8fptmesgubgcu00.apps.googleusercontent.com',
-      scopes: ['profile', 'email'],
-    });
+// async function signInWithGoogleAsync() {
+//   try {
+//     const result = await Google.logInAsync({
+//       androidClientId: '967088008445-6r18r61vnondm6nard1a73ldvoecps1u.apps.googleusercontent.com',
+//       iosClientId: '967088008445-0g6j85pssuoq7phjd8fptmesgubgcu00.apps.googleusercontent.com',
+//       scopes: ['profile', 'email'],
+//     });
 
-    if (result.type === 'success') {
-      console.log(result)
-      return result;
-    } else {
-      return { cancelled: true };
-    }
-  } catch (e) {
-    return { error: true };
-  }
-}
+//     if (result.type === 'success') {
+//       console.log(result)
+//       return result;
+//     } else {
+//       return { cancelled: true };
+//     }
+//   } catch (e) {
+//     return { error: true };
+//   }
+// }
 
 export const signInAsync = async () => {
   let authState = await AppAuth.authAsync(GOOGLE_AUTH_CONFIG);
@@ -261,7 +261,7 @@ const SignIn = ({ navigation }) => {
                 //   const _authState = await signInAsync();
                 //   setAuthState(_authState);
                 // }}
-                onPress={signInWithGoogleAsync}
+                // onPress={signInWithGoogleAsync}
               >
                 Google
               </Button>
