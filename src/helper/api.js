@@ -57,7 +57,7 @@ export const getDicSavedList = async (uid) => {
     try {
         const res = await axios({
             method: 'get',
-            url: BASE_URL + '/users/getSavedDictionar' + `?uid=${uid}`
+            url: BASE_URL + '/users/getSavedDictionary' + `?uid=${uid}`
         });
         return res.data;
     } catch (error) {
@@ -69,7 +69,7 @@ export const getDicSavedIDList = async (uid) => {
     try {
         const res = await axios({
             method: 'get',
-            url: BASE_URL + '/users/getSavedDictionarId' + `?uid=${uid}`
+            url: BASE_URL + '/users/getSavedDictionaryId' + `?uid=${uid}`
         });
         return res.data;
     } catch (error) {
@@ -83,6 +83,7 @@ export const saveWordDic = async (uid, did) => {
             method: 'post',
             url: BASE_URL + '/users/saveDictionary' + `?uid=${uid}` + `&did=${did}`
         });
+        console.log(res.data);
         return res.data;
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
@@ -93,7 +94,7 @@ export const unSaveWordDic = async (uid, did) => {
     try {
         const res = await axios({
             method: 'post',
-            url: BASE_URL + '/users/deleteDictionary' + `?uid=${uid}` + `did=${did}`
+            url: BASE_URL + '/users/deleteDictionary' + `?uid=${uid}` + `&did=${did}`
         });
         return res.data;
     } catch (error) {

@@ -70,8 +70,8 @@ export const PracticeOneQuestionScreen = ({ route, navigation }) => {
 								>
 									<Radio>{`A. ${data.answer_1}`}</Radio>
 									<Radio>{`B. ${data.answer_2}`}</Radio>
-									<Radio>{`C. ${data.answer_3}`}</Radio>
-									<Radio>{`D. ${data.answer_4}`}</Radio>
+									{data.answer_3 ? <Radio>{`C. ${data.answer_3}`}</Radio> : <></>}
+									{data.answer_4 ? <Radio>{`D. ${data.answer_4}`}</Radio> : <></>}
 								</RadioGroup>
 								<Button
 									style={styles.button}

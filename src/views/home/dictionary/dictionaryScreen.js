@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 // ui
-import { Alert, View, TextInput, SafeAreaView } from "react-native";
+import { View } from "react-native";
 import {
   Button,
   Card,
@@ -19,60 +19,57 @@ import { styles } from "../../../styles/home/dicStyle";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { saveWord, unSaveWord } from "../../../redux/actions/dicAction";
+import { getSavedWord, saveWord, unSaveWord } from "../../../redux/actions/dicAction";
 
 
 const WordsList = ({ text }) => {
-  const data = useSelector((state) => state.dicReducer);
+  const { list, savedWord } = useSelector((state) => state.dicReducer);
   const { userData } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
-  // alert
-  // const successAddedAlert = (item) =>
-  //   Alert.alert(`${item.word}`, "Alread added to saved list", [
-  //     { text: "OK", style: "default" },
-  //   ]);
+  useEffect(() => {
+    dispatch(getSavedWord(userData.uid));
+  }, [])
 
   // save
-  const save = ({ index }) => {
-    dispatch(saveWord({ index, uid: userData.uid }));
+  const save = (did) => {
+    dispatch(saveWord(userData.uid, did));
     // successAddedAlert(item);
   };
 
   // unsave
-  const unSave = ({ index }) => {
-    dispatch(unSaveWord(index));
+  const unSave = (did) => {
+    dispatch(unSaveWord(userData.uid, did));
   };
 
   // filter
   const filterData = (text) => {
-    const filtered = data.list.filter((ele) => {
+    const filtered = list.filter((ele) => {
       return ele.word.indexOf(text) != -1;
     });
     return filtered;
   };
 
   const renderItem = (info) => {
-
     return (
       <Card style={styles.item} disabled>
         <View style={styles.itemHeader}>
           <Text category="h5" style={{ width: 200 }}>
             {info.item.word}
           </Text>
-          {info.item.saved ? (
+          {savedWord.includes(info.item.id) ? (
             <Button
               style={styles.button}
               appearance="ghost"
               accessoryLeft={StarIcon}
-              onPress={() => unSave(info)}
+              onPress={() => unSave(info.item.id)}
             />
           ) : (
             <Button
               style={styles.button}
               appearance="ghost"
               accessoryLeft={StarOutlineIcon}
-              onPress={() => save(info)}
+              onPress={() => save(info.item.id)}
             />
           )}
         </View>
