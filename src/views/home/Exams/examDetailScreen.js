@@ -53,14 +53,14 @@ export const ExamDetailScreen = ({ route, navigation }) => {
                   category="s2"
                   style={styles.reviewContent}
                 >{`B. ${question.answer_2}`}</Text>
-                {question.answer_3 && <Text
+                {question.answer_3 ? <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`C. ${question.answer_3}`}</Text>}
-                {question.answer_4 && <Text
+                >{`C. ${question.answer_3}`}</Text> : <></>}
+                {question.answer_4 ? <Text
                   category="s2"
                   style={styles.reviewContent}
-                >{`D. ${question.answer_4}`}</Text>}
+                >{`D. ${question.answer_4}`}</Text> : <></>}
                 <Text
                   category="s1"
                   style={styles.answerReview}
@@ -71,21 +71,23 @@ export const ExamDetailScreen = ({ route, navigation }) => {
                 >{`Correct answer: ${arr[parseInt(question.correct_ans) - 1]
                   }`}</Text>
               </View>
-              {savedIdList && (<View style={styles.controlBtn}>
-                <Button
-                  style={{ borderRadius: 16, paddingVertical: 6 }}
-                  status="control"
-                  appearance="outline"
-                  accessoryLeft={!savedIdList.includes(question.id) ? UnlikeIcon : LikeIcon}
-                  onPress={
-                    !savedIdList.includes(question.id)
-                      ? () => dispatch(saveQuestion(question, userData.uid))
-                      : () => dispatch(unsaveQuestionReturnIds(question, userData.uid))
-                  }
-                >
-                  {!savedIdList.includes(question.id) ? "Save" : "Saved"}
-                </Button>
-              </View>)}
+              {savedIdList && (
+                <View style={styles.controlBtn}>
+                  <Button
+                    style={{ borderRadius: 16, paddingVertical: 6 }}
+                    status="control"
+                    appearance="outline"
+                    accessoryLeft={!savedIdList.includes(question.id) ? UnlikeIcon : LikeIcon}
+                    onPress={
+                      !savedIdList.includes(question.id)
+                        ? () => dispatch(saveQuestion(question, userData.uid))
+                        : () => dispatch(unsaveQuestionReturnIds(question, userData.uid))
+                    }
+                  >
+                    {!savedIdList.includes(question.id) ? "Save" : "Saved"}
+                  </Button>
+                </View>)
+              }
             </View>
           );
         }) : <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

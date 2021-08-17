@@ -123,34 +123,19 @@ export const MockExamScreen = ({ navigation }) => {
                 key={item.id}
               >
                 <View>
-                  <Text category="s1" style={styles.reviewTitle}>{`Question ${index + 1
-                    } : ${data[index].questionName}`}</Text>
-                  <Text
-                    category="s2"
-                    style={styles.reviewContent}
-                  >{`A. ${data[index].answer_1}`}</Text>
-                  <Text
-                    category="s2"
-                    style={styles.reviewContent}
-                  >{`B. ${data[index].answer_2}`}</Text>
-                  {data[index].answer_3 && <Text
-                    category="s2"
-                    style={styles.reviewContent}
-                  >{`C. ${data[index].answer_3}`}</Text>}
-                  {data[index].answer_4 && <Text
-                    category="s2"
-                    style={styles.reviewContent}
-                  >{`D. ${data[index].answer_4}`}</Text>}
+                  <Text category="s1" style={styles.reviewTitle}>{`Question ${index + 1} : ${data[index].questionName}`}</Text>
+                  <Text category="s2" style={styles.reviewContent}>{`A. ${data[index].answer_1}`}</Text>
+                  <Text category="s2" style={styles.reviewContent}>{`B. ${data[index].answer_2}`}</Text>
+                  {data[index].answer_3 ? <Text category="s2" style={styles.reviewContent}>{`C. ${data[index].answer_3}`}</Text> : <></>}
+                  {data[index].answer_4 ? <Text category="s2" style={styles.reviewContent}>{`D. ${data[index].answer_4}`}</Text> : <></>}
                   <Text category="s1" style={styles.answerReview}>
-                    {item.result.pick !== null
-                      ? `Your answer: ${arr[item.result.pick]}`
-                      : "Your answer: Not Finished"}
+                    {
+                      item.result.pick !== null
+                        ? `Your answer: ${arr[item.result.pick]}`
+                          : "Your answer: Not Finished"
+                    }
                   </Text>
-                  <Text
-                    category="s1"
-                    style={styles.answerReview}
-                  >{`Correct answer: ${arr[parseInt(data[index].correct_ans) - 1]
-                    }`}</Text>
+                  <Text category="s1" style={styles.answerReview}>{`Correct answer: ${arr[parseInt(data[index].correct_ans) - 1]}`}</Text>
                 </View>
                 {savedIdList !== null && (<View style={styles.controlBtn}>
                   <Button

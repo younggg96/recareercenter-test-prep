@@ -21,7 +21,7 @@ export const QuizScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
-  
+
   // redux
   const dispatch = useDispatch();
   const { quizData, savedIdList } = useSelector((state) => state.questionReducer);
@@ -60,56 +60,34 @@ export const QuizScreen = ({ navigation }) => {
       <View>
         {data.map((item, index) => {
           return (
-            <View
-              style={
-                item.result.res ? styles.correctCard : styles.inCorrectCard
-              }
-              key={index}
-            >
+            <View style={item.result.res ? styles.correctCard : styles.inCorrectCard} key={index}>
               <View>
-                <Text category="s1" style={styles.reviewTitle}>{`Question ${index + 1
-                  }: ${data[index].questionName}`}</Text>
-                <Text
-                  category="s2"
-                  style={styles.reviewContent}
-                >{`A. ${data[index].answer_1}`}</Text>
-                <Text
-                  category="s2"
-                  style={styles.reviewContent}
-                >{`B. ${data[index].answer_2}`}</Text>
-                {data[index].answer_3 && <Text
-                  category="s2"
-                  style={styles.reviewContent}
-                >{`C. ${data[index].answer_3}`}</Text>}
-                {data[index].answer_4 && <Text
-                  category="s2"
-                  style={styles.reviewContent}
-                >{`D. ${data[index].answer_4}`}</Text>}
-                <Text
-                  category="s1"
-                  style={styles.answerReview}
-                >{`Your answer: ${arr[item.result.pick]}`}</Text>
-                <Text
-                  category="s1"
-                  style={styles.answerReview}
-                >{`Correct answer: ${arr[parseInt(data[index].correct_ans) - 1]
-                  }`}</Text>
+                <Text category="s1" style={styles.reviewTitle}>{`Question ${index + 1}: ${data[index].questionName}`}</Text>
+                <Text category="s2" style={styles.reviewContent}>{`A. ${data[index].answer_1}`}</Text>
+                <Text category="s2" style={styles.reviewContent}>{`B. ${data[index].answer_2}`}</Text>
+                {data[index].answer_3 ? <Text category="s2" style={styles.reviewContent}>{`C. ${data[index].answer_3}`}</Text> : <></>}
+                {data[index].answer_4 ? <Text category="s2" style={styles.reviewContent}>{`D. ${data[index].answer_4}`}</Text> : <></>}
+                <Text category="s1" style={styles.answerReview}>{`Your answer: ${arr[item.result.pick]}`}</Text>
+                <Text category="s1" style={styles.answerReview} >{`Correct answer: ${arr[parseInt(data[index].correct_ans) - 1]}`}</Text>
               </View>
-              {savedIdList && (<View style={styles.controlBtn}>
-                <Button
-                  style={{ borderRadius: 16, paddingVertical: 6 }}
-                  status="control"
-                  appearance="outline"
-                  accessoryLeft={!savedIdList.includes(item.id) ? UnlikeIcon : LikeIcon}
-                  onPress={
-                    !savedIdList.includes(item.id)
-                      ? () => dispatch(saveQuestion(item, userData.uid))
-                      : () => dispatch(unsaveQuestionReturnIds(item, userData.uid))
-                  }
-                >
-                  {!savedIdList.includes(item.id) ? "Save" : "Saved"}
-                </Button>
-              </View>)}
+              {savedIdList && (
+                  <View style={styles.controlBtn}>
+                    <Button
+                      style={{ borderRadius: 16, paddingVertical: 6 }}
+                      status="control"
+                      appearance="outline"
+                      accessoryLeft={!savedIdList.includes(item.id) ? UnlikeIcon : LikeIcon}
+                      onPress={
+                        !savedIdList.includes(item.id)
+                          ? () => dispatch(saveQuestion(item, userData.uid))
+                          : () => dispatch(unsaveQuestionReturnIds(item, userData.uid))
+                      }
+                    >
+                      {!savedIdList.includes(item.id) ? "Save" : "Saved"}
+                    </Button>
+                  </View>
+                )
+              }
             </View>
           );
         })}
