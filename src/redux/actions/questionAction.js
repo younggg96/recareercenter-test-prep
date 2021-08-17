@@ -8,11 +8,14 @@ import {
   REFRESH_QUESTIONDATA,
   SAVED_QUESTION_ID_LIST,
   SAVED_QUESTIONS_LIST,
+  ADD_STATUS_QUESTION,
+  GET_STATUS_QUESTION,
 } from "./actionTypes";
 
 import { Alert } from "react-native";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
+import { addStatusQuestion, getStatusQuestions } from "../../helper/api";
 
 export function getResult(itemRes, currentQuestion) {
   return {
@@ -141,5 +144,25 @@ export async function getSavedQuestions(uid) {
     }
   } catch (error) {
     Alert.alert("Error", `${error.message}`);
+  }
+}
+
+export async function addStatusQuestionReduxStore(obj) {
+  const res = await addStatusQuestion(obj);
+  if (res) {
+    return {
+      type: ADD_STATUS_QUESTION,
+      payload: res
+    };
+  }
+}
+
+export async function getStatusQuestionReduxStore(uid, cid) {
+  const res = await getStatusQuestions(uid, cid);
+  if (res) {
+    return {
+      type: GET_STATUS_QUESTION,
+      payload: res
+    };
   }
 }

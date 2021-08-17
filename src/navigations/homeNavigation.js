@@ -33,6 +33,8 @@ import { AllCategroyScreen } from "../views/home/homeExam/allCategroyScreen";
 import { MockExamScreen } from "../views/home/Exams/mockExamScreen";
 import { ExamHistoryScreen } from "../views/home/Exams/examHistoryScreen";
 import { ExamDetailScreen } from "../views/home/Exams/examDetailScreen";
+import { AllCategroyListScreen } from "../views/home/homeExam/allCategroyListScreen";
+import { PracticeOneQuestionScreen } from "../views/home/homeExam/practiceOneQuestionScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -74,8 +76,10 @@ const HomeScreenNavigation = () => (
     <Stack.Screen name="HomeScreen" component={HomeScreen} />
     <Stack.Screen name="QuizScreen" component={QuizScreen} />
     <Stack.Screen name="PracticeScreen" component={PracticeScreen} />
+    <Stack.Screen name="PracticeOneQuestionScreen" component={PracticeOneQuestionScreen} />
     <Stack.Screen name="StudyPlanScreen" component={StudyPlanScreen} />
     <Stack.Screen name="AllCategroyScreen" component={AllCategroyScreen} />
+    <Stack.Screen name="AllCategroyListScreen" component={AllCategroyListScreen} />
     <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
     <Stack.Screen name="ReviewDetailsScreen" component={ReviewDetailsScreen} />
   </Stack.Navigator>

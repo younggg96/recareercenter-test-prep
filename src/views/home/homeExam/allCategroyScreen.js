@@ -1,18 +1,28 @@
 import { Button, Card, Icon, Layout, Text, Modal } from "@ui-kitten/components";
 import React from "react";
+import { useEffect } from "react";
 import { View } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { TopBar } from "../../../components/topBar/topBar";
-import { Categories } from "../../../static/questions/category";
+import { getQuestionCategories } from "../../../helper/api";
+// import { Categories } from "../../../static/questions/category";
 import { homeStyles } from "../../../styles/home/homeStyle";
 
 export const AllCategroyScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
+  const [categories, setCategories] = React.useState([]);
 
-  const navigateToPractice = (id, name) => {
-    navigation.navigate("PracticeScreen", {
+  useEffect(() => {
+    const res = getQuestionCategories();
+    res.then((res) => {
+      setCategories(res);
+    })
+  }, [])
+
+  const navigateToCategoryList = (id, name) => {
+    navigation.navigate("AllCategroyListScreen", {
       id: id,
-      practice: name,
+      categoryName: name,
     });
   };
 
@@ -27,11 +37,11 @@ export const AllCategroyScreen = ({ navigation }) => {
             >
               <Layout level="4" style={homeStyles.categoryItem}>
                 <Text category="h6" style={homeStyles.categoryTitle}>
-                  {item.name}
+                  {item.categoryName}
                 </Text>
                 <View style={homeStyles.itemLockedContent}>
                   <Text category="s1" style={{ color: "#fff" }}>
-                    Items: {item.itemNum}
+                    Items: {item.questionList.length}
                   </Text>
                   <Icon
                     name="lock"
@@ -44,16 +54,16 @@ export const AllCategroyScreen = ({ navigation }) => {
           </React.Fragment>
         ) : (
           <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => navigateToPractice(item.id, item.name)}
+            activeOpacity={0.8}
+            onPress={() => navigateToCategoryList(item.id, item.categoryName)}
           >
             <Layout level="2" style={homeStyles.categoryItem}>
               <Text category="h6" style={homeStyles.categoryTitle}>
-                {item.name}
+                {item.categoryName}
               </Text>
               <View style={homeStyles.itemContent}>
                 <Text category="s1" style={{ color: "#fff" }}>
-                  Items: {item.itemNum}
+                  Items: {item.questionList.length}
                 </Text>
               </View>
             </Layout>
@@ -65,11 +75,12 @@ export const AllCategroyScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="All Questions" navigation={navigation} hasBack={true} />
-      <View style={homeStyles.categroyContainer}>
+      <TopBar title="Categories" navigation={navigation} hasBack={true} />
+      <View style={homeStyles.categoryContainer}>
+        {/* <Text>{JSON.stringify(categories, null, 2)}</Text> */}
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={Categories}
+          data={categories}
           renderItem={ItemCard}
           numColumns={2}
           keyExtractor={(item) => item.id.toString()}

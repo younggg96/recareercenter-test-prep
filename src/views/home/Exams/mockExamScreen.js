@@ -29,7 +29,6 @@ import {
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
 import { TopBar } from "../../../components/topBar/topBar";
-import { useEffect } from "react";
 import { postExamRecord } from "../../../helper/api";
 
 const topStyles = StyleSheet.create({

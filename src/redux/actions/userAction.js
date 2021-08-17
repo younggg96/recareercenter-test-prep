@@ -45,7 +45,6 @@ export async function login(email, password) {
       email,
       password
     );
-    console.log(response.user.uid)
     if (!response.user.emailVerified) {
       Alert.alert(
         "Your email is not verified, Cannot log in",
@@ -118,7 +117,6 @@ export async function register(email, password, username) {
       payload: payload,
     };
   } catch (err) {
-    // console.log(err)
     Alert.alert("Error", `${err.message}`);
   }
 }
@@ -179,10 +177,8 @@ export async function changeDailyPractices(numInput, uid) {
 
 export async function changeExamDate(dateObj, uid) {
   try {
-    // console.log(dateObj.toISOString().slice(0, 10))
     const res = await axios.put(BASE_URL + `/users/updateExamStartDate?uid=${uid}&date=${dateObj.toISOString().slice(0, 10)}`)
     if (res) {
-      console.log(res.data)
       successChangeExamDateAlert(dateObj);
       return {
         type: CHANGE_EXAM_DATE,
@@ -192,14 +188,12 @@ export async function changeExamDate(dateObj, uid) {
   } catch (error) {
     Alert.alert("Error", `${error.message}`);
   }
-
 }
 
 export async function setStartDay(dateObj, uid) {
   try {
     const res = await axios.put(BASE_URL + `/users/updatePracticeStartDate?uid=${uid}&date=${dateObj.toISOString().slice(0, 10)}`)
     if (res) {
-      console.log(res.data)
       successSubmitAlert(dateObj);
       return {
         type: SET_START_DAY,

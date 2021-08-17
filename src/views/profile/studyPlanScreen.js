@@ -26,7 +26,6 @@ const today = new Date();
 export const StudyPlanScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
-  // console.log('29', new Date('1970-01-01').getTime() == false);
 
   // change data
   const [examDate, setExamDate] = React.useState(new Date(userData.examStartDate));

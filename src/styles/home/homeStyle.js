@@ -74,7 +74,7 @@ export const homeStyles = StyleSheet.create({
     flex: 1,
     paddingTop: 8,
   },
-  categroyContainer: {
+  categoryContainer: {
     flex: 1,
     paddingTop: 8,
     justifyContent: "center",

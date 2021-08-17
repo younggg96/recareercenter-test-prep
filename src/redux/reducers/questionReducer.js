@@ -8,13 +8,16 @@ import {
   REFRESH_QUIZ,
   SAVED_QUESTION_ID_LIST,
   SAVED_QUESTIONS_LIST,
+  ADD_STATUS_QUESTION,
+  GET_STATUS_QUESTION,
 } from "../actions/actionTypes";
 
 const questionReducerInitialState = {
   questionData: [],
   quizData: [],
   savedIdList: [],
-  savedList: []
+  savedList: [],
+  withStatusList: []
 };
 
 export const questionReducer = (
@@ -79,6 +82,16 @@ export const questionReducer = (
       return {
         ...state,
         savedList: action.payload
+      };
+    case ADD_STATUS_QUESTION:
+      return {
+        ...state,
+        withStatusList: action.payload
+      };
+    case GET_STATUS_QUESTION:
+      return {
+        ...state,
+        withStatusList: action.payload
       };
     default:
       return state;

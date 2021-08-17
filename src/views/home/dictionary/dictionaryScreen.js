@@ -26,7 +26,6 @@ const WordsList = ({ text }) => {
   const data = useSelector((state) => state.dicReducer);
   const { userData } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
-  console.dir(Object.keys(data));
 
   // alert
   // const successAddedAlert = (item) =>
@@ -133,6 +132,7 @@ export const DictionaryScreen = ({ navigation }) => {
       <Card disabled>
         <Input
           focusable
+          autoCapitalize='none'
           placeholder={"Search..."}
           accessoryRight={SearchIcon}
           onChangeText={(e) => {

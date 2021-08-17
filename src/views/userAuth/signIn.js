@@ -38,7 +38,6 @@ import { STORE_SIGNIN_GOOGLE_KEY } from "../../storage/keys";
 //     });
 
 //     if (result.type === 'success') {
-//       console.log(result)
 //       return result;
 //     } else {
 //       return { cancelled: true };
@@ -50,7 +49,6 @@ import { STORE_SIGNIN_GOOGLE_KEY } from "../../storage/keys";
 
 export const signInAsync = async () => {
   let authState = await AppAuth.authAsync(GOOGLE_AUTH_CONFIG);
-  console.log('signInAsync', authState);
   await setValueToStore(STORE_SIGNIN_GOOGLE_KEY, JSON.stringify(authState));
   return authState;
 }
@@ -63,7 +61,6 @@ const checkIfTokenExpired = ({ accessTokenExpirationDate }) => {
 // refresh token
 const refreshAuthAsync = async ({ refreshToken }) => {
   let authState = await AppAuth.refreshAsync(GOOGLE_AUTH_CONFIG, refreshToken);
-  console.log('refreshAuth', authState);
   await setValueToStore(STORE_SIGNIN_GOOGLE_KEY, JSON.stringify(authState));
   return authState;
 }
@@ -91,7 +88,6 @@ const SignIn = ({ navigation }) => {
   const getAuth = async () => {
     // whether store has token
     let authState = JSON.parse(await getValueFormStore(STORE_SIGNIN_GOOGLE_KEY));
-    console.log('getAuth', authState);
     if (authState) {
       if (checkIfTokenExpired(authState)) {
         return refreshAuthAsync(authState);

@@ -47,7 +47,6 @@ export const getExamDetails = async (eid) => {
             method: 'get',
             url: BASE_URL + '/exams/findExamDetail' + `?eid=${eid}`
         });
-        console.log(res);
         return res.data;
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
@@ -60,7 +59,6 @@ export const getDicSavedList = async (uid) => {
             method: 'get',
             url: BASE_URL + '/users/getSavedDictionar' + `?uid=${uid}`
         });
-        console.log(res);
         return res.data;
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
@@ -73,7 +71,6 @@ export const getDicSavedIDList = async (uid) => {
             method: 'get',
             url: BASE_URL + '/users/getSavedDictionarId' + `?uid=${uid}`
         });
-        console.log(res);
         return res.data;
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
@@ -81,7 +78,6 @@ export const getDicSavedIDList = async (uid) => {
 }
 
 export const saveWordDic = async (uid, did) => {
-    console.log('url' + BASE_URL + '/users/saveDictionary' + `?uid=${uid}` + `&did=${did}`);
     try {
         const res = await axios({
             method: 'post',
@@ -99,9 +95,72 @@ export const unSaveWordDic = async (uid, did) => {
             method: 'post',
             url: BASE_URL + '/users/deleteDictionary' + `?uid=${uid}` + `did=${did}`
         });
-        console.log(res);
         return res.data;
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
     }
 }
+
+export const getQuestionCategories = async () => {
+    try {
+        const res = await axios({
+            method: 'get',
+            url: BASE_URL + '/questionCategories/findAll'
+        });
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const getCategoryById = async (cid) => {
+    try {
+        const res = await axios({
+            method: 'get',
+            url: BASE_URL + '/questions/findByCategoryId' + `?id=${cid}`
+        });
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const addStatusQuestion = async (bodyObj) => {
+    try {
+        const res = await axios({
+            method: 'post',
+            url: BASE_URL + '/core/updateFamiliarQuestion',
+            data: bodyObj
+        });
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const getStatusQuestions = async (uid, cid) => {
+    try {
+        const res = await axios({
+            method: 'get',
+            url: BASE_URL + '/core/findUserFamiliarQuestion' + `?uid=${uid}` + `&cid=${cid}`
+        });
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+// export const deleteStatusQuestions = async (uid, cid) => {
+//     try {
+//         const res = await axios({
+//             method: 'post',
+//             url: BASE_URL + '/core/deleteFamiliarQuestion' + `?uid=${uid}` + `&cid=${cid}` + + `&qid=${qid}`
+//         });
+//         return res.data;
+//     } catch (error) {
+//         Alert.alert("Error", `${error.message}`);
+//     }
+// }
+
+
+

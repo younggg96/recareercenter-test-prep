@@ -21,16 +21,15 @@ import {
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
 
-const Review = ({ result, question, currentQuestion }) => {
+export const Review = ({ result, question, currentQuestion }) => {
   const arr = ["A", "B", "C", "D"];
   return (
     <View style={result.res ? styles.correctCard : styles.inCorrectCard}>
       <View style={{ padding: 16, position: "absolute", right: 0, bottom: 0 }}>
         {result.res ? <CorrectIcon /> : <IncorrectIcon />}
       </View>
-      <Text category="s1" style={styles.reviewTitle}>{`questionName ${
-        currentQuestion + 1
-      }: ${question.questionName}`}</Text>
+      <Text category="s1" style={styles.reviewTitle}>{`Question ${currentQuestion + 1
+        }: ${question.questionName}`}</Text>
       <Text
         category="s2"
         style={styles.reviewContent}
@@ -47,12 +46,10 @@ const Review = ({ result, question, currentQuestion }) => {
         category="s2"
         style={styles.reviewContent}
       >{`D. ${question.answer_4}`}</Text>
-      <Text category="s1" style={styles.answerReview}>{`Your answer: ${
-        arr[result.pick]
-      }`}</Text>
-      <Text category="s1" style={styles.answerReview}>{`Correct answer: ${
-        arr[parseInt(question.correct_ans) - 1]
-      }`}</Text>
+      <Text category="s1" style={styles.answerReview}>{`Your answer: ${arr[result.pick]
+        }`}</Text>
+      <Text category="s1" style={styles.answerReview}>{`Correct answer: ${arr[parseInt(question.correct_ans) - 1]
+        }`}</Text>
       {/* <View style={styles.controlBtn}>
         <Button
           style={{ borderRadius: 16, paddingVertical: 6 }}
@@ -427,7 +424,7 @@ export const PracticeScreen = ({ route, navigation }) => {
               />
               <View>
                 <Text category="s1" style={styles.questionTitle}>
-                  questionName: {`${question.questionName}`}
+                  Question: {`${question.questionName}`}
                 </Text>
               </View>
               <RadioGroup
@@ -454,7 +451,7 @@ export const PracticeScreen = ({ route, navigation }) => {
         <View style={{ flex: 1, justifyContent: "space-between" }}>
           <View>
             <TopBar
-              title={`questionName ${currentQuestion + 1} answer_`}
+              title={`Question ${currentQuestion + 1} answer`}
               navigation={navigation}
               hasBack={true}
             />
