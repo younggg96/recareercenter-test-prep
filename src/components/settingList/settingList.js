@@ -28,7 +28,7 @@ export const SettingList = (props) => {
   return (
     <Menu style={styles.container}>
       {settings.map((setting, index) => {
-        if (setting.title === "Visit Our Online Store") {
+        if (setting.url) {
           return (
             <MenuItem
               style={styles.menuItem}
@@ -37,7 +37,7 @@ export const SettingList = (props) => {
               disabled={setting.disable}
               accessoryLeft={setting.icon}
               accessoryRight={setting.rightIcon}
-              onPress={() => Linking.openURL('http://recareercenter.com')}
+              onPress={() => Linking.openURL(setting.url)}
             />
           )
         }

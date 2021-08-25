@@ -4,7 +4,9 @@ export const profileSettings = [
   { title: "Study Plan", icon: ExamDayIcon, rightIcon: ForwardIcon, link: "StudyPlanScreen", disable: false },
   { title: "Review Questions", icon: ReviewIcon, rightIcon: ForwardIcon, link: "ReviewsScreen", disable: false },
   { title: "Manage Your Membership", icon: MemberIcon, rightIcon: ForwardIcon, link: "MembershipScreen", disable: false },
-  { title: "Visit Our Online Store", icon: ShopIcon, rightIcon: null, disable: false },
+  { title: "Visit Our Online Store", icon: ShopIcon, rightIcon: null, disable: false, url: "https://www.recareercenter.com"},
+  { title: "Shop at Our Book Store", icon: ShopIcon, rightIcon: null, disable: false, url: "https://www.recareercenter.com/product-category/books/" },
+  { title: "Check Out Our Merch Store", icon: ShopIcon, rightIcon: null, disable: false, url: "https://www.recareercenter.com/product-category/merch-store/" },
 ];
 
 export const settings = [

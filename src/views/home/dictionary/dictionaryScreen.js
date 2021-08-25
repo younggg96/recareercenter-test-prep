@@ -45,7 +45,7 @@ const WordsList = ({ text }) => {
   // filter
   const filterData = (text) => {
     const filtered = list.filter((ele) => {
-      return ele.word.indexOf(text) != -1;
+      return ele.word.toLowerCase().indexOf(text.toLowerCase()) != -1;
     });
     return filtered;
   };
