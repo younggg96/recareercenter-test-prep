@@ -1,13 +1,12 @@
 {
   "expo": {
-    "name": "recareercenter",
-    "slug": "recareercenter",
+    "name": "CFREERealEstateExamPrep",
+    "slug": "CFREE-real-estate-exam-prep",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app-icon.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/app-icon.png",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -17,20 +16,20 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.recareecenter.prep",
+      "bundleIdentifier": "com.recareecenter.exam",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.recareecenter.prep",
+      "package": "com.recareecenter.exam",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/app-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/app-icon.png"
     },
     "description": ""
   }
