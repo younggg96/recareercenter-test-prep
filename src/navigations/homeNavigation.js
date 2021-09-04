@@ -35,6 +35,7 @@ import { ExamHistoryScreen } from "../views/home/Exams/examHistoryScreen";
 import { ExamDetailScreen } from "../views/home/Exams/examDetailScreen";
 import { AllCategroyListScreen } from "../views/home/homeExam/allCategroyListScreen";
 import { PracticeOneQuestionScreen } from "../views/home/homeExam/practiceOneQuestionScreen";
+import { VideosListScreen } from "../views/home/studyVideos/videosListScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -82,6 +83,7 @@ const HomeScreenNavigation = () => (
     <Stack.Screen name="AllCategroyListScreen" component={AllCategroyListScreen} />
     <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
     <Stack.Screen name="ReviewDetailsScreen" component={ReviewDetailsScreen} />
+    <Stack.Screen name="VideosListScreen" component={VideosListScreen} />
   </Stack.Navigator>
 );
 

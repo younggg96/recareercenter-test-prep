@@ -60,6 +60,10 @@ export const HomeScreen = ({ navigation }) => {
     navigation.navigate("ReviewsScreen");
   };
 
+  const navigateToVideosList = () => {
+    navigation.navigate("VideosListScreen");
+  };
+
   const navigateToPractice = (id, name) => {
     navigation.navigate("PracticeScreen", {
       id: id,
@@ -254,6 +258,32 @@ export const HomeScreen = ({ navigation }) => {
               renderItem={ItemCard}
               keyExtractor={(item) => item.id.toString()}
             />
+          </View>
+        </View>
+        <View style={homeStyles.content}>
+          <View style={homeStyles.header}>
+            <Text category="h4" style={homeStyles.title}>
+              NJ Video Exam Cram
+            </Text>
+          </View>
+          <View style={homeStyles.header}>
+            <Image
+              source={require("../../../assets/img/21-videos.png")}
+              style={{ width: 150, height: 150 }}
+            />
+            <View>
+              <Text category="p2" style={{ width: 180, marginBottom: 8 }}>
+                Our experts teachers guide you step by step through the key information you will need to know to pass your state real estate exam.
+              </Text>
+              <Button
+                onPress={() => {
+                  navigateToVideosList();
+                }}
+                style={{ ...homeStyles.button, marginBottom: 4 }}
+              >
+                Watch it now
+              </Button>
+            </View>
           </View>
         </View>
       </ScrollView>
