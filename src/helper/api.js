@@ -151,6 +151,18 @@ export const getStatusQuestions = async (uid, cid) => {
     }
 }
 
+export const getAllVideos = async () => {
+    try {
+        const res = await axios({
+            method: 'get',
+            url: BASE_URL + '/videos/findAll'
+        });
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
 // export const deleteStatusQuestions = async (uid, cid) => {
 //     try {
 //         const res = await axios({

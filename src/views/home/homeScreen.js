@@ -48,7 +48,6 @@ export const HomeScreen = ({ navigation }) => {
     res.then((res) => {
       setCategories(res.slice(0, 4));
     })
-    console.log(userData)
   }, [])
 
   // navigations
