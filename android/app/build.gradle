@@ -132,7 +132,7 @@ android {
     }
 
     defaultConfig {
-        applicationId 'com.recareecenter.prep'
+        applicationId 'com.recareecenter.exam'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

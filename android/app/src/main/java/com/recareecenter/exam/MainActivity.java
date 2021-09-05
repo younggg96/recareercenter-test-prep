@@ -1,4 +1,4 @@
-package com.recareecenter.prep;
+package com.recareecenter.exam;
 import android.content.res.Configuration;
 import android.content.Intent;
 

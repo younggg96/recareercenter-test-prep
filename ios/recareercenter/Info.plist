@@ -55,7 +55,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.recareecenter.prep</string>
+          <string>com.recareecenter.exam</string>
         </array>
       </dict>
     </array>
@@ -64,6 +64,6 @@
     <key>UIUserInterfaceStyle</key>
     <string>Light</string>
     <key>CFBundleDisplayName</key>
-    <string>recareercenter</string>
+    <string>CFREERealEstateExamPrep</string>
   </dict>
 </plist>
