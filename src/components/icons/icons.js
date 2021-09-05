@@ -47,5 +47,6 @@ export const TrashIcon = (props) => <Icon {...props} name="trash-2-outline" fill
 export const LikeIcon = (props) => <Icon {...props} name="heart" fill="#fff" style={{ width: 24, height: 24 }} />;
 export const UnlikeIcon = (props) => <Icon {...props} name="heart-outline" fill="#fff" style={{ width: 24, height: 24 }} />;
 
-// reviewScreen
-// export const MoreIcon = (props) => <Icon {...props} name="more-vertical-outline" fill="#000" style={{ width: 24, height: 24 }} />;
+// video
+export const PlayIcon = (props) => <Icon {...props} name="play-circle-outline" fill="#fff" style={{ width: 24, height: 24 }} />;
+export const LockVideoIcon = (props) => <Icon {...props} name="lock" fill="#fff" style={{ width: 24, height: 24 }} />;

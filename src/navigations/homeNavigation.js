@@ -84,6 +84,7 @@ const HomeScreenNavigation = () => (
     <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
     <Stack.Screen name="ReviewDetailsScreen" component={ReviewDetailsScreen} />
     <Stack.Screen name="VideosListScreen" component={VideosListScreen} />
+    <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
   </Stack.Navigator>
 );
 

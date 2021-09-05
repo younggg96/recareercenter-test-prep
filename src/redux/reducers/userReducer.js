@@ -19,7 +19,7 @@ const INITIAL_STATE = {
     targetPractice: 0,
     dailyPractice: 0,
     practiceStartDate: new Date(),
-    membership: false,
+    membership: true,
     totalPractice: 0,
   },
   signIn: false,

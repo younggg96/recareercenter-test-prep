@@ -24,10 +24,13 @@ import { itemWidth, sliderWidth } from "../../constants";
 import { ENTRIES1 } from "../../static/entries";
 import { Categories } from "../../static/questions/category";
 import { refreshQuiz } from "../../redux/actions/questionAction";
+import { LockVideoIcon, PlayIcon } from "../../components/icons/icons";
+import { getQuestionCategories } from "../../helper/api";
 
 export const HomeScreen = ({ navigation }) => {
   const [toPlanVisible, setToPlanVisible] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
+  const [categories, setCategories] = React.useState([]);
 
   // redux
   const dispatch = useDispatch();
@@ -38,6 +41,14 @@ export const HomeScreen = ({ navigation }) => {
     if (!new Date(userData.examStartDate).getTime() || !new Date(userData.practiceStartDate).getTime) {
       setToPlanVisible(true);
     }
+  }, [])
+
+  useEffect(() => {
+    const res = getQuestionCategories();
+    res.then((res) => {
+      setCategories(res.slice(0, 4));
+    })
+    console.log(userData)
   }, [])
 
   // navigations
@@ -62,6 +73,10 @@ export const HomeScreen = ({ navigation }) => {
 
   const navigateToVideosList = () => {
     navigation.navigate("VideosListScreen");
+  };
+
+  const navigateToMembership = () => {
+    navigation.navigate("MembershipScreen");
   };
 
   const navigateToPractice = (id, name) => {
@@ -117,7 +132,7 @@ export const HomeScreen = ({ navigation }) => {
             >
               <Layout level="4" style={homeStyles.item}>
                 <Text category="h6" style={homeStyles.categoryTitle}>
-                  {item.name}
+                  {item.categoryName}
                 </Text>
                 <View style={homeStyles.itemLockedContent}>
                   <Text category="s1" style={{ color: "#fff" }}>
@@ -139,7 +154,7 @@ export const HomeScreen = ({ navigation }) => {
           >
             <Layout level="2" style={homeStyles.item}>
               <Text category="h6" style={homeStyles.categoryTitle}>
-                {item.name}
+                {item.categoryName}
               </Text>
               <View style={homeStyles.itemContent}>
                 <Text category="s1" style={{ color: "#fff" }}>
@@ -209,8 +224,8 @@ export const HomeScreen = ({ navigation }) => {
           <Button style={homeStyles.button} onPress={navigateToQuiz}>
             Let's Start A Quiz
           </Button>
-          <Button appearance="ghost" style={{...homeStyles.button, marginTop: 8}} onPress={navigateToReview}>
-            Review Questions 
+          <Button appearance="ghost" style={{ ...homeStyles.button, marginTop: 8 }} onPress={navigateToReview}>
+            Review Questions
           </Button>
         </View>
         <View style={homeStyles.content}>
@@ -226,35 +241,12 @@ export const HomeScreen = ({ navigation }) => {
             <Button appearance="ghost" onPress={navigateToAllQuestion}>
               View All
             </Button>
-            <Modal
-              style={homeStyles.modal}
-              visible={visible}
-              backdropStyle={homeStyles.backdrop}
-              onBackdropPress={() => setVisible(false)}
-            >
-              <Card disabled={true} style={homeStyles.modalCard}>
-                <View>
-                  <Text category="h5">Unlock Practice Questions?</Text>
-                  <Text category="h6" style={homeStyles.modalTitle}>
-                    Become A Membership Today!
-                  </Text>
-                </View>
-                <Button
-                  onPress={() => {
-                    setVisible(false);
-                    navigateTo("")
-                  }}
-                >
-                  Start Membership!
-                </Button>
-              </Card>
-            </Modal>
           </View>
           <View style={homeStyles.container}>
             <FlatList
               horizontal={true}
               showsHorizontalScrollIndicator={false}
-              data={Categories}
+              data={categories}
               renderItem={ItemCard}
               keyExtractor={(item) => item.id.toString()}
             />
@@ -263,23 +255,25 @@ export const HomeScreen = ({ navigation }) => {
         <View style={homeStyles.content}>
           <View style={homeStyles.header}>
             <Text category="h4" style={homeStyles.title}>
-              NJ Video Exam Cram
+              NJ 21 Video Exam Cram
             </Text>
           </View>
           <View style={homeStyles.header}>
             <Image
               source={require("../../../assets/img/21-videos.png")}
-              style={{ width: 150, height: 150 }}
+              style={{ width: '40%', height: 150 }}
             />
-            <View>
-              <Text category="p2" style={{ width: 180, marginBottom: 8 }}>
+            <View style={{ width: '55%', justifyContent: 'center' }}>
+              <Text category="p2" style={{ width: '100%', marginBottom: 8 }}>
                 Our experts teachers guide you step by step through the key information you will need to know to pass your state real estate exam.
               </Text>
               <Button
-                onPress={() => {
+                accessoryLeft={!userData.membership ? PlayIcon : LockVideoIcon}
+                onPress={!userData.membership ? () => {
                   navigateToVideosList();
-                }}
-                style={{ ...homeStyles.button, marginBottom: 4 }}
+                } : () => setVisible(true)}
+                size='small'
+                style={!userData.membership ? homeStyles.button : { ...homeStyles.button, backgroundColor: '#666666', borderColor: '#000' }}
               >
                 Watch it now
               </Button>
@@ -287,6 +281,33 @@ export const HomeScreen = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
+      <Modal
+        style={homeStyles.modal}
+        visible={visible}
+        backdropStyle={homeStyles.backdrop}
+        onBackdropPress={() => setVisible(false)}
+      >
+        <Card disabled={true} style={{ ...homeStyles.modalCard, height: 400 }}>
+          <View style={{ marginBottom: 8 }}>
+            <Image
+              source={require("../../../assets/img/vip.jpg")}
+              style={{ width: '100%', height: 200, marginBottom: 16 }}
+            />
+            <Text category="h5">Unlock Practice Questions?</Text>
+            <Text category="h6" style={homeStyles.modalTitle}>
+              Become A Membership Today!
+            </Text>
+          </View>
+          <Button
+            onPress={() => {
+              setVisible(false);
+              navigateToMembership()
+            }}
+          >
+            Start Membership!
+          </Button>
+        </Card>
+      </Modal>
       <Modal
         style={homeStyles.modal}
         visible={toPlanVisible}
