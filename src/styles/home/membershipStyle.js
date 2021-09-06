@@ -8,29 +8,23 @@ export const styles = StyleSheet.create({
     marginBottom: 16,
     borderRadius: 16,
     backgroundColor: "#fff",
+    height: 300,
     ...shadow,
   },
   title: {
     fontWeight: "700",
-    fontSize: 32,
+    fontSize: 28,
     letterSpacing: -1,
     color: "#666",
   },
   price: {
     fontWeight: "700",
-    fontSize: 42,
+    fontSize: 36,
     color: "#000",
   },
   subtitle: {
     fontWeight: "300",
     fontSize: 20,
-  },
-  image: {
-    borderTopRightRadius: 16,
-    borderTopLeftRadius: 16,
-    marginBottom: 16,
-    width: "100%",
-    height: 200,
   },
   header: {
     justifyContent: "center",

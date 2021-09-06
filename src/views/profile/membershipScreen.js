@@ -58,7 +58,7 @@ export const MembershipScreen = ({ navigation }) => {
               <Text
                 style={{
                   textDecorationLine: "line-through",
-                  fontSize: 32,
+                  fontSize: 26,
                   color: "red",
                 }}
                 category="s1"
