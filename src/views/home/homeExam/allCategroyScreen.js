@@ -1,7 +1,7 @@
 import { Button, Card, Icon, Layout, Text, Modal } from "@ui-kitten/components";
 import React from "react";
 import { useEffect } from "react";
-import { View } from "react-native";
+import { Image, View } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { TopBar } from "../../../components/topBar/topBar";
 import { getQuestionCategories } from "../../../helper/api";
@@ -13,17 +13,20 @@ export const AllCategroyScreen = ({ navigation }) => {
   const [categories, setCategories] = React.useState([]);
 
   useEffect(() => {
-    const res = getQuestionCategories();
-    res.then((res) => {
+    getQuestionCategories().then((res) => {
       setCategories(res);
-    })
-  }, [])
+    });
+  }, []);
 
   const navigateToCategoryList = (id, name) => {
     navigation.navigate("AllCategroyListScreen", {
       id: id,
       categoryName: name,
     });
+  };
+
+  const navigateToMembership = () => {
+    navigation.navigate("MembershipScreen");
   };
 
   const ItemCard = ({ item }) => {
@@ -77,7 +80,6 @@ export const AllCategroyScreen = ({ navigation }) => {
     <View style={{ flex: 1 }}>
       <TopBar title="Categories" navigation={navigation} hasBack={true} />
       <View style={homeStyles.categoryContainer}>
-        {/* <Text>{JSON.stringify(categories, null, 2)}</Text> */}
         <FlatList
           showsVerticalScrollIndicator={false}
           data={categories}
@@ -91,14 +93,28 @@ export const AllCategroyScreen = ({ navigation }) => {
           backdropStyle={homeStyles.backdrop}
           onBackdropPress={() => setVisible(false)}
         >
-          <Card disabled={true} style={homeStyles.modalCard}>
-            <View>
+          <Card
+            disabled={true}
+            style={{ ...homeStyles.modalCard, height: 400 }}
+          >
+            <View style={{ marginBottom: 8 }}>
+              <Image
+                source={require("../../../../assets/img/vip.jpg")}
+                style={{ width: "100%", height: 200, marginBottom: 16 }}
+              />
               <Text category="h5">Unlock Practice Questions?</Text>
               <Text category="h6" style={homeStyles.modalTitle}>
                 Become A Membership Today!
               </Text>
             </View>
-            <Button onPress={() => setVisible(false)}>Start Membership!</Button>
+            <Button
+              onPress={() => {
+                setVisible(false);
+                navigateToMembership();
+              }}
+            >
+              Start Membership!
+            </Button>
           </Card>
         </Modal>
       </View>
