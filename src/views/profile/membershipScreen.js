@@ -20,7 +20,7 @@ export const MembershipScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <TopBar title="Membership" navigation={navigation} hasBack={true} />
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
         <View
           style={{
             ...styles.content,
