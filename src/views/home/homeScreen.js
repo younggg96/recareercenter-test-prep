@@ -44,8 +44,7 @@ export const HomeScreen = ({ navigation }) => {
   }, [])
 
   useEffect(() => {
-    const res = getQuestionCategories();
-    res.then((res) => {
+    getQuestionCategories().then((res) => {
       setCategories(res.slice(0, 4));
     })
   }, [])
