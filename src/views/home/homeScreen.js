@@ -122,7 +122,7 @@ export const HomeScreen = ({ navigation }) => {
   const ItemCard = ({ item }) => {
     return (
       <React.Fragment>
-        {item.lockStatus ? (
+        {userData.membership === "1" ? (
           <React.Fragment>
             <TouchableOpacity
               activeOpacity={0.7}
@@ -148,7 +148,7 @@ export const HomeScreen = ({ navigation }) => {
         ) : (
           <TouchableOpacity
             activeOpacity={0.7}
-            onPress={() => navigateToPractice(item.id, item.name)}
+              onPress={() => navigateToPractice(item.id, item.categoryName)}
           >
             <Layout level="2" style={homeStyles.item}>
               <Text category="h6" style={homeStyles.categoryTitle}>
@@ -267,11 +267,11 @@ export const HomeScreen = ({ navigation }) => {
               </Text>
               <Button
                 accessoryLeft={!userData.membership ? PlayIcon : LockVideoIcon}
-                onPress={!userData.membership ? () => {
+                onPress={userData.membership === "2" || userData.membership === "3"  ? () => {
                   navigateToVideosList();
                 } : () => setVisible(true)}
                 size='small'
-                style={!userData.membership ? homeStyles.button : { ...homeStyles.button, backgroundColor: '#666666', borderColor: '#000' }}
+                style={userData.membership === "2" || userData.membership === "3" ? homeStyles.button : { ...homeStyles.button, backgroundColor: '#666666', borderColor: '#000' }}
               >
                 Watch it now
               </Button>

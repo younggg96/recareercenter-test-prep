@@ -11,11 +11,10 @@ import { styles } from "../../styles/home/membershipStyle";
 import { ScrollView } from "react-native-gesture-handler";
 import { ChooseIcon } from "../../components/icons/icons";
 
-const member = 1;
-
 export const MembershipScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
+  const member = userData.membership;
 
   return (
     <View style={{ flex: 1 }}>
@@ -35,7 +34,7 @@ export const MembershipScreen = ({ navigation }) => {
             start={{ x: 0.1, y: 1 }}
             end={{ x: 3, y: 1 }}
           />
-          {member === 1 ? (
+          {member === "1" ? (
             <View
               style={{ padding: 16, position: "absolute", right: 0, top: 0 }}
             >
@@ -96,7 +95,7 @@ export const MembershipScreen = ({ navigation }) => {
             start={{ x: 0.1, y: 1 }}
             end={{ x: 3, y: 1 }}
           />
-          {member === 2 ? (
+          {member === "2" ? (
             <View
               style={{ padding: 16, position: "absolute", right: 0, top: 0 }}
             >
@@ -132,7 +131,7 @@ export const MembershipScreen = ({ navigation }) => {
               <Text category="s1">· Unlimited Review Questions</Text>
               <Text category="s1">· Full Exams & Quiz Reviews</Text>
             </View>
-            {member !== 2 ? (
+            {member !== "2" ? (
               <Button style={styles.button} appearance="outline">
                 Purchase
               </Button>
@@ -155,7 +154,7 @@ export const MembershipScreen = ({ navigation }) => {
             start={{ x: 0.1, y: 1 }}
             end={{ x: 3, y: 1 }}
           />
-          {member === 3 ? (
+          {member === "3" ? (
             <View
               style={{ padding: 16, position: "absolute", right: 0, top: 0 }}
             >
@@ -192,7 +191,7 @@ export const MembershipScreen = ({ navigation }) => {
               <Text category="s1">· Full Exams & Quiz Reviews</Text>
               <Text category="s1">· Access to all 21 cram course videos</Text>
             </View>
-            {member !== 3 ? (
+            {member !== "3" ? (
               <Button style={styles.button} appearance="outline">
                 Purchase
               </Button>

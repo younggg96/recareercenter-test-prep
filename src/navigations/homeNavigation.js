@@ -45,6 +45,7 @@ const DictionaryNavigation = () => (
   <Stack.Navigator headerMode="none" initialRouteName="DictionaryScreen">
     <Stack.Screen name="DictionaryScreen" component={DictionaryScreen} />
     <Stack.Screen name="SavedListScreen" component={SavedListScreen} />
+    <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
   </Stack.Navigator>
 );
 

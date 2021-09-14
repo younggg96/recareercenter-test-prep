@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from "react";
 // ui
-import { View } from "react-native";
+import { View, Image } from "react-native";
 import {
   Button,
   Card,
@@ -20,6 +20,7 @@ import { styles } from "../../../styles/home/dicStyle";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { getSavedWord, saveWord, unSaveWord } from "../../../redux/actions/dicAction";
+import { homeStyles } from "../../../styles/home/homeStyle";
 
 
 const WordsList = ({ text }) => {
@@ -102,10 +103,14 @@ const WordsList = ({ text }) => {
 
 export const DictionaryScreen = ({ navigation }) => {
   const [filterText, setFilterText] = React.useState("");
+  const { userData } = useSelector((state) => state.userReducer);
 
   // navigation
   const navigateTo = () => {
     navigation.navigate("SavedListScreen");
+  };
+  const navigateToMembership = () => {
+    navigation.navigate("MembershipScreen");
   };
 
   return (
@@ -116,30 +121,48 @@ export const DictionaryScreen = ({ navigation }) => {
             Dictionary
           </Text>
         )}
-        accessoryRight={() => (
+        accessoryRight={userData.membership !== "1" ? () => (
           <Button
             style={styles.button}
             appearance="ghost"
             accessoryLeft={ListIcon}
             onPress={navigateTo}
           />
-        )}
+        ) : null}
         style={styles.topBar}
       />
-      <Card disabled>
-        <Input
-          focusable
-          autoCapitalize='none'
-          placeholder={"Search..."}
-          accessoryRight={SearchIcon}
-          onChangeText={(e) => {
-            setFilterText(e);
-          }}
-          value={filterText}
-          style={{ borderRadius: 25 }}
-        />
-      </Card>
-      <WordsList text={filterText} />
+      {
+        userData.membership !== "1" ?
+        <React.Fragment>
+          <Card disabled>
+            <Input
+              focusable
+              autoCapitalize='none'
+              placeholder={"Search..."}
+              accessoryRight={SearchIcon}
+              onChangeText={(e) => {
+                setFilterText(e);
+              }}
+              value={filterText}
+              style={{ borderRadius: 25 }}
+            />
+          </Card>
+            <WordsList text={filterText} />
+        </React.Fragment> :
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+          <Text category="h3" appearance="hint">
+            No Access to Dictionary
+          </Text>
+          <Text category="h6" appearance="hint" style={{marginBottom: 16}}>Unlock your Dictionary?</Text>
+          <Button
+            onPress={() => {
+              navigateToMembership();
+            }}
+          >
+            Start Membership!
+          </Button>
+        </View>
+      }
     </View>
   );
 };
