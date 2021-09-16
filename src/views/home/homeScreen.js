@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
+import { useRef } from "react";
 // ui
-import { Image, Linking, TouchableOpacity, View } from "react-native";
+import { Image, Linking, Platform, TouchableOpacity, View } from "react-native";
 import {
   Button,
   Card,
   Icon,
-  Input,
   Layout,
   Modal,
   Text,
@@ -27,14 +27,116 @@ import { refreshQuiz } from "../../redux/actions/questionAction";
 import { LockVideoIcon, PlayIcon } from "../../components/icons/icons";
 import { getQuestionCategories } from "../../helper/api";
 
+// import { Permissions, Notifications } from 'expo';
+import Constants from 'expo-constants';
+import * as Notifications from 'expo-notifications';
+import { connectAsync } from "expo-in-app-purchases";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
+
+const registerForPushNotificationsAsync = async () => {
+  let token;
+  if (Constants.isDevice) {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!');
+      return;
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+    console.log(token);
+  } else {
+    alert('Must use physical device for Push Notifications');
+  }
+
+  if (Platform.OS === 'android') {
+    Notifications.setNotificationChannelAsync('default', {
+      name: 'default',
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: '#FF231F7C',
+    });
+  }
+
+  return token;
+}
+
+// Can use this function below, OR use Expo's Push Notification Tool-> https://expo.dev/notifications
+const sendPushNotification = async(expoPushToken) => {
+  const message = {
+    to: expoPushToken,
+    sound: 'default',
+    title: 'Original Title',
+    body: 'And here is the body!',
+    data: { someData: 'goes here' },
+  };
+
+  await fetch('https://exp.host/--/api/v2/push/send', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Accept-encoding': 'gzip, deflate',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(message),
+  });
+}
+
 export const HomeScreen = ({ navigation }) => {
   const [toPlanVisible, setToPlanVisible] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
   const [categories, setCategories] = React.useState([]);
 
+  const [expoPushToken, setExpoPushToken] = React.useState('');
+  const [notification, setNotification] = React.useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
   // redux
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
+
+  useEffect(() => {
+    (async function init() {
+
+      try {
+        const connect_res = await connectAsync();
+        alert("connect: " + JSON.stringify(connect_res));
+      } catch (err) {
+        alert("general error for connect async: " + err);
+      }
+
+    })();
+  }, []);
+
+  useEffect(() => {
+    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+
+    // This listener is fired whenever a notification is received while the app is foregrounded
+    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+      setNotification(notification);
+    });
+
+    // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+      console.log('222', response);
+    });
+
+    return () => {
+      Notifications.removeNotificationSubscription(notificationListener.current);
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
 
   useEffect(() => {
     // miss plan, modal show up

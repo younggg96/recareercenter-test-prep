@@ -11,12 +11,12 @@ import App from './App';
 // import { Alert } from 'react-native';
 
 // (function init() {
-//   // try {
-//   const res = connectAsync();
-//   res.then((data) => {
-
-//     Alert.alert(data)
-//   })
+//     console.log(InAppPurchases)
+// //   // try {
+// //     const res = InAppPurchases.connectAsync();
+// //   res.then((data) => {
+// //     Alert.alert(data)
+// //   })
 //   // } catch (err) {
 //   //   Alert.alert("Error occurred: " + JSON.stringify(err));
 //   // }
