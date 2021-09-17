@@ -30,7 +30,7 @@ import { getQuestionCategories } from "../../helper/api";
 // import { Permissions, Notifications } from 'expo';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
-import { connectAsync } from "expo-in-app-purchases";
+// import { connectAsync } from "expo-in-app-purchases";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -106,18 +106,18 @@ export const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
 
-  useEffect(() => {
-    (async function init() {
+  // useEffect(() => {
+  //   (async function init() {
 
-      try {
-        const connect_res = await connectAsync();
-        alert("connect: " + JSON.stringify(connect_res));
-      } catch (err) {
-        alert("general error for connect async: " + err);
-      }
+  //     try {
+  //       const connect_res = await connectAsync();
+  //       alert("connect: " + JSON.stringify(connect_res));
+  //     } catch (err) {
+  //       alert("general error for connect async: " + err);
+  //     }
 
-    })();
-  }, []);
+  //   })();
+  // }, []);
 
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
