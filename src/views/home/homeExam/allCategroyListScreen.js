@@ -73,6 +73,7 @@ export const AllCategroyListScreen = ({ route, navigation }) => {
       <TopBar title={route.params.categoryName} navigation={navigation} hasBack={true} />
       <View style={styles.content}>
         <TabView
+          style={{ flex: 1 }}
           selectedIndex={selectedIndex}
           shouldLoadComponent={shouldLoadComponent}
           onSelect={index => setSelectedIndex(index)}>
@@ -89,43 +90,49 @@ export const AllCategroyListScreen = ({ route, navigation }) => {
             </View>
           </Tab>
           <Tab title="Don' t Know">
-            <Layout style={styles.tabContainer}>
-              {splitArr(withStatusList).unknowArr.length ?
+            {splitArr(withStatusList).unknowArr.length ?
+              <Layout style={styles.tabContainer}>
                 <FlatList
                   data={splitArr(withStatusList).unknowArr}
                   renderItem={ItemCard}
                   keyExtractor={(item) => item.id.toString()}
                 />
-                :
-                <Text category="h4" appearance="hint" style={{textAlign: 'center'}}>No Questions</Text>
-              }
-            </Layout>
+              </Layout>
+              :
+              <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text category="h4" appearance="hint" style={{ textAlign: 'center' }}>No Questions</Text>
+              </Layout>
+            }
           </Tab>
           <Tab title='Familiar'>
-            <Layout style={styles.tabContainer}>
-              {splitArr(withStatusList).familiarArr.length ?
+            {splitArr(withStatusList).familiarArr.length ?
+              <Layout style={styles.tabContainer}>
                 <FlatList
                   data={splitArr(withStatusList).familiarArr}
                   renderItem={ItemCard}
                   keyExtractor={(item) => item.id.toString()}
                 />
-                :
+              </Layout>
+              :
+              <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text category="h4" appearance="hint" style={{ textAlign: 'center' }}>No Questions</Text>
-              }
-            </Layout>
+              </Layout>
+            }
           </Tab>
           <Tab title='Know'>
-            <Layout style={styles.tabContainer}>
-              {splitArr(withStatusList).knowArr.length ?
+            {splitArr(withStatusList).knowArr.length ?
+              <Layout style={styles.tabContainer}>
                 <FlatList
                   data={splitArr(withStatusList).knowArr}
                   renderItem={ItemCard}
                   keyExtractor={(item) => item.id.toString()}
                 />
-                :
+              </Layout>
+              :
+              <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text category="h4" appearance="hint" style={{ textAlign: 'center' }}>No Questions</Text>
-              }
-            </Layout>
+              </Layout>
+            }
           </Tab>
         </TabView>
       </View>

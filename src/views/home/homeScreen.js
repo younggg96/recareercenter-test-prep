@@ -120,7 +120,7 @@ export const HomeScreen = ({ navigation }) => {
     if (responseCode === IAPResponseCode.OK) {
       results.forEach(async (purchase) => {
         if (!purchase.acknowledged) {
-          console.log('purchase', purchase)
+          // console.log('purchase', purchase)
           // in android, consumeItem should be set to false to acknowlege the purchase
           // in iOS this isn't needed because it's already specified in app store connect
           const consumeItem = Platform.OS === "ios";
@@ -157,7 +157,7 @@ export const HomeScreen = ({ navigation }) => {
         }
       });
     } else {
-      console.log('generalErrorMessage');
+      Toast.show('Purchase error');
     }
 
     if (responseCode === IAPResponseCode.USER_CANCELED) {

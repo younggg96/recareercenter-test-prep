@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
         flex: 1,
     },
     tabContainer: {
-        height: 600,
+        // height: 600,
         paddingLeft: 12,
         justifyContent: 'center',
     },

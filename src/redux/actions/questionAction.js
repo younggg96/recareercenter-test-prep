@@ -16,6 +16,7 @@ import { Alert } from "react-native";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
 import { addStatusQuestion, getStatusQuestions } from "../../helper/api";
+import Toast from "react-native-simple-toast";
 
 export function getResult(itemRes, currentQuestion) {
   return {
@@ -78,6 +79,7 @@ export async function saveQuestion(item, uid) {
     await axios.post(BASE_URL + `/users/saveQuestion?uid=${uid}&qid=${item.id}`);
     const res = await axios.get(BASE_URL + `/users/getSavedQuestionId?uid=${uid}`);
     if (res) {
+      Toast.show("Question Saved!", 1);
       return {
         type: SAVE_QUESTION,
         payload: res.data,
@@ -94,6 +96,7 @@ export async function unsaveQuestionReturnIds(item, uid) {
     await axios.post(BASE_URL + `/users/deleteQuestion?uid=${uid}&qid=${item.id}`)
     const res = await axios.get(BASE_URL + `/users/getSavedQuestionId?uid=${uid}`);
     if (res) {
+      Toast.show("Question Unsaved!", 1);
       return {
         type: UNSAVE_QUESTION,
         payload: res.data,
