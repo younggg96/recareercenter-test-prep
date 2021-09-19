@@ -25,12 +25,20 @@ import { ENTRIES1 } from "../../static/entries";
 import { Categories } from "../../static/questions/category";
 import { refreshQuiz } from "../../redux/actions/questionAction";
 import { LockVideoIcon, PlayIcon } from "../../components/icons/icons";
-import { getQuestionCategories } from "../../helper/api";
+import { changeMembership, getQuestionCategories } from "../../helper/api";
 
-// import { Permissions, Notifications } from 'expo';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
-// import { connectAsync } from "expo-in-app-purchases";
+
+// membership
+import Toast from "react-native-simple-toast";
+import {
+  setPurchaseListener,
+  finishTransactionAsync,
+  IAPResponseCode,
+} from "expo-in-app-purchases";
+import RNRestart from "react-native-restart";
+import { changeMembershipStatus } from "../../redux/actions/userAction";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -105,19 +113,59 @@ export const HomeScreen = ({ navigation }) => {
   // redux
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
+  const uid = userData.uid;
 
-  // useEffect(() => {
-  //   (async function init() {
+  setPurchaseListener(({ responseCode, results, errorCode }) => {
+    console.log('responseCode', responseCode)
+    if (responseCode === IAPResponseCode.OK) {
+      results.forEach(async (purchase) => {
+        if (!purchase.acknowledged) {
+          console.log('purchase', purchase)
+          // in android, consumeItem should be set to false to acknowlege the purchase
+          // in iOS this isn't needed because it's already specified in app store connect
+          const consumeItem = Platform.OS === "ios";
+          await finishTransactionAsync(purchase, consumeItem);
 
-  //     try {
-  //       const connect_res = await connectAsync();
-  //       alert("connect: " + JSON.stringify(connect_res));
-  //     } catch (err) {
-  //       alert("general error for connect async: " + err);
-  //     }
+          if (purchase.productId == 'cfree_member_silver') {
+            const res = changeMembership(uid, '2');
+            if (res) {
+              res.then((data) => {
+                if (data) {
+                  dispatch(changeMembershipStatus(data));
+                }
+              })
+            }
+          } else if (purchase.productId == 'cfree_member_gold') {
+            const res = changeMembership(uid, '3');
+            if (res) {
+              res.then((data) => {
+                if (data) {
+                  dispatch(changeMembershipStatus(data));
+                }
+              })
+            }
+          }
+          // RESTART
+          Toast.show(
+            "You're now subscribed! The app will now restart in 3 seconds",
+            Toast.LONG
+          );
 
-  //   })();
-  // }, []);
+          setTimeout(() => {
+            RNRestart.Restart();
+          }, 3000);
+        }
+      });
+    } else {
+      console.log('generalErrorMessage');
+    }
+
+    if (responseCode === IAPResponseCode.USER_CANCELED) {
+      Toast.show("You cancelled. Please try again.");
+    } else if (responseCode === IAPResponseCode.DEFERRED) {
+      Toast.show("You don't have permission to subscribe. Please use a different account.");
+    }
+  });
 
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
@@ -368,7 +416,7 @@ export const HomeScreen = ({ navigation }) => {
                 Our experts teachers guide you step by step through the key information you will need to know to pass your state real estate exam.
               </Text>
               <Button
-                accessoryLeft={!userData.membership ? PlayIcon : LockVideoIcon}
+                accessoryLeft={userData.membership === "2" || userData.membership === "3" ? PlayIcon : LockVideoIcon}
                 onPress={userData.membership === "2" || userData.membership === "3"  ? () => {
                   navigateToVideosList();
                 } : () => setVisible(true)}

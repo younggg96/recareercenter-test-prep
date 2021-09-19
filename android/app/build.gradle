@@ -132,11 +132,15 @@ android {
     }
 
     defaultConfig {
-        applicationId 'com.recareecenter.exam'
+        applicationId 'com.recareercenter.exam'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0.0"
+        missingDimensionStrategy 'store', 'play'
+        manifestPlaceholders = [
+            appAuthRedirectScheme: 'com.recareercenter.exam'
+        ]
     }
     splits {
         abi {

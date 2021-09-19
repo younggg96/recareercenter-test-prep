@@ -163,17 +163,17 @@ export const getAllVideos = async () => {
     }
 }
 
-// export const deleteStatusQuestions = async (uid, cid) => {
-//     try {
-//         const res = await axios({
-//             method: 'post',
-//             url: BASE_URL + '/core/deleteFamiliarQuestion' + `?uid=${uid}` + `&cid=${cid}` + + `&qid=${qid}`
-//         });
-//         return res.data;
-//     } catch (error) {
-//         Alert.alert("Error", `${error.message}`);
-//     }
-// }
+export const changeMembership = async (uid, membershipType) => {
+    try {const res = await axios({
+            method: 'put',
+            url: BASE_URL + '/users/updateUserMembership' + `?uid=${uid}` + `&membership=${membershipType}`
+        });
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+        return null;
+    }
+}
 
 
 

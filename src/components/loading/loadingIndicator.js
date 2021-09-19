@@ -8,3 +8,9 @@ export const LoadingIndicator = (props) => (
     <Spinner status='basic' size='small' />
   </View>
 );
+
+export const LoadingRedIndicator = (props) => (
+  <View style={[props.style, styles.indicator]}>
+    <Spinner status='basic' size='small' status='danger' />
+  </View>
+);

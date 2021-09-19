@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.recareecenter.exam">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.recareercenter.exam">
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
   <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -39,6 +39,7 @@
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="com.recareecenter.prep"/>
         <data android:scheme="com.recareecenter.exam"/>
+        <data android:scheme="com.recareercenter.exam"/>
       </intent-filter>
     </activity>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>

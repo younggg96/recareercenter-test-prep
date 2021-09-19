@@ -5232,6 +5232,11 @@ domutils@^2.0.0, domutils@^2.5.2, domutils@^2.6.0:
     domelementtype "^2.2.0"
     domhandler "^4.2.0"
 
+dooboolab-welcome@1.3.2:
+  version "1.3.2"
+  resolved "https://registry.nlark.com/dooboolab-welcome/download/dooboolab-welcome-1.3.2.tgz#4928595312f0429b4ea1b485ba8767bae6acdab7"
+  integrity sha1-SShZUxLwQptOobSFuodnuuas2rc=
+
 dot-case@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npm.taobao.org/dot-case/download/dot-case-3.0.4.tgz#9b2b670d00a431667a8a75ba29cd1b98809ce751"
@@ -10700,6 +10705,13 @@ react-native-gesture-handler@~1.8.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-iap@^7.4.1:
+  version "7.4.1"
+  resolved "https://registry.nlark.com/react-native-iap/download/react-native-iap-7.4.1.tgz#0edb760ef0b8295b6b46c4ad2690e5f851990844"
+  integrity sha1-Dtt2DvC4KVtrRsStJpDl+FGZCEQ=
+  dependencies:
+    dooboolab-welcome "1.3.2"
+
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
   resolved "https://registry.npm.taobao.org/react-native-iphone-x-helper/download/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
@@ -10719,6 +10731,11 @@ react-native-reanimated@~1.13.0:
   dependencies:
     fbjs "^1.0.0"
 
+react-native-restart@0.0.22:
+  version "0.0.22"
+  resolved "https://registry.npm.taobao.org/react-native-restart/download/react-native-restart-0.0.22.tgz#81fcb7f31e35951d85410c68b9556acf3ab88705"
+  integrity sha1-gfy38x41lR2FQQxouVVqzzq4hwU=
+
 react-native-safe-area-context@3.1.9:
   version "3.1.9"
   resolved "https://registry.nlark.com/react-native-safe-area-context/download/react-native-safe-area-context-3.1.9.tgz#48864ea976b0fa57142a2cc523e1fd3314e7247e"
@@ -10728,6 +10745,11 @@ react-native-screens@~2.15.2:
   version "2.15.2"
   resolved "https://registry.nlark.com/react-native-screens/download/react-native-screens-2.15.2.tgz#a449700e895b462937211ec72ed6f09652758f06"
   integrity sha1-pElwDolbRik3IR7HLtbwllJ1jwY=
+
+react-native-simple-toast@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.npm.taobao.org/react-native-simple-toast/download/react-native-simple-toast-1.1.3.tgz#4d0835891fe5c9342341fc4a88ed01ebb1a34bd5"
+  integrity sha1-TQg1iR/lyTQjQfxKiO0B67GjS9U=
 
 react-native-snap-carousel@^3.9.1:
   version "3.9.1"

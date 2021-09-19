@@ -1,4 +1,4 @@
-package com.recareecenter.exam.generated;
+package com.recareercenter.exam.generated;
 
 import java.util.Arrays;
 import java.util.List;

@@ -8,6 +8,7 @@ import {
   USER_LOGIN_WITH_CACHE,
   USER_LOGOUT,
   USER_REGISTER,
+  CHANGE_MEMBERSHIP
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
@@ -19,7 +20,7 @@ const INITIAL_STATE = {
     targetPractice: 0,
     dailyPractice: 0,
     practiceStartDate: new Date(),
-    membership: true,
+    membership: 1,
     totalPractice: 0,
   },
   signIn: false,
@@ -53,6 +54,11 @@ export default (state = INITIAL_STATE, action) => {
         targetPractice: action.payload.targetPractice,
         dailyPractice: action.payload.dailyPractice,
         totalPractice: action.payload.totalPractice
+      };
+    case CHANGE_MEMBERSHIP:
+      return {
+        ...state,
+        userData: action.payload
       };
     case CHANGE_PASSWORD:
       return state;

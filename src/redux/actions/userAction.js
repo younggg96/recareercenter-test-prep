@@ -218,3 +218,16 @@ export async function doQuestion(uid) {
     Alert.alert("Error", `${error.message}`);
   }
 }
+
+export async function changeMembershipStatus(userData) {
+  try {
+    if (userData) {
+      return {
+        type: DO_QUESTION,
+        payload: userData
+      };
+    }
+  } catch (error) {
+    Alert.alert("Error", `${error.message}`);
+  }
+}

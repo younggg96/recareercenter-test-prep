@@ -156,7 +156,6 @@ export const ExamsScreen = ({ navigation }) => {
             </View>
             <View>
               <Button
-                style={styles.button}
                 appearance="ghost"
                 onPress={navigateToHistory}
               >

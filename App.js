@@ -26,6 +26,18 @@ import { LogBox } from 'react-native';
 // Ignore all log notifications:
 LogBox.ignoreAllLogs();
 
+// redux create store
+const createStoreWithMiddleware = applyMiddleware(
+  promiseMiddleware,
+  ReduxThunk
+)(createStore);
+
+export const store = createStoreWithMiddleware(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ &&
+  window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
 export default function App() {
   const [isLoaded, setIsLoaded] = React.useState(false);
   // theme
@@ -55,11 +67,6 @@ export default function App() {
     setIsLoaded(true);
   };
 
-  // redux create store
-  const createStoreWithMiddleware = applyMiddleware(
-    promiseMiddleware,
-    ReduxThunk
-  )(createStore);
 
   if (!isLoaded) {
     return (
@@ -77,13 +84,7 @@ export default function App() {
           <ApplicationProvider
             {...eva} theme={{ ...eva[theme], ...mainTheme}}
             customMapping={mapping}>
-            <Provider
-              store={createStoreWithMiddleware(
-                rootReducer,
-                window.__REDUX_DEVTOOLS_EXTENSION__ &&
-                window.__REDUX_DEVTOOLS_EXTENSION__()
-              )}
-            >
+            <Provider store={store}>
               <AppNavigator />
             </Provider>
           </ApplicationProvider>
