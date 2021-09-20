@@ -116,7 +116,7 @@ export const HomeScreen = ({ navigation }) => {
   const uid = userData.uid;
 
   setPurchaseListener(({ responseCode, results, errorCode }) => {
-    console.log('responseCode', responseCode)
+    // console.log('responseCode', responseCode)
     if (responseCode === IAPResponseCode.OK) {
       results.forEach(async (purchase) => {
         if (!purchase.acknowledged) {
