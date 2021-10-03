@@ -45,9 +45,11 @@ export const PracticeOneQuestionScreen = ({ route, navigation }) => {
 			status
 		}
 		const res = addStatusQuestion(obj);
-		setTimeout(() => {
-			dispatch(getStatusQuestionReduxStore(userData.uid, cid));
-		}, 500)
+		res.then((data) => {
+			if (data) {
+				dispatch(getStatusQuestionReduxStore(userData.uid, cid));
+			}
+		});
 		navigation.navigate("AllCategroyListScreen");
 	}
 

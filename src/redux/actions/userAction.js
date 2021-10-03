@@ -4,6 +4,7 @@ import {
   SET_START_DAY,
   USER_LOGIN,
   USER_LOGIN_WITH_CACHE,
+  USER_LOGIN_WITH_GOOGLE,
   USER_LOGOUT,
   CHANGE_PASSWORD,
   DO_QUESTION,
@@ -82,8 +83,38 @@ export async function login(email, password) {
   }
 }
 
+export async function loginWithGoogle(uid, email, displayName) {
+  try {
+    let res = await axios.get(BASE_URL + `/users/findUser?uid=${uid}`);
+    // dont find user id in database, register a new user
+    if (!res.data) {
+      const response = await FirebaseAuth.auth.createUserWithEmailAndPassword(
+        email,
+        '00000000'
+      );
+      await response.user.updateProfile({
+        displayName
+      });
+      res = await axios.post(BASE_URL + `/users/createUser?uid=${uid}`);
+    }
+    const userInfo = { email, displayName }
+    const payload = {
+      userData: Object.assign(res.data, userInfo),
+      signIn: true,
+    };
+    await setValueToStore(USER_AUTH_INFO, JSON.stringify({ uid, userInfo }))
+    return {
+      type: USER_LOGIN_WITH_GOOGLE,
+      payload: payload,
+    };
+  } catch (err) {
+    Alert.alert("Error", `${err.message}`);
+  }
+}
+
 export async function loginWithCache(userObj) {
   const res = await axios.get(BASE_URL + `/users/findUser?uid=${userObj.uid}`);
+  console.log(res.data)
   const payload = {
     userData: Object.assign(res.data, userObj.userInfo),
     signIn: true,

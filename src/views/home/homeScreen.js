@@ -36,6 +36,7 @@ import {
   setPurchaseListener,
   finishTransactionAsync,
   IAPResponseCode,
+  InAppPurchaseState
 } from "expo-in-app-purchases";
 import RNRestart from "react-native-restart";
 import { changeMembershipStatus } from "../../redux/actions/userAction";
@@ -80,7 +81,7 @@ const registerForPushNotificationsAsync = async () => {
 }
 
 // Can use this function below, OR use Expo's Push Notification Tool-> https://expo.dev/notifications
-const sendPushNotification = async(expoPushToken) => {
+const sendPushNotification = async (expoPushToken) => {
   const message = {
     to: expoPushToken,
     sound: 'default',
@@ -118,42 +119,45 @@ export const HomeScreen = ({ navigation }) => {
   setPurchaseListener(({ responseCode, results, errorCode }) => {
     // console.log('responseCode', responseCode)
     if (responseCode === IAPResponseCode.OK) {
+      console.log('results', results)
       results.forEach(async (purchase) => {
+        console.log(responseCode, InAppPurchaseState, purchase.productId)
         if (!purchase.acknowledged) {
           // console.log('purchase', purchase)
           // in android, consumeItem should be set to false to acknowlege the purchase
           // in iOS this isn't needed because it's already specified in app store connect
           const consumeItem = Platform.OS === "ios";
-          await finishTransactionAsync(purchase, consumeItem);
-
-          if (purchase.productId == 'cfree_member_silver') {
-            const res = changeMembership(uid, '2');
-            if (res) {
-              res.then((data) => {
-                if (data) {
-                  dispatch(changeMembershipStatus(data));
-                }
-              })
-            }
-          } else if (purchase.productId == 'cfree_member_gold') {
-            const res = changeMembership(uid, '3');
-            if (res) {
-              res.then((data) => {
-                if (data) {
-                  dispatch(changeMembershipStatus(data));
-                }
-              })
+          finishTransactionAsync(purchase, consumeItem);
+          if (purchase.purchaseState == InAppPurchaseState.PURCHASED) {
+            if (purchase.productId == 'cfree_member_silver') {
+              const res = changeMembership(uid, '2');
+              if (res) {
+                res.then((data) => {
+                  if (data) {
+                    dispatch(changeMembershipStatus(data));
+                  }
+                })
+              }
+            } else if (purchase.productId == 'cfree_member_gold') {
+              const res = changeMembership(uid, '3');
+              if (res) {
+                res.then((data) => {
+                  if (data) {
+                    dispatch(changeMembershipStatus(data));
+                  }
+                })
+              }
             }
           }
           // RESTART
           Toast.show(
-            "You're now subscribed! The app will now restart in 3 seconds",
+            "You're now subscribed!",
             Toast.LONG
           );
 
-          setTimeout(() => {
-            RNRestart.Restart();
-          }, 3000);
+          // setTimeout(() => {
+          //   RNRestart.Restart();
+          // }, 3000);
         }
       });
     } else {
@@ -164,7 +168,14 @@ export const HomeScreen = ({ navigation }) => {
       Toast.show("You cancelled. Please try again.");
     } else if (responseCode === IAPResponseCode.DEFERRED) {
       Toast.show("You don't have permission to subscribe. Please use a different account.");
+    } else if (responseCode === IAPResponseCode.ERROR) {
+      Toast.show("Error");
     }
+
+    if (errorCode) {
+      console.log(errorCode)
+    }
+    // InAppPurchaseState.RESTORED
   });
 
   useEffect(() => {
@@ -298,7 +309,10 @@ export const HomeScreen = ({ navigation }) => {
         ) : (
           <TouchableOpacity
             activeOpacity={0.7}
-              onPress={() => navigateToPractice(item.id, item.categoryName)}
+            onPress={() => {
+              // console.log(item);
+              navigateToPractice(item.id, item.categoryName)
+            }}
           >
             <Layout level="2" style={homeStyles.item}>
               <Text category="h6" style={homeStyles.categoryTitle}>
@@ -417,7 +431,7 @@ export const HomeScreen = ({ navigation }) => {
               </Text>
               <Button
                 accessoryLeft={userData.membership === "2" || userData.membership === "3" ? PlayIcon : LockVideoIcon}
-                onPress={userData.membership === "2" || userData.membership === "3"  ? () => {
+                onPress={userData.membership === "2" || userData.membership === "3" ? () => {
                   navigateToVideosList();
                 } : () => setVisible(true)}
                 size='small'

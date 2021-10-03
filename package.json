@@ -23,6 +23,8 @@
     "expo-av": "~8.7.0",
     "expo-constants": "~9.3.3",
     "expo-font": "~8.4.0",
+    "expo-google-app-auth": "^8.2.2",
+    "expo-google-sign-in": "~8.4.0",
     "expo-in-app-purchases": "^10.2.0",
     "expo-linear-gradient": "~8.4.0",
     "expo-notifications": "~0.8.2",

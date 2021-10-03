@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // ui
 import { View } from "react-native";
 import { Button, Card, Radio, RadioGroup, Text } from "@ui-kitten/components";
@@ -16,10 +16,12 @@ import { Categories } from "../../../static/questions/category";
 // chart
 import { PieChart } from "react-native-chart-kit";
 import {
+  getStatusQuestionReduxStore,
   saveQuestion,
   unsaveQuestionReturnIds,
 } from "../../../redux/actions/questionAction";
 import { doQuestion } from "../../../redux/actions/userAction";
+import { addStatusQuestion, GetRandomCategoryQuestion } from "../../../helper/api";
 
 export const Review = ({ result, question, currentQuestion }) => {
   const arr = ["A", "B", "C", "D"];
@@ -38,14 +40,14 @@ export const Review = ({ result, question, currentQuestion }) => {
         category="s2"
         style={styles.reviewContent}
       >{`B. ${question.answer_2}`}</Text>
-      <Text
+      {question.answer_3 ? <Text
         category="s2"
         style={styles.reviewContent}
-      >{`C. ${question.answer_3}`}</Text>
-      <Text
+      >{`C. ${question.answer_3}`}</Text> : <></>}
+      {question.answer_4 ? <Text
         category="s2"
         style={styles.reviewContent}
-      >{`D. ${question.answer_4}`}</Text>
+      >{`D. ${question.answer_4}`}</Text> : <></>}
       <Text category="s1" style={styles.answerReview}>{`Your answer: ${arr[result.pick]
         }`}</Text>
       <Text category="s1" style={styles.answerReview}>{`Correct answer: ${arr[parseInt(question.correct_ans) - 1]
@@ -82,6 +84,8 @@ export const PracticeScreen = ({ route, navigation }) => {
   const [totalResult, setTotalResult] = React.useState({});
   // res includes pick item and correction
   const [res, setRes] = React.useState({});
+  // random questions
+  const [questions, setQuestions] = React.useState([]);
 
   // feedback arr
   const [dontKnow, setDontKnow] = React.useState([]);
@@ -92,7 +96,13 @@ export const PracticeScreen = ({ route, navigation }) => {
 
   // pass params from homeScreen
   const { practice, id } = route.params;
-  const question = Categories[id].questions[currentQuestion];
+  const question = questions[currentQuestion];
+
+  useEffect(() => {
+    GetRandomCategoryQuestion(id).then((questions) => {
+      setQuestions(questions)
+    })
+  }, [])
 
   // total review
   const TotalReview = ({ totalResult }) => {
@@ -250,7 +260,7 @@ export const PracticeScreen = ({ route, navigation }) => {
                     <Review
                       result={item.res}
                       key={index}
-                      question={Categories[id].questions[item.currentQuestion]}
+                      question={questions[item.currentQuestion]}
                       currentQuestion={item.currentQuestion}
                     />
                   );
@@ -285,7 +295,7 @@ export const PracticeScreen = ({ route, navigation }) => {
                     <Review
                       result={item.res}
                       key={index}
-                      question={Categories[id].questions[item.currentQuestion]}
+                      question={questions[item.currentQuestion]}
                       currentQuestion={item.currentQuestion}
                     />
                   );
@@ -320,7 +330,7 @@ export const PracticeScreen = ({ route, navigation }) => {
                     <Review
                       result={item.res}
                       key={index}
-                      question={Categories[id].questions[item.currentQuestion]}
+                      question={questions[item.currentQuestion]}
                       currentQuestion={item.currentQuestion}
                     />
                   );
@@ -358,12 +368,28 @@ export const PracticeScreen = ({ route, navigation }) => {
     setRes(itemRes);
   };
 
+  const changeStatus = (status) => {
+    const obj = {
+      uid: userData.uid,
+      categoryId: id,
+      questionId: question.id,
+      status
+    }
+    const res = addStatusQuestion(obj);
+    res.then((data) => {
+      if (data) {
+        dispatch(getStatusQuestionReduxStore(userData.uid, id));
+      }
+    });
+  }
+
   // 3 categroies questions
   const addDontKnowQuestion = () => {
     setShowResult(false);
     dontKnow.push({ currentQuestion, res });
     setDontKnow(dontKnow);
-    if (currentQuestion === Categories[id].questions.length - 1) {
+    changeStatus('unknow')
+    if (currentQuestion === questions.length - 1) {
       setTotalResult({ dontKnow: dontKnow, familar: familar, know: know });
       return;
     } else {
@@ -376,7 +402,8 @@ export const PracticeScreen = ({ route, navigation }) => {
     setShowResult(false);
     familar.push({ currentQuestion, res });
     setFamilar(familar);
-    if (currentQuestion === Categories[id].questions.length - 1) {
+    changeStatus('familiar')
+    if (currentQuestion === questions.length - 1) {
       setTotalResult({ dontKnow: dontKnow, familar: familar, know: know });
       return;
     } else {
@@ -389,7 +416,8 @@ export const PracticeScreen = ({ route, navigation }) => {
     setShowResult(false);
     know.push({ currentQuestion, res });
     setKnow(know);
-    if (currentQuestion === Categories[id].questions.length - 1) {
+    changeStatus('know')
+    if (currentQuestion === questions.length - 1) {
       setTotalResult({ dontKnow: dontKnow, familar: familar, know: know });
       return;
     } else {
@@ -412,7 +440,7 @@ export const PracticeScreen = ({ route, navigation }) => {
             <TotalReview totalResult={totalResult} />
           </ScrollView>
         </View>
-      ) : !showResult ? (
+      ) : !showResult ? question ? (
         // question
         <View style={{ flex: 1 }}>
           <TopBar title={practice} navigation={navigation} hasBack={true} />
@@ -420,7 +448,7 @@ export const PracticeScreen = ({ route, navigation }) => {
             <View style={styles.questionCard}>
               <ProgressBar
                 finished={currentQuestion + 1}
-                target={Categories[id].questions.length}
+                target={questions.length}
               />
               <View>
                 <Text category="s1" style={styles.questionTitle}>
@@ -433,8 +461,8 @@ export const PracticeScreen = ({ route, navigation }) => {
               >
                 <Radio>{`A. ${question.answer_1}`}</Radio>
                 <Radio>{`B. ${question.answer_2}`}</Radio>
-                <Radio>{`C. ${question.answer_3}`}</Radio>
-                <Radio>{`D. ${question.answer_4}`}</Radio>
+                {question.answer_3 ? <Radio>{`C. ${question.answer_3}`}</Radio> : <></>}
+                {question.answer_4 ? <Radio>{`D. ${question.answer_4}`}</Radio> : <></>}
               </RadioGroup>
               <Button
                 style={styles.button}
@@ -446,7 +474,7 @@ export const PracticeScreen = ({ route, navigation }) => {
             </View>
           </ScrollView>
         </View>
-      ) : (
+      ) : <></> : (
         // result
         <View style={{ flex: 1, justifyContent: "space-between" }}>
           <View>

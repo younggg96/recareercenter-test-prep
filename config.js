@@ -4,5 +4,5 @@ export const GOOGLE_AUTH_CONFIG = {
     issuer: 'https://accounts.google.com',
     scopes: ['openid', 'profile'],
     /* This is the CLIENT_ID generated from a Firebase project */
-    clientId: '967088008445-3shcko5ndnd1s56d48t6ee4b0l2d6lme.apps.googleusercontent.com',
+    clientId: '302752564422-ttvoi8gr43t42i3fvu38thaqckp0v4qo.apps.googleusercontent.com',
 };

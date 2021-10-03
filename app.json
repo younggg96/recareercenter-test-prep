@@ -17,8 +17,12 @@
     ],
     "ios": {
       "bundleIdentifier": "com.recareercenter.exam",
-      "buildNumber": "1.0.0",
-      "supportsTablet": true
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.302752564422-ttvoi8gr43t42i3fvu38thaqckp0v4qo"
+        }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "package": "com.recareercenter.exam",
@@ -26,7 +30,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/app-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/app-icon.png"

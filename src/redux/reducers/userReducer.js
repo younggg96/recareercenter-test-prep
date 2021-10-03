@@ -5,6 +5,7 @@ import {
   DO_QUESTION,
   SET_START_DAY,
   USER_LOGIN,
+  USER_LOGIN_WITH_GOOGLE,
   USER_LOGIN_WITH_CACHE,
   USER_LOGOUT,
   USER_REGISTER,
@@ -29,6 +30,12 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case USER_LOGIN:
+      return {
+        ...state,
+        userData: action.payload.userData,
+        signIn: action.payload.signIn,
+      };
+    case USER_LOGIN_WITH_GOOGLE:
       return {
         ...state,
         userData: action.payload.userData,

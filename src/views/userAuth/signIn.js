@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
 import { Image, View } from "react-native";
 
-import * as AppAuth from 'expo-app-auth';
+// import * as AppAuth from 'expo-app-auth';
+// // When configured correctly, URLSchemes should contain your REVERSED_CLIENT_ID
+// const { URLSchemes } = AppAuth;
 // import * as Google from 'expo-google-app-auth';
 
 import { TouchableWithoutFeedback } from "react-native";
@@ -14,7 +16,7 @@ import { useForm, Controller } from "react-hook-form";
 
 // redux
 import { useDispatch } from "react-redux";
-import { login, loginWithCache } from "../../redux/actions/userAction";
+import { login, loginWithCache, loginWithGoogle } from "../../redux/actions/userAction";
 
 // icons
 import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
@@ -23,13 +25,15 @@ import { GOOGLE_AUTH_CONFIG } from "../../../config";
 import { getValueFormStore, setValueToStore } from "../../storage";
 import { STORE_SIGNIN_GOOGLE_KEY } from "../../storage/keys";
 
+// google sign in
+import * as GoogleSignIn from 'expo-google-sign-in';
+
 
 // // store key for config secure store setter/getter
 // const STORE_SIGNIN_GOOGLE_KEY = 'recareercenter_exam_google_oauth_key';
 
 // sign in with Google
-
-// async function signInWithGoogleAsync() {
+// const signInWithGoogleAsync = async () => {
 //   try {
 //     const result = await Google.logInAsync({
 //       androidClientId: '967088008445-6r18r61vnondm6nard1a73ldvoecps1u.apps.googleusercontent.com',
@@ -47,28 +51,62 @@ import { STORE_SIGNIN_GOOGLE_KEY } from "../../storage/keys";
 //   }
 // }
 
-export const signInAsync = async () => {
-  let authState = await AppAuth.authAsync(GOOGLE_AUTH_CONFIG);
-  await setValueToStore(STORE_SIGNIN_GOOGLE_KEY, JSON.stringify(authState));
-  return authState;
-}
+// const signInAsync = async () => {
+//   let authState = await AppAuth.authAsync(GOOGLE_AUTH_CONFIG);
+//   console.log(authState)
+//   await setValueToStore(STORE_SIGNIN_GOOGLE_KEY, JSON.stringify(authState));
+//   return authState;
+// }
 
-// check token expired
-const checkIfTokenExpired = ({ accessTokenExpirationDate }) => {
-  return new Date(accessTokenExpirationDate) < new Date();
-}
+// // check token expired
+// const checkIfTokenExpired = ({ accessTokenExpirationDate }) => {
+//   return new Date(accessTokenExpirationDate) < new Date();
+// }
 
-// refresh token
-const refreshAuthAsync = async ({ refreshToken }) => {
-  let authState = await AppAuth.refreshAsync(GOOGLE_AUTH_CONFIG, refreshToken);
-  await setValueToStore(STORE_SIGNIN_GOOGLE_KEY, JSON.stringify(authState));
-  return authState;
-}
+// // refresh token
+// const refreshAuthAsync = async ({ refreshToken }) => {
+//   let authState = await AppAuth.refreshAsync(GOOGLE_AUTH_CONFIG, refreshToken);
+//   await setValueToStore(STORE_SIGNIN_GOOGLE_KEY, JSON.stringify(authState));
+//   return authState;
+// }
 
 
-const SignIn = ({ navigation }) => {
+export const SignIn = ({ navigation }) => {
   const [submitted, setSubmitted] = useState(false);
   const [authState, setAuthState] = useState(null);
+
+  //  init google sign in
+  useEffect(() => {
+    initAsync()
+  }, [])
+
+  const initAsync = async () => {
+    await GoogleSignIn.initAsync({
+      // You may ommit the clientId when the firebase `googleServicesFile` is configured
+      clientId: '302752564422-ttvoi8gr43t42i3fvu38thaqckp0v4qo.apps.googleusercontent.com',
+    });
+    // _syncUserWithStateAsync();
+  };
+
+  const _syncUserWithStateAsync = async () => {
+    const user = await GoogleSignIn.signInSilentlyAsync();
+    console.log(user)
+    const { uid, email, displayName } = user;
+    dispatch(loginWithGoogle(uid, email, displayName));
+    // this.setState({ user });
+  };
+
+  const signInAsync = async () => {
+    try {
+      await GoogleSignIn.askForPlayServicesAsync();
+      const { type, user } = await GoogleSignIn.signInAsync();
+      if (type === 'success') {
+        _syncUserWithStateAsync();
+      }
+    } catch ({ message }) {
+      alert('login: Error:' + message);
+    }
+  };
 
   const {
     control,
@@ -253,11 +291,7 @@ const SignIn = ({ navigation }) => {
                 style={styles.otherBtn}
                 appearance="outline"
                 accessoryLeft={GoogleIcon}
-                // onPress={async () => {
-                //   const _authState = await signInAsync();
-                //   setAuthState(_authState);
-                // }}
-                // onPress={signInWithGoogleAsync}
+                onPress={signInAsync}
               >
                 Google
               </Button>

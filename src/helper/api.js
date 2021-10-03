@@ -126,6 +126,18 @@ export const getCategoryById = async (cid) => {
     }
 }
 
+export const GetRandomCategoryQuestion = async (cid) => {
+    try {
+        const res = await axios({
+            method: 'get',
+            url: BASE_URL + '/questions/findForCategory' + `?id=${cid}`
+        });
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
 export const addStatusQuestion = async (bodyObj) => {
     try {
         const res = await axios({

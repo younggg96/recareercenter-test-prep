@@ -1222,7 +1222,7 @@
     xcode "^3.0.1"
     xml2js "^0.4.23"
 
-"@expo/config-plugins@3.1.0":
+"@expo/config-plugins@3.1.0", "@expo/config-plugins@^3.0.0":
   version "3.1.0"
   resolved "https://registry.nlark.com/@expo/config-plugins/download/@expo/config-plugins-3.1.0.tgz?cache=0&sync_timestamp=1629944529823&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40expo%2Fconfig-plugins%2Fdownload%2F%40expo%2Fconfig-plugins-3.1.0.tgz#0752ff33c5eab21cf42034a44e79df97f0f867f8"
   integrity sha1-B1L/M8Xqshz0IDSkTnnfl/D4Z/g=
@@ -5606,6 +5606,15 @@ expect@^25.5.0:
     jest-message-util "^25.5.0"
     jest-regex-util "^25.2.6"
 
+expo-app-auth@~10.2.2:
+  version "10.2.2"
+  resolved "https://registry.npmmirror.com/expo-app-auth/download/expo-app-auth-10.2.2.tgz#f0d76d376384da2a1c843f154f5027ffbd0219ed"
+  integrity sha1-8NdtN2OE2iochD8VT1An/70CGe0=
+  dependencies:
+    "@expo/config-plugins" "^3.0.0"
+    expo-modules-core "~0.2.0"
+    invariant "^2.2.4"
+
 expo-app-auth@~9.3.0:
   version "9.3.0"
   resolved "https://registry.nlark.com/expo-app-auth/download/expo-app-auth-9.3.0.tgz#072bd3faa8a34ff50f700627bd4eb8480629b915"
@@ -5683,6 +5692,20 @@ expo-font@~8.4.0:
     fbjs "1.0.0"
     fontfaceobserver "^2.1.0"
 
+expo-google-app-auth@^8.2.2:
+  version "8.2.2"
+  resolved "https://registry.npmmirror.com/expo-google-app-auth/download/expo-google-app-auth-8.2.2.tgz#a4922cae6e3227994e12399d9c505cc4e7608c73"
+  integrity sha1-pJIsrm4yJ5lOEjmdnFBcxOdgjHM=
+  dependencies:
+    expo-app-auth "~10.2.2"
+
+expo-google-sign-in@~8.4.0:
+  version "8.4.0"
+  resolved "https://registry.npmmirror.com/expo-google-sign-in/download/expo-google-sign-in-8.4.0.tgz#bceca538840c68fc4775004432e27c5bff73f897"
+  integrity sha1-vOylOIQMaPxHdQBEMuJ8W/9z+Jc=
+  dependencies:
+    invariant "^2.2.4"
+
 expo-image-loader@~1.3.0:
   version "1.3.0"
   resolved "https://registry.nlark.com/expo-image-loader/download/expo-image-loader-1.3.0.tgz#06982a1a02f443ba6afa2cc7a4f0ccebc26a5415"
@@ -5717,6 +5740,11 @@ expo-location@~10.0.0:
   version "10.0.0"
   resolved "https://registry.nlark.com/expo-location/download/expo-location-10.0.0.tgz#2923411649434f2f079343b163b13c5c9eee8b2d"
   integrity sha1-KSNBFklDTy8Hk0OxY7E8XJ7uiy0=
+
+expo-modules-core@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmmirror.com/expo-modules-core/download/expo-modules-core-0.2.0.tgz#68e5b6e53d0afbf8d131578831aed657589a2d42"
+  integrity sha1-aOW25T0K+/jRMVeIMa7WV1iaLUI=
 
 expo-notifications@~0.8.2:
   version "0.8.2"
