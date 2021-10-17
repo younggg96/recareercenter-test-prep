@@ -133,7 +133,7 @@ export const ExamsScreen = ({ navigation }) => {
           <Text category="s2" appearance="hint" style={styles.time}>
             Within 30 mins, To complete 100 questions
           </Text>
-          <Button style={{...styles.button, marginBottom: 8}} onPress={navigateToMockExam}>
+          <Button style={{...styles.button, marginBottom: 8, borderRadius: 16}} onPress={navigateToMockExam}>
             Let's Start A Real Mock Exam
           </Button>
         </View>

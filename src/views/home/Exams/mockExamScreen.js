@@ -244,7 +244,7 @@ export const MockExamScreen = ({ navigation }) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <ProgressBar
-                target="2"
+                target="30"
                 isTimer={true}
                 setTimeoutDisplay={setTimeoutDisplay}
                 setQuitExamDisplay={setQuitExamDisplay}
