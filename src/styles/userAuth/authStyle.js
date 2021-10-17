@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
   },
   paragraphReset: {
     letterSpacing: -1,
+    marginBottom: 16,
     fontWeight: "700",
   },
   forgetBtn: {

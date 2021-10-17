@@ -297,7 +297,7 @@ export const MockExamScreen = ({ navigation }) => {
             category="h4"
             style={{ textAlign: "center", fontWeight: "bold" }}
           >
-            Exam Not Fanished
+            Exam Not Finished
           </Text>
           <Text category="h6" style={styles.modalTitle}>
             Do you want to leave?

@@ -40,6 +40,10 @@ const SignUp = ({ navigation }) => {
     }
   };
 
+  const goTermsPage = () => {
+    navigation.navigate("TermsPage");
+  };
+
   const renderIcon = (props) => (
     <TouchableWithoutFeedback onPress={toggleSecureEntry}>
       <Icon {...props} name={secureTextEntry ? "eye-off" : "eye"} />
@@ -155,9 +159,10 @@ const SignUp = ({ navigation }) => {
             <CheckBox
               value={checked}
               checked={checked}
+              style={{marginVertical: 16}}
               onChange={(nextChecked) => setChecked(nextChecked)}
             >
-              I've read and agree with Terms of Service and our Privacy Policy
+              I've read and agree with <Text style={{ color: 'blue', fontSize: 12, textDecorationLine: 'underline' }} onPress={goTermsPage}>Terms of Service and our Privacy Policy</Text>
             </CheckBox>
             {submitted ? (
               !checked ? (

@@ -41,4 +41,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  header: {
+    fontSize: 32,
+    fontWeight: 'bold',
+  }
 });
