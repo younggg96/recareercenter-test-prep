@@ -90,9 +90,13 @@ export const homeStyles = StyleSheet.create({
   categoryItem: {
     justifyContent: "space-between",
     margin: 12,
-    height: 150,
+    height: 180,
     width: 160,
     borderRadius: 8,
+    shadowColor: '#171717',
+    shadowOffset: { width: 3, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   categoryTitle: {
     paddingHorizontal: 16,

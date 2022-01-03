@@ -8,12 +8,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import { AuthNavigation } from "./authNavigation";
 import { HomeNavigation } from "./homeNavigation";
 import { navigationRef } from "./RootNavigation";
+import { StatusBar } from "expo-status-bar";
 
 export const AppNavigator = () => {
   const user = useSelector((state) => state.userReducer);
   
   return (
     <NavigationContainer ref={navigationRef}>
+      <StatusBar
+        animated={true}
+        backgroundColor="#61dafb" />
       {user.signIn ? <HomeNavigation /> : <AuthNavigation />}
     </NavigationContainer>
   );

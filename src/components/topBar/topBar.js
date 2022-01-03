@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight + 16,
     paddingBottom: 18,
     marginBottom: 8,
+    // alignItems: "flex-start",
     ...shadow,
   },
   topTitle: {
@@ -37,7 +38,7 @@ export const TopBar = (props) => {
   return (
     <TopNavigation
       title={() => (
-        <Text category="s1" style={styles.topTitle}>
+        <Text category="s1" style={styles.topTitle} numberOfLines={2}>
           {title}
         </Text>
       )}

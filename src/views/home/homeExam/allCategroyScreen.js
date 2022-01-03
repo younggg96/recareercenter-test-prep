@@ -39,12 +39,12 @@ export const AllCategroyScreen = ({ navigation }) => {
               onPress={() => setVisible(true)}
             >
               <Layout level="4" style={homeStyles.categoryItem}>
-                <Text category="h6" style={homeStyles.categoryTitle}>
+                <Text category="h6" style={homeStyles.categoryTitle} numberOfLines={5}>
                   {item.categoryName}
                 </Text>
                 <View style={homeStyles.itemLockedContent}>
                   <Text category="s1" style={{ color: "#fff" }}>
-                    Items: {item.questionList.length}
+                    Questions: {item.questionList.length}
                   </Text>
                   <Icon
                     name="lock"
@@ -61,12 +61,12 @@ export const AllCategroyScreen = ({ navigation }) => {
             onPress={() => navigateToCategoryList(item.id, item.categoryName)}
           >
             <Layout level="2" style={homeStyles.categoryItem}>
-              <Text category="h6" style={homeStyles.categoryTitle}>
+                <Text category="h6" style={homeStyles.categoryTitle} numberOfLines={5}>
                 {item.categoryName}
               </Text>
               <View style={homeStyles.itemContent}>
                 <Text category="s1" style={{ color: "#fff" }}>
-                  Items: {item.questionList.length}
+                  Questions: {item.questionList.length}
                 </Text>
               </View>
             </Layout>

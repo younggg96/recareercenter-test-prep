@@ -105,6 +105,7 @@ export const HomeScreen = ({ navigation }) => {
   const [toPlanVisible, setToPlanVisible] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
   const [categories, setCategories] = React.useState([]);
+  const [all, setAll] = React.useState(0);
 
   const [expoPushToken, setExpoPushToken] = React.useState('');
   const [notification, setNotification] = React.useState(false);
@@ -206,7 +207,8 @@ export const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     getQuestionCategories().then((res) => {
-      setCategories(res.slice(0, 4));
+      setAll(res.length);
+      setCategories(res.slice(0, 9));
     })
   }, [])
 
@@ -290,12 +292,12 @@ export const HomeScreen = ({ navigation }) => {
               onPress={() => setVisible(true)}
             >
               <Layout level="4" style={homeStyles.item}>
-                <Text category="h6" style={homeStyles.categoryTitle}>
+                <Text category="h6" style={homeStyles.categoryTitle} numberOfLines={3}>
                   {item.categoryName}
                 </Text>
                 <View style={homeStyles.itemLockedContent}>
                   <Text category="s1" style={{ color: "#fff" }}>
-                    Items: {item.itemNum}
+                    Questions: {item.itemNum}
                   </Text>
                   <Icon
                     name="lock"
@@ -315,12 +317,12 @@ export const HomeScreen = ({ navigation }) => {
             }}
           >
             <Layout level="2" style={homeStyles.item}>
-              <Text category="h6" style={homeStyles.categoryTitle}>
+              <Text category="h6" style={homeStyles.categoryTitle} numberOfLines={3}>
                 {item.categoryName}
               </Text>
               <View style={homeStyles.itemContent}>
                 <Text category="s1" style={{ color: "#fff" }}>
-                  Items: {item.itemNum}
+                  Questions: {item.itemNum}
                 </Text>
               </View>
             </Layout>
@@ -397,7 +399,7 @@ export const HomeScreen = ({ navigation }) => {
                 Questions
               </Text>
               <Text category="s2" style={{ marginBottom: 8 }}>
-                65 Free of 555 Items
+                Total {all} Categories
               </Text>
             </View>
             <Button appearance="ghost" onPress={navigateToAllQuestion}>
