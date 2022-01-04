@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
-import { Image, View } from "react-native";
+import { Image, Keyboard, SafeAreaView, View } from "react-native";
 
 // import * as AppAuth from 'expo-app-auth';
 // // When configured correctly, URLSchemes should contain your REVERSED_CLIENT_ID
@@ -173,15 +173,16 @@ export const SignIn = ({ navigation }) => {
   );
 
   return (
-    <View style={styles.mainBody}>
-      <View style={styles.container}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <SafeAreaView style={styles.mainBody}>
         <View style={styles.header}>
           <Text style={styles.paragraph} category="h1">
             Welcome Back!
           </Text>
           <Image
             source={require("../../../assets/img/WElcomebackvector.png")}
-            style={{ width: 200, height: 180 }}
+            style={{ width: 200, height: 120 }}
+            resizeMode="contain"
           />
         </View>
         <View>
@@ -256,7 +257,6 @@ export const SignIn = ({ navigation }) => {
               />
             )}
           />
-
           <View style={styles.forgetBtn}>
             <Button
               style={{ width: 140 }}
@@ -296,19 +296,19 @@ export const SignIn = ({ navigation }) => {
                 Google
               </Button>
             </Layout>
-            <Layout style={styles.otherBtnLayout}>
-              <Button
-                style={styles.otherBtn}
-                appearance="outline"
-                accessoryLeft={FaceBookIcon}
-              >
-                FaceBook
-              </Button>
-            </Layout>
+            {/* <Layout style={styles.otherBtnLayout}>
+                <Button
+                  style={styles.otherBtn}
+                  appearance="outline"
+                  accessoryLeft={FaceBookIcon}
+                >
+                  FaceBook
+                </Button>
+              </Layout> */}
           </Layout>
         </View>
-      </View>
-    </View>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 };
 

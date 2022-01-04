@@ -285,7 +285,25 @@ export const HomeScreen = ({ navigation }) => {
   const ItemCard = ({ item }) => {
     return (
       <React.Fragment>
-        {userData.membership === "1" ? (
+        {userData.membership == 2 || userData.membership == 3 || item.id === 1 ? (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => {
+              navigateToPractice(item.id, item.categoryName)
+            }}
+          >
+            <Layout level="2" style={homeStyles.item}>
+              <Text category="h6" style={homeStyles.categoryTitle} numberOfLines={3}>
+                {item.categoryName}
+              </Text>
+              <View style={homeStyles.itemContent}>
+                <Text category="s1" style={{ color: "#fff" }}>
+                  Questions: {item.itemNum}
+                </Text>
+              </View>
+            </Layout>
+          </TouchableOpacity>
+        ) : (
           <React.Fragment>
             <TouchableOpacity
               activeOpacity={0.7}
@@ -308,25 +326,7 @@ export const HomeScreen = ({ navigation }) => {
               </Layout>
             </TouchableOpacity>
           </React.Fragment>
-        ) : (
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => {
-              // console.log(item);
-              navigateToPractice(item.id, item.categoryName)
-            }}
-          >
-            <Layout level="2" style={homeStyles.item}>
-              <Text category="h6" style={homeStyles.categoryTitle} numberOfLines={3}>
-                {item.categoryName}
-              </Text>
-              <View style={homeStyles.itemContent}>
-                <Text category="s1" style={{ color: "#fff" }}>
-                  Questions: {item.itemNum}
-                </Text>
-              </View>
-            </Layout>
-          </TouchableOpacity>
+
         )}
       </React.Fragment>
     );

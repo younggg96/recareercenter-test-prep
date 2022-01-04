@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { Image, View } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import { useSelector } from "react-redux";
 import { TopBar } from "../../../components/topBar/topBar";
 import { getQuestionCategories } from "../../../helper/api";
 // import { Categories } from "../../../static/questions/category";
@@ -11,6 +12,7 @@ import { homeStyles } from "../../../styles/home/homeStyle";
 export const AllCategroyScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const [categories, setCategories] = React.useState([]);
+  const { userData } = useSelector(state => state.userReducer);
 
   useEffect(() => {
     getQuestionCategories().then((res) => {
@@ -32,7 +34,23 @@ export const AllCategroyScreen = ({ navigation }) => {
   const ItemCard = ({ item }) => {
     return (
       <React.Fragment>
-        {item.lockStatus ? (
+        {userData.membership == 2 || userData.membership == 3 || item.id === 1 ? (
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigateToCategoryList(item.id, item.categoryName)}
+          >
+            <Layout level="2" style={homeStyles.categoryItem}>
+              <Text category="h6" style={homeStyles.categoryTitle} numberOfLines={5}>
+                {item.categoryName}
+              </Text>
+              <View style={homeStyles.itemContent}>
+                <Text category="s1" style={{ color: "#fff" }}>
+                  Questions: {item.questionList.length}
+                </Text>
+              </View>
+            </Layout>
+          </TouchableOpacity>
+        ) : (
           <React.Fragment>
             <TouchableOpacity
               activeOpacity={0.7}
@@ -55,22 +73,6 @@ export const AllCategroyScreen = ({ navigation }) => {
               </Layout>
             </TouchableOpacity>
           </React.Fragment>
-        ) : (
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => navigateToCategoryList(item.id, item.categoryName)}
-          >
-            <Layout level="2" style={homeStyles.categoryItem}>
-                <Text category="h6" style={homeStyles.categoryTitle} numberOfLines={5}>
-                {item.categoryName}
-              </Text>
-              <View style={homeStyles.itemContent}>
-                <Text category="s1" style={{ color: "#fff" }}>
-                  Questions: {item.questionList.length}
-                </Text>
-              </View>
-            </Layout>
-          </TouchableOpacity>
         )}
       </React.Fragment>
     );
@@ -102,8 +104,8 @@ export const AllCategroyScreen = ({ navigation }) => {
                 source={require("../../../../assets/img/vip.jpg")}
                 style={{ width: "100%", height: 200, marginBottom: 16 }}
               />
-              <Text category="h5">Unlock Practice Questions?</Text>
-              <Text category="h6" style={homeStyles.modalTitle}>
+              <Text category="h6" >Unlock Practice Questions?</Text>
+              <Text category="h7" style={homeStyles.modalTitle}>
                 Become A Membership Today!
               </Text>
             </View>

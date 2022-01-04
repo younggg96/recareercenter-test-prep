@@ -81,11 +81,15 @@ export const homeStyles = StyleSheet.create({
     alignItems: "center"
   },
   item: {
-    justifyContent: "space-between",
     marginHorizontal: 10,
     height: 132,
     width: 200,
+    justifyContent: "space-between",
     borderRadius: 8,
+    shadowColor: '#171717',
+    shadowOffset: { width: 4, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   categoryItem: {
     justifyContent: "space-between",

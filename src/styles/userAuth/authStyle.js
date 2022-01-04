@@ -7,17 +7,18 @@ export const styles = StyleSheet.create({
   },
   mainBody: {
     flex: 1,
+    marginHorizontal: 32,
     justifyContent: 'center',
-    alignContent: 'center',
+    alignContent: "space-between",
   },
   header: {
     alignItems: "center",
     marginBottom: 16,
   },
   paragraph: {
-    fontWeight: "700",
+    fontWeight: "bold",
     letterSpacing: -2,
-    marginBottom: 8,
+    marginBottom: 4,
   },
   paragraphSignup: {
     width: 240,
