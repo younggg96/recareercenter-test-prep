@@ -287,11 +287,12 @@ export const MockExamScreen = ({ navigation }) => {
           <Image
             source={require("../../../../assets/img/quit_exit.png")}
             style={{
-              width: 300,
+              width: 260,
               height: 150,
               marginBottom: 12,
               alignSelf: "center",
             }}
+            resizeMode="contain"
           />
           <Text
             category="h4"

@@ -38,8 +38,9 @@ import {
   IAPResponseCode,
   InAppPurchaseState
 } from "expo-in-app-purchases";
-import RNRestart from "react-native-restart";
+// import RNRestart from "react-native-restart";
 import { changeMembershipStatus } from "../../redux/actions/userAction";
+import { useInterval } from "../../helper/hooks/useInterval";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -53,6 +54,7 @@ const registerForPushNotificationsAsync = async () => {
   let token;
   if (Constants.isDevice) {
     const { status: existingStatus } = await Notifications.getPermissionsAsync();
+
     let finalStatus = existingStatus;
     if (existingStatus !== 'granted') {
       const { status } = await Notifications.requestPermissionsAsync();
@@ -62,8 +64,7 @@ const registerForPushNotificationsAsync = async () => {
       alert('Failed to get push token for push notification!');
       return;
     }
-    token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
+    token = (await Notifications.getExpoPushTokenAsync({ experienceId: '@yanggg/CFREE-real-estate-exam-prep' })).data;
   } else {
     alert('Must use physical device for Push Notifications');
   }
@@ -82,6 +83,7 @@ const registerForPushNotificationsAsync = async () => {
 
 // Can use this function below, OR use Expo's Push Notification Tool-> https://expo.dev/notifications
 const sendPushNotification = async (expoPushToken) => {
+  console.log("hahaha", expoPushToken)
   const message = {
     to: expoPushToken,
     sound: 'default',
@@ -115,7 +117,22 @@ export const HomeScreen = ({ navigation }) => {
   // redux
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
+  const notificationDate = useSelector((state) => state.settingReducer);
   const uid = userData.uid;
+
+  useInterval(() => {
+    // console.log(new Date().getHours(), new Date().getMinutes(), notificationDate.notification.time);
+    if (notificationDate.notification.status) {
+      if (new Date().getHours() == notificationDate.notification.time.hours && new Date().getMinutes() == notificationDate.notification.time.mins) {
+        if (new Date().getSeconds() == 0) {
+          console.log("hhahahahahahah");
+          (async () => {
+            await sendPushNotification(expoPushToken);
+          })()
+        }
+      }
+    }
+  }, 1000)
 
   setPurchaseListener(({ responseCode, results, errorCode }) => {
     // console.log('responseCode', responseCode)
@@ -180,7 +197,10 @@ export const HomeScreen = ({ navigation }) => {
   });
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+    registerForPushNotificationsAsync().then(token => {
+      console.log(token);
+      setExpoPushToken(token)
+    });
 
     // This listener is fired whenever a notification is received while the app is foregrounded
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
