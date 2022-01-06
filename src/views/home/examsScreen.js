@@ -27,7 +27,7 @@ export const ExamsScreen = ({ navigation }) => {
     res.then((res) => {
       setExams(res.reverse());
     })
-  }, [])
+  })
 
   // navigation
   const navigateToMockExam = () => {
@@ -36,7 +36,7 @@ export const ExamsScreen = ({ navigation }) => {
   };
 
   const navigateToHistory = () => {
-    navigation.navigate("ExamHistoryScreen", { exams: exams });
+    navigation.navigate("ExamHistoryScreen", { exams });
   };
 
   // chart

@@ -82,13 +82,12 @@ const registerForPushNotificationsAsync = async () => {
 }
 
 // Can use this function below, OR use Expo's Push Notification Tool-> https://expo.dev/notifications
-const sendPushNotification = async (expoPushToken) => {
-  console.log("hahaha", expoPushToken)
+const sendPushNotification = async (expoPushToken, userData) => {
   const message = {
     to: expoPushToken,
     sound: 'default',
-    title: 'Original Title',
-    body: 'And here is the body!',
+    title: "Don't forget to study!",
+    body: `There are ${userData.targetPractice - userData.dailyPractice} questions waiting for you, come on!`,
     data: { someData: 'goes here' },
   };
 
@@ -120,14 +119,13 @@ export const HomeScreen = ({ navigation }) => {
   const notificationDate = useSelector((state) => state.settingReducer);
   const uid = userData.uid;
 
+  // push notification
   useInterval(() => {
-    // console.log(new Date().getHours(), new Date().getMinutes(), notificationDate.notification.time);
     if (notificationDate.notification.status) {
       if (new Date().getHours() == notificationDate.notification.time.hours && new Date().getMinutes() == notificationDate.notification.time.mins) {
         if (new Date().getSeconds() == 0) {
-          console.log("hhahahahahahah");
           (async () => {
-            await sendPushNotification(expoPushToken);
+            await sendPushNotification(expoPushToken, userData);
           })()
         }
       }
@@ -392,7 +390,7 @@ export const HomeScreen = ({ navigation }) => {
             <View style={homeStyles.contentItem}>
               <Text category="s2">To learn</Text>
               <Text category="h4" style={homeStyles.amount}>
-                {userData.targetPractice - userData.dailyPractice}
+                {userData.targetPractice - userData.dailyPractice < 0 ? 0 : userData.targetPractice - userData.dailyPractice}
               </Text>
             </View>
             <View style={homeStyles.contentItem}>

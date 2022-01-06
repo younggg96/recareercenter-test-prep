@@ -132,7 +132,7 @@ export const MockExamScreen = ({ navigation }) => {
                     {
                       item.result.pick !== null
                         ? `Your answer: ${arr[item.result.pick]}`
-                          : "Your answer: Not Finished"
+                        : "Your answer: Not Finished"
                     }
                   </Text>
                   <Text category="s1" style={styles.answerReview}>{`Correct answer: ${arr[parseInt(data[index].correct_ans) - 1]}`}</Text>

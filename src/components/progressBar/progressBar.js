@@ -96,13 +96,19 @@ export const ProgressBar = (props) => {
       ) : (
         <View style={styles.container}>
           <View style={styles.progressBar}>
-            <View
+            {finished <= target ? <View
               style={{
                 backgroundColor: "#E53A3D",
                 borderRadius: 25,
                 width: `${(finished / target) * 100}%`,
               }}
-            />
+            /> : <View
+              style={{
+                backgroundColor: "#E53A3D",
+                borderRadius: 25,
+                width: "100%",
+              }}
+            />}
           </View>
           <Text style={styles.status}>
             <Text style={styles.finished}>{finished}</Text> / {target}
