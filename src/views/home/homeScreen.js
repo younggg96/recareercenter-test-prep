@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useRef } from "react";
 // ui
-import { Image, Linking, Platform, TouchableOpacity, View } from "react-native";
+import { Alert, Image, Linking, Platform, TouchableOpacity, View } from "react-native";
 import {
   Button,
   Card,
@@ -21,11 +21,11 @@ import { FlatList, ScrollView } from "react-native-gesture-handler";
 // const
 import { itemWidth, sliderWidth } from "../../constants";
 // data
-import { ENTRIES1 } from "../../static/entries";
-import { Categories } from "../../static/questions/category";
+// import { ENTRIES1 } from "../../static/entries";
+// import { Categories } from "../../static/questions/category";
 import { refreshQuiz } from "../../redux/actions/questionAction";
 import { LockVideoIcon, PlayIcon } from "../../components/icons/icons";
-import { changeMembership, getQuestionCategories } from "../../helper/api";
+import { changeMembership, getQuestionCategories, getSliderData } from "../../helper/api";
 
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
@@ -39,8 +39,10 @@ import {
   InAppPurchaseState
 } from "expo-in-app-purchases";
 // import RNRestart from "react-native-restart";
-import { changeMembershipStatus } from "../../redux/actions/userAction";
+import { changeMembershipStatus, updateProfile } from "../../redux/actions/userAction";
 import { useInterval } from "../../helper/hooks/useInterval";
+import axios from "axios";
+import { BASE_URL } from "../../../config";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -109,6 +111,7 @@ export const HomeScreen = ({ navigation }) => {
   const [all, setAll] = React.useState(0);
 
   const [expoPushToken, setExpoPushToken] = React.useState('');
+  const [sliderData, setSliderData] = React.useState([]);
   const [notification, setNotification] = React.useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
@@ -133,11 +136,8 @@ export const HomeScreen = ({ navigation }) => {
   }, 1000)
 
   setPurchaseListener(({ responseCode, results, errorCode }) => {
-    // console.log('responseCode', responseCode)
     if (responseCode === IAPResponseCode.OK) {
-      console.log('results', results)
       results.forEach(async (purchase) => {
-        console.log(responseCode, InAppPurchaseState, purchase.productId)
         if (!purchase.acknowledged) {
           // console.log('purchase', purchase)
           // in android, consumeItem should be set to false to acknowlege the purchase
@@ -196,7 +196,6 @@ export const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => {
-      console.log(token);
       setExpoPushToken(token)
     });
 
@@ -207,7 +206,7 @@ export const HomeScreen = ({ navigation }) => {
 
     // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log('222', response);
+      console.log(response);
     });
 
     return () => {
@@ -224,10 +223,29 @@ export const HomeScreen = ({ navigation }) => {
   }, [])
 
   useEffect(() => {
-    getQuestionCategories().then((res) => {
-      setAll(res.length);
-      setCategories(res.slice(0, 9));
+    getSliderData().then((res) => {
+      if (res) {
+        setSliderData(res)
+      }
     })
+    getQuestionCategories().then((res) => {
+      if (res) {
+        setAll(res.length);
+        setCategories(res.slice(0, 9));
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    try {
+      axios.get(BASE_URL + `/users/findUser?uid=${userData.uid}`).then((res) => {
+        if (res.data) {
+          dispatch(updateProfile(res.data));
+        }
+      })
+    } catch (error) {
+      Alert.alert("Error", `${error.message}`);
+    }
   }, [])
 
   // navigations
@@ -282,7 +300,7 @@ export const HomeScreen = ({ navigation }) => {
               {item.title}
             </Text>
             <Text category="s2" style={homeStyles.classSubtitle}>
-              {item.subtitle}
+              {item.subTitle}
             </Text>
             <Button
               style={[homeStyles.button, homeStyles.exploreBtn]}
@@ -362,7 +380,7 @@ export const HomeScreen = ({ navigation }) => {
       />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Carousel
-          data={ENTRIES1}
+          data={sliderData}
           renderItem={renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}

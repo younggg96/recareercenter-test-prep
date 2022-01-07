@@ -10,6 +10,7 @@ import {
   SAVED_QUESTIONS_LIST,
   ADD_STATUS_QUESTION,
   GET_STATUS_QUESTION,
+  GET_EXAMS
 } from "../actions/actionTypes";
 
 const questionReducerInitialState = {
@@ -17,7 +18,8 @@ const questionReducerInitialState = {
   quizData: [],
   savedIdList: [],
   savedList: [],
-  withStatusList: []
+  withStatusList: [],
+  exams: []
 };
 
 export const questionReducer = (
@@ -44,7 +46,7 @@ export const questionReducer = (
           { ...state.questionData[currentQuestion], result: itemRes },
           ...state.questionData.slice(
             currentQuestion + 1,
-            state.questionData.length
+            state.questionData.length + 1
           ),
         ],
       };
@@ -92,6 +94,11 @@ export const questionReducer = (
       return {
         ...state,
         withStatusList: action.payload
+      };
+    case GET_EXAMS:
+      return {
+        ...state,
+        exams: action.payload
       };
     default:
       return state;

@@ -6,7 +6,7 @@ import { cardStyle, shadow } from "../shared/sharedStyle";
 export const styles = StyleSheet.create({
   topBar: {
 		paddingTop: Constants.statusBarHeight + 16,
-		paddingBottom: 8,
+		paddingBottom: 18,
 		marginBottom: 8,
 		...shadow
   },

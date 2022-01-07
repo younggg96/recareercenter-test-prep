@@ -9,6 +9,7 @@ import {
   CHANGE_PASSWORD,
   DO_QUESTION,
   USER_REGISTER,
+  UPDATE_PROFILE,
 } from "./actionTypes";
 
 import FirebaseAuth from "../../firebase/index";
@@ -114,7 +115,6 @@ export async function loginWithGoogle(uid, email, displayName) {
 
 export async function loginWithCache(userObj) {
   const res = await axios.get(BASE_URL + `/users/findUser?uid=${userObj.uid}`);
-  console.log(res.data)
   const payload = {
     userData: Object.assign(res.data, userObj.userInfo),
     signIn: true,
@@ -249,6 +249,14 @@ export async function doQuestion(uid) {
     Alert.alert("Error", `${error.message}`);
   }
 }
+
+export async function updateProfile(data) {
+  return {
+    type: UPDATE_PROFILE,
+    payload: data
+  };
+}
+
 
 export async function changeMembershipStatus(userData) {
   try {

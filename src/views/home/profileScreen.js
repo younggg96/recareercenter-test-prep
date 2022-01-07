@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Button, Icon, Text } from "@ui-kitten/components";
+import { Button, Icon } from "@ui-kitten/components";
 import { styles } from "../../styles/home/profileStyle";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { SettingsIcon } from "../../components/icons/icons";
 import { ProgressBar } from "../../components/progressBar/progressBar";
@@ -27,19 +27,19 @@ export const ProfileScreen = ({ navigation }) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
           <View style={styles.headerContainer}>
-            <View>
-              <Text category="h1">Hi! {userData.displayName ? userData.displayName : "Student"}</Text>
+            <View style={{ width: '60%', paddingHorizontal: 8 }}>
+              <Text numberOfLines={2} style={{ fontWeight: "bold", fontSize: 28 }}>Hi! {userData.displayName ? userData.displayName : "Student"}</Text>
             </View>
-            <View>
-              <Button
-                appearance="outline"
-                size="medium"
-                style={styles.settings}
-                accessoryRight={SettingsIcon}
-                onPress={settingOnPress}
-              >
-                Settings
-              </Button>
+            <View style={{ width: '40%' }}>
+            <Button
+              appearance="outline"
+              size="medium"
+              style={styles.settings}
+              accessoryRight={SettingsIcon}
+              onPress={settingOnPress}
+            >
+              Settings
+            </Button>
             </View>
           </View>
           <View style={styles.subHeaderContainer}>
@@ -48,7 +48,7 @@ export const ProfileScreen = ({ navigation }) => {
                 <Icon style={styles.icon} name="calendar" fill="#000" />
               </View>
               <View style={styles.text}>
-                <Text category="s1">
+                <Text>
                   Exam Day :{" "}
                   {new Date(userData.examStartDate).getTime() ? new Date(userData.examStartDate).toISOString().substring(0, 10) : " - "}
                 </Text>
@@ -59,7 +59,7 @@ export const ProfileScreen = ({ navigation }) => {
         </View>
         <View style={styles.contentContainer}>
           <View style={styles.prograssBar}>
-            <Text category="h6" style={styles.prograssTitle}>
+            <Text style={styles.prograssTitle}>
               {" "}
               Today's Practice
             </Text>

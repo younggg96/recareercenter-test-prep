@@ -174,7 +174,10 @@ export const StudyPlanScreen = ({ navigation }) => {
               <Modal
                 visible={visible}
                 backdropStyle={styles.backdrop}
-                onBackdropPress={() => setVisible(false)}
+                onBackdropPress={() => {
+                  setVisible(false);
+                  setExamDate(new Date());
+                }}
                 style={styles.modal}
               >
                 <Card disabled={true}>
@@ -182,7 +185,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                     Change exam date
                   </Text>
                   <Datepicker
-                    date={new Date()}
+                    date={examDate.getTime() > 0 ? examDate : new Date()}
                     dateService={formatDateService}
                     onSelect={(nextDate) => setExamDate(nextDate)}
                     size="small"
@@ -219,7 +222,7 @@ export const StudyPlanScreen = ({ navigation }) => {
             }}
           />
           {errorSetDay && (
-            <Text category="s2" style={{...styles.titleContent, paddingLeft: 8, paddingVertical: 4}} status="danger">
+            <Text category="s2" style={{ ...styles.titleContent, paddingLeft: 8, paddingVertical: 4 }} status="danger">
               Start day cannot later than exam date
             </Text>
           )}

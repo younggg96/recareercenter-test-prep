@@ -19,6 +19,28 @@ export const postExamRecord = async (data) => {
     }
 }
 
+export const findUser = async (uid) => {
+    try {
+        const res = axios.get(BASE_URL + `/users/findUser?uid=${uid}`);
+        if (res) {
+            return res;
+        }
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const getSliderData = async (uid) => {
+    try {
+        const res = await axios.get(BASE_URL + '/slides/findAll');
+        if (res) {
+            return res.data;
+        }
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
 export const getExamData = async (uid) => {
     try {
         const res = await axios.get(BASE_URL + `/examData/getExamData?uid=${uid}`);
@@ -43,11 +65,10 @@ export const getExamList = async (edid) => {
 
 export const getExamDetails = async (eid) => {
     try {
-        const res = await axios({
-            method: 'get',
-            url: BASE_URL + '/exams/findExamDetail' + `?eid=${eid}`
-        });
-        return res.data;
+        const res = await axios.get(BASE_URL + `/exams/findExamDetail?eid=${eid}`);
+        if (res) {
+            return res.data;
+        }
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
     }
@@ -83,7 +104,6 @@ export const saveWordDic = async (uid, did) => {
             method: 'post',
             url: BASE_URL + '/users/saveDictionary' + `?uid=${uid}` + `&did=${did}`
         });
-        console.log(res.data);
         return res.data;
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
@@ -176,7 +196,8 @@ export const getAllVideos = async () => {
 }
 
 export const changeMembership = async (uid, membershipType) => {
-    try {const res = await axios({
+    try {
+        const res = await axios({
             method: 'put',
             url: BASE_URL + '/users/updateUserMembership' + `?uid=${uid}` + `&membership=${membershipType}`
         });
@@ -184,6 +205,15 @@ export const changeMembership = async (uid, membershipType) => {
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
         return null;
+    }
+}
+
+export const addPractice = async (uid) => {
+    try {
+        const res = await axios.post(BASE_URL + `/users/addPractice?uid=${uid}`);
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
     }
 }
 

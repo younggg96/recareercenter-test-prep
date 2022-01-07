@@ -39,7 +39,6 @@ export const SavedListScreen = ({ navigation }) => {
 
   // items
   const renderItem = (item) => {
-    // console.log(item)
     return (
       <Card style={styles.item} disabled>
         <View style={styles.itemHeader}>

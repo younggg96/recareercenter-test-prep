@@ -37,6 +37,13 @@ import { AllCategroyListScreen } from "../views/home/homeExam/allCategroyListScr
 import { PracticeOneQuestionScreen } from "../views/home/homeExam/practiceOneQuestionScreen";
 import { VideosListScreen } from "../views/home/studyVideos/videosListScreen";
 import { VideosDetailScreen } from "../views/home/studyVideos/videoDetailScreen";
+import { useDispatch, useSelector } from "react-redux";
+import { updateProfile } from "../redux/actions/userAction";
+import axios from "axios";
+import { BASE_URL } from "../../config";
+import { Alert } from "react-native";
+import { getExamData } from "../helper/api";
+import { getExams } from "../redux/actions/questionAction";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -91,18 +98,58 @@ const HomeScreenNavigation = () => (
   </Stack.Navigator>
 );
 
-const BottomTabBar = ({ navigation, state }) => (
-  <BottomNavigation
-    style={{ paddingBottom: 16, paddingTop: 8 }}
-    selectedIndex={state.index}
-    onSelect={(index) => navigation.navigate(state.routeNames[index])}
-  >
-    <BottomNavigationTab title="Home" icon={HomeIcon} />
-    <BottomNavigationTab title="Exams" icon={ClipboardIcon} />
-    <BottomNavigationTab title="Dictionary" icon={DicIcon} />
-    <BottomNavigationTab title="Profile" icon={PersonIcon} />
-  </BottomNavigation>
-);
+const BottomTabBar = ({ navigation, state }) => {
+  const dispatch = useDispatch();
+  const { userData } = useSelector((states) => states.userReducer);
+  return (
+    <BottomNavigation
+      style={{ paddingBottom: 16, paddingTop: 8 }}
+      selectedIndex={state.index}
+      onSelect={(index) => {
+        switch (index) {
+          case 0:
+            try {
+              axios.get(BASE_URL + `/users/findUser?uid=${userData.uid}`).then((res) => {
+                if (res.data) {
+                  dispatch(updateProfile(res.data));
+                }
+              })
+            } catch (error) {
+              Alert.alert("Error", `${error.message}`);
+            }
+            break;
+          // case 1:
+          //   getExamData(userData.uid).then((res) => {
+          //     dispatch(getExams(res.reverse()));
+          //   })
+          //   break;
+          // case 2:
+          //   break;
+          case 3:
+            try {
+              axios.get(BASE_URL + `/users/findUser?uid=${userData.uid}`).then((res) => {
+                if (res.data) {
+                  dispatch(updateProfile(res.data));
+                }
+              })
+            } catch (error) {
+              Alert.alert("Error", `${error.message}`);
+            }
+            break;
+
+          default:
+            break;
+        }
+        navigation.navigate(state.routeNames[index])
+      }}
+    >
+      <BottomNavigationTab title="Home" icon={HomeIcon} />
+      <BottomNavigationTab title="Exams" icon={ClipboardIcon} />
+      <BottomNavigationTab title="Dictionary" icon={DicIcon} />
+      <BottomNavigationTab title="Profile" icon={PersonIcon} />
+    </BottomNavigation>
+  )
+};
 
 export const HomeNavigation = () => {
   return (

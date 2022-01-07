@@ -10,6 +10,7 @@ import {
   SAVED_QUESTIONS_LIST,
   ADD_STATUS_QUESTION,
   GET_STATUS_QUESTION,
+  GET_EXAMS,
 } from "./actionTypes";
 
 import { Alert } from "react-native";
@@ -17,6 +18,13 @@ import axios from "axios";
 import { BASE_URL } from "../../../config";
 import { addStatusQuestion, getStatusQuestions } from "../../helper/api";
 import Toast from "react-native-simple-toast";
+
+export function getExams(exams) {
+  return {
+    type: GET_EXAMS,
+    payload: exams
+  };
+}
 
 export function getResult(itemRes, currentQuestion) {
   return {

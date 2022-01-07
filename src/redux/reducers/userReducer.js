@@ -9,23 +9,48 @@ import {
   USER_LOGIN_WITH_CACHE,
   USER_LOGOUT,
   USER_REGISTER,
-  CHANGE_MEMBERSHIP
+  CHANGE_MEMBERSHIP,
+  UPDATE_PROFILE
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
   userData: {
+    id: "",
+    membership: 1,
+    dailyPractice: 0,
+    targetPractice: 0,
+    totalPractice: 0,
+    examStartDate: new Date(),
+    practiceStartDate: new Date(),
+    token: "",
     uid: "",
     userName: "",
     email: "",
-    examStartDate: new Date(),
-    targetPractice: 0,
-    dailyPractice: 0,
-    practiceStartDate: new Date(),
-    membership: 1,
-    totalPractice: 0,
+    notification: {
+      status: false,
+      time: null
+    }
   },
   signIn: false,
 };
+
+// {
+//   "id": 2,
+//     "membership": "1",
+//       "dailyPractice": 71,
+//         "targetPractice": 150,
+//           "totalPractice": 71,
+//             "examStartDate": "1970-01-01",
+//               "practiceStartDate": "1970-01-01",
+//                 "registerDate": "2022-01-06",
+//                   "totalStudyDay": 0,
+//                     "token": null,
+//                       "uid": "105366441242484750344",
+//                         "notification": {
+//     "status": false,
+//       "time": null
+//   }
+// }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -85,6 +110,11 @@ export default (state = INITIAL_STATE, action) => {
         signIn: state.signIn,
       };
     case DO_QUESTION:
+      return {
+        ...state,
+        userData: { ...state.userData, dailyPractice: action.payload.dailyPractice, totalPractice: action.payload.totalPractice}
+      };
+    case UPDATE_PROFILE:
       return {
         ...state,
         userData: action.payload

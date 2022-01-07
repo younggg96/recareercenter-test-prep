@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { styles } from "../../styles/home/examStyle";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { refreshQuestionData } from "../../redux/actions/questionAction";
+import { getExams, refreshQuestionData } from "../../redux/actions/questionAction";
 // components
 import { Button, Text } from "@ui-kitten/components";
 import { Image, View } from "react-native";
@@ -19,15 +19,14 @@ const today = new Date();
 export const ExamsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
-  const [exams, setExams] = React.useState([]);
   const { userData } = useSelector(state => state.userReducer);
+  const { exams } = useSelector(state => state.questionReducer);
 
   useEffect(() => {
-    const res = getExamData(userData.uid);
-    res.then((res) => {
-      setExams(res.reverse());
+    getExamData(userData.uid).then((res) => {
+      dispatch(getExams(res.reverse()));
     })
-  })
+  }, [])
 
   // navigation
   const navigateToMockExam = () => {
@@ -42,13 +41,19 @@ export const ExamsScreen = ({ navigation }) => {
   // chart
   const getChartLabel = () => {
     let arr = [];
+    let res = [];
     exams.slice(0, 7).forEach(element => {
-      arr.push(element.examDate.slice(5, 10))
+      arr.push(element.examDate)
     });
-    while (arr.length < 7) {
-      arr.push('unknown');
+    if (arr.length < 7) {
+      for (let i = 7 - arr.length; i > 0; i--) {
+        arr.push(new Date(new Date(arr[arr.length - 1]).getTime() - 24 * 60 * 60).toISOString().substring(0, 10));
+      }
     }
-    return arr;
+    arr.forEach((element) => {
+      res.push(element.slice(5, 10));
+    })
+    return res;
   }
 
   const getNoDataLastWeekLabel = () => {
@@ -95,7 +100,7 @@ export const ExamsScreen = ({ navigation }) => {
     labels: getNoDataLastWeekLabel(),
     datasets: [
       {
-        data: [0,0,0,0,0,0,0],
+        data: [0, 0, 0, 0, 0, 0, 0],
         color: () => "#666666",
       },
       {
@@ -133,7 +138,7 @@ export const ExamsScreen = ({ navigation }) => {
           <Text category="s2" appearance="hint" style={styles.time}>
             Within 30 mins, To complete 100 questions
           </Text>
-          <Button style={{...styles.button, marginBottom: 8, borderRadius: 16}} onPress={navigateToMockExam}>
+          <Button style={{ ...styles.button, marginBottom: 8, borderRadius: 16 }} onPress={navigateToMockExam}>
             Let's Start A Real Mock Exam
           </Button>
         </View>
@@ -184,8 +189,8 @@ export const ExamsScreen = ({ navigation }) => {
                 chartConfig={chartConfig}
                 bezier
               />
-              <View style={{ flex: 1, justifyContent: "center", alignItems: "center", zIndex: 999, backgroundColor: '#666666', paddingHorizontal: 16, height: 40, top: -180, marginHorizontal: 10, position: 'relative'}}>
-                <Text category="h6" appearance="hint" style={{ color: '#fff'}}>
+              <View style={{ flex: 1, justifyContent: "center", alignItems: "center", zIndex: 999, backgroundColor: '#666666', paddingHorizontal: 16, height: 40, top: -180, marginHorizontal: 10, position: 'relative' }}>
+                <Text category="h6" appearance="hint" style={{ color: '#fff' }}>
                   No Exam History Reports
                 </Text>
               </View>

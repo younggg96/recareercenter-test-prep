@@ -24,11 +24,13 @@ export const styles = StyleSheet.create({
     marginBottom: 32
   },
   title: {
+    textAlign: "center",
     marginTop: 16,
     fontWeight: "bold",
     letterSpacing: -1,
   },
   subTitle: {
+    textAlign: "center",
     marginTop: 8,
   },
   button: {

@@ -20,8 +20,7 @@ import {
   saveQuestion,
   unsaveQuestionReturnIds,
 } from "../../../redux/actions/questionAction";
-import { doQuestion } from "../../../redux/actions/userAction";
-import { addStatusQuestion, GetRandomCategoryQuestion } from "../../../helper/api";
+import { addPractice, addStatusQuestion, GetRandomCategoryQuestion } from "../../../helper/api";
 
 export const Review = ({ result, question, currentQuestion }) => {
   const arr = ["A", "B", "C", "D"];
@@ -360,7 +359,7 @@ export const PracticeScreen = ({ route, navigation }) => {
   const getResult = () => {
     setSelectedIndex(-1);
     setShowResult(true);
-    dispatch(doQuestion(userData.uid));
+    addPractice(userData.uid);
     const itemRes = {
       res: selectedIndex === parseInt(question.correct_ans) - 1,
       pick: selectedIndex,

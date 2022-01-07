@@ -6,7 +6,6 @@ import {
   RadioGroup,
   Text,
   TopNavigation,
-  TopNavigationAction,
 } from "@ui-kitten/components";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
@@ -27,9 +26,9 @@ import {
   saveQuestion,
   unsaveQuestionReturnIds,
 } from "../../../redux/actions/questionAction";
-import { doQuestion } from "../../../redux/actions/userAction";
 import { TopBar } from "../../../components/topBar/topBar";
-import { postExamRecord } from "../../../helper/api";
+import { addPractice, postExamRecord } from "../../../helper/api";
+import { LoadingIndicator } from "../../../components/loading/loadingIndicator";
 
 const topStyles = StyleSheet.create({
   topBar: {
@@ -48,6 +47,7 @@ export const MockExamScreen = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
+  const [spinner, setSpinner] = React.useState(false);
 
   // quit display
   const [quitExamDisplay, setQuitExamDisplay] = React.useState(false);
@@ -76,9 +76,17 @@ export const MockExamScreen = ({ navigation }) => {
 
   // next btn
   const goNextQuestion = () => {
-    if (currentQuestion < 99) {
+    if (currentQuestion <= 99) {
       // do question
-      dispatch(doQuestion(userData.uid));
+      setSpinner(true);
+      addPractice(userData.uid).then(result => {
+        if (result) {
+          setTimeout(() => {
+            setSpinner(false);
+          }, 300);
+        }
+      })
+
       // add score
       if (selectedIndex === parseInt(question.correct_ans) - 1) {
         setScore(score + 1);
@@ -180,6 +188,7 @@ export const MockExamScreen = ({ navigation }) => {
             title="Real Mock Exam Review"
             navigation={navigation}
             hasBack={true}
+            type="exam_review"
           />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
@@ -265,10 +274,11 @@ export const MockExamScreen = ({ navigation }) => {
               </RadioGroup>
               <Button
                 style={styles.button}
-                onPress={goNextQuestion}
-                disabled={selectedIndex === -1 ? true : false}
+                onPress={!spinner ? goNextQuestion : null}
+                disabled={selectedIndex === -1 && !spinner ? true : false}
+                accessoryLeft={spinner ? LoadingIndicator : null}
               >
-                Next
+                {!spinner ? "Next" : "Loading..."}
               </Button>
             </View>
           </ScrollView>
@@ -360,7 +370,7 @@ export const MockExamScreen = ({ navigation }) => {
             Time Over
           </Text>
           <Text category="h6" style={styles.modalTitle}>
-            Your Mock Exam Is Over
+            Your Mock Exam Over
           </Text>
           <Button
             onPress={() => {
