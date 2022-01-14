@@ -180,7 +180,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                 }}
                 style={styles.modal}
               >
-                <Card disabled={true}>
+                <Card disabled={true} style={styles.card}>
                   <Text category="s1" style={styles.modalTitle}>
                     Change exam date
                   </Text>

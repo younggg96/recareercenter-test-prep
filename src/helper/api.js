@@ -19,6 +19,21 @@ export const postExamRecord = async (data) => {
     }
 }
 
+export const updateNotification = async ({ uid, status, hours, mins }) => {
+    try {
+        const res = await axios({
+            method: 'post',
+            url: BASE_URL + '/users/updateNotification',
+            data: {
+                uid, status, hours, mins
+            }
+        });
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
 export const findUser = async (uid) => {
     try {
         const res = axios.get(BASE_URL + `/users/findUser?uid=${uid}`);

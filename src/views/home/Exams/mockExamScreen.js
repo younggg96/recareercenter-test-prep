@@ -199,7 +199,7 @@ export const MockExamScreen = ({ navigation }) => {
                 />
               </View>
               <Text category="s1" style={styles.title}>
-                Your Mock Exam Score:
+                Mock Exam Score:
               </Text>
               <Text
                 category="h1"
@@ -221,7 +221,7 @@ export const MockExamScreen = ({ navigation }) => {
                 </Text>
               ) : (
                 <Text category="s1" status="danger">
-                  Should do more practices!!!
+                  You should do more practices!!!
                 </Text>
               )}
             </View>
@@ -231,7 +231,7 @@ export const MockExamScreen = ({ navigation }) => {
                 appearance="hint"
                 style={{ ...styles.title, paddingHorizontal: 32 }}
               >
-                Your Mock Exam Reviews:
+                Mock Exam Reviews:
               </Text>
               <Text appearance="hint" style={{ ...styles.title, paddingHorizontal: 32, fontSize: 12, marginTop: 0 }}>(Only show up the questions you finished)</Text>
             </View>
@@ -253,7 +253,7 @@ export const MockExamScreen = ({ navigation }) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.quizCard}>
               <ProgressBar
-                target="30"
+                target="100"
                 isTimer={true}
                 setTimeoutDisplay={setTimeoutDisplay}
                 setQuitExamDisplay={setQuitExamDisplay}
@@ -370,7 +370,7 @@ export const MockExamScreen = ({ navigation }) => {
             Time Over
           </Text>
           <Text category="h6" style={styles.modalTitle}>
-            Your Mock Exam Over
+            Mock Exam Over
           </Text>
           <Button
             onPress={() => {

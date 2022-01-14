@@ -33,6 +33,7 @@ export const VideosDetailScreen = ({ route, navigation }) => {
           shouldPlay
           useNativeControls
           resizeMode="contain"
+          ignoreSilentSwitch={'ignore'}
           style={{ width: "100%", height: "100%", backgroundColor: "#000" }}
         />
       </View>

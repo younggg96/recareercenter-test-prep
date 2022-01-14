@@ -31,15 +31,15 @@ export const ProfileScreen = ({ navigation }) => {
               <Text numberOfLines={2} style={{ fontWeight: "bold", fontSize: 28 }}>Hi! {userData.displayName ? userData.displayName : "Student"}</Text>
             </View>
             <View style={{ width: '40%' }}>
-            <Button
-              appearance="outline"
-              size="medium"
-              style={styles.settings}
-              accessoryRight={SettingsIcon}
-              onPress={settingOnPress}
-            >
-              Settings
-            </Button>
+              <Button
+                appearance="outline"
+                size="medium"
+                style={styles.settings}
+                accessoryRight={SettingsIcon}
+                onPress={settingOnPress}
+              >
+                Settings
+              </Button>
             </View>
           </View>
           <View style={styles.subHeaderContainer}>

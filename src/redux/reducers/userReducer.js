@@ -10,7 +10,8 @@ import {
   USER_LOGOUT,
   USER_REGISTER,
   CHANGE_MEMBERSHIP,
-  UPDATE_PROFILE
+  UPDATE_PROFILE,
+  SET_NOTIFICATION
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
@@ -28,29 +29,14 @@ const INITIAL_STATE = {
     email: "",
     notification: {
       status: false,
-      time: null
+      time: {
+        hours: 0,
+        mins: 0,
+      }
     }
   },
   signIn: false,
 };
-
-// {
-//   "id": 2,
-//     "membership": "1",
-//       "dailyPractice": 71,
-//         "targetPractice": 150,
-//           "totalPractice": 71,
-//             "examStartDate": "1970-01-01",
-//               "practiceStartDate": "1970-01-01",
-//                 "registerDate": "2022-01-06",
-//                   "totalStudyDay": 0,
-//                     "token": null,
-//                       "uid": "105366441242484750344",
-//                         "notification": {
-//     "status": false,
-//       "time": null
-//   }
-// }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -61,17 +47,9 @@ export default (state = INITIAL_STATE, action) => {
         signIn: action.payload.signIn,
       };
     case USER_LOGIN_WITH_GOOGLE:
-      return {
-        ...state,
-        userData: action.payload.userData,
-        signIn: action.payload.signIn,
-      };
+      return action.payload;
     case USER_LOGIN_WITH_CACHE:
-      return {
-        ...state,
-        userData: action.payload.userData,
-        signIn: action.payload.signIn,
-      };
+      return action.payload;
     case USER_LOGOUT:
       return { ...state, userData: null, signIn: false };
     case USER_REGISTER:
@@ -117,7 +95,21 @@ export default (state = INITIAL_STATE, action) => {
     case UPDATE_PROFILE:
       return {
         ...state,
-        userData: action.payload
+        userData: {
+          ...state.userData,
+          ...action.payload
+        }
+      };
+    case SET_NOTIFICATION:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          notification: {
+            ...state.userData.notification,
+            status: action.payload
+          }
+        }
       };
     default:
       return state;

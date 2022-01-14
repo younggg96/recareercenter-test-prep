@@ -132,7 +132,7 @@ export const QuizScreen = ({ navigation }) => {
                 </Text>
               ) : (
                 <Text category="s1" status="danger">
-                  Should do more practices!!!
+                  You should do more practices!!!
                 </Text>
               )}
             </View>

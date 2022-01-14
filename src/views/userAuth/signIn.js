@@ -16,12 +16,12 @@ import { useForm, Controller } from "react-hook-form";
 
 // redux
 import { useDispatch } from "react-redux";
-import { login, loginWithCache, loginWithGoogle } from "../../redux/actions/userAction";
+import { login, loginWithGoogle } from "../../redux/actions/userAction";
 
 // icons
 import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
 import { LoadingIndicator } from "../../components/loading/loadingIndicator";
-import { GOOGLE_AUTH_CONFIG } from "../../../config";
+// import { GOOGLE_AUTH_CONFIG } from "../../../config";
 import { getValueFormStore, setValueToStore } from "../../storage";
 import { STORE_SIGNIN_GOOGLE_KEY } from "../../storage/keys";
 
@@ -90,7 +90,6 @@ export const SignIn = ({ navigation }) => {
 
   const _syncUserWithStateAsync = async () => {
     const user = await GoogleSignIn.signInSilentlyAsync();
-    console.log(user)
     const { uid, email, displayName } = user;
     dispatch(loginWithGoogle(uid, email, displayName));
     // this.setState({ user });

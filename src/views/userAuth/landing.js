@@ -2,13 +2,14 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Button, Text } from "@ui-kitten/components";
-import { Image, View } from 'react-native';
+import { Alert, Image, View } from 'react-native';
 import { styles } from '../../styles/userAuth/landingStyle';
 import { LoadingIndicator } from '../../components/loading/loadingIndicator';
 
 import { USER_AUTH_INFO } from '../../storage/keys';
 import { loginWithCache } from '../../redux/actions/userAction';
-import { getValueFormStore } from '../../storage';
+import { deleteValueFormStore, getValueFormStore } from '../../storage';
+import { findUser } from '../../helper/api';
 
 const Landing = ({ navigation }) => {
   const [spinner, setSpinner] = React.useState(false);
@@ -18,17 +19,31 @@ const Landing = ({ navigation }) => {
     setSpinner(true);
     const userObj = JSON.parse(await getValueFormStore(USER_AUTH_INFO));
     if (userObj) {
-      dispatch(loginWithCache(userObj));
-      setTimeout(() => {
-        setSpinner(false);
-      }, 2000);
+      findUser(userObj.uid).then((res) => {
+        if (res) {
+          dispatch(loginWithCache(userObj, res));
+          setSpinner(false);
+        }
+      }).catch((error) => {
+        Alert.alert("Error", `${error.message}`)
+      })
     } else {
       setTimeout(() => {
         setSpinner(false);
         navigation.navigate("SignIn");
-      }, 1000);
+      }, 500);
     }
   };
+
+  const clear = () => {
+    try {
+      deleteValueFormStore(USER_AUTH_INFO).then((data) => {
+        Alert.alert("Cleared cache", JSON.stringify(data));
+      })
+    } catch (error) {
+      Alert.alert("Error", `${error.message}`);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -47,6 +62,9 @@ const Landing = ({ navigation }) => {
             Loading...
           </Button>}
       </View>
+      <Button style={{ position: "absolute", top: '30%', right: 0 }} appearance={"ghost"} onPress={clear}>
+        Clear cache 
+      </Button>
     </View>
   );
 };

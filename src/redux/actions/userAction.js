@@ -10,6 +10,7 @@ import {
   DO_QUESTION,
   USER_REGISTER,
   UPDATE_PROFILE,
+  SET_NOTIFICATION,
 } from "./actionTypes";
 
 import FirebaseAuth from "../../firebase/index";
@@ -18,6 +19,7 @@ import axios from "axios";
 import { BASE_URL } from "../../../config";
 import { getValueFormStore, setValueToStore } from "../../storage";
 import { USER_AUTH_INFO } from "../../storage/keys";
+import { findUser } from "../../helper/api";
 
 // alerts
 const successSubmitAlert = (date) =>
@@ -106,22 +108,20 @@ export async function loginWithGoogle(uid, email, displayName) {
     await setValueToStore(USER_AUTH_INFO, JSON.stringify({ uid, userInfo }))
     return {
       type: USER_LOGIN_WITH_GOOGLE,
-      payload: payload,
+      payload
     };
   } catch (err) {
     Alert.alert("Error", `${err.message}`);
   }
 }
 
-export async function loginWithCache(userObj) {
-  const res = await axios.get(BASE_URL + `/users/findUser?uid=${userObj.uid}`);
-  const payload = {
-    userData: Object.assign(res.data, userObj.userInfo),
-    signIn: true,
-  };
+export async function loginWithCache(userObj, res) {
   return {
     type: USER_LOGIN_WITH_CACHE,
-    payload: payload,
+    payload: {
+      userData: Object.assign(res.data, userObj.userInfo),
+      signIn: true,
+    }
   }
 }
 
@@ -145,7 +145,7 @@ export async function register(email, password, username) {
     }
     return {
       type: USER_REGISTER,
-      payload: payload,
+      payload
     };
   } catch (err) {
     Alert.alert("Error", `${err.message}`);
@@ -254,6 +254,13 @@ export async function updateProfile(data) {
   return {
     type: UPDATE_PROFILE,
     payload: data
+  };
+}
+
+export async function setNotification(bool) {
+  return {
+    type: SET_NOTIFICATION,
+    payload: bool
   };
 }
 

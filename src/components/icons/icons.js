@@ -28,6 +28,9 @@ export const AboutUsIcon = (props) => <Icon fill="#000" {...props} name="globe-2
 export const ContactUsIcon = (props) => <Icon fill="#000" {...props} name="message-square-outline" />;
 export const BellIcon = (props) => <Icon fill="#000" {...props} name="bell" />;
 export const ShareIcon = (props) => <Icon fill="#000" {...props} name="share" />;
+export const EmailIcon = (props) => <Icon fill="#E52326" {...props} name="email-outline" />;
+export const PhoneIcon = (props) => <Icon fill="#E52326" {...props} name="phone-outline" />;
+export const LocationIcon = (props) => <Icon fill="#E52326" {...props} name="navigation-2-outline" />;
 
 // study plan
 export const EditIcon = (props) => <Icon {...props} name="edit-outline" />;

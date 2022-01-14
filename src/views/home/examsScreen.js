@@ -41,19 +41,15 @@ export const ExamsScreen = ({ navigation }) => {
   // chart
   const getChartLabel = () => {
     let arr = [];
-    let res = [];
     exams.slice(0, 7).forEach(element => {
-      arr.push(element.examDate)
+      arr.push(element.examDate.slice(5, 10))
     });
     if (arr.length < 7) {
       for (let i = 7 - arr.length; i > 0; i--) {
-        arr.push(new Date(new Date(arr[arr.length - 1]).getTime() - 24 * 60 * 60).toISOString().substring(0, 10));
+        arr.push("-");
       }
     }
-    arr.forEach((element) => {
-      res.push(element.slice(5, 10));
-    })
-    return res;
+    return arr;
   }
 
   const getNoDataLastWeekLabel = () => {
@@ -136,10 +132,10 @@ export const ExamsScreen = ({ navigation }) => {
             All Mock Exam
           </Text>
           <Text category="s2" appearance="hint" style={styles.time}>
-            Within 30 mins, To complete 100 questions
+            Within 100 mins, To complete 100 questions
           </Text>
           <Button style={{ ...styles.button, marginBottom: 8, borderRadius: 16 }} onPress={navigateToMockExam}>
-            Let's Start A Real Mock Exam
+            Let's Start A Mock Exam
           </Button>
         </View>
         <Text

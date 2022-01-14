@@ -18,16 +18,14 @@ import Carousel, { ParallaxImage } from "react-native-snap-carousel";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
-// const
+// constants
+import Constants from 'expo-constants';
 import { itemWidth, sliderWidth } from "../../constants";
-// data
-// import { ENTRIES1 } from "../../static/entries";
-// import { Categories } from "../../static/questions/category";
+
 import { refreshQuiz } from "../../redux/actions/questionAction";
 import { LockVideoIcon, PlayIcon } from "../../components/icons/icons";
 import { changeMembership, getQuestionCategories, getSliderData } from "../../helper/api";
 
-import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 
 // membership
@@ -51,6 +49,16 @@ Notifications.setNotificationHandler({
     shouldSetBadge: false,
   }),
 });
+
+// Notifications.scheduleNotificationAsync({
+//   content: {
+//     title: "Time's up!",
+//     body: 'Change sides!',
+//   },
+//   trigger: {
+//     seconds: 60,
+//   },
+// });
 
 const registerForPushNotificationsAsync = async () => {
   let token;
@@ -119,13 +127,13 @@ export const HomeScreen = ({ navigation }) => {
   // redux
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.userReducer);
-  const notificationDate = useSelector((state) => state.settingReducer);
+
   const uid = userData.uid;
 
   // push notification
   useInterval(() => {
-    if (notificationDate.notification.status) {
-      if (new Date().getHours() == notificationDate.notification.time.hours && new Date().getMinutes() == notificationDate.notification.time.mins) {
+    if (userData.notification.status) {
+      if (new Date().getHours() == userData.notification.time.hours && new Date().getMinutes() == userData.notification.time.mins) {
         if (new Date().getSeconds() == 0) {
           (async () => {
             await sendPushNotification(expoPushToken, userData);
@@ -134,6 +142,18 @@ export const HomeScreen = ({ navigation }) => {
       }
     }
   }, 1000)
+
+  // async function logNextTriggerDate(hour, minute) {
+  //   try {
+  //     const nextTriggerDate = await Notifications.getNextTriggerDateAsync({
+  //       hour,
+  //       minute
+  //     });
+  //     console.log(nextTriggerDate === null ? 'No next trigger date' : new Date(nextTriggerDate));
+  //   } catch (e) {
+  //     console.warn(`Couldn't have calculated next trigger date: ${e}`);
+  //   }
+  // }
 
   setPurchaseListener(({ responseCode, results, errorCode }) => {
     if (responseCode === IAPResponseCode.OK) {
@@ -465,7 +485,7 @@ export const HomeScreen = ({ navigation }) => {
             />
             <View style={{ width: '55%', justifyContent: 'center' }}>
               <Text category="p2" style={{ width: '100%', marginBottom: 8 }}>
-                Our experts teachers guide you step by step through the key information you will need to know to pass your state real estate exam.
+                Our expert teachers guide you step by step through the key information you will need to know to pass your state real estate exam.
               </Text>
               <Button
                 accessoryLeft={userData.membership === "2" || userData.membership === "3" ? PlayIcon : LockVideoIcon}

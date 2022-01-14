@@ -13,6 +13,6 @@ export const settings = [
   // { title: "Change Password", icon: LockIcon, rightIcon: ForwardIcon, link: 'ChangePasswordScreen', disable: false},
   { title: "Notification", icon: BellIcon, rightIcon: ForwardIcon, link: 'NotificationScreen', disable: false},
   { title: "About Us", icon: AboutUsIcon, rightIcon: ForwardIcon, link: 'AboutUsScreen', disable: false},
-  { title: "Contact Us", icon: ContactUsIcon, rightIcon: null, link: null, disable: false},
-  { title: "Share Our App", icon: ShareIcon, rightIcon: null, link: 'Share', disable: true},
+  // { title: "Contact Us", icon: ContactUsIcon, rightIcon: null, link: null, disable: false},
+  { title: "Share Our App", icon: ShareIcon, rightIcon: null, link: null, disable: false},
 ]

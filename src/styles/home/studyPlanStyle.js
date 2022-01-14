@@ -34,7 +34,10 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
   modal: {
-    width: '60%',
+    width: '90%',
+  },
+  card: {
+    borderRadius: 16,
   },
   modalTitle: {
     paddingVertical: 8,
