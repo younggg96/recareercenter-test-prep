@@ -16,8 +16,6 @@ export const ExamHistoryScreen = ({ route, navigation }) => {
     navigation.navigate("ExamDetailsScreen", { id })
   }
 
-  // const displayText = {   }
-
   return (
     <View style={{ flex: 1 }}>
       <TopBar title="Exam History" hasBack={true} navigation={navigation} />

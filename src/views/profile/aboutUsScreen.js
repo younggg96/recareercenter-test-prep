@@ -29,8 +29,6 @@ const url = Platform.select({
 });
 
 export const AboutUsScreen = ({ navigation }) => {
-  // const dispatch = useDispatch();
-  // const { userData } = useSelector((state) => state.userReducer);
 
   return (
     <View style={{ flex: 1 }}>

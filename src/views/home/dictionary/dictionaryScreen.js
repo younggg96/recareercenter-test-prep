@@ -8,6 +8,7 @@ import {
   List,
   Text,
   TopNavigation,
+  TopNavigationAction,
 } from "@ui-kitten/components";
 import {
   ListIcon,
@@ -113,6 +114,12 @@ export const DictionaryScreen = ({ navigation }) => {
     navigation.navigate("MembershipScreen");
   };
 
+  const renderRightActions = () => (
+    <React.Fragment>
+      <TopNavigationAction icon={ListIcon} onPress={navigateTo}/>
+    </React.Fragment>
+  );
+
   return (
     <View style={{ flex: 1 }}>
       <TopNavigation
@@ -121,14 +128,7 @@ export const DictionaryScreen = ({ navigation }) => {
             Dictionary
           </Text>
         )}
-        accessoryRight={userData.membership !== "1" ? () => (
-          <Button
-            style={styles.button}
-            appearance="ghost"
-            accessoryLeft={ListIcon}
-            onPress={navigateTo}
-          />
-        ) : null}
+        accessoryRight={userData.membership !== "1" ? renderRightActions : null}
         style={styles.topBar}
       />
       {

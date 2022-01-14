@@ -4,7 +4,7 @@ import { BASE_URL } from "../../config"
 
 export const postExamRecord = async (data) => {
     try {
-        await axios({
+        const res = await axios({
             method: 'post',
             url: BASE_URL + '/exams/saveExam',
             data: {
@@ -14,6 +14,7 @@ export const postExamRecord = async (data) => {
                 recordQuestions: data.recordQuestions
             }
         });
+        return res.data;
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
     }
@@ -57,6 +58,7 @@ export const getSliderData = async (uid) => {
 }
 
 export const getExamData = async (uid) => {
+    console.log(uid)
     try {
         const res = await axios.get(BASE_URL + `/examData/getExamData?uid=${uid}`);
         if (res) {

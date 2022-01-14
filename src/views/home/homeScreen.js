@@ -390,14 +390,13 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopNavigation
-        title={() => (
-          <Text category="s1" style={styles.topTitle}>
-            Home
-          </Text>
-        )}
-        style={styles.topBar}
-      />
+      <View style={{...styles.topBar, alignItems: 'center', backgroundColor: '#fff', paddingTop: 16}}>
+        <Image
+          source={require("../../../assets/img/logo.png")}
+          resizeMode="contain"          
+          style={{ height: 40 }}
+        />
+      </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Carousel
           data={sliderData}

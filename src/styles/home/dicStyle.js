@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
   topBar: {
 		paddingTop: Constants.statusBarHeight + 16,
 		paddingBottom: 18,
-		marginBottom: 8,
+    marginBottom: 8,
 		...shadow
   },
   topTitle: {

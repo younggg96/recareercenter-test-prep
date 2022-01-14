@@ -120,6 +120,7 @@ const BottomTabBar = ({ navigation, state }) => {
             break;
           // case 1:
           //   getExamData(userData.uid).then((res) => {
+          //     console.log(res);
           //     dispatch(getExams(res.reverse()));
           //   })
           //   break;
