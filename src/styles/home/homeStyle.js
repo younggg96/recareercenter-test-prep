@@ -135,6 +135,17 @@ export const homeStyles = StyleSheet.create({
     borderRadius: 16,
     justifyContent: 'center'
   },
+  modalCard2: {
+    paddingVertical: 16,
+    borderRadius: 16,
+    justifyContent: 'center'
+  },
+  modalSelect: {
+    marginBottom: 8
+  },
+  modalSubmit: {
+    marginTop: 8
+  },
   modalTitle: {
     paddingVertical: 8,
   },

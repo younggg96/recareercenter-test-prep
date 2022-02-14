@@ -147,7 +147,7 @@ export const getQuestionCategories = async () => {
         });
         return res.data;
     } catch (error) {
-        Alert.alert("Error", `${error.message}`);
+        Alert.alert("Error", `${error.message}${error}!`);
     }
 }
 
@@ -234,5 +234,46 @@ export const addPractice = async (uid) => {
     }
 }
 
+export const getCourseList = async () => {
+    try {
+        const res = await axios.get(BASE_URL + '/course/getCourseList');
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const getCourseById = async (uid) => {
+    try {
+        const res = await axios.get(BASE_URL + `/course/findCourseById?cid=${uid}`);
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const addClockIn = async (uid, cid, chapter, date) => {
+    try {
+        const res = await axios({
+            method: 'post',
+            url: BASE_URL + '/clockIn/addClockIn',
+            data: {
+                uid, cid, chapter, date
+            }
+        });
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const getUserClockInList = async (uid) => {
+    try {
+        const res = await axios.get(BASE_URL + `/clockIn/getUserClockInList?uid=${uid}`);
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
 
 

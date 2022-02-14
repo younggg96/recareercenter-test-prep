@@ -44,6 +44,7 @@ import { BASE_URL } from "../../config";
 import { Alert } from "react-native";
 import { getExamData } from "../helper/api";
 import { getExams } from "../redux/actions/questionAction";
+import { AttendanceListScreen } from "../views/home/Attendance/AttendanceListScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -95,6 +96,7 @@ const HomeScreenNavigation = () => (
     <Stack.Screen name="VideosListScreen" component={VideosListScreen} />
     <Stack.Screen name="VideosDetailScreen" component={VideosDetailScreen} />
     <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
+    <Stack.Screen name="AttendanceListScreen" component={AttendanceListScreen} />
   </Stack.Navigator>
 );
 
@@ -118,14 +120,6 @@ const BottomTabBar = ({ navigation, state }) => {
               Alert.alert("Error", `${error.message}`);
             }
             break;
-          // case 1:
-          //   getExamData(userData.uid).then((res) => {
-          //     console.log(res);
-          //     dispatch(getExams(res.reverse()));
-          //   })
-          //   break;
-          // case 2:
-          //   break;
           case 3:
             try {
               axios.get(BASE_URL + `/users/findUser?uid=${userData.uid}`).then((res) => {

@@ -19,7 +19,6 @@ export const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight + 16,
     paddingBottom: 18,
     marginBottom: 8,
-    // alignItems: "flex-start",
     ...shadow,
   },
   topTitle: {

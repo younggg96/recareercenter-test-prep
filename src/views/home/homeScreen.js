@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { useRef } from "react";
 // ui
-import { Alert, Image, Linking, Platform, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Alert, Image, Linking, Platform, TouchableOpacity, View } from "react-native";
 import {
   Button,
   Card,
+  Datepicker,
   Icon,
+  IndexPath,
   Layout,
   Modal,
+  Select,
+  SelectItem,
   Text,
   TopNavigation,
 } from "@ui-kitten/components";
@@ -24,7 +28,7 @@ import { itemWidth, sliderWidth } from "../../constants";
 
 import { refreshQuiz } from "../../redux/actions/questionAction";
 import { LockVideoIcon, PlayIcon } from "../../components/icons/icons";
-import { changeMembership, getQuestionCategories, getSliderData } from "../../helper/api";
+import { addClockIn, changeMembership, getCourseList, getQuestionCategories, getSliderData } from "../../helper/api";
 
 import * as Notifications from 'expo-notifications';
 
@@ -41,6 +45,35 @@ import { changeMembershipStatus, updateProfile } from "../../redux/actions/userA
 import { useInterval } from "../../helper/hooks/useInterval";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
+
+const chapters = [
+  { id: "-1", name: "Choose chapter..", value: "0" },
+  { id: "0", name: "chapter 1", value: "1" },
+  { id: "1", name: "chapter 2", value: "2" },
+  { id: "2", name: "chapter 3", value: "3" },
+  { id: "3", name: "chapter 4", value: "4" },
+  { id: "4", name: "chapter 5", value: "5" },
+  { id: "5", name: "chapter 6", value: "6" },
+  { id: "6", name: "chapter 7", value: "7" },
+  { id: "7", name: "chapter 8", value: "8" },
+  { id: "8", name: "chapter 9", value: "9" },
+  { id: "9", name: "chapter 10", value: "10" },
+  { id: "10", name: "chapter 11", value: "11" },
+  { id: "11", name: "chapter 12", value: "12" },
+  { id: "12", name: "chapter 13", value: "13" },
+  { id: "13", name: "chapter 14", value: "14" },
+  { id: "14", name: "chapter 15", value: "15" },
+  { id: "15", name: "chapter 16", value: "16" },
+  { id: "16", name: "chapter 17", value: "17" },
+  { id: "17", name: "chapter 18", value: "18" },
+  { id: "18", name: "chapter 19", value: "19" },
+  { id: "19", name: "chapter 20", value: "20" },
+  { id: "20", name: "chapter 21", value: "21" },
+  { id: "21", name: "chapter 22", value: "22" },
+  { id: "22", name: "chapter 23", value: "23" },
+  { id: "23", name: "chapter 24", value: "24" },
+  { id: "24", name: "chapter 25", value: "25" },
+]
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -114,15 +147,24 @@ const sendPushNotification = async (expoPushToken, userData) => {
 
 export const HomeScreen = ({ navigation }) => {
   const [toPlanVisible, setToPlanVisible] = React.useState(false);
+  const [trackerVisible, setTrackerVisible] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
   const [categories, setCategories] = React.useState([]);
+  const [submitError, setSubmitError] = React.useState(false);
   const [all, setAll] = React.useState(0);
 
   const [expoPushToken, setExpoPushToken] = React.useState('');
   const [sliderData, setSliderData] = React.useState([]);
   const [notification, setNotification] = React.useState(false);
+  const [courseList, setCourseList] = React.useState([]);
   const notificationListener = useRef();
   const responseListener = useRef();
+
+  // selectedIndex
+  const [selectedIndex1, setSelectedIndex1] = React.useState(new IndexPath(0));
+  const [selectedIndex2, setSelectedIndex2] = React.useState(new IndexPath(0));
+  const [attendanceDate, setAttendanceDate] = React.useState(new Date());
+  const [attendanceLoading, setAttendanceLoading] = React.useState(false);
 
   // redux
   const dispatch = useDispatch();
@@ -271,6 +313,45 @@ export const HomeScreen = ({ navigation }) => {
   // navigations
   const navigateTo = (link) => Linking.openURL(link);
 
+  // choose date cannot be over today
+  const filter = (date) => Date.parse(date.toLocaleDateString()) <= Date.parse(new Date().toLocaleDateString());
+
+  const openAttendanceModal = () => {
+    setTrackerVisible(true);
+    setAttendanceLoading(true);
+    getCourseList().then((res) => {
+      if (res) {
+        setCourseList([{ courseName: "Choose your class", id: '0' }, ...res]);
+      }
+    }).finally(() => {
+      setAttendanceLoading(false);
+    })
+  };
+
+  const closeAttendanceModal = () => {
+    setTrackerVisible(false);
+    setSelectedIndex1(new IndexPath(0));
+    setSelectedIndex2(new IndexPath(0));
+    setAttendanceDate(new Date());
+    setSubmitError(false);
+  }
+
+  const submitAttendanceRecord = () => {
+    if (selectedIndex1.row == 0 || selectedIndex2.row == 0) {
+      setSubmitError(true);
+    } else {
+      addClockIn(uid, courseList[selectedIndex1.row].id, chapters[selectedIndex2.row].value, attendanceDate.toISOString().slice(0, 10)).then((res) => {
+        if (res) {
+          Toast.show(
+            res
+          );
+          closeAttendanceModal();
+        }
+      })
+      setSubmitError(false);
+    }
+  }
+
   const navigateToQuiz = () => {
     dispatch(refreshQuiz());
     navigation.navigate("QuizScreen");
@@ -290,6 +371,10 @@ export const HomeScreen = ({ navigation }) => {
 
   const navigateToVideosList = () => {
     navigation.navigate("VideosListScreen");
+  };
+
+  const navigateToAttendanceList = () => {
+    navigation.navigate("AttendanceListScreen");
   };
 
   const navigateToMembership = () => {
@@ -390,11 +475,11 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{...styles.topBar, alignItems: 'center', backgroundColor: '#fff', paddingTop: 16}}>
+      <View style={{ ...styles.topBar, alignItems: 'center', backgroundColor: '#fff', paddingTop: 32 }}>
         <Image
           source={require("../../../assets/img/logo.png")}
-          resizeMode="contain"          
-          style={{ height: 40 }}
+          resizeMode="contain"
+          style={{ height: 32 }}
         />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -470,6 +555,26 @@ export const HomeScreen = ({ navigation }) => {
               keyExtractor={(item) => item.id.toString()}
             />
           </View>
+        </View>
+        <View style={homeStyles.content}>
+          <View style={homeStyles.header}>
+            <Text category="h4" style={homeStyles.title}>
+              Class attendance tracker
+            </Text>
+          </View>
+          <View style={homeStyles.header}>
+            <Image
+              source={require("../../../assets/img/attendance.png")}
+              style={{ width: '100%', height: 250 }}
+              resizeMode="contain"
+            />
+          </View>
+          <Button style={homeStyles.button} onPress={openAttendanceModal}>
+            Submit record
+          </Button>
+          <Button appearance="ghost" style={{ ...homeStyles.button, marginTop: 8 }} onPress={navigateToAttendanceList}>
+            Review Attendance
+          </Button>
         </View>
         <View style={homeStyles.content}>
           <View style={homeStyles.header}>
@@ -559,6 +664,62 @@ export const HomeScreen = ({ navigation }) => {
           >
             Skip
           </Button>
+        </Card>
+      </Modal>
+      <Modal
+        style={homeStyles.modal}
+        visible={trackerVisible}
+        backdropStyle={homeStyles.backdrop}
+        onBackdropPress={closeAttendanceModal}
+      >
+        <Card disabled={true} style={{ ...homeStyles.modalCard2 }}>
+          {!attendanceLoading ?
+            <>
+              <Select
+                style={homeStyles.modalSelect}
+                label="Choose your class"
+                placeholder='Choose your class'
+                value={courseList[selectedIndex1.row].courseName}
+                selectedIndex={selectedIndex1}
+                onSelect={index => setSelectedIndex1(index)}>
+                {courseList.map((course, index) => {
+                  return <SelectItem title={course.courseName} key={course.id} />
+                })}
+              </Select>
+              <Select
+                style={homeStyles.modalSelect}
+                label="Choose chapter"
+                placeholder='Choose chapter..'
+                value={chapters[selectedIndex2.row].name}
+                selectedIndex={selectedIndex2}
+                onSelect={index => setSelectedIndex2(index)}>
+                {chapters.map((item, index) => {
+                  return <SelectItem title={item.name} key={item.id} />
+                })}
+              </Select>
+              <Datepicker
+                style={homeStyles.modalSelect}
+                label="Choose date"
+                date={attendanceDate}
+                onSelect={nextDate => setAttendanceDate(nextDate)}
+                filter={filter}
+              />
+              {submitError && <Text category="s2" style={{ color: 'red' }}>Submit error, please check it</Text>}
+              <Button
+                style={homeStyles.modalSubmit}
+                onPress={submitAttendanceRecord}
+              >
+                Submit
+              </Button>
+            </>
+            :
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", height: 260 }}>
+              <ActivityIndicator style={{ marginBottom: 6 }} />
+              <Text category="s1" appearance="hint">
+                Loading...
+              </Text>
+            </View>
+          }
         </Card>
       </Modal>
     </View>
