@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 });
 
 export const TopBar = (props) => {
-  const { navigation, title, hasBack, type } = props;
+  const { navigation, title, hasBack, type, hasRight = false, right = null } = props;
   const { userData } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
   const navigateBack = () => {
@@ -51,7 +51,8 @@ export const TopBar = (props) => {
           {title}
         </Text>
       )}
-      accessoryLeft={hasBack ? BackAction : null}
+      accessoryLeft={hasBack && BackAction}
+      accessoryRight={hasRight && right }
       style={styles.topBar}
     />
   );

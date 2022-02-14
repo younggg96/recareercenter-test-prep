@@ -22,6 +22,7 @@ import { styles } from "../../../styles/home/dicStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { getSavedWord, saveWord, unSaveWord } from "../../../redux/actions/dicAction";
 import { homeStyles } from "../../../styles/home/homeStyle";
+import { TopBar } from "../../../components/topBar/topBar";
 
 
 const WordsList = ({ text }) => {
@@ -36,7 +37,6 @@ const WordsList = ({ text }) => {
   // save
   const save = (did) => {
     dispatch(saveWord(userData.uid, did));
-    // successAddedAlert(item);
   };
 
   // unsave
@@ -114,54 +114,48 @@ export const DictionaryScreen = ({ navigation }) => {
     navigation.navigate("MembershipScreen");
   };
 
-  const renderRightActions = () => (
-    <React.Fragment>
-      <TopNavigationAction icon={ListIcon} onPress={navigateTo}/>
-    </React.Fragment>
-  );
+  // const renderRightActions = () => (
+  //   <React.Fragment>
+  //     <TopNavigationAction icon={ListIcon} onPress={navigateTo} />
+  //   </React.Fragment>
+  // );
 
   return (
     <View style={{ flex: 1 }}>
-      <TopNavigation
-        title={() => (
-          <Text category="s1" style={styles.topTitle}>
-            Dictionary
-          </Text>
-        )}
-        accessoryRight={userData.membership !== "1" ? renderRightActions : null}
-        style={styles.topBar}
-      />
+      <TopBar title="Dictionary" navigation={navigation} hasBack={false} hasRight={userData.membership != "1"} right={
+        () => <Button appearance="ghost" accessoryRight={ListIcon} onPress={navigateTo}></Button>
+      } />
       {
         userData.membership !== "1" ?
-        <React.Fragment>
-          <Card disabled>
-            <Input
-              focusable
-              autoCapitalize='none'
-              placeholder={"Search..."}
-              accessoryRight={SearchIcon}
-              onChangeText={(e) => {
-                setFilterText(e);
-              }}
-              value={filterText}
-              style={{ borderRadius: 25 }}
-            />
-          </Card>
+          <React.Fragment>
+            <Card disabled>
+              <Input
+                focusable
+                autoCapitalize='none'
+                placeholder={"Search..."}
+                accessoryRight={SearchIcon}
+                onChangeText={(e) => {
+                  setFilterText(e);
+                }}
+                value={filterText}
+                style={{ borderRadius: 25 }}
+              />
+            </Card>
             <WordsList text={filterText} />
-        </React.Fragment> :
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-          <Text category="h3" appearance="hint">
-            No Access to Dictionary
-          </Text>
-          <Text category="h6" appearance="hint" style={{marginBottom: 16}}>Unlock your Dictionary?</Text>
-          <Button
-            onPress={() => {
-              navigateToMembership();
-            }}
-          >
-            Start Membership!
-          </Button>
-        </View>
+          </React.Fragment> :
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <Text category="h3" appearance="hint">
+              No Access to Dictionary
+            </Text>
+            <Text category="h6" appearance="hint" style={{ marginBottom: 16 }}>Unlock your Dictionary?</Text>
+            <Button
+              onPress={() => {
+                navigateToMembership();
+              }}
+            >
+              Start Membership!
+            </Button>
+          </View>
       }
     </View>
   );

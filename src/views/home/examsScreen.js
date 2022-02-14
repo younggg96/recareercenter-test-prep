@@ -116,7 +116,7 @@ export const ExamsScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="Exams" hasBack={false} />
+      <TopBar title="Exams" hasBack={false}/>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
           <Image

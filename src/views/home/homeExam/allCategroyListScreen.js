@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 import { styles } from "../../../styles/home/home/allCategroyListStyle";
@@ -18,14 +18,18 @@ export const AllCategroyListScreen = ({ route, navigation }) => {
 
   const [allQuestions, setAllQuestions] = React.useState([]);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [questionLoading, setQuestionLoading] = React.useState(false);
   const shouldLoadComponent = (index) => index === selectedIndex;
 
   const cid = route.params.id;
 
   useEffect(() => {
+    setQuestionLoading(true);
     const res = getCategoryById(cid);
     res.then((res) => {
       setAllQuestions(res);
+    }).finally(() => {
+      setQuestionLoading(false)
     })
   }, [])
 
@@ -72,7 +76,7 @@ export const AllCategroyListScreen = ({ route, navigation }) => {
     <View style={{ flex: 1 }}>
       <TopBar title={route.params.categoryName} navigation={navigation} hasBack={true} />
       <View style={styles.content}>
-        <TabView
+        {!questionLoading ? <TabView
           style={{ flex: 1 }}
           selectedIndex={selectedIndex}
           shouldLoadComponent={shouldLoadComponent}
@@ -134,7 +138,13 @@ export const AllCategroyListScreen = ({ route, navigation }) => {
               </Layout>
             }
           </Tab>
-        </TabView>
+        </TabView> :
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center", height: 260 }}>
+            <ActivityIndicator style={{ marginBottom: 6 }} />
+            <Text category="s1" appearance="hint">
+              Loading...
+            </Text>
+          </View>}
       </View>
     </View>
   );

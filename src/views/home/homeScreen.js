@@ -156,15 +156,18 @@ export const HomeScreen = ({ navigation }) => {
   const [expoPushToken, setExpoPushToken] = React.useState('');
   const [sliderData, setSliderData] = React.useState([]);
   const [notification, setNotification] = React.useState(false);
-  const [courseList, setCourseList] = React.useState([]);
   const notificationListener = useRef();
   const responseListener = useRef();
 
   // selectedIndex
+  const [courseList, setCourseList] = React.useState([{ courseName: '', id: -1 }]);
   const [selectedIndex1, setSelectedIndex1] = React.useState(new IndexPath(0));
   const [selectedIndex2, setSelectedIndex2] = React.useState(new IndexPath(0));
   const [attendanceDate, setAttendanceDate] = React.useState(new Date());
+
+  // loading
   const [attendanceLoading, setAttendanceLoading] = React.useState(false);
+  const [questionLoading, setQuestionLoading] = React.useState(false);
 
   // redux
   const dispatch = useDispatch();
@@ -290,11 +293,14 @@ export const HomeScreen = ({ navigation }) => {
         setSliderData(res)
       }
     })
+    setQuestionLoading(true);
     getQuestionCategories().then((res) => {
       if (res) {
         setAll(res.length);
         setCategories(res.slice(0, 9));
       }
+    }).finally(() => {
+      setQuestionLoading(false)
     })
   }, [])
 
@@ -475,11 +481,11 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ ...styles.topBar, alignItems: 'center', backgroundColor: '#fff', paddingTop: 32 }}>
+      <View style={{ ...styles.topBar, alignItems: 'center', backgroundColor: '#fff', paddingTop: 48 }}>
         <Image
           source={require("../../../assets/img/logo.png")}
           resizeMode="contain"
-          style={{ height: 32 }}
+          style={{ height: 40 }}
         />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -547,13 +553,19 @@ export const HomeScreen = ({ navigation }) => {
             </Button>
           </View>
           <View style={homeStyles.container}>
-            <FlatList
+            {!questionLoading ? <FlatList
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               data={categories}
               renderItem={ItemCard}
               keyExtractor={(item) => item.id.toString()}
-            />
+            /> : <>
+              <ActivityIndicator style={{ marginBottom: 6 }} />
+              <Text category="s1" appearance="hint">
+                Loading...
+              </Text>
+            </>
+            }
           </View>
         </View>
         <View style={homeStyles.content}>

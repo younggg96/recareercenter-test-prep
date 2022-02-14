@@ -27,7 +27,7 @@ export const LockIcon = (props) => <Icon fill="#000" {...props} name="lock" />;
 export const AboutUsIcon = (props) => <Icon fill="#000" {...props} name="globe-2" />;
 export const ContactUsIcon = (props) => <Icon fill="#000" {...props} name="message-square-outline" />;
 export const BellIcon = (props) => <Icon fill="#000" {...props} name="bell" />;
-export const ShareIcon = (props) => <Icon fill="#000" {...props} name="share" />;
+export const ShareIcon = (props) => <Icon fill="#000" {...props} name="share" style={{ width: 24, height: 24 }}/>;
 export const EmailIcon = (props) => <Icon fill="#E52326" {...props} name="email-outline" />;
 export const PhoneIcon = (props) => <Icon fill="#E52326" {...props} name="phone-outline" />;
 export const LocationIcon = (props) => <Icon fill="#E52326" {...props} name="navigation-2-outline" />;
@@ -43,7 +43,7 @@ export const IncorrectIcon = (props) => <Icon {...props} name="close-circle" fil
 // star
 export const StarIcon = (props) => <Icon {...props} name="star" fill="#E52326" style={{ width: 24, height: 24 }} />;
 export const StarOutlineIcon = (props) => <Icon {...props} name="star-outline" fill="#E52326" style={{ width: 24, height: 24 }} />;
-export const ListIcon = (props) => <Icon {...props} name="list" fill="#000" style={{ width: 18, height: 18 }}/>;
+export const ListIcon = (props) => <Icon {...props} name="list" fill="#000" style={{ width: 24, height: 24 }}/>;
 // delete
 export const TrashIcon = (props) => <Icon {...props} name="trash-2-outline" fill="#E52326" style={{ width: 24, height: 24 }} />;
 

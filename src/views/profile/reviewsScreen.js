@@ -57,7 +57,7 @@ export const ReviewsScreen = ({ navigation }) => {
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
             <Text category="h3" appearance="hint">
-              No Saved Item
+              No Saved Items
             </Text>
           </View>
         )}

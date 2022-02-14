@@ -1,7 +1,7 @@
 import { Button, Card, Icon, Layout, Text, Modal } from "@ui-kitten/components";
 import React from "react";
 import { useEffect } from "react";
-import { Image, View } from "react-native";
+import { ActivityIndicator, Image, View } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
 import { TopBar } from "../../../components/topBar/topBar";
@@ -13,11 +13,15 @@ export const AllCategroyScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const [categories, setCategories] = React.useState([]);
   const { userData } = useSelector(state => state.userReducer);
+  const [questionLoading, setQuestionLoading] = React.useState(false);
 
   useEffect(() => {
+    setQuestionLoading(true);
     getQuestionCategories().then((res) => {
       setCategories(res);
-    });
+    }).finally(() => {
+      setQuestionLoading(false)
+    })
   }, []);
 
   const navigateToCategoryList = (id, name) => {
@@ -82,13 +86,19 @@ export const AllCategroyScreen = ({ navigation }) => {
     <View style={{ flex: 1 }}>
       <TopBar title="Categories" navigation={navigation} hasBack={true} />
       <View style={homeStyles.categoryContainer}>
-        <FlatList
+        {!questionLoading ? <FlatList
           showsVerticalScrollIndicator={false}
           data={categories}
           renderItem={ItemCard}
           numColumns={2}
           keyExtractor={(item) => item.id.toString()}
-        />
+        /> :
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center", height: 260 }}>
+            <ActivityIndicator style={{ marginBottom: 6 }} />
+            <Text category="s1" appearance="hint">
+              Loading...
+            </Text>
+          </View>}
         <Modal
           style={homeStyles.modal}
           visible={visible}

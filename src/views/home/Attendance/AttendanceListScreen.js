@@ -2,12 +2,13 @@ import React from 'react';
 import { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 // ui
-import { Divider, List, ListItem, Text } from '@ui-kitten/components';
+import { Button, Divider, List, ListItem, Text } from '@ui-kitten/components';
 import { TopBar } from '../../../components/topBar/topBar';
 
 // redux
 import { useSelector } from 'react-redux';
 import { getUserClockInList } from '../../../helper/api';
+import { ShareIcon } from '../../../components/icons/icons';
 
 export const AttendanceListScreen = ({ navigation }) => {
   const { userData } = useSelector((state) => state.userReducer);
@@ -24,7 +25,7 @@ export const AttendanceListScreen = ({ navigation }) => {
 
   const renderItem = ({ item, index }) => (
     <ListItem
-      style={{paddingVertical: 16, paddingRight: 20}}
+      style={{ paddingVertical: 16, paddingRight: 20 }}
       title={`${index + 1}. Date: ${item.date}`}
       accessoryRight={() => (
         <Text category="s2">
@@ -36,7 +37,7 @@ export const AttendanceListScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="Attendance Record" navigation={navigation} hasBack={true} />
+      <TopBar title="Attendance Record" navigation={navigation} hasBack={true} hasRight={true} right={() => <Button appearance="ghost" accessoryRight={ShareIcon}></Button>} />
       {!loading ?
         attendanceRecord.length ?
           <List
