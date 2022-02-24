@@ -45,6 +45,8 @@ import { changeMembershipStatus, updateProfile } from "../../redux/actions/userA
 import { useInterval } from "../../helper/hooks/useInterval";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
+import { SettingList } from "../../components/settingList/settingList";
+import { viewOurWebsite } from "../../components/settingList/settingConfig";
 
 const chapters = [
   { id: "-1", name: "Choose chapter..", value: "0" },
@@ -74,6 +76,8 @@ const chapters = [
   { id: "23", name: "chapter 24", value: "24" },
   { id: "24", name: "chapter 25", value: "25" },
 ]
+
+const studyHours = ["Choose hours", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -163,6 +167,7 @@ export const HomeScreen = ({ navigation }) => {
   const [courseList, setCourseList] = React.useState([{ courseName: '', id: -1 }]);
   const [selectedIndex1, setSelectedIndex1] = React.useState(new IndexPath(0));
   const [selectedIndex2, setSelectedIndex2] = React.useState(new IndexPath(0));
+  const [selectedIndex3, setSelectedIndex3] = React.useState(new IndexPath(0));
   const [attendanceDate, setAttendanceDate] = React.useState(new Date());
 
   // loading
@@ -343,10 +348,10 @@ export const HomeScreen = ({ navigation }) => {
   }
 
   const submitAttendanceRecord = () => {
-    if (selectedIndex1.row == 0 || selectedIndex2.row == 0) {
+    if (selectedIndex1.row == 0 || selectedIndex2.row == 0 || selectedIndex3.row == 0) {
       setSubmitError(true);
     } else {
-      addClockIn(uid, courseList[selectedIndex1.row].id, chapters[selectedIndex2.row].value, attendanceDate.toISOString().slice(0, 10)).then((res) => {
+      addClockIn(uid, courseList[selectedIndex1.row].id, chapters[selectedIndex2.row].value, studyHours[selectedIndex3.row], attendanceDate.toISOString().slice(0, 10)).then((res) => {
         if (res) {
           Toast.show(
             res
@@ -577,7 +582,7 @@ export const HomeScreen = ({ navigation }) => {
           <View style={homeStyles.header}>
             <Image
               source={require("../../../assets/img/attendance.png")}
-              style={{ width: '100%', height: 250 }}
+              style={{ width: '100%', height: 200 }}
               resizeMode="contain"
             />
           </View>
@@ -590,31 +595,13 @@ export const HomeScreen = ({ navigation }) => {
         </View>
         <View style={homeStyles.content}>
           <View style={homeStyles.header}>
-            <Text category="h4" style={homeStyles.title}>
-              NJ 21 Video Exam Cram
-            </Text>
-          </View>
-          <View style={homeStyles.header}>
             <Image
-              source={require("../../../assets/img/21-videos.png")}
-              style={{ width: '40%', height: 150 }}
+              source={require("../../../assets/img/ourWebsite.png")}
+              style={{ width: '100%', height: 200 }}
+              resizeMode="contain"
             />
-            <View style={{ width: '55%', justifyContent: 'center' }}>
-              <Text category="p2" style={{ width: '100%', marginBottom: 8 }}>
-                Our expert teachers guide you step by step through the key information you will need to know to pass your state real estate exam.
-              </Text>
-              <Button
-                accessoryLeft={userData.membership === "2" || userData.membership === "3" ? PlayIcon : LockVideoIcon}
-                onPress={userData.membership === "2" || userData.membership === "3" ? () => {
-                  navigateToVideosList();
-                } : () => setVisible(true)}
-                size='small'
-                style={userData.membership === "2" || userData.membership === "3" ? homeStyles.button : { ...homeStyles.button, backgroundColor: '#666666', borderColor: '#000' }}
-              >
-                Watch it now
-              </Button>
-            </View>
           </View>
+          <SettingList settings={viewOurWebsite} navigation={navigation} padding={false}/>
         </View>
       </ScrollView>
       <Modal
@@ -707,6 +694,17 @@ export const HomeScreen = ({ navigation }) => {
                 onSelect={index => setSelectedIndex2(index)}>
                 {chapters.map((item, index) => {
                   return <SelectItem title={item.name} key={item.id} />
+                })}
+              </Select>
+              <Select
+                style={homeStyles.modalSelect}
+                label="Choose study hours"
+                placeholder='Choose hours..'
+                value={studyHours[selectedIndex3.row]}
+                selectedIndex={selectedIndex3}
+                onSelect={index => setSelectedIndex3(index)}>
+                {studyHours.map((item, index) => {
+                  return <SelectItem title={item} key={item} />
                 })}
               </Select>
               <Datepicker

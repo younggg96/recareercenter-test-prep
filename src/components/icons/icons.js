@@ -11,6 +11,7 @@ export const HomeIcon = (props) => <Icon {...props} name="home" />;
 export const PersonIcon = (props) => <Icon {...props} name="person" />;
 export const SettingsIcon = (props) => <Icon {...props} name="settings"/>;
 export const ClipboardIcon = (props) => <Icon {...props} name="clipboard" />;
+export const VideoIcon = (props) => <Icon {...props} name="video" />;
 export const DicIcon = (props) => <Icon {...props} name="book-open" />;
 export const SearchIcon = (props) => <Icon {...props} name="search" />;
 
@@ -21,12 +22,15 @@ export const ExamDayIcon = (props) => <Icon fill="#000" {...props} name="book" /
 export const ForwardIcon = (props) => <Icon fill="#000" {...props} name="arrow-ios-forward" />;
 export const ForwardSmallIcon = (props) => <Icon fill="#8F9BB3" style={{ width: 22, height: 22 }}  {...props} name="arrow-ios-forward" />;
 export const ShopIcon = (props) => <Icon fill="#000" {...props} name="shopping-bag" />;
+export const BookIcon = (props) => <Icon fill="#000" {...props} name="book-open" />;
+export const GiftIcon = (props) => <Icon fill="#000" {...props} name="gift" />;
 
 // settings
 export const LockIcon = (props) => <Icon fill="#000" {...props} name="lock" />;
 export const AboutUsIcon = (props) => <Icon fill="#000" {...props} name="globe-2" />;
 export const ContactUsIcon = (props) => <Icon fill="#000" {...props} name="message-square-outline" />;
 export const BellIcon = (props) => <Icon fill="#000" {...props} name="bell" />;
+export const ShareNormalIcon = (props) => <Icon fill="#000" {...props} name="share"/>;
 export const ShareIcon = (props) => <Icon fill="#000" {...props} name="share" style={{ width: 24, height: 24 }}/>;
 export const EmailIcon = (props) => <Icon fill="#E52326" {...props} name="email-outline" />;
 export const PhoneIcon = (props) => <Icon fill="#E52326" {...props} name="phone-outline" />;

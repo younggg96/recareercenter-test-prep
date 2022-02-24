@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, Linking, View } from 'react-native';
 // ui
 import { Button, Divider, List, ListItem, Text } from '@ui-kitten/components';
 import { TopBar } from '../../../components/topBar/topBar';
@@ -14,6 +14,16 @@ export const AttendanceListScreen = ({ navigation }) => {
   const { userData } = useSelector((state) => state.userReducer);
   const [attendanceRecord, setAttendanceRecord] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+
+  const shareRecord = (body) => {
+    let str = "";
+    console.log(body[0]);
+    for (let index = 0; index < body.length; index++) {
+      str += `${index + 1}. Chapter: ${body[index].chapter}, Study hours: ${body[index].hour}, ${body[index].date} checked.\n`
+    }
+    return Linking.openURL(`mailto:info@recareercenter.com?subject=Attendance Record&&body=${str}`);
+  }
+
   useEffect(() => {
     setLoading(true);
     getUserClockInList(userData.uid).then((data) => {
@@ -26,18 +36,24 @@ export const AttendanceListScreen = ({ navigation }) => {
   const renderItem = ({ item, index }) => (
     <ListItem
       style={{ paddingVertical: 16, paddingRight: 20 }}
-      title={`${index + 1}. Date: ${item.date}`}
+      title={`${index + 1}. Chapter ${item.chapter}`}
+      disabled
       accessoryRight={() => (
-        <Text category="s2">
-          Chapter {item.chapter}
-        </Text>
+        <View>
+          <Text category="s2">
+            Study hours: <Text category="s1">{item.hour}</Text>
+          </Text>
+          <Text category="s2">
+            Date: <Text category="s1">{item.date}</Text>
+          </Text>
+        </View>
       )}
     />
   );
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="Attendance Record" navigation={navigation} hasBack={true} hasRight={true} right={() => <Button appearance="ghost" accessoryRight={ShareIcon}></Button>} />
+      <TopBar title="Attendance Record" navigation={navigation} hasBack={true} hasRight={true} right={() => <Button appearance="ghost" accessoryRight={ShareIcon} onPress={() => shareRecord(attendanceRecord)}></Button>} />
       {!loading ?
         attendanceRecord.length ?
           <List

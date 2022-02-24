@@ -102,7 +102,7 @@ export const ProfileScreen = ({ navigation }) => {
             </View>
           </View>
           <View>
-            <SettingList settings={profileSettings} navigation={navigation} />
+            <SettingList settings={profileSettings} navigation={navigation} padding={true}/>
           </View>
         </View>
       </ScrollView>

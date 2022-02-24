@@ -252,13 +252,13 @@ export const getCourseById = async (uid) => {
     }
 }
 
-export const addClockIn = async (uid, cid, chapter, date) => {
+export const addClockIn = async (uid, cid, chapter, hour, date) => {
     try {
         const res = await axios({
             method: 'post',
             url: BASE_URL + '/clockIn/addClockIn',
             data: {
-                uid, cid, chapter, date
+                uid, cid, chapter, hour, date
             }
         });
         return res.data;

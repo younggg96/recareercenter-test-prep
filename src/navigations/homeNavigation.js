@@ -8,6 +8,7 @@ import { BottomNavigation, BottomNavigationTab } from "@ui-kitten/components";
 // icons
 import {
   ClipboardIcon,
+  VideoIcon,
   DicIcon,
   HomeIcon,
   PersonIcon,
@@ -42,8 +43,6 @@ import { updateProfile } from "../redux/actions/userAction";
 import axios from "axios";
 import { BASE_URL } from "../../config";
 import { Alert } from "react-native";
-import { getExamData } from "../helper/api";
-import { getExams } from "../redux/actions/questionAction";
 import { AttendanceListScreen } from "../views/home/Attendance/AttendanceListScreen";
 
 const Tab = createBottomTabNavigator();
@@ -53,6 +52,14 @@ const DictionaryNavigation = () => (
   <Stack.Navigator headerMode="none" initialRouteName="DictionaryScreen">
     <Stack.Screen name="DictionaryScreen" component={DictionaryScreen} />
     <Stack.Screen name="SavedListScreen" component={SavedListScreen} />
+    <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
+  </Stack.Navigator>
+);
+
+const VideosNavigation = () => (
+  <Stack.Navigator headerMode="none" initialRouteName="VideosScreen">
+    <Stack.Screen name="VideosListScreen" component={VideosListScreen} />
+    <Stack.Screen name="VideosDetailScreen" component={VideosDetailScreen} />
     <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
   </Stack.Navigator>
 );
@@ -93,8 +100,6 @@ const HomeScreenNavigation = () => (
     <Stack.Screen name="AllCategroyListScreen" component={AllCategroyListScreen} />
     <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
     <Stack.Screen name="ReviewDetailsScreen" component={ReviewDetailsScreen} />
-    <Stack.Screen name="VideosListScreen" component={VideosListScreen} />
-    <Stack.Screen name="VideosDetailScreen" component={VideosDetailScreen} />
     <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
     <Stack.Screen name="AttendanceListScreen" component={AttendanceListScreen} />
   </Stack.Navigator>
@@ -120,7 +125,7 @@ const BottomTabBar = ({ navigation, state }) => {
               Alert.alert("Error", `${error.message}`);
             }
             break;
-          case 3:
+          case 4:
             try {
               axios.get(BASE_URL + `/users/findUser?uid=${userData.uid}`).then((res) => {
                 if (res.data) {
@@ -140,6 +145,7 @@ const BottomTabBar = ({ navigation, state }) => {
     >
       <BottomNavigationTab title="Home" icon={HomeIcon} />
       <BottomNavigationTab title="Exams" icon={ClipboardIcon} />
+      <BottomNavigationTab title="Videos" icon={VideoIcon} />
       <BottomNavigationTab title="Dictionary" icon={DicIcon} />
       <BottomNavigationTab title="Profile" icon={PersonIcon} />
     </BottomNavigation>
@@ -151,6 +157,7 @@ export const HomeNavigation = () => {
     <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeScreenNavigation} />
       <Tab.Screen name="Exams" component={ExamNavigation} />
+      <Tab.Screen name="Videos" component={VideosNavigation} />
       <Tab.Screen name="Dictionary" component={DictionaryNavigation} />
       <Tab.Screen name="Profile" component={ProfileNavigation} />
     </Tab.Navigator>

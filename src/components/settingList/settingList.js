@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 20,
   },
+  menuItemNoPadding: {
+    paddingHorizontal: 8,
+    height: 60,
+  },
   menuItem: {
     paddingHorizontal: 32,
     height: 60,
@@ -21,7 +25,7 @@ const styles = StyleSheet.create({
 });
 
 export const SettingList = (props) => {
-  const { settings, navigation } = props;
+  const { settings, navigation, padding } = props;
 
   const navigatorTo = (link) => {
     navigation.navigate(link);
@@ -61,7 +65,7 @@ export const SettingList = (props) => {
         if (setting.url) {
           return (
             <MenuItem
-              style={styles.menuItem}
+              style={padding ? styles.menuItem : styles.menuItemNoPadding}
               key={index}
               title={evaProps => <Text {...evaProps} style={styles.itemTitle}>{setting.title}</Text>}
               disabled={setting.disable}
@@ -73,7 +77,7 @@ export const SettingList = (props) => {
         }
         return (
           <MenuItem
-            style={styles.menuItem}
+            style={padding ? styles.menuItem : styles.menuItemNoPadding}
             key={index}
             title={evaProps => <Text {...evaProps} style={styles.itemTitle}>{setting.title}</Text>}
             disabled={setting.link ? setting.disable : null}

@@ -42,7 +42,7 @@ export const SettingsScreen = ({ navigation }) => {
             Log Out
           </Button>
         </View>
-        <SettingList settings={settings} navigation={navigation} />
+        <SettingList settings={settings} navigation={navigation} padding={true}/>
       </View>
     </View>
   );
