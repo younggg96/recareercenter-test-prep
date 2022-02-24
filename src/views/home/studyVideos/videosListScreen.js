@@ -34,6 +34,7 @@ export const VideosListScreen = ({ navigation }) => {
   const renderItem = ({ item }) => {
     return (
       <ListItem
+        style={{ paddingHorizontal: 0 }}
         onPress={() => navigateToDetail(item)}
         title={`${item.id}. ${item.title}`}
         accessoryRight={ForwardSmallIcon}

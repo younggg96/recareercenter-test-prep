@@ -21,7 +21,7 @@ export const VideosDetailScreen = ({ route, navigation }) => {
     <View style={{ flex: 1, marginTop: Constants.statusBarHeight }}>
       <TopNavigation
         title={() => (
-          <Text category="s1">
+          <Text category="s1" style={{paddingHorizontal: 8 }}>
             {videoDetail.title}
           </Text>
         )}
