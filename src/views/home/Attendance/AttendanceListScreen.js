@@ -10,18 +10,23 @@ import { useSelector } from 'react-redux';
 import { getUserClockInList } from '../../../helper/api';
 import { ShareIcon } from '../../../components/icons/icons';
 
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
+
 export const AttendanceListScreen = ({ navigation }) => {
   const { userData } = useSelector((state) => state.userReducer);
   const [attendanceRecord, setAttendanceRecord] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
-  const shareRecord = (body) => {
-    let str = "";
-    console.log(body[0]);
-    for (let index = 0; index < body.length; index++) {
-      str += `${index + 1}. Chapter: ${body[index].chapter}, Study hours: ${body[index].hour}, ${body[index].date} checked.\n`
-    }
-    return Linking.openURL(`mailto:info@recareercenter.com?subject=Attendance Record&&body=${str}`);
+  const shareRecord = async (body) => {
+    console.log(body);
+    let options = {
+      html: '<h1>PDF TEST</h1>',
+      fileName: 'test',
+      directory: 'Documents',
+    };
+
+    let file = await RNHTMLtoPDF.convert(options)
+    alert(file.filePath);
   }
 
   useEffect(() => {
