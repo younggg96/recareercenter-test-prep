@@ -10,7 +10,10 @@ import { useSelector } from 'react-redux';
 import { getUserClockInList } from '../../../helper/api';
 import { ShareIcon } from '../../../components/icons/icons';
 
-import RNHTMLtoPDF from 'react-native-html-to-pdf';
+import Toast from "react-native-simple-toast";
+// import RNHTMLtoPDF from 'react-native-html-to-pdf';
+import * as Sharing from 'expo-sharing';
+import * as Print from 'expo-print';
 
 export const AttendanceListScreen = ({ navigation }) => {
   const { userData } = useSelector((state) => state.userReducer);
@@ -19,14 +22,44 @@ export const AttendanceListScreen = ({ navigation }) => {
 
   const shareRecord = async (body) => {
     console.log(body);
-    let options = {
-      html: '<h1>PDF TEST</h1>',
-      fileName: 'test',
-      directory: 'Documents',
-    };
-
-    let file = await RNHTMLtoPDF.convert(options)
-    alert(file.filePath);
+    let str = "";
+    if (body) {
+      for (let index = 0; index < body.length; index++) {
+        str += `<p>${index + 1}. Chapter: ${body[index].chapter}, Study hours: ${body[index].hour}, ${body[index].date} checked.</p>`
+      }
+      let options = {
+        html: `
+        <html>
+          <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+          </head>
+          <body style="text-align: center;">
+            <img
+              src="https://www.recareercenter.com/wp-content/uploads/2018/08/logo-school.png"
+              style="width: 90vw;" />
+            <div style="text-align: center;">
+              <h1 style="font-size: 40px; font-family: Helvetica Neue; font-weight: normal; font-weight: bold">
+                Student Attendance
+              </h1>
+              ${str}
+            </div>
+          </body>
+        </html>
+        `,
+        fileName: 'Student Attendance',
+        directory: 'Documents',
+      };
+      console.log(options);
+      // let file = await RNHTMLtoPDF.convert(options)
+      const { uri } = await Print.printToFileAsync({
+        html: options.html
+      });
+      await Sharing.shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' })
+      // console.log("aaaaaa");
+      // alert(file.filePath);
+    } else {
+      Toast.show("No records found");
+    }
   }
 
   useEffect(() => {

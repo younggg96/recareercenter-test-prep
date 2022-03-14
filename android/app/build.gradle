@@ -139,7 +139,7 @@ android {
         versionName "1.0.0"
         missingDimensionStrategy 'store', 'play'
         manifestPlaceholders = [
-            appAuthRedirectScheme: 'com.recareercenter.exam'
+            appAuthRedirectScheme: 'dev.expo.app'
         ]
     }
     splits {

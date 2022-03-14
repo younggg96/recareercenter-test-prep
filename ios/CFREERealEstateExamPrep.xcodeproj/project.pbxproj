@@ -11,54 +11,34 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		16F6DF2BEE834F59A5DF1ABA /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 669243624EF0485D9F37922A /* OpenSans-BoldItalic.ttf */; };
-		2C3364F203924BE99D2FA467 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F2393A755D248D3AB856BB2 /* OpenSans-LightItalic.ttf */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		4A62C8B6D8CE46DBBB5A7168 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 312CAF91E4844817A89B9CC2 /* OpenSans-SemiBold.ttf */; };
-		5D0EE135B90E4E578DFAE978 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73FF94E274326AD3A9EA4 /* noop-file.swift */; };
-		809785003E1C48E2B2B2DCDF /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7140C43764AC18995B432 /* OpenSans-Italic.ttf */; };
-		83C5AC3B91934299B926DC61 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10B0BCB9AE4947CEA809A59E /* OpenSans-Light.ttf */; };
-		96905EF65AED1B983A6B3ABC /* libPods-recareercenter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-recareercenter.a */; };
-		A19C4F24A816492592ED4BD7 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A527BA6D023B4331AC242483 /* OpenSans-ExtraBoldItalic.ttf */; };
-		A1C1BBDB61E94D41B7F41FC3 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 571B06B574DB43338687C20C /* OpenSans-SemiBoldItalic.ttf */; };
-		AFFF3F746576429EA63FFC68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B9C02393BA842FCBDCC8C31 /* GoogleService-Info.plist */; };
+		96905EF65AED1B983A6B3ABC /* libPods-CFREERealEstateExamPrep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-CFREERealEstateExamPrep.a */; };
+		B087E52E79DB424EBE46D348 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD7AB7299B0347398E62EEA4 /* GoogleService-Info.plist */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C72311C95C5545EC873A6B87 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49562980B0CE4A66BBC99667 /* OpenSans-Regular.ttf */; };
-		DA05BA8CAC9C4C5E8E91009F /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFBAC5F03BDD4FFA93DB6AF1 /* OpenSans-ExtraBold.ttf */; };
-		DC6ED8B13E6448429AD673C0 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEFF453BFDE5419F8B949A77 /* OpenSans-Bold.ttf */; };
-		E22EBFA826F46290000181FE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E22EBFA726F46290000181FE /* StoreKit.framework */; };
+		E27637D627D953470081F9A9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E27637D527D953470081F9A9 /* StoreKit.framework */; };
+		EE4697D22B6B4CC6A0551370 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B7EA3F4CF8430CB38E74D5 /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		10B0BCB9AE4947CEA809A59E /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../assets/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* CFREERealEstateExamPrep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFREERealEstateExamPrep.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = recareercenter/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = recareercenter/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CFREERealEstateExamPrep/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CFREERealEstateExamPrep/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = recareercenter/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = recareercenter/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = recareercenter/main.m; sourceTree = "<group>"; };
-		1B9C02393BA842FCBDCC8C31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "recareercenter/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		312CAF91E4844817A89B9CC2 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBold.ttf"; path = "../assets/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		3F2393A755D248D3AB856BB2 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../assets/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		49562980B0CE4A66BBC99667 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		4FC7140C43764AC18995B432 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Italic.ttf"; path = "../assets/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
-		571B06B574DB43338687C20C /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBoldItalic.ttf"; path = "../assets/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-recareercenter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-recareercenter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		669243624EF0485D9F37922A /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-BoldItalic.ttf"; path = "../assets/fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
-		6C2E3173556A471DD304B334 /* Pods-recareercenter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recareercenter.debug.xcconfig"; path = "Target Support Files/Pods-recareercenter/Pods-recareercenter.debug.xcconfig"; sourceTree = "<group>"; };
-		7A4D352CD337FB3A3BF06240 /* Pods-recareercenter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recareercenter.release.xcconfig"; path = "Target Support Files/Pods-recareercenter/Pods-recareercenter.release.xcconfig"; sourceTree = "<group>"; };
-		97F2A6BD74F14D3BBCAAF2B4 /* recareercenter-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "recareercenter-Bridging-Header.h"; path = "recareercenter/recareercenter-Bridging-Header.h"; sourceTree = "<group>"; };
-		A4A73FF94E274326AD3A9EA4 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "recareercenter/noop-file.swift"; sourceTree = "<group>"; };
-		A527BA6D023B4331AC242483 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../assets/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = recareercenter/SplashScreen.storyboard; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CFREERealEstateExamPrep/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CFREERealEstateExamPrep/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CFREERealEstateExamPrep/main.m; sourceTree = "<group>"; };
+		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-CFREERealEstateExamPrep.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CFREERealEstateExamPrep.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C2E3173556A471DD304B334 /* Pods-CFREERealEstateExamPrep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CFREERealEstateExamPrep.debug.xcconfig"; path = "Target Support Files/Pods-CFREERealEstateExamPrep/Pods-CFREERealEstateExamPrep.debug.xcconfig"; sourceTree = "<group>"; };
+		7A4D352CD337FB3A3BF06240 /* Pods-CFREERealEstateExamPrep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CFREERealEstateExamPrep.release.xcconfig"; path = "Target Support Files/Pods-CFREERealEstateExamPrep/Pods-CFREERealEstateExamPrep.release.xcconfig"; sourceTree = "<group>"; };
+		81B7EA3F4CF8430CB38E74D5 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "CFREERealEstateExamPrep/noop-file.swift"; sourceTree = "<group>"; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = CFREERealEstateExamPrep/SplashScreen.storyboard; sourceTree = "<group>"; };
+		AD7AB7299B0347398E62EEA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "CFREERealEstateExamPrep/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		BFBAC5F03BDD4FFA93DB6AF1 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../assets/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		DEFF453BFDE5419F8B949A77 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		E22EBFA726F46290000181FE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E27637D527D953470081F9A9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		ED480136A666443599AFA400 /* CFREERealEstateExamPrep-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "CFREERealEstateExamPrep-Bridging-Header.h"; path = "CFREERealEstateExamPrep/CFREERealEstateExamPrep-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,32 +46,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96905EF65AED1B983A6B3ABC /* libPods-recareercenter.a in Frameworks */,
-				E22EBFA826F46290000181FE /* StoreKit.framework in Frameworks */,
+				96905EF65AED1B983A6B3ABC /* libPods-CFREERealEstateExamPrep.a in Frameworks */,
+				E27637D627D953470081F9A9 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		008B057F6A6F47C69150BED1 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				DEFF453BFDE5419F8B949A77 /* OpenSans-Bold.ttf */,
-				669243624EF0485D9F37922A /* OpenSans-BoldItalic.ttf */,
-				BFBAC5F03BDD4FFA93DB6AF1 /* OpenSans-ExtraBold.ttf */,
-				A527BA6D023B4331AC242483 /* OpenSans-ExtraBoldItalic.ttf */,
-				4FC7140C43764AC18995B432 /* OpenSans-Italic.ttf */,
-				10B0BCB9AE4947CEA809A59E /* OpenSans-Light.ttf */,
-				3F2393A755D248D3AB856BB2 /* OpenSans-LightItalic.ttf */,
-				49562980B0CE4A66BBC99667 /* OpenSans-Regular.ttf */,
-				312CAF91E4844817A89B9CC2 /* OpenSans-SemiBold.ttf */,
-				571B06B574DB43338687C20C /* OpenSans-SemiBoldItalic.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		13B07FAE1A68108700A75B9A /* recareercenter */ = {
+		13B07FAE1A68108700A75B9A /* CFREERealEstateExamPrep */ = {
 			isa = PBXGroup;
 			children = (
 				BB2F792B24A3F905000567C9 /* Supporting */,
@@ -103,20 +66,20 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				97F2A6BD74F14D3BBCAAF2B4 /* recareercenter-Bridging-Header.h */,
-				1B9C02393BA842FCBDCC8C31 /* GoogleService-Info.plist */,
-				A4A73FF94E274326AD3A9EA4 /* noop-file.swift */,
+				AD7AB7299B0347398E62EEA4 /* GoogleService-Info.plist */,
+				81B7EA3F4CF8430CB38E74D5 /* noop-file.swift */,
+				ED480136A666443599AFA400 /* CFREERealEstateExamPrep-Bridging-Header.h */,
 			);
-			name = recareercenter;
+			name = CFREERealEstateExamPrep;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E22EBFA726F46290000181FE /* StoreKit.framework */,
+				E27637D527D953470081F9A9 /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-recareercenter.a */,
+				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-CFREERealEstateExamPrep.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,12 +94,11 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* recareercenter */,
+				13B07FAE1A68108700A75B9A /* CFREERealEstateExamPrep */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
-				008B057F6A6F47C69150BED1 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -157,14 +119,14 @@
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
-			path = recareercenter/Supporting;
+			path = CFREERealEstateExamPrep/Supporting;
 			sourceTree = "<group>";
 		};
 		D65327D7A22EEC0BE12398D9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6C2E3173556A471DD304B334 /* Pods-recareercenter.debug.xcconfig */,
-				7A4D352CD337FB3A3BF06240 /* Pods-recareercenter.release.xcconfig */,
+				6C2E3173556A471DD304B334 /* Pods-CFREERealEstateExamPrep.debug.xcconfig */,
+				7A4D352CD337FB3A3BF06240 /* Pods-CFREERealEstateExamPrep.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -172,9 +134,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* recareercenter */ = {
+		13B07F861A680F5B00A75B9A /* CFREERealEstateExamPrep */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "recareercenter" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CFREERealEstateExamPrep" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -188,8 +150,8 @@
 			);
 			dependencies = (
 			);
-			name = recareercenter;
-			productName = recareercenter;
+			name = CFREERealEstateExamPrep;
+			productName = CFREERealEstateExamPrep;
 			productReference = 13B07F961A680F5B00A75B9A /* CFREERealEstateExamPrep.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -207,7 +169,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "recareercenter" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "CFREERealEstateExamPrep" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -220,7 +182,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* recareercenter */,
+				13B07F861A680F5B00A75B9A /* CFREERealEstateExamPrep */,
 			);
 		};
 /* End PBXProject section */
@@ -234,17 +196,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				AFFF3F746576429EA63FFC68 /* GoogleService-Info.plist in Resources */,
-				DC6ED8B13E6448429AD673C0 /* OpenSans-Bold.ttf in Resources */,
-				16F6DF2BEE834F59A5DF1ABA /* OpenSans-BoldItalic.ttf in Resources */,
-				DA05BA8CAC9C4C5E8E91009F /* OpenSans-ExtraBold.ttf in Resources */,
-				A19C4F24A816492592ED4BD7 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
-				809785003E1C48E2B2B2DCDF /* OpenSans-Italic.ttf in Resources */,
-				83C5AC3B91934299B926DC61 /* OpenSans-Light.ttf in Resources */,
-				2C3364F203924BE99D2FA467 /* OpenSans-LightItalic.ttf in Resources */,
-				C72311C95C5545EC873A6B87 /* OpenSans-Regular.ttf in Resources */,
-				4A62C8B6D8CE46DBBB5A7168 /* OpenSans-SemiBold.ttf in Resources */,
-				A1C1BBDB61E94D41B7F41FC3 /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				B087E52E79DB424EBE46D348 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +232,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-recareercenter-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CFREERealEstateExamPrep-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -293,7 +245,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-recareercenter/Pods-recareercenter-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CFREERealEstateExamPrep/Pods-CFREERealEstateExamPrep-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
@@ -304,7 +256,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-recareercenter/Pods-recareercenter-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CFREERealEstateExamPrep/Pods-CFREERealEstateExamPrep-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -335,7 +287,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				5D0EE135B90E4E578DFAE978 /* noop-file.swift in Sources */,
+				EE4697D22B6B4CC6A0551370 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +300,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = recareercenter;
+			path = CFREERealEstateExamPrep;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -356,23 +308,22 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C2E3173556A471DD304B334 /* Pods-recareercenter.debug.xcconfig */;
+			baseConfigurationReference = 6C2E3173556A471DD304B334 /* Pods-CFREERealEstateExamPrep.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = recareercenter/CFREERealEstateExamPrep.entitlements;
-				CURRENT_PROJECT_VERSION = 1.3.4;
+				CODE_SIGN_ENTITLEMENTS = CFREERealEstateExamPrep/CFREERealEstateExamPrep.entitlements;
+				CURRENT_PROJECT_VERSION = 2.0.0;
 				DEVELOPMENT_TEAM = JUL42B2343;
 				ENABLE_BITCODE = NO;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = recareercenter/Info.plist;
+				INFOPLIST_FILE = CFREERealEstateExamPrep/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.3.4;
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -380,7 +331,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.recareercenter.exam;
 				PRODUCT_NAME = CFREERealEstateExamPrep;
-				SWIFT_OBJC_BRIDGING_HEADER = "recareercenter/recareercenter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CFREERealEstateExamPrep/CFREERealEstateExamPrep-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -390,18 +341,17 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A4D352CD337FB3A3BF06240 /* Pods-recareercenter.release.xcconfig */;
+			baseConfigurationReference = 7A4D352CD337FB3A3BF06240 /* Pods-CFREERealEstateExamPrep.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = recareercenter/CFREERealEstateExamPrep.entitlements;
-				CURRENT_PROJECT_VERSION = 1.3.4;
+				CODE_SIGN_ENTITLEMENTS = CFREERealEstateExamPrep/CFREERealEstateExamPrep.entitlements;
+				CURRENT_PROJECT_VERSION = 2.0.0;
 				DEVELOPMENT_TEAM = JUL42B2343;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
-				INFOPLIST_FILE = recareercenter/Info.plist;
+				INFOPLIST_FILE = CFREERealEstateExamPrep/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.3.4;
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -409,7 +359,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.recareercenter.exam;
 				PRODUCT_NAME = CFREERealEstateExamPrep;
-				SWIFT_OBJC_BRIDGING_HEADER = "recareercenter/recareercenter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CFREERealEstateExamPrep/CFREERealEstateExamPrep-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -444,7 +394,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = recareercenter/CFREERealEstateExamPrep.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CFREERealEstateExamPrep/CFREERealEstateExamPrep.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -464,13 +414,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -505,7 +451,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = recareercenter/CFREERealEstateExamPrep.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CFREERealEstateExamPrep/CFREERealEstateExamPrep.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -518,13 +464,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -534,7 +476,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "recareercenter" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CFREERealEstateExamPrep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -543,7 +485,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "recareercenter" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "CFREERealEstateExamPrep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
