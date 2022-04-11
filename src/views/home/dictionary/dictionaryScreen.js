@@ -125,24 +125,24 @@ export const DictionaryScreen = ({ navigation }) => {
       <TopBar title="Dictionary" navigation={navigation} hasBack={false} hasRight={userData.membership != "1"} right={
         () => <Button appearance="ghost" accessoryRight={ListIcon} onPress={navigateTo}></Button>
       } />
-      {
+      <React.Fragment>
+        <Card disabled>
+          <Input
+            focusable
+            autoCapitalize='none'
+            placeholder={"Search..."}
+            accessoryRight={SearchIcon}
+            onChangeText={(e) => {
+              setFilterText(e);
+            }}
+            value={filterText}
+            style={{ borderRadius: 25 }}
+          />
+        </Card>
+        <WordsList text={filterText} />
+      </React.Fragment>
+      {/* {
         userData.membership !== "1" ?
-          <React.Fragment>
-            <Card disabled>
-              <Input
-                focusable
-                autoCapitalize='none'
-                placeholder={"Search..."}
-                accessoryRight={SearchIcon}
-                onChangeText={(e) => {
-                  setFilterText(e);
-                }}
-                value={filterText}
-                style={{ borderRadius: 25 }}
-              />
-            </Card>
-            <WordsList text={filterText} />
-          </React.Fragment> :
           <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <Text category="h3" appearance="hint">
               No Access to Dictionary
@@ -156,7 +156,7 @@ export const DictionaryScreen = ({ navigation }) => {
               Start Membership!
             </Button>
           </View>
-      }
+      } */}
     </View>
   );
 };

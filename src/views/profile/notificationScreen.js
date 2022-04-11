@@ -57,11 +57,11 @@ export const NotificationScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="Notification" navigation={navigation} hasBack={true} />
+      <TopBar title="Study Alarm" navigation={navigation} hasBack={true} />
       <View style={styles.content}>
         <View style={styles.title}>
           <View>
-            <Text category="s1">Notification</Text>
+            <Text category="s1">Study Alarm</Text>
           </View>
           <View>
             <Toggle checked={status} onChange={onCheckedChange}></Toggle>

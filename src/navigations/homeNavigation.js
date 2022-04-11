@@ -44,6 +44,7 @@ import axios from "axios";
 import { BASE_URL } from "../../config";
 import { Alert } from "react-native";
 import { AttendanceListScreen } from "../views/home/Attendance/AttendanceListScreen";
+import { AttendanceScreen } from "../views/home/Attendance/AttendanceScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -101,6 +102,7 @@ const HomeScreenNavigation = () => (
     <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
     <Stack.Screen name="ReviewDetailsScreen" component={ReviewDetailsScreen} />
     <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
+    <Stack.Screen name="AttendanceScreen" component={AttendanceScreen} />
     <Stack.Screen name="AttendanceListScreen" component={AttendanceListScreen} />
   </Stack.Navigator>
 );

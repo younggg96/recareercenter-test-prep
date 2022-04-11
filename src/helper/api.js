@@ -258,7 +258,7 @@ export const addClockIn = async (uid, cid, chapter, hour, date) => {
             method: 'post',
             url: BASE_URL + '/clockIn/addClockIn',
             data: {
-                uid, cid, chapter, hour, date
+                uid, cid, chapter, hour: 0, date
             }
         });
         return res.data;

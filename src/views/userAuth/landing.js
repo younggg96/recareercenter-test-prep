@@ -62,9 +62,9 @@ const Landing = ({ navigation }) => {
             Loading...
           </Button>}
       </View>
-      <Button style={{ position: "absolute", top: '30%', right: 0 }} appearance={"ghost"} onPress={clear}>
+      {/* <Button style={{ position: "absolute", top: '30%', right: 0 }} appearance={"ghost"} onPress={clear}>
         Clear cache 
-      </Button>
+      </Button> */}
     </View>
   );
 };

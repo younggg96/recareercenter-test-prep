@@ -22,6 +22,8 @@ export const ExamDayIcon = (props) => <Icon fill="#000" {...props} name="book" /
 export const ForwardIcon = (props) => <Icon fill="#000" {...props} name="arrow-ios-forward" />;
 export const ForwardSmallIcon = (props) => <Icon fill="#8F9BB3" style={{ width: 22, height: 22 }}  {...props} name="arrow-ios-forward" />;
 export const ShopIcon = (props) => <Icon fill="#000" {...props} name="shopping-bag" />;
+export const HeadphonesIcon = (props) => <Icon fill="#000" {...props} name="headphones" />;
+export const tvIcon = (props) => <Icon fill="#000" {...props} name="tv" />;
 export const BookIcon = (props) => <Icon fill="#000" {...props} name="book-open" />;
 export const GiftIcon = (props) => <Icon fill="#000" {...props} name="gift" />;
 

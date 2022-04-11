@@ -95,9 +95,11 @@ export const MembershipScreen = ({ navigation }) => {
               </Text>
             </Text>
             <View style={{ width: "100%", flexDirection: "column", alignItems: "flex-start" }}>
-              <Text category="s1">· Access to App</Text>
-              <Text category="s1">· 25 Review Questions</Text>
-              <Text category="s1">· Center for Real Estate Update</Text>
+              <Text category="s1">· 25 Free Review Questions</Text>
+              <Text category="s1">· Create Your Own Study Plan</Text>
+              <Text category="s1">· Real Estate Dictionary</Text>
+              <Text category="s1">· CFREE Student Resources</Text>
+              <Text category="s1">· Weekly Real Estate Podcast</Text>
             </View>
           </View>
         </View>
@@ -121,7 +123,7 @@ export const MembershipScreen = ({ navigation }) => {
               </Text>
             </Text>
             <View style={{ width: "100%", flexDirection: "column", alignItems: "flex-start" }}>
-              <Text category="s1">· Access to Real Estate Dictionary</Text>
+              <Text category="s1">· Everything in Bronze plus...</Text>
               <Text category="s1">· Unlimited Review Questions</Text>
               <Text category="s1">· Full Exams & Quiz Reviews</Text>
             </View>
@@ -160,10 +162,9 @@ export const MembershipScreen = ({ navigation }) => {
                 alignItems: "flex-start",
               }}
             >
-              <Text category="s1">· Access to Real Estate Dictionary</Text>
-              <Text category="s1">· Unlimited Review Questions</Text>
-              <Text category="s1">· Full Exams & Quiz Reviews</Text>
-              <Text category="s1">· Access to all 21 cram course videos</Text>
+              <Text category="s1">· Everything in Bronze & Silver plus...</Text>
+              <Text category="s1">· Access to all 21 Cram Course Videos</Text>
+              <Text category="s1">· Weekly Online Interactive Study Group </Text>
             </View>
             {member !== "3" ? (
               <Button style={styles.button} appearance="outline" onPress={() => purchase(3)} accessoryLeft={purchaseGoldenButtonLoading ? () => <LoadingRedIndicator style={{ color: '#E42425' }} /> : null}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { ActivityIndicator, Linking, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 // ui
 import { Button, Divider, List, ListItem, Text } from '@ui-kitten/components';
 import { TopBar } from '../../../components/topBar/topBar';
@@ -21,11 +21,11 @@ export const AttendanceListScreen = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
 
   const shareRecord = async (body) => {
-    console.log(body);
+    console.log(userData)
     let str = "";
     if (body) {
       for (let index = 0; index < body.length; index++) {
-        str += `<p>${index + 1}. Chapter: ${body[index].chapter}, Study hours: ${body[index].hour}, ${body[index].date} checked.</p>`
+        str += `<p>${index + 1}. Chapter: ${body[index].chapter}, ${body[index].date} checked.</p>`
       }
       let options = {
         html: `
@@ -33,7 +33,7 @@ export const AttendanceListScreen = ({ navigation }) => {
           <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
           </head>
-          <body style="text-align: center;">
+          <body>
             <img
               src="https://www.recareercenter.com/wp-content/uploads/2018/08/logo-school.png"
               style="width: 90vw;" />
@@ -41,7 +41,16 @@ export const AttendanceListScreen = ({ navigation }) => {
               <h1 style="font-size: 40px; font-family: Helvetica Neue; font-weight: normal; font-weight: bold">
                 Student Attendance
               </h1>
+              <h3 style="font-size: 26px; font-family: Helvetica Neue; font-weight: normal; ">
+                Student Name: ${userData.displayName}
+              </h3>
               ${str}
+            </div>
+            <div style="padding: 16px; margin-top: 12px; text-align: left;">
+              <h3>Note:</h3>
+              <p>
+              I certify that the information submitted in this Chapter Tracker is true and correct. I certify that I have completed each of the 21 chapters plus a test review class. I understand that by submitting this form electronically I am giving my implied signature. I further understand that any false statements made on this Chapter Tracker may result in expulsion, denial, or revocation of my course completion under the “Good Moral Character” Qualification guideline of The New Jersey Real Estate Commission, without refund.
+              </p>
             </div>
           </body>
         </html>
@@ -49,14 +58,10 @@ export const AttendanceListScreen = ({ navigation }) => {
         fileName: 'Student Attendance',
         directory: 'Documents',
       };
-      console.log(options);
-      // let file = await RNHTMLtoPDF.convert(options)
       const { uri } = await Print.printToFileAsync({
         html: options.html
       });
       await Sharing.shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' })
-      // console.log("aaaaaa");
-      // alert(file.filePath);
     } else {
       Toast.show("No records found");
     }
@@ -78,9 +83,9 @@ export const AttendanceListScreen = ({ navigation }) => {
       disabled
       accessoryRight={() => (
         <View>
-          <Text category="s2">
+          {/* <Text category="s2">
             Study hours: <Text category="s1">{item.hour}</Text>
-          </Text>
+          </Text> */}
           <Text category="s2">
             Date: <Text category="s1">{item.date}</Text>
           </Text>

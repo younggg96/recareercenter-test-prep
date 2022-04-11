@@ -1,19 +1,14 @@
 import React, { useEffect } from "react";
 import { useRef } from "react";
 // ui
-import { ActivityIndicator, Alert, Image, Linking, Platform, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Alert, Image, Linking, Platform, SafeAreaView, TouchableOpacity, View } from "react-native";
 import {
   Button,
   Card,
-  Datepicker,
   Icon,
-  IndexPath,
   Layout,
   Modal,
-  Select,
-  SelectItem,
   Text,
-  TopNavigation,
 } from "@ui-kitten/components";
 import { styles } from "../../components/topBar/topBar";
 import { homeStyles } from "../../styles/home/homeStyle";
@@ -38,7 +33,8 @@ import {
   setPurchaseListener,
   finishTransactionAsync,
   IAPResponseCode,
-  InAppPurchaseState
+  InAppPurchaseState,
+  getBillingResponseCodeAsync
 } from "expo-in-app-purchases";
 // import RNRestart from "react-native-restart";
 import { changeMembershipStatus, updateProfile } from "../../redux/actions/userAction";
@@ -46,38 +42,8 @@ import { useInterval } from "../../helper/hooks/useInterval";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
 import { SettingList } from "../../components/settingList/settingList";
-import { viewOurWebsite } from "../../components/settingList/settingConfig";
+import { podcast, viewOurWebsite } from "../../components/settingList/settingConfig";
 
-const chapters = [
-  { id: "-1", name: "Choose chapter..", value: "0" },
-  { id: "0", name: "chapter 1", value: "1" },
-  { id: "1", name: "chapter 2", value: "2" },
-  { id: "2", name: "chapter 3", value: "3" },
-  { id: "3", name: "chapter 4", value: "4" },
-  { id: "4", name: "chapter 5", value: "5" },
-  { id: "5", name: "chapter 6", value: "6" },
-  { id: "6", name: "chapter 7", value: "7" },
-  { id: "7", name: "chapter 8", value: "8" },
-  { id: "8", name: "chapter 9", value: "9" },
-  { id: "9", name: "chapter 10", value: "10" },
-  { id: "10", name: "chapter 11", value: "11" },
-  { id: "11", name: "chapter 12", value: "12" },
-  { id: "12", name: "chapter 13", value: "13" },
-  { id: "13", name: "chapter 14", value: "14" },
-  { id: "14", name: "chapter 15", value: "15" },
-  { id: "15", name: "chapter 16", value: "16" },
-  { id: "16", name: "chapter 17", value: "17" },
-  { id: "17", name: "chapter 18", value: "18" },
-  { id: "18", name: "chapter 19", value: "19" },
-  { id: "19", name: "chapter 20", value: "20" },
-  { id: "20", name: "chapter 21", value: "21" },
-  { id: "21", name: "chapter 22", value: "22" },
-  { id: "22", name: "chapter 23", value: "23" },
-  { id: "23", name: "chapter 24", value: "24" },
-  { id: "24", name: "chapter 25", value: "25" },
-]
-
-const studyHours = ["Choose hours", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -151,10 +117,8 @@ const sendPushNotification = async (expoPushToken, userData) => {
 
 export const HomeScreen = ({ navigation }) => {
   const [toPlanVisible, setToPlanVisible] = React.useState(false);
-  const [trackerVisible, setTrackerVisible] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
   const [categories, setCategories] = React.useState([]);
-  const [submitError, setSubmitError] = React.useState(false);
   const [all, setAll] = React.useState(0);
 
   const [expoPushToken, setExpoPushToken] = React.useState('');
@@ -163,15 +127,7 @@ export const HomeScreen = ({ navigation }) => {
   const notificationListener = useRef();
   const responseListener = useRef();
 
-  // selectedIndex
-  const [courseList, setCourseList] = React.useState([{ courseName: '', id: -1 }]);
-  const [selectedIndex1, setSelectedIndex1] = React.useState(new IndexPath(0));
-  const [selectedIndex2, setSelectedIndex2] = React.useState(new IndexPath(0));
-  const [selectedIndex3, setSelectedIndex3] = React.useState(new IndexPath(0));
-  const [attendanceDate, setAttendanceDate] = React.useState(new Date());
-
   // loading
-  const [attendanceLoading, setAttendanceLoading] = React.useState(false);
   const [questionLoading, setQuestionLoading] = React.useState(false);
 
   // redux
@@ -261,8 +217,27 @@ export const HomeScreen = ({ navigation }) => {
     if (errorCode) {
       console.log(errorCode)
     }
-    // InAppPurchaseState.RESTORED
   });
+
+  useEffect(() => {
+    getBillingResponseCodeAsync().then((responseCode) => {
+      console.log(responseCode, IAPResponseCode.OK)
+      if (responseCode !== IAPResponseCode.OK && userData.membership != '1') {
+        const res = changeMembership(uid, '1');
+        if (res) {
+          res.then((data) => {
+            if (data) {
+              dispatch(changeMembershipStatus(data));
+              Toast.show(
+                "Please check your membership status.",
+                Toast.LONG
+              );
+            }
+          })
+        }
+      }
+    })
+  }, [])
 
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => {
@@ -324,45 +299,6 @@ export const HomeScreen = ({ navigation }) => {
   // navigations
   const navigateTo = (link) => Linking.openURL(link);
 
-  // choose date cannot be over today
-  const filter = (date) => Date.parse(date.toLocaleDateString()) <= Date.parse(new Date().toLocaleDateString());
-
-  const openAttendanceModal = () => {
-    setTrackerVisible(true);
-    setAttendanceLoading(true);
-    getCourseList().then((res) => {
-      if (res) {
-        setCourseList([{ courseName: "Choose your class", id: '0' }, ...res]);
-      }
-    }).finally(() => {
-      setAttendanceLoading(false);
-    })
-  };
-
-  const closeAttendanceModal = () => {
-    setTrackerVisible(false);
-    setSelectedIndex1(new IndexPath(0));
-    setSelectedIndex2(new IndexPath(0));
-    setAttendanceDate(new Date());
-    setSubmitError(false);
-  }
-
-  const submitAttendanceRecord = () => {
-    if (selectedIndex1.row == 0 || selectedIndex2.row == 0 || selectedIndex3.row == 0) {
-      setSubmitError(true);
-    } else {
-      addClockIn(uid, courseList[selectedIndex1.row].id, chapters[selectedIndex2.row].value, studyHours[selectedIndex3.row], attendanceDate.toISOString().slice(0, 10)).then((res) => {
-        if (res) {
-          Toast.show(
-            res
-          );
-          closeAttendanceModal();
-        }
-      })
-      setSubmitError(false);
-    }
-  }
-
   const navigateToQuiz = () => {
     dispatch(refreshQuiz());
     navigation.navigate("QuizScreen");
@@ -384,8 +320,8 @@ export const HomeScreen = ({ navigation }) => {
     navigation.navigate("VideosListScreen");
   };
 
-  const navigateToAttendanceList = () => {
-    navigation.navigate("AttendanceListScreen");
+  const navigateToAttendance = () => {
+    navigation.navigate("AttendanceScreen");
   };
 
   const navigateToMembership = () => {
@@ -448,10 +384,10 @@ export const HomeScreen = ({ navigation }) => {
               <Text category="h6" style={homeStyles.categoryTitle} numberOfLines={3}>
                 {item.categoryName}
               </Text>
-              <View style={homeStyles.itemContent}>
-                <Text category="s1" style={{ color: "#fff" }}>
+              <View style={{...homeStyles.itemContent, height: 24}}>
+                {/* <Text category="s1" style={{ color: "#fff" }}>
                   Questions: {item.itemNum}
-                </Text>
+                </Text> */}
               </View>
             </Layout>
           </TouchableOpacity>
@@ -466,9 +402,9 @@ export const HomeScreen = ({ navigation }) => {
                   {item.categoryName}
                 </Text>
                 <View style={homeStyles.itemLockedContent}>
-                  <Text category="s1" style={{ color: "#fff" }}>
+                  {/* <Text category="s1" style={{ color: "#fff" }}>
                     Questions: {item.itemNum}
-                  </Text>
+                  </Text> */}
                   <Icon
                     name="lock"
                     fill="#fff"
@@ -536,7 +472,7 @@ export const HomeScreen = ({ navigation }) => {
           <Text category="s2" appearance="hint" style={homeStyles.time}>
             Estimated time 10 mins
           </Text>
-          <Button style={homeStyles.button} onPress={navigateToQuiz}>
+          <Button style={{ ...homeStyles.button, marginBottom: 8 }} onPress={navigateToQuiz}>
             Let's Start A Quiz
           </Button>
           <Button appearance="ghost" style={{ ...homeStyles.button, marginTop: 8 }} onPress={navigateToReview}>
@@ -575,23 +511,15 @@ export const HomeScreen = ({ navigation }) => {
         </View>
         <View style={homeStyles.content}>
           <View style={homeStyles.header}>
-            <Text category="h4" style={homeStyles.title}>
-              Class attendance tracker
-            </Text>
-          </View>
-          <View style={homeStyles.header}>
             <Image
-              source={require("../../../assets/img/attendance.png")}
+              source={require("../../../assets/img/radio.png")}
               style={{ width: '100%', height: 200 }}
               resizeMode="contain"
             />
           </View>
-          <Button style={homeStyles.button} onPress={openAttendanceModal}>
-            Submit record
-          </Button>
-          <Button appearance="ghost" style={{ ...homeStyles.button, marginTop: 8 }} onPress={navigateToAttendanceList}>
-            Review Attendance
-          </Button>
+          <SafeAreaView style={{ flex: 1 }}>
+            <SettingList settings={podcast} navigation={navigation} padding={false} />
+          </SafeAreaView>
         </View>
         <View style={homeStyles.content}>
           <View style={homeStyles.header}>
@@ -601,7 +529,24 @@ export const HomeScreen = ({ navigation }) => {
               resizeMode="contain"
             />
           </View>
-          <SettingList settings={viewOurWebsite} navigation={navigation} padding={false}/>
+          <SafeAreaView style={{ flex: 1 }}>
+            <SettingList settings={viewOurWebsite} navigation={navigation} padding={false} />
+          </SafeAreaView>
+        </View>
+        <View style={homeStyles.content}>
+          <View>
+            <Text style={{ ...homeStyles.title, fontWeight: 'bold', fontSize: 24 }}>
+              CFREE Student
+            </Text>
+            <Image
+              source={require("../../../assets/img/attendance.png")}
+              style={{ width: '100%', height: 200 }}
+              resizeMode="contain"
+            />
+          </View>
+          <Button style={homeStyles.button} onPress={navigateToAttendance}>
+            Resources for CFREE Students
+          </Button>
         </View>
       </ScrollView>
       <Modal
@@ -663,73 +608,6 @@ export const HomeScreen = ({ navigation }) => {
           >
             Skip
           </Button>
-        </Card>
-      </Modal>
-      <Modal
-        style={homeStyles.modal}
-        visible={trackerVisible}
-        backdropStyle={homeStyles.backdrop}
-        onBackdropPress={closeAttendanceModal}
-      >
-        <Card disabled={true} style={{ ...homeStyles.modalCard2 }}>
-          {!attendanceLoading ?
-            <>
-              <Select
-                style={homeStyles.modalSelect}
-                label="Choose your class"
-                placeholder='Choose your class'
-                value={courseList[selectedIndex1.row].courseName}
-                selectedIndex={selectedIndex1}
-                onSelect={index => setSelectedIndex1(index)}>
-                {courseList.map((course, index) => {
-                  return <SelectItem title={course.courseName} key={course.id} />
-                })}
-              </Select>
-              <Select
-                style={homeStyles.modalSelect}
-                label="Choose chapter"
-                placeholder='Choose chapter..'
-                value={chapters[selectedIndex2.row].name}
-                selectedIndex={selectedIndex2}
-                onSelect={index => setSelectedIndex2(index)}>
-                {chapters.map((item, index) => {
-                  return <SelectItem title={item.name} key={item.id} />
-                })}
-              </Select>
-              <Select
-                style={homeStyles.modalSelect}
-                label="Choose study hours"
-                placeholder='Choose hours..'
-                value={studyHours[selectedIndex3.row]}
-                selectedIndex={selectedIndex3}
-                onSelect={index => setSelectedIndex3(index)}>
-                {studyHours.map((item, index) => {
-                  return <SelectItem title={item} key={item} />
-                })}
-              </Select>
-              <Datepicker
-                style={homeStyles.modalSelect}
-                label="Choose date"
-                date={attendanceDate}
-                onSelect={nextDate => setAttendanceDate(nextDate)}
-                filter={filter}
-              />
-              {submitError && <Text category="s2" style={{ color: 'red' }}>Submit error, please check it</Text>}
-              <Button
-                style={homeStyles.modalSubmit}
-                onPress={submitAttendanceRecord}
-              >
-                Submit
-              </Button>
-            </>
-            :
-            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", height: 260 }}>
-              <ActivityIndicator style={{ marginBottom: 6 }} />
-              <Text category="s1" appearance="hint">
-                Loading...
-              </Text>
-            </View>
-          }
         </Card>
       </Modal>
     </View>
