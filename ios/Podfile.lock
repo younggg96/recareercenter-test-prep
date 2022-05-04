@@ -67,6 +67,11 @@ PODS:
     - UMCore
   - EXStructuredHeaders (1.0.1):
     - UMCore
+  - EXTaskManager (9.1.0):
+    - UMAppLoader
+    - UMConstantsInterface
+    - UMCore
+    - UMTaskManagerInterface
   - EXUpdates (0.5.5):
     - EXStructuredHeaders
     - React-Core
@@ -420,6 +425,7 @@ DEPENDENCIES:
   - EXSharing (from `../node_modules/expo-sharing/ios`)
   - EXSplashScreen (from `../node_modules/expo-app-loading/node_modules/expo-splash-screen/ios`)
   - EXStructuredHeaders (from `../node_modules/expo-structured-headers/ios`)
+  - EXTaskManager (from `../node_modules/expo-task-manager/ios`)
   - EXUpdates (from `../node_modules/expo-updates/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -525,6 +531,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-app-loading/node_modules/expo-splash-screen/ios"
   EXStructuredHeaders:
     :path: "../node_modules/expo-structured-headers/ios"
+  EXTaskManager:
+    :path: "../node_modules/expo-task-manager/ios"
   EXUpdates:
     :path: "../node_modules/expo-updates/ios"
   FBLazyVector:
@@ -650,6 +658,7 @@ SPEC CHECKSUMS:
   EXSharing: 8e02f95f0b258480a5d5d8a0e3fd70a87f91512b
   EXSplashScreen: f149e7ae7c5b412c03af491a10cca5bc760a75ec
   EXStructuredHeaders: 7e7eec19a326bc58cca2fb3edbac0afaecb89c16
+  EXTaskManager: b873efc04d604ac3884ce28f7264427461841bed
   EXUpdates: d9334744d7fd61b076536b7eb320b9daf64d4b3b
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e

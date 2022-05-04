@@ -19,41 +19,73 @@ import { styles } from "../../styles/home/settings/notificationStyle";
 import { updateNotification } from "../../helper/api";
 import { useState } from "react";
 
+// constants
+import Constants from 'expo-constants';
+import * as Notifications from 'expo-notifications';
+import { Platform } from "react-native";
+
 export const NotificationScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector(state => state.userReducer);
-  const { time } = userData.notification;
+  // const { time } = userData.notification;
 
-  const [status, setStatus] = useState(userData.notification.status);
-  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+  const [status, setStatus] = useState(userData.push);
+  // const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
 
+  const getPushNotificationStatusAsync = async () => {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+
+    let finalStatus = existingStatus;
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!');
+      return;
+    }
+
+    if (Platform.OS === 'android') {
+      Notifications.setNotificationChannelAsync('default', {
+        name: 'default',
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: '#FF231F7C',
+      });
+    }
+    console.log(finalStatus)
+  
+    return finalStatus == 'granted';
+  }
 
   const onCheckedChange = (isChecked) => {
-    setStatus(isChecked)
-    updateNotification({ uid: userData.uid, status: isChecked, hours: new Date().getHours(), mins: new Date().getMinutes() }).then((res) => {
-      dispatch(setNotification(isChecked));
-    }).catch((err) => {
-      if (err) {
-        Alert.alert(err);
+    setStatus(isChecked);
+    getPushNotificationStatusAsync().then((res) => {
+      if (res) {
+        updateNotification(userData.uid, isChecked).then((res) => {
+          console.log(res.data)
+          dispatch(updateProfile(res.data));
+        })
+      } else {
         setStatus(!isChecked);
       }
     })
   };
 
-  const showTimePicker = () => {
-    setTimePickerVisibility(true);
-  };
+  // const showTimePicker = () => {
+  //   setTimePickerVisibility(true);
+  // };
 
-  const hideTimePicker = () => {
-    setTimePickerVisibility(false);
-  };
+  // const hideTimePicker = () => {
+  //   setTimePickerVisibility(false);
+  // };
 
-  const handleConfirm = (time) => {
-    hideTimePicker();
-    updateNotification({ uid: userData.uid, status, hours: time.getHours(), mins: time.getMinutes() }).then((res) => {
-      dispatch(updateProfile(res));
-    })
-  };
+  // const handleConfirm = (time) => {
+  //   hideTimePicker();
+  //   updateNotification({ uid: userData.uid, status, hours: time.getHours(), mins: time.getMinutes() }).then((res) => {
+  //     dispatch(updateProfile(res));
+  //   })
+  // };
 
   return (
     <View style={{ flex: 1 }}>
@@ -67,7 +99,7 @@ export const NotificationScreen = ({ navigation }) => {
             <Toggle checked={status} onChange={onCheckedChange}></Toggle>
           </View>
         </View>
-        {status ? (
+        {/* {status ? (
           <View style={styles.title}>
             <View>
               <Text category="s1">
@@ -88,7 +120,7 @@ export const NotificationScreen = ({ navigation }) => {
               />
             </View>
           </View>
-        ) : null}
+        ) : null} */}
       </View>
     </View>
   );

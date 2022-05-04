@@ -10,7 +10,7 @@ import { ScrollView } from "react-native-gesture-handler";
 const ABOUT_US = {
   title: "Who we are?",
   content:
-    "The Center for Real Estate Education is a full service resource and training center for real estate agents across New Jersey and New York.  In our 4000 sq. ft., state-of-the-art facility, we offer dual NJ and NY licensing courses, master classes given by top professionals in real estate related fields, and seminars to help advance your career. All of our courses are interactive and offer real life training. All licensing graduates have a one year membership to the Center for Real Estate Education included in their tuition.Current real estate agents are able to join annually for a host of membership perks.",
+    "The Center for Real Estate Education is a full service educational resource and training center for real estate agents across the United States.  On our website, recareercenter.com, and in our 4000 sq. ft., state-of-the-art New Jersey facility, we offer pre-licensing courses, seminars, certifications, and podcasts to help advance your career. We Make Real Estate Simple by offering flexible schedules and interactive classes taught by expert top professionals.All of our courses, online and in-person, are interactive and offer real life training. We love sharing Everything Real Estate so you can take your passions to the next level.",
 };
 
 const CONTACT_US = {

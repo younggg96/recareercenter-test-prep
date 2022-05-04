@@ -8,6 +8,7 @@ export const profileSettings = [
 
 export const viewOurWebsite = [
   { title: "Visit Our Online Store", icon: ShopIcon, rightIcon: ForwardIcon, disable: false, url: "https://www.recareercenter.com"},
+  { title: "National Classes", icon: BookIcon, rightIcon: ForwardIcon, disable: false, url: "https://www.recareercenter.com/national/" },
   { title: "Shop at Our Book Store", icon: BookIcon, rightIcon: ForwardIcon, disable: false, url: "https://www.recareercenter.com/product-category/books/" },
   { title: "Check Out Our Merch Store", icon: GiftIcon, rightIcon: ForwardIcon, disable: false, url: "https://www.recareercenter.com/product-category/merch-store/" },
 ];

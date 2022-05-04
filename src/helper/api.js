@@ -20,16 +20,14 @@ export const postExamRecord = async (data) => {
     }
 }
 
-export const updateNotification = async ({ uid, status, hours, mins }) => {
+export const updateNotification = async (uid, status) => {
+    let push = 0;
+    if (status) {
+        push = 1;
+    }
     try {
-        const res = await axios({
-            method: 'post',
-            url: BASE_URL + '/users/updateNotification',
-            data: {
-                uid, status, hours, mins
-            }
-        });
-        return res.data;
+        const res = axios.post(BASE_URL + `/users/changePushStatus?uid=${uid}&push=${push}`);
+        return res;
     } catch (error) {
         Alert.alert("Error", `${error.message}`);
     }
@@ -276,4 +274,12 @@ export const getUserClockInList = async (uid) => {
     }
 }
 
+export const saveExpoToken = async (uid, expoToken) => {
+    try {
+        const res = await axios.post(BASE_URL + `/users/saveExpoToken?uid=${uid}&expoToken=${expoToken}`);
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
 

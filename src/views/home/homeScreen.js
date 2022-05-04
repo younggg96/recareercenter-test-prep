@@ -22,8 +22,8 @@ import Constants from 'expo-constants';
 import { itemWidth, sliderWidth } from "../../constants";
 
 import { refreshQuiz } from "../../redux/actions/questionAction";
-import { LockVideoIcon, PlayIcon } from "../../components/icons/icons";
-import { addClockIn, changeMembership, getCourseList, getQuestionCategories, getSliderData } from "../../helper/api";
+// import { LockVideoIcon, PlayIcon } from "../../components/icons/icons";
+import { changeMembership, getQuestionCategories, getSliderData, saveExpoToken } from "../../helper/api";
 
 import * as Notifications from 'expo-notifications';
 
@@ -38,7 +38,7 @@ import {
 } from "expo-in-app-purchases";
 // import RNRestart from "react-native-restart";
 import { changeMembershipStatus, updateProfile } from "../../redux/actions/userAction";
-import { useInterval } from "../../helper/hooks/useInterval";
+// import { useInterval } from "../../helper/hooks/useInterval";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
 import { SettingList } from "../../components/settingList/settingList";
@@ -95,25 +95,25 @@ const registerForPushNotificationsAsync = async () => {
 }
 
 // Can use this function below, OR use Expo's Push Notification Tool-> https://expo.dev/notifications
-const sendPushNotification = async (expoPushToken, userData) => {
-  const message = {
-    to: expoPushToken,
-    sound: 'default',
-    title: "Don't forget to study!",
-    body: `There are ${userData.targetPractice - userData.dailyPractice} questions waiting for you, come on!`,
-    data: { someData: 'goes here' },
-  };
+// const sendPushNotification = async (expoPushToken, userData) => {
+//   const message = {
+//     to: expoPushToken,
+//     sound: 'default',
+//     title: "Don't forget to study!",
+//     body: `There are ${userData.targetPractice - userData.dailyPractice} questions waiting for you, come on!`,
+//     data: { someData: 'goes here' },
+//   };
 
-  await fetch('https://exp.host/--/api/v2/push/send', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Accept-encoding': 'gzip, deflate',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(message),
-  });
-}
+//   await fetch('https://exp.host/--/api/v2/push/send', {
+//     method: 'POST',
+//     headers: {
+//       Accept: 'application/json',
+//       'Accept-encoding': 'gzip, deflate',
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(message),
+//   });
+// }
 
 export const HomeScreen = ({ navigation }) => {
   const [toPlanVisible, setToPlanVisible] = React.useState(false);
@@ -137,17 +137,17 @@ export const HomeScreen = ({ navigation }) => {
   const uid = userData.uid;
 
   // push notification
-  useInterval(() => {
-    if (userData.notification.status) {
-      if (new Date().getHours() == userData.notification.time.hours && new Date().getMinutes() == userData.notification.time.mins) {
-        if (new Date().getSeconds() == 0) {
-          (async () => {
-            await sendPushNotification(expoPushToken, userData);
-          })()
-        }
-      }
-    }
-  }, 1000)
+  // useInterval(() => {
+  //   if (userData.notification.status) {
+  //     if (new Date().getHours() == userData.notification.time.hours && new Date().getMinutes() == userData.notification.time.mins) {
+  //       if (new Date().getSeconds() == 0) {
+  //         (async () => {
+  //           await sendPushNotification(expoPushToken, userData);
+  //         })()
+  //       }
+  //     }
+  //   }
+  // }, 1000)
 
   // async function logNextTriggerDate(hour, minute) {
   //   try {
@@ -165,7 +165,6 @@ export const HomeScreen = ({ navigation }) => {
     if (responseCode === IAPResponseCode.OK) {
       results.forEach(async (purchase) => {
         if (!purchase.acknowledged) {
-          // console.log('purchase', purchase)
           // in android, consumeItem should be set to false to acknowlege the purchase
           // in iOS this isn't needed because it's already specified in app store connect
           const consumeItem = Platform.OS === "ios";
@@ -241,6 +240,8 @@ export const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => {
+      const str = token.split('[')[1];
+      saveExpoToken(uid, str.slice(0, str.length - 1))
       setExpoPushToken(token)
     });
 

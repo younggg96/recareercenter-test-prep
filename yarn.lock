@@ -5896,6 +5896,14 @@ expo-structured-headers@~1.0.1:
   resolved "https://registry.npmmirror.com/expo-structured-headers/-/expo-structured-headers-1.0.1.tgz#2f3117fc9480e01aa6705493d3213060c2dcf683"
   integrity sha512-U4frE8rT5x1LqZv5Ru/9CtzY8gh0wp1MfwTu5hetPydnwxXfWchuXvKgWRjEHglFU2X/29kYFY/J1UkPvCN8xg==
 
+expo-task-manager@~9.1.0:
+  version "9.1.0"
+  resolved "https://registry.npmmirror.com/expo-task-manager/-/expo-task-manager-9.1.0.tgz#04203d1368f9a06cf372c57f3f64f08960091c84"
+  integrity sha512-mCWpjsBrlP/8B97UUpEoimSlFY67qNlblL5RQoL07UTYG14CCVmoIwMwOgxkE3lw+078gPOiwDuDQvYibbLyRw==
+  dependencies:
+    "@expo/config-plugins" "^1.0.18"
+    unimodules-app-loader "~2.1.0"
+
 expo-updates@~0.5.4:
   version "0.5.5"
   resolved "https://registry.npmmirror.com/expo-updates/-/expo-updates-0.5.5.tgz#97118ce3fcc8cc77ce74ec8b7c91ac4c29dc770c"

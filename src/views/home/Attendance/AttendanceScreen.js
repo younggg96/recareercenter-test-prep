@@ -15,6 +15,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { additionalStudentsResources } from '../../../components/settingList/settingConfig';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SettingList } from '../../../components/settingList/settingList';
+import { Linking } from 'react-native';
 
 // choose date cannot be over today
 const filter = (date) => Date.parse(date.toLocaleDateString()) <= Date.parse(new Date().toLocaleDateString());
@@ -52,11 +53,12 @@ const chapters = [
 const studyHours = ["Choose hours", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const data = [
-  "Fill this tracker out COMPLETELY. You must have a date for each chapter.",
-  "When you have completed ALL 21 Chapters plus a Test Review.  You may go to recareercenter.com/test – READ ALL INSTRUCTIONS - and register for your school exam.",
-  "Upload your Chapter Tracker at registration.",
-  "Tracker must be signed and only needs to be submitted when you register for exam.",
-  "Please allow up to 3 business days for processing. We will verify the information on your tracker with our system records of your attendance."
+  "Fill out this tracker for each class you complete, by clicking “Enter Chapter Date” ",
+  "After you have completed all 21 Individual Chapters plus a Test Review you may click \"Review Attendance & Submit\"",
+  "The CFREE app will compile all of your entered dates and chapters.",
+  "Click the \"Share\" icon on the upper right hand corner and save the Tracker on your phone.",
+  "Go to www.recareercenter.com/test.",
+  "Read the instructions in full and proceed to sign up and upload tracker on testing site."
 ]
 
 export const AttendanceScreen = ({ navigation }) => {
@@ -117,16 +119,25 @@ export const AttendanceScreen = ({ navigation }) => {
   };
 
 
-  const renderItem = ({ item, index }) => (
-    <ListItem title={`${index + 1}. ${item}`} disabled />
-  );
+  const renderItem = ({ item, index }) => {
+    if (index == 4) {
+      return <ListItem children={<Text style={{ color: 'blue', paddingHorizontal: 6, textDecorationLine: "underline" }}>
+        {index + 1}. {item}
+      </Text>
+      } onPress={() => Linking.openURL("http://www.recareercenter.com/test")} />
+    } else {
+      return (
+        <ListItem title={`${index + 1}. ${item}`} disabled />
+      );
+    }
+  }
 
   return (
     <View style={{ flex: 1 }}>
       <TopBar title="Resources for CFREE Students" navigation={navigation} hasBack={true} hasRight={false} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={homeStyles.header}>
-          <Text style={{ ...homeStyles.title, fontSize: 24, paddingHorizontal: 20, paddingTop: 12, color: '#888'}}>
+          <Text style={{ ...homeStyles.title, fontSize: 24, paddingHorizontal: 20, paddingTop: 12, color: '#888' }}>
             Student Chapter Tracker
           </Text>
         </View>
@@ -143,10 +154,10 @@ export const AttendanceScreen = ({ navigation }) => {
             <List data={data} renderItem={renderItem} />
           </View>
           <Button style={homeStyles.button} onPress={openAttendanceModal}>
-            Submit record
+            Enter Chapter Date
           </Button>
           <Button appearance="ghost" style={{ ...homeStyles.button, marginTop: 8, marginBottom: 12 }} onPress={navigateToAttendanceList}>
-            Review Attendance
+            Review Attendance & Submit
           </Button>
           <Divider />
           <View style={{ padding: 6, marginVertical: 6 }}>

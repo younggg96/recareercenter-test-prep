@@ -1,4 +1,4 @@
-export const BASE_URL = "http://realestateexam-env-3.eba-uanhhd5e.us-east-2.elasticbeanstalk.com/api";
+export const BASE_URL = "http://realestateexam-env.eba-ewawasny.us-east-2.elasticbeanstalk.com/api";
 
 export const GOOGLE_AUTH_CONFIG = {
     issuer: 'https://accounts.google.com',
