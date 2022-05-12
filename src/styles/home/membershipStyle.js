@@ -13,13 +13,13 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "700",
-    fontSize: 28,
+    fontSize: 24,
     letterSpacing: -1,
     color: "#666",
   },
   price: {
     fontWeight: "700",
-    fontSize: 36,
+    fontSize: 30,
     color: "#000",
   },
   subtitle: {

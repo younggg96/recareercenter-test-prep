@@ -87,7 +87,7 @@ export const MembershipScreen = ({ navigation }) => {
             <Text style={styles.title}>BRONZE</Text>
             <Text style={styles.price}>
               Free{" "}
-              <Text style={{ textDecorationLine: "line-through", fontSize: 26, color: "red" }} category="s1">
+              <Text style={{ textDecorationLine: "line-through", fontSize: 20, color: "red" }} category="s1">
                 $9.99
               </Text>
               <Text style={styles.subtitle} category="s2">
