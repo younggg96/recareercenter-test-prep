@@ -1,6 +1,6 @@
 import axios from "axios"
 import { Alert } from "react-native";
-import { BASE_URL } from "../../config"
+import { BASE_URL } from "../../config";
 
 export const postExamRecord = async (data) => {
     try {
@@ -56,7 +56,6 @@ export const getSliderData = async (uid) => {
 }
 
 export const getExamData = async (uid) => {
-    console.log(uid)
     try {
         const res = await axios.get(BASE_URL + `/examData/getExamData?uid=${uid}`);
         if (res) {
@@ -277,6 +276,15 @@ export const getUserClockInList = async (uid) => {
 export const saveExpoToken = async (uid, expoToken) => {
     try {
         const res = await axios.post(BASE_URL + `/users/saveExpoToken?uid=${uid}&expoToken=${expoToken}`);
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const updateUserProfile = async (uid, name) => {
+    try {
+        const res = await axios.put(BASE_URL + `/users/updateDisplayName?uid=${uid}&name=${name}`);
         return res.data;
     } catch (error) {
         Alert.alert("Error", `${error.message}`);

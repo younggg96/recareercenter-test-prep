@@ -76,7 +76,6 @@ export const MockExamScreen = ({ navigation }) => {
 
   // next btn
   const goNextQuestion = () => {
-    console.log(currentQuestion)
     if (currentQuestion < 99) {
       // do question
       setSpinner(true);
@@ -100,7 +99,6 @@ export const MockExamScreen = ({ navigation }) => {
       dispatch(getResult(itemRes, currentQuestion));
     } else {
       const data = { score, uid: userData.uid, recordQuestions: getRecordQuestions() }
-      console.log(data);
       postExamRecord(data);
     }
     setSelectedIndex(-1);

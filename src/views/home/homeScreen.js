@@ -155,7 +155,6 @@ export const HomeScreen = ({ navigation }) => {
   //       hour,
   //       minute
   //     });
-  //     console.log(nextTriggerDate === null ? 'No next trigger date' : new Date(nextTriggerDate));
   //   } catch (e) {
   //     console.warn(`Couldn't have calculated next trigger date: ${e}`);
   //   }
@@ -214,13 +213,12 @@ export const HomeScreen = ({ navigation }) => {
     }
 
     if (errorCode) {
-      console.log(errorCode)
+      Toast.show('Purchase error');
     }
   });
 
   useEffect(() => {
     getBillingResponseCodeAsync().then((responseCode) => {
-      console.log(responseCode, IAPResponseCode.OK)
       if (responseCode !== IAPResponseCode.OK && userData.membership != '1') {
         const res = changeMembership(uid, '1');
         if (res) {
@@ -252,7 +250,6 @@ export const HomeScreen = ({ navigation }) => {
 
     // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log(response);
     });
 
     return () => {

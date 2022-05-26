@@ -11,6 +11,7 @@ import {
   USER_REGISTER,
   UPDATE_PROFILE,
   SET_NOTIFICATION,
+  USER_LOGIN_WITH_APPLE,
 } from "./actionTypes";
 
 import FirebaseAuth from "../../firebase/index";
@@ -19,7 +20,7 @@ import axios from "axios";
 import { BASE_URL } from "../../../config";
 import { getValueFormStore, setValueToStore } from "../../storage";
 import { USER_AUTH_INFO } from "../../storage/keys";
-import { findUser } from "../../helper/api";
+import { findUser, updateUserProfile } from "../../helper/api";
 
 // alerts
 const successSubmitAlert = (date) =>
@@ -108,6 +109,32 @@ export async function loginWithGoogle(uid, email, displayName) {
     await setValueToStore(USER_AUTH_INFO, JSON.stringify({ uid, userInfo }))
     return {
       type: USER_LOGIN_WITH_GOOGLE,
+      payload
+    };
+  } catch (err) {
+    Alert.alert("Error", `${err.message}`);
+  }
+}
+
+export async function loginWithApple(uid, email, displayName) {
+  try {
+    let res = await axios.get(BASE_URL + `/users/findUser?uid=${uid}`);
+    // dont find user id in database, register a new user
+    if (!res.data) {
+      res = await axios.post(BASE_URL + `/users/createUser?uid=${uid}`);
+    }
+    if (!displayName && !res.data.displayName) {
+      updateUserProfile(uid, 'Student').then((res) => {
+      })
+    }
+    const userInfo = { email, displayName}
+    const payload = {
+      userData: Object.assign(res.data, userInfo),
+      signIn: true,
+    };
+    await setValueToStore(USER_AUTH_INFO, JSON.stringify({ uid, userInfo }))
+    return {
+      type: USER_LOGIN_WITH_APPLE,
       payload
     };
   } catch (err) {

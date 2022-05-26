@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 12,
   },
   paragraph: {
     fontWeight: "bold",
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
   },
   forgetBtn: {
-    marginVertical: 4,
+    marginBottom: 4,
     alignItems: "flex-end",
   },
   input: {
@@ -50,13 +50,14 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
   },
   otherTitle: {
-    marginTop: 8,
+    marginTop: 4,
     textAlign: "center",
   },
   other: {
     marginTop: 8,
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
+    backgroundColor: "#F2F2F2",
   },
   otherBtnLayout: {
     flex: 1,
@@ -66,7 +67,6 @@ export const styles = StyleSheet.create({
   },
   otherBtn: {
     width: "80%",
-    marginTop: 8,
     borderRadius: 16,
   },
   topBar: {

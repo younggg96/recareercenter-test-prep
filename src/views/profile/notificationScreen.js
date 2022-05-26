@@ -53,8 +53,6 @@ export const NotificationScreen = ({ navigation }) => {
         lightColor: '#FF231F7C',
       });
     }
-    console.log(finalStatus)
-  
     return finalStatus == 'granted';
   }
 
@@ -63,7 +61,6 @@ export const NotificationScreen = ({ navigation }) => {
     getPushNotificationStatusAsync().then((res) => {
       if (res) {
         updateNotification(userData.uid, isChecked).then((res) => {
-          console.log(res.data)
           dispatch(updateProfile(res.data));
         })
       } else {

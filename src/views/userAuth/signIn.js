@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
 import { Image, Keyboard, SafeAreaView, View } from "react-native";
+import Toast from "react-native-simple-toast";
 
 // import * as AppAuth from 'expo-app-auth';
 // // When configured correctly, URLSchemes should contain your REVERSED_CLIENT_ID
@@ -16,7 +17,7 @@ import { useForm, Controller } from "react-hook-form";
 
 // redux
 import { useDispatch } from "react-redux";
-import { login, loginWithGoogle } from "../../redux/actions/userAction";
+import { login, loginWithGoogle, loginWithApple } from "../../redux/actions/userAction";
 
 // icons
 import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
@@ -27,6 +28,8 @@ import { STORE_SIGNIN_GOOGLE_KEY } from "../../storage/keys";
 
 // google sign in
 import * as GoogleSignIn from 'expo-google-sign-in';
+// apple sign in
+import * as AppleAuthentication from 'expo-apple-authentication';
 
 
 // // store key for config secure store setter/getter
@@ -53,7 +56,6 @@ import * as GoogleSignIn from 'expo-google-sign-in';
 
 // const signInAsync = async () => {
 //   let authState = await AppAuth.authAsync(GOOGLE_AUTH_CONFIG);
-//   console.log(authState)
 //   await setValueToStore(STORE_SIGNIN_GOOGLE_KEY, JSON.stringify(authState));
 //   return authState;
 // }
@@ -104,6 +106,30 @@ export const SignIn = ({ navigation }) => {
       }
     } catch ({ message }) {
       alert('login: Error:' + message);
+    }
+  };
+
+  const signInAsyncWithApple = async () => {
+    try {
+      const credential = await AppleAuthentication.signInAsync({
+        requestedScopes: [
+          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+          AppleAuthentication.AppleAuthenticationScope.EMAIL,
+        ],
+      });
+      // signed in
+      const { user, email, fullName } = credential;
+      const displayName = fullName.givenName && fullName.familyName ? `${fullName.givenName} ${fullName.familyName}` : '';
+      const userEmail = email ? email : '';
+      dispatch(loginWithApple(user, userEmail, displayName));
+    } catch (e) {
+      if (e.code === 'ERR_CANCELED') {
+        // handle that the user canceled the sign-in flow
+        Toast.show("Sign in canceled");
+      } else {
+        alert(e);
+        // handle other errors
+      }
     }
   };
 
@@ -180,7 +206,7 @@ export const SignIn = ({ navigation }) => {
           </Text>
           <Image
             source={require("../../../assets/img/WElcomebackvector.png")}
-            style={{ width: 200, height: 120 }}
+            style={{ width: 200, height: 100 }}
             resizeMode="contain"
           />
         </View>
@@ -201,7 +227,7 @@ export const SignIn = ({ navigation }) => {
               <Input
                 style={styles.input}
                 label="Email"
-                size="large"
+                // size="large"
                 autoCapitalize='none'
                 caption={
                   errors.email ? (
@@ -236,7 +262,7 @@ export const SignIn = ({ navigation }) => {
               <Input
                 style={styles.input}
                 label="Password"
-                size="large"
+                // size="large"
                 caption={
                   errors.password ? (
                     <Text status="danger" category="c2">
@@ -282,28 +308,38 @@ export const SignIn = ({ navigation }) => {
             Sign Up
           </Button>
           <Text style={styles.otherTitle} category="c2">
-            Or Sign In With
+            Or
           </Text>
           <Layout style={styles.other}>
-            <Layout style={styles.otherBtnLayout}>
-              <Button
-                style={styles.otherBtn}
-                appearance="outline"
-                accessoryLeft={GoogleIcon}
-                onPress={signInAsync}
-              >
-                Google
-              </Button>
-            </Layout>
-            {/* <Layout style={styles.otherBtnLayout}>
-                <Button
-                  style={styles.otherBtn}
-                  appearance="outline"
-                  accessoryLeft={FaceBookIcon}
-                >
-                  FaceBook
-                </Button>
-              </Layout> */}
+            {/* <Layout style={styles.otherBtnLayout}> */}
+            <Button
+              style={styles.otherBtn}
+              appearance="outline"
+              accessoryLeft={GoogleIcon}
+              onPress={signInAsync}
+              size="small"
+            >
+              Sign In With Google
+            </Button>
+            {/* </Layout> */}
+            {/* <Layout style={styles.otherBtnLayout}> */}
+            <Button
+              style={{ ...styles.otherBtn, marginTop: 8 }}
+              appearance="outline"
+              accessoryLeft={() => {
+                return (
+                  <Image
+                    source={require("../../../assets/apple-logo.png")}
+                    style={{ width: 18, height: 18, marginRight: 6 }}
+                  />
+                )
+              }}
+              size="small"
+              onPress={signInAsyncWithApple}
+            >
+              Sign In With Apple
+            </Button>
+            {/* </Layout> */}
           </Layout>
         </View>
       </SafeAreaView>

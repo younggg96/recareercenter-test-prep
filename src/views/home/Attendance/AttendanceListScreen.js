@@ -21,7 +21,6 @@ export const AttendanceListScreen = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
 
   const shareRecord = async (body) => {
-    console.log(userData)
     let str = "";
     if (body) {
       for (let index = 0; index < body.length; index++) {

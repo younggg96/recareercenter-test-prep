@@ -6,6 +6,7 @@ import {
   SET_START_DAY,
   USER_LOGIN,
   USER_LOGIN_WITH_GOOGLE,
+  USER_LOGIN_WITH_APPLE,
   USER_LOGIN_WITH_CACHE,
   USER_LOGOUT,
   USER_REGISTER,
@@ -47,6 +48,8 @@ export default (state = INITIAL_STATE, action) => {
         signIn: action.payload.signIn,
       };
     case USER_LOGIN_WITH_GOOGLE:
+      return action.payload;
+    case USER_LOGIN_WITH_APPLE:
       return action.payload;
     case USER_LOGIN_WITH_CACHE:
       return action.payload;

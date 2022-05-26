@@ -22,12 +22,13 @@ export const styles = StyleSheet.create({
   email: {
     marginTop: 16,
     backgroundColor: '#fff',
-    height: 120,
     justifyContent: 'center',
+    paddingVertical: 12,
     paddingHorizontal: 48,
     ...shadow
   },
   logOutBtn: {
-    marginTop: 16,
+    marginTop: 12,
+    height: 36
   }
 });

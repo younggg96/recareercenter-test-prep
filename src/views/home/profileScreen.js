@@ -28,7 +28,7 @@ export const ProfileScreen = ({ navigation }) => {
         <View>
           <View style={styles.headerContainer}>
             <View style={{ width: '60%', paddingHorizontal: 8 }}>
-              <Text numberOfLines={2} style={{ fontWeight: "bold", fontSize: 26 }}>Hi! {userData.displayName ? userData.displayName : "Student"}</Text>
+              <Text numberOfLines={2} style={{ fontWeight: "bold", fontSize: 26 }}>Hi! {userData.displayName}</Text>
             </View>
             <View style={{ width: '40%' }}>
               <Button
