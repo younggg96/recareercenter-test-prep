@@ -4,11 +4,6 @@ import { Button, Icon, Input, Layout, Text } from "@ui-kitten/components";
 import { Image, Keyboard, SafeAreaView, View } from "react-native";
 import Toast from "react-native-simple-toast";
 
-// import * as AppAuth from 'expo-app-auth';
-// // When configured correctly, URLSchemes should contain your REVERSED_CLIENT_ID
-// const { URLSchemes } = AppAuth;
-// import * as Google from 'expo-google-app-auth';
-
 import { TouchableWithoutFeedback } from "react-native";
 import { styles } from "../../styles/userAuth/authStyle";
 
@@ -20,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { login, loginWithGoogle, loginWithApple } from "../../redux/actions/userAction";
 
 // icons
-import { FaceBookIcon, GoogleIcon } from "../../components/icons/icons";
+import { GoogleIcon } from "../../components/icons/icons";
 import { LoadingIndicator } from "../../components/loading/loadingIndicator";
 // import { GOOGLE_AUTH_CONFIG } from "../../../config";
 import { getValueFormStore, setValueToStore } from "../../storage";
@@ -307,40 +302,42 @@ export const SignIn = ({ navigation }) => {
           <Button style={styles.button} onPress={signUp}>
             Sign Up
           </Button>
-          <Text style={styles.otherTitle} category="c2">
-            Or
-          </Text>
-          <Layout style={styles.other}>
-            {/* <Layout style={styles.otherBtnLayout}> */}
-            <Button
-              style={styles.otherBtn}
-              appearance="outline"
-              accessoryLeft={GoogleIcon}
-              onPress={signInAsync}
-              size="small"
-            >
-              Sign In With Google
-            </Button>
-            {/* </Layout> */}
-            {/* <Layout style={styles.otherBtnLayout}> */}
-            <Button
-              style={{ ...styles.otherBtn, marginTop: 8 }}
-              appearance="outline"
-              accessoryLeft={() => {
-                return (
-                  <Image
-                    source={require("../../../assets/apple-logo.png")}
-                    style={{ width: 18, height: 18, marginRight: 6 }}
-                  />
-                )
-              }}
-              size="small"
-              onPress={signInAsyncWithApple}
-            >
-              Sign In With Apple
-            </Button>
-            {/* </Layout> */}
-          </Layout>
+          {
+            Platform.OS === "ios" &&
+            <Text style={styles.otherTitle} category="c2">
+              Or
+            </Text>
+          }
+          {
+            Platform.OS === "ios" &&
+            <Layout style={styles.other}>
+              <Button
+                style={styles.otherBtn}
+                appearance="outline"
+                accessoryLeft={GoogleIcon}
+                onPress={signInAsync}
+                size={Platform.OS === "ios" ? "small" : 'medium'}
+              >
+                Sign In With Google
+              </Button>
+              <Button
+                style={{ ...styles.otherBtn, marginTop: 8 }}
+                appearance="outline"
+                accessoryLeft={() => {
+                  return (
+                    <Image
+                      source={require("../../../assets/apple-logo.png")}
+                      style={{ width: 18, height: 18, marginRight: 6 }}
+                    />
+                  )
+                }}
+                size="small"
+                onPress={signInAsyncWithApple}
+              >
+                Sign In With Apple
+              </Button>
+            </Layout>
+          }
         </View>
       </SafeAreaView>
     </TouchableWithoutFeedback>

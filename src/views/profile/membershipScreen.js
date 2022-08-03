@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+// import * as RNIap from 'react-native-iap';
+// import { useIAP } from 'react-native-iap';
 // ui
 import { Button, Text } from "@ui-kitten/components";
 import { LinearGradient } from "expo-linear-gradient";
-import { View, Image, Platform } from "react-native";
+import { View, Image, Platform, Alert } from "react-native";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 // components
@@ -28,8 +30,41 @@ export const MembershipScreen = ({ navigation }) => {
       'cfree_member_silver',
       'cfree_member_gold'
     ],
-    android: []
+    android: [
+      'cfree_member_silver',
+      'cfree_member_gold'
+    ],
   });
+
+  // const {
+  //   connected,
+  //   products,
+  //   promotedProductsIOS,
+  //   subscriptions,
+  //   purchaseHistories,
+  //   availablePurchases,
+  //   currentPurchase,
+  //   currentPurchaseError,
+  //   finishTransaction,
+  //   getProducts,
+  //   getSubscriptions,
+  //   getAvailablePurchases,
+  //   getPurchaseHistories,
+  // } = useIAP();
+
+  // useEffect(() => {
+    // const fetchData = async() => { 
+    //   console.log("prod11")
+    //   const res = await getProducts(productIds)
+    //   console.log("prod", res)
+    // }
+    // console.log("aaaa")
+    // fetchData()
+    // return () => {
+    //   console.log('This will be logged on unmount');
+    // };
+    // return () => RNIap.endConnection();
+  // }, [])
 
 
   const purchase = async (type) => {
@@ -39,17 +74,28 @@ export const MembershipScreen = ({ navigation }) => {
     } else if (type == 3) {
       setPurchaseGoldenButtonLoading(true);
     }
+    console.log(productIds)
     // purchase
     try {
       const products = await getProductsAsync(productIds);
       if (products.results.length > 0) {
         if (type == 2) {
-          await purchaseItemAsync('cfree_member_silver');
+          await purchaseItemAsync('cfree_member_silver', {
+            accountIdentifiers: {
+              obfuscatedAccountId: '',
+              obfuscatedProfileId: '',
+            },
+          });
           setTimeout(() => {
             setPurchaseButtonLoading(false);
           }, 1000);
         } else if (type == 3) {
-          await purchaseItemAsync('cfree_member_gold');
+          await purchaseItemAsync('cfree_member_gold', {
+            accountIdentifiers: {
+              obfuscatedAccountId: '',
+              obfuscatedProfileId: '',
+            },
+          });
           setTimeout(() => {
             setPurchaseGoldenButtonLoading(false);
           }, 1000);
@@ -64,7 +110,7 @@ export const MembershipScreen = ({ navigation }) => {
     } catch (err) {
       setPurchaseButtonLoading(false);
       setPurchaseGoldenButtonLoading(false);
-      alert("error occured while trying to purchase: " + err);
+      Alert.alert(err);
     }
   };
 

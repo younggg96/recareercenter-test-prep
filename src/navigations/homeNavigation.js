@@ -156,7 +156,7 @@ const BottomTabBar = ({ navigation, state }) => {
 
 export const HomeNavigation = () => {
   return (
-    <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
+    <Tab.Navigator screenOptions={{ headerShown: false }} tabBar={(props) => <BottomTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeScreenNavigation} />
       <Tab.Screen name="Exams" component={ExamNavigation} />
       <Tab.Screen name="Videos" component={VideosNavigation} />

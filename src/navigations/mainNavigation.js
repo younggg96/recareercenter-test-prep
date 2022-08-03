@@ -15,9 +15,7 @@ export const AppNavigator = () => {
   
   return (
     <NavigationContainer ref={navigationRef}>
-      <StatusBar
-        animated={true}
-        backgroundColor="#61dafb" />
+      <StatusBar animated={true} />
       {user.signIn ? <HomeNavigation /> : <AuthNavigation />}
     </NavigationContainer>
   );

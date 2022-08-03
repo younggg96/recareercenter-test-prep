@@ -22,6 +22,8 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 
 const today = new Date();
+const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+const nextYear = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate() + 1);
 
 export const StudyPlanScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -48,6 +50,7 @@ export const StudyPlanScreen = ({ navigation }) => {
       setErrorExamDay(true);
       return;
     }
+    setErrorExamDay(false);
     setVisible(false);
     dispatch(changeExamDate(examDate, userData.uid));
   };
@@ -176,7 +179,7 @@ export const StudyPlanScreen = ({ navigation }) => {
                 backdropStyle={styles.backdrop}
                 onBackdropPress={() => {
                   setVisible(false);
-                  setExamDate(new Date());
+                  setExamDate(tomorrow);
                 }}
                 style={styles.modal}
               >
@@ -185,8 +188,10 @@ export const StudyPlanScreen = ({ navigation }) => {
                     Change exam date
                   </Text>
                   <Datepicker
-                    date={examDate.getTime() > 0 ? examDate : new Date()}
+                    date={examDate.getTime() > 0 ? examDate : tomorrow}
                     dateService={formatDateService}
+                    min={tomorrow}
+                    max={nextYear}
                     onSelect={(nextDate) => setExamDate(nextDate)}
                     size="small"
                   />
@@ -220,6 +225,8 @@ export const StudyPlanScreen = ({ navigation }) => {
             onSelect={(nextDate) => {
               setDate(nextDate);
             }}
+            min={tomorrow}
+            max={examDate}
           />
           {errorSetDay && (
             <Text category="s2" style={{ ...styles.titleContent, paddingLeft: 8, paddingVertical: 4 }} status="danger">

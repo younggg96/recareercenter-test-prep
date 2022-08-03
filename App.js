@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import * as RNIap from 'react-native-iap';
 
 // theme
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
@@ -22,6 +23,7 @@ import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
 
 import { LogBox } from 'react-native';
+import { withIAPContext } from 'react-native-iap';
 
 // Ignore all log notifications:
 LogBox.ignoreAllLogs();
@@ -38,7 +40,7 @@ export const store = createStoreWithMiddleware(
   window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-export default function App() {
+const App = () => {
   const [isLoaded, setIsLoaded] = React.useState(false);
   // theme
   const [theme, setTheme] = React.useState('light');
@@ -67,6 +69,11 @@ export default function App() {
     setIsLoaded(true);
   };
 
+  useEffect(async() => {
+    await RNIap.initConnection();
+    return () => RNIap.endConnection();
+  }, [])
+
 
   if (!isLoaded) {
     return (
@@ -94,4 +101,4 @@ export default function App() {
   }
 }
 
-
+export default withIAPContext(App)
