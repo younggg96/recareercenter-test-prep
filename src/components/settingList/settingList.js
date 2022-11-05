@@ -3,6 +3,8 @@ import { Linking, Share, StyleSheet, Text } from "react-native";
 import { Menu, MenuItem } from "@ui-kitten/components";
 
 import Toast from "react-native-simple-toast";
+import { useSelector } from "react-redux";
+import { LockIcon } from "../icons/icons";
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +28,8 @@ const styles = StyleSheet.create({
 
 export const SettingList = (props) => {
   const { settings, navigation, padding } = props;
+
+  const { userData } = useSelector(state => state.userReducer);
 
   const navigatorTo = (link) => {
     navigation.navigate(link);
@@ -63,17 +67,28 @@ export const SettingList = (props) => {
     <Menu style={styles.container}>
       {settings.map((setting, index) => {
         if (setting.url) {
-          return (
-            <MenuItem
+          if (setting.title === "Study Group" && userData.membership === '1') {
+            return (<MenuItem
               style={padding ? styles.menuItem : styles.menuItemNoPadding}
               key={index}
               title={evaProps => <Text {...evaProps} style={styles.itemTitle}>{setting.title}</Text>}
-              disabled={setting.disable}
+              disabled={true}
               accessoryLeft={setting.icon}
-              accessoryRight={setting.rightIcon}
-              onPress={() => Linking.openURL(setting.url)}
-            />
-          )
+              accessoryRight={LockIcon}
+            />)
+          } else {
+            return (
+              <MenuItem
+                style={padding ? styles.menuItem : styles.menuItemNoPadding}
+                key={index}
+                title={evaProps => <Text {...evaProps} style={styles.itemTitle}>{setting.title}</Text>}
+                disabled={setting.disable}
+                accessoryLeft={setting.icon}
+                accessoryRight={setting.rightIcon}
+                onPress={() => Linking.openURL(setting.url)}
+              />
+            )
+          }
         }
         return (
           <MenuItem

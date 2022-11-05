@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, Alert, View } from 'react-native';
 // ui
 import { Button, Divider, List, ListItem, Text } from '@ui-kitten/components';
 import { TopBar } from '../../../components/topBar/topBar';
@@ -21,10 +21,18 @@ export const AttendanceListScreen = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
 
   const shareRecord = async (body) => {
+    if (!userData.displayName) {
+      Alert.alert("Please update your name in profile section.");
+      return
+    }
     let str = "";
     if (body) {
       for (let index = 0; index < body.length; index++) {
-        str += `<p>${index + 1}. Chapter: ${body[index].chapter}, ${body[index].date} checked.</p>`
+        if (body[index].chapter == 22) {
+          str += `<p>${index + 1}. Chapter: Review class, ${body[index].date} checked.</p>`
+        } else {
+          str += `<p>${index + 1}. Chapter: ${body[index].chapter}, ${body[index].date} checked.</p>`
+        }
       }
       let options = {
         html: `
@@ -78,7 +86,7 @@ export const AttendanceListScreen = ({ navigation }) => {
   const renderItem = ({ item, index }) => (
     <ListItem
       style={{ paddingVertical: 16, paddingRight: 20 }}
-      title={`${index + 1}. Chapter ${item.chapter}`}
+      title={item.chapter !== 22 ? `${index + 1}. Chapter ${item.chapter}` : `${index + 1}. Review class`}
       disabled
       accessoryRight={() => (
         <View>

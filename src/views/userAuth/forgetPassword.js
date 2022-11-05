@@ -42,13 +42,7 @@ const ForgetPassword = ({ navigation }) => {
     <>
       <TopBar title="Reset password" navigation={navigation} hasBack={true} />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <Text
-            style={{ ...styles.paragraphReset, textAlign: "center" }}
-            category="h1"
-          >
-            Reset Password
-          </Text>
+        <ScrollView style={styles.container}>
           <View>
             <Image
               source={require("../../../assets/img/Forgotpwvector.png")}
@@ -56,6 +50,7 @@ const ForgetPassword = ({ navigation }) => {
                 width: 150,
                 height: 210,
                 alignSelf: "center",
+                marginTop: 16,
                 marginBottom: 36,
               }}
             />
@@ -107,14 +102,14 @@ const ForgetPassword = ({ navigation }) => {
               )}
             />
           </View>
-        </View>
+          <Button
+            style={{ ...styles.createAccBtn, marginHorizontal: 32 }}
+            onPress={handleSubmit(onSubmit)}
+          >
+            Send
+          </Button>
+        </ScrollView>
       </TouchableWithoutFeedback>
-      <Button
-        style={{ ...styles.createAccBtn, marginHorizontal: 32 }}
-        onPress={handleSubmit(onSubmit)}
-      >
-        Send
-      </Button>
     </>
   );
 };

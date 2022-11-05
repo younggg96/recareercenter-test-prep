@@ -74,7 +74,7 @@ export const AllCategroyListScreen = ({ route, navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title={route.params.categoryName} navigation={navigation} hasBack={true} />
+      <TopBar title={route.params.categoryName} noLimited={true} navigation={navigation} hasBack={true} />
       <View style={styles.content}>
         {!questionLoading ? <TabView
           style={{ flex: 1 }}

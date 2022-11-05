@@ -10,6 +10,7 @@ import { doQuestion } from "../../../redux/actions/userAction";
 import { Review } from "./practiceScreen";
 import { addStatusQuestion } from "../../../helper/api";
 import { getStatusQuestionReduxStore } from "../../../redux/actions/questionAction";
+import Toast from "react-native-simple-toast";
 
 export const PracticeOneQuestionScreen = ({ route, navigation }) => {
 	// pass params from All List Screen
@@ -48,9 +49,15 @@ export const PracticeOneQuestionScreen = ({ route, navigation }) => {
 		res.then((data) => {
 			if (data) {
 				dispatch(getStatusQuestionReduxStore(userData.uid, cid));
+				Toast.show(
+					status == 'unknow' ?  "Don't know question" :`Question is ${ status }`,
+					Toast.SHORT
+				);
+				setTimeout(() => {
+					navigation.goBack();
+				}, 500);
 			}
 		});
-		navigation.navigate("AllCategroyListScreen");
 	}
 
 	return (

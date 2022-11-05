@@ -26,6 +26,7 @@ export const HeadphonesIcon = (props) => <Icon fill="#000" {...props} name="head
 export const tvIcon = (props) => <Icon fill="#000" {...props} name="tv" />;
 export const BookIcon = (props) => <Icon fill="#000" {...props} name="book-open" />;
 export const GiftIcon = (props) => <Icon fill="#000" {...props} name="gift" />;
+export const GroupIcon = (props) => <Icon fill="#000" {...props} name="people" />;
 
 // settings
 export const LockIcon = (props) => <Icon fill="#000" {...props} name="lock" />;

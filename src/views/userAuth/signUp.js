@@ -10,6 +10,7 @@ import { BackIcon } from "../../components/icons/icons";
 import { TopBar } from "../../components/topBar/topBar";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/actions/userAction";
+import { ScrollView } from "react-native-gesture-handler";
 
 const SignUp = ({ navigation }) => {
   const {
@@ -54,8 +55,8 @@ const SignUp = ({ navigation }) => {
     <>
       <TopBar title="Sign up" navigation={navigation} hasBack={true} />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={{...styles.container, paddingTop: 16}}>
-          <Text style={styles.paragraphSignup} category="h1">
+        <ScrollView style={{ ...styles.container, paddingTop: 16 }}>
+          <Text style={styles.paragraphSignup} category="h3">
             Sign Up and Start learning
           </Text>
           <View>
@@ -159,7 +160,7 @@ const SignUp = ({ navigation }) => {
             <CheckBox
               value={checked}
               checked={checked}
-              style={{marginVertical: 16}}
+              style={{ marginVertical: 16 }}
               onChange={(nextChecked) => setChecked(nextChecked)}
             >
               I've read and agree with <Text style={{ color: 'blue', fontSize: 12, textDecorationLine: 'underline' }} onPress={goTermsPage}>Terms of Service and our Privacy Policy</Text>
@@ -172,11 +173,11 @@ const SignUp = ({ navigation }) => {
               ) : null
             ) : null}
           </View>
-        </View>
+          <Button style={{ ...styles.createAccBtn, marginHorizontal: 32 }} onPress={handleSubmit(onSubmit)}>
+            Create Account
+          </Button>
+        </ScrollView>
       </TouchableWithoutFeedback>
-      <Button style={{ ...styles.createAccBtn, marginHorizontal: 32 }} onPress={handleSubmit(onSubmit)}>
-        Create Account
-      </Button>
     </>
   );
 };

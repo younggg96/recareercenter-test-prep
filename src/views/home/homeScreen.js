@@ -23,7 +23,7 @@ import { itemWidth, sliderWidth } from "../../constants";
 
 import { refreshQuiz } from "../../redux/actions/questionAction";
 // import { LockVideoIcon, PlayIcon } from "../../components/icons/icons";
-import { changeMembership, getQuestionCategories, getSliderData, saveExpoToken } from "../../helper/api";
+import { changeMembership, doTodayQuiz, getQualificationQuiz, getQuestionCategories, getSliderData, saveExpoToken } from "../../helper/api";
 
 import * as Notifications from 'expo-notifications';
 
@@ -298,8 +298,15 @@ export const HomeScreen = ({ navigation }) => {
   const navigateTo = (link) => Linking.openURL(link);
 
   const navigateToQuiz = () => {
-    dispatch(refreshQuiz());
-    navigation.navigate("QuizScreen");
+    getQualificationQuiz(uid).then((res) => {
+      if (res) {
+        doTodayQuiz(uid);
+        dispatch(refreshQuiz());
+        navigation.navigate("QuizScreen");
+      } else {
+        setVisible(true);
+      }
+    })
   };
 
   const navigateToPlan = () => {
@@ -470,8 +477,11 @@ export const HomeScreen = ({ navigation }) => {
           <Text category="s2" appearance="hint" style={homeStyles.time}>
             Estimated time 10 mins
           </Text>
+          <Text category="s2" appearance="hint" style={{ ...homeStyles.time, color: 'red', fontSize: 12 }}>
+            {userData.membership === "1" && "(Only have one chance everyday)"}
+          </Text>
           <Button style={{ ...homeStyles.button, marginBottom: 8 }} onPress={navigateToQuiz}>
-            Let's Start A Quiz
+            Let's Start Quiz
           </Button>
           <Button appearance="ghost" style={{ ...homeStyles.button, marginTop: 8 }} onPress={navigateToReview}>
             Review Questions

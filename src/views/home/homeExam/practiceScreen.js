@@ -442,7 +442,7 @@ export const PracticeScreen = ({ route, navigation }) => {
       ) : !showResult ? question ? (
         // question
         <View style={{ flex: 1 }}>
-          <TopBar title={practice} navigation={navigation} hasBack={true} />
+          <TopBar title={practice} navigation={navigation} hasBack={true} noLimited={true} />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.questionCard}>
               <ProgressBar

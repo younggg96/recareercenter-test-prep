@@ -6,7 +6,6 @@ import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
 import { TopBar } from "../../../components/topBar/topBar";
 import { getQuestionCategories } from "../../../helper/api";
-// import { Categories } from "../../../static/questions/category";
 import { homeStyles } from "../../../styles/home/homeStyle";
 
 export const AllCategroyScreen = ({ navigation }) => {

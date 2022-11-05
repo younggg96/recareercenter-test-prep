@@ -291,3 +291,38 @@ export const updateUserProfile = async (uid, name) => {
     }
 }
 
+export const getQualificationMockExam = async (uid) => {
+    try {
+        const res = await axios.get(BASE_URL + `/users/checkUserQualificationForMockExam?uid=${uid}`);
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const getQualificationQuiz = async (uid) => {
+    try {
+        const res = await axios.get(BASE_URL + `/users/checkUserQualificationForQuiz?uid=${uid}`);
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+
+export const doTodayExam = async (uid) => {
+    try {
+        const res = await axios.put(BASE_URL + `/users/doExamToday?uid=${uid}`);
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+export const doTodayQuiz = async (uid) => {
+    try {
+        const res = await axios.put(BASE_URL + `/users/doQuizToday?uid=${uid}`);
+        return res.data;
+    } catch (error) {
+        Alert.alert("Error", `${error.message}`);
+    }
+}
+

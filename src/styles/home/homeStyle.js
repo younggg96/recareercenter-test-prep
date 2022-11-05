@@ -103,8 +103,8 @@ export const homeStyles = StyleSheet.create({
     shadowRadius: 3,
   },
   categoryTitle: {
-    paddingHorizontal: 16,
-    paddingTop: 16,
+    paddingHorizontal: 12,
+    paddingTop: 12,
     fontWeight: "700",
   },
   itemContent: {

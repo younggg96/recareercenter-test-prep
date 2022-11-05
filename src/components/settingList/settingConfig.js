@@ -1,4 +1,4 @@
-import { ExamDayIcon, ForwardIcon, MemberIcon, PersonIcon, ReviewIcon, ShopIcon, LockIcon, AboutUsIcon, BellIcon, ShareIcon, ContactUsIcon, BookIcon, GiftIcon, ShareNormalIcon, HeadphonesIcon, tvIcon } from "../icons/icons";
+import { ExamDayIcon, ForwardIcon, MemberIcon, PersonIcon, ReviewIcon, ShopIcon, LockIcon, AboutUsIcon, BellIcon, ShareIcon, ContactUsIcon, BookIcon, GiftIcon, ShareNormalIcon, HeadphonesIcon, tvIcon, GroupIcon } from "../icons/icons";
 
 export const profileSettings = [
   { title: "Study Plan", icon: ExamDayIcon, rightIcon: ForwardIcon, link: "StudyPlanScreen", disable: false },
@@ -9,6 +9,7 @@ export const profileSettings = [
 export const viewOurWebsite = [
   { title: "Visit Our Online Store", icon: ShopIcon, rightIcon: ForwardIcon, disable: false, url: "https://www.recareercenter.com"},
   { title: "National Classes", icon: BookIcon, rightIcon: ForwardIcon, disable: false, url: "https://www.recareercenter.com/national/" },
+  { title: "Study Group", icon: GroupIcon, rightIcon: ForwardIcon, disable: false, url: "https://portal.recampus.com/re/CFREE/store/portalcheckout/browse/RE_WHOLESALE/217809?tm-epo-counter=1&tcaddtocart=42824&state-code=NY&org-code=RE_CE_NY&licensetype=SLP" },
   { title: "Shop at Our Book Store", icon: BookIcon, rightIcon: ForwardIcon, disable: false, url: "https://www.recareercenter.com/product-category/books/" },
   { title: "Check Out Our Merch Store", icon: GiftIcon, rightIcon: ForwardIcon, disable: false, url: "https://www.recareercenter.com/product-category/merch-store/" },
 ];

@@ -44,10 +44,7 @@ const chapters = [
   { id: "18", name: "chapter 19", value: "19" },
   { id: "19", name: "chapter 20", value: "20" },
   { id: "20", name: "chapter 21", value: "21" },
-  { id: "21", name: "chapter 22", value: "22" },
-  { id: "22", name: "chapter 23", value: "23" },
-  { id: "23", name: "chapter 24", value: "24" },
-  { id: "24", name: "chapter 25", value: "25" },
+  { id: "21", name: "Review class", value: "22" },
 ]
 
 const studyHours = ["Choose hours", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

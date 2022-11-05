@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
-import * as RNIap from 'react-native-iap';
+// import * as RNIap from 'react-native-iap';
 
 // theme
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
@@ -23,7 +23,7 @@ import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
 
 import { LogBox } from 'react-native';
-import { withIAPContext } from 'react-native-iap';
+// import { withIAPContext } from 'react-native-iap';
 
 // Ignore all log notifications:
 LogBox.ignoreAllLogs();
@@ -69,10 +69,12 @@ const App = () => {
     setIsLoaded(true);
   };
 
-  useEffect(async() => {
-    await RNIap.initConnection();
-    return () => RNIap.endConnection();
-  }, [])
+  // useEffect(() => {
+  //   async init () => {
+  //     await RNIap.initConnection();
+  //   }
+  //   return () => RNIap.endConnection();
+  // }, [])
 
 
   if (!isLoaded) {
@@ -101,4 +103,4 @@ const App = () => {
   }
 }
 
-export default withIAPContext(App)
+export default App

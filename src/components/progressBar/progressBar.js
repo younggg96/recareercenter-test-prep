@@ -39,13 +39,17 @@ export const ProgressBar = (props) => {
 
   if (isTimer) {
     React.useEffect(() => {
-      counter > 0 && setTimeout(() => {
-        setCounter(() => counter - 1)
-      }, 1000);
+      let id = null;
+      if (counter > 0) {
+        id = setTimeout(() => {
+          setCounter(() => counter - 1)
+        }, 1000);
+      }
       if (counter == 0) {
         setQuitExamDisplay(false);
         setTimeoutDisplay(true);
       }
+      return () => clearTimeout(id);
     }, [counter]);
   }
 

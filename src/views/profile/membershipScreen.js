@@ -175,7 +175,7 @@ export const MembershipScreen = ({ navigation }) => {
             </View>
             {member !== "2" ? (
               <Button style={styles.button} appearance="outline" onPress={() => purchase(2)} accessoryLeft={purchaseButtonLoading ? () => <LoadingRedIndicator style={{ color: '#E42425' }} /> : null}>
-                {purchaseButtonLoading ? "Purchase..." : "Purchase"}
+                {member !== "3" ? purchaseButtonLoading ? "Upgrading..." : "Upgrade plan" : purchaseButtonLoading ? "Downgrading..." : "Downgrade plan"}
               </Button>
             ) : (
               <></>
@@ -214,7 +214,7 @@ export const MembershipScreen = ({ navigation }) => {
             </View>
             {member !== "3" ? (
               <Button style={styles.button} appearance="outline" onPress={() => purchase(3)} accessoryLeft={purchaseGoldenButtonLoading ? () => <LoadingRedIndicator style={{ color: '#E42425' }} /> : null}>
-                {purchaseGoldenButtonLoading ? "Purchase..." : "Purchase"}
+                {purchaseGoldenButtonLoading ? "Upgrading..." : "Upgrade plan"}
               </Button>
             ) : (
               <></>

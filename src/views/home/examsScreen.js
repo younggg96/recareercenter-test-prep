@@ -6,12 +6,13 @@ import { styles } from "../../styles/home/examStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { getExams, refreshQuestionData } from "../../redux/actions/questionAction";
 // components
-import { Button, Text } from "@ui-kitten/components";
+import { Button, Card, Modal, Text } from "@ui-kitten/components";
 import { Image, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { TopBar } from "../../components/topBar/topBar";
 import { LineChart } from "react-native-chart-kit";
-import { getExamData } from "../../helper/api";
+import { doTodayExam, getExamData, getQualificationMockExam } from "../../helper/api";
+import { homeStyles } from "../../styles/home/homeStyle";
 
 
 const today = new Date();
@@ -21,6 +22,7 @@ export const ExamsScreen = ({ navigation }) => {
 
   const { userData } = useSelector(state => state.userReducer);
   const { exams } = useSelector(state => state.questionReducer);
+  const [visible, setVisible] = React.useState(false);
 
   useEffect(() => {
     getExamData(userData.uid).then((res) => {
@@ -30,8 +32,19 @@ export const ExamsScreen = ({ navigation }) => {
 
   // navigation
   const navigateToMockExam = () => {
-    dispatch(refreshQuestionData());
-    navigation.navigate("MockExamScreen");
+    getQualificationMockExam(userData.uid).then((res) => {
+      if (res) {
+        doTodayExam(userData.uid);
+        dispatch(refreshQuestionData());
+        navigation.navigate("MockExamScreen");
+      } else {
+        setVisible(true);
+      }
+    })
+  };
+
+  const navigateToMembership = () => {
+    navigation.navigate("MembershipScreen");
   };
 
   const navigateToHistory = () => {
@@ -116,7 +129,7 @@ export const ExamsScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopBar title="Exams" hasBack={false}/>
+      <TopBar title="Exams" hasBack={false} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
           <Image
@@ -135,8 +148,11 @@ export const ExamsScreen = ({ navigation }) => {
             Within 100 mins, To complete 100 questions
           </Text>
           <Button style={{ ...styles.button, marginBottom: 8, borderRadius: 16 }} onPress={navigateToMockExam}>
-            Let's Start A Mock Exam
+            Let's Start Mock Exam
           </Button>
+          <Text category="s2" appearance="hint" style={{...styles.time, color: 'red', fontSize: 12}}>
+            {userData.membership === "1" && "(One Quiz Daily)" }
+          </Text>
         </View>
         <Text
           category="h5"
@@ -194,6 +210,32 @@ export const ExamsScreen = ({ navigation }) => {
           }
         </View>
       </ScrollView>
+      <Modal
+        style={homeStyles.modal}
+        visible={visible}
+        backdropStyle={homeStyles.backdrop}
+        onBackdropPress={() => setVisible(false)}
+      >
+        <Card disabled={true} style={{ ...homeStyles.modalCard, height: 400 }}>
+          <View style={{ marginBottom: 8 }}>
+            <Image
+              source={require("../../../assets/img/vip.jpg")}
+              style={{ width: '100%', height: 200, marginBottom: 16 }}
+            />
+            <Text category="h6" style={homeStyles.modalTitle}>
+              Become A Membership Today!
+            </Text>
+          </View>
+          <Button
+            onPress={() => {
+              setVisible(false);
+              navigateToMembership()
+            }}
+          >
+            Start Membership!
+          </Button>
+        </Card>
+      </Modal>
     </View>
   );
 };

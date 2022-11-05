@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 });
 
 export const TopBar = (props) => {
-  const { navigation, title, hasBack, type, hasRight = false, right = null } = props;
+  const { navigation, title, hasBack, type, hasRight = false, right = null, noLimited = false } = props;
   const { userData } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
   const navigateBack = () => {
@@ -47,7 +47,7 @@ export const TopBar = (props) => {
   return (
     <TopNavigation
       title={() => (
-        <Text category="s1" style={styles.topTitle} numberOfLines={2}>
+        <Text category="s1" style={styles.topTitle} numberOfLines={!noLimited && 2}>
           {title}
         </Text>
       )}
